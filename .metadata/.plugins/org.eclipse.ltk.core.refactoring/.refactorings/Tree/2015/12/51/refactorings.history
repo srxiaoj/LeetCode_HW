@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;root&apos; in &apos;BinaryTreeUpsideDown.main(...)&apos; to &apos;root2&apos;&#x0A;- Original project: &apos;Tree&apos;&#x0A;- Original element: &apos;BinaryTreeUpsideDown.main(String[]).root&apos;&#x0A;- Renamed element: &apos;root&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;root&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{BinaryTreeUpsideDown.java[BinaryTreeUpsideDown~main~\[QString;@root!534!565!543!546!QTreeNode;!0!false" name="root2" references="true" stamp="1450554125296" version="1.0"/>
+</session>

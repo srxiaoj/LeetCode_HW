@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class PermutationsII {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+//        int[] nums = {-1,2,-1,2,1,-1,2,1};
+        int[] nums = {1, 2, 1};
+        List<List<Integer>> res = permute(nums);
+        printArray(res);
+    }
+    public static List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            
+        }
+        return null;
+    }
+    public static void printArray(List<List<Integer>> A)
+    {
+        for(int i = 0; i < A.size(); i++)
+        {
+            System.out.print(A.get(i) + " ");
+        }
+    }
+}
+
+class tuple {
+    int pos;
+    int val;
+    tuple(int p, int v) {
+        pos = p;
+        val =v;
+    }
+}

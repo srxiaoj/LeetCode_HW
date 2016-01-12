@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;KthLargest.java&apos; to &apos;Divide and Conquer/src&apos;&#x0D;&#x0A;- Original project: &apos;Kth Largest Element in an Array&apos;&#x0D;&#x0A;- Destination element: &apos;Divide and Conquer/src&apos;&#x0D;&#x0A;- Original element: &apos;KthLargest.java&apos;" description="Copy compilation unit" destination="=Divide and Conquer/src" element1="/src&lt;{KthLargest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1447284027901" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,51 @@
+import java.util.Stack;
+
+public class BinaryTreeUpsideDown {
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        System.out.println("Before inverse");
+        TreeNode.printNode(root);
+        System.out.println("After inverse");
+        TreeNode res = upsideDownBinaryTree(root);
+        TreeNode.printNode(res);
+    }
+
+    public static TreeNode upsideDownBinaryTree(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        stack.add(root);
+        TreeNode res = null;
+        TreeNode temp = null;
+        while (!stack.isEmpty()) {
+            TreeNode curNode = stack.lastElement();
+            if (curNode.left != null) {
+                stack.add(curNode.left);
+                curNode.left = null;
+            } else {
+                if (res == null) {
+                    res = new TreeNode(curNode.val);
+                    temp = res;
+                } else { // res != null
+                    if (temp.left == null) {
+                        if (curNode.right == null) {
+                            temp.left = null;
+                        } else {
+                            TreeNode left = new TreeNode(curNode.right.val);
+                            temp.left = left;
+                        }
+                    } else {
+                        TreeNode right = new TreeNode(curNode.val);
+                        temp.right = right;
+                    }
+                    temp = temp.right;
+                }
+                stack.pop();
+            }
+        }
+        return res;
+    }
+}

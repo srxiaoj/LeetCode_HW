@@ -1,0 +1,1319 @@
+1
+00:00:01,133 --> 00:00:12,066
+[Tanay] What do you do? [User] I'm a researcher in LTI
+
+2
+00:00:12,066 --> 00:00:23,032
+[Tanay] We would like you to find the CVS pharmacy website and check
+
+3
+00:00:23,033 --> 00:00:30,199
+[Yiling] What's your background in technology or online shopping experiences?
+
+4
+00:00:30,200 --> 00:00:40,633
+[User] I try not to do it too much, because of security issues. And it's also time consuming. I don't do too much shopping. In general, I don't like shopping.
+
+5
+00:00:40,633 --> 00:00:51,066
+[User] And I'm getting very frustrated by the procedures of online shopping. For example, Amazon is sometimes irritating.
+
+6
+00:00:51,066 --> 00:01:04,999
+[Tanay] OK, tell us how do you find the look and feel of the website
+
+7
+00:01:05,000 --> 00:01:15,300
+[User] Well, it sort of depends on what I need to do. I don't have anything in particular to do, so.
+
+8
+00:01:15,300 --> 00:01:25,600
+[Tanay] You will be asked to find some medicine we tell, in that context, what's your first impression? 
+
+9
+00:01:25,600 --> 00:01:37,600
+[User] It's typical, it has lots of stuff I don't care about. But if you 
+want me to find medical, I will look at the Pharmacy, that's easy to 
+find.
+
+10
+00:01:37,600 --> 00:01:46,400
+[User] There is a lot more on the website obviously that I could see, which is nervous. It makes me nervous. I quickly run down, I don't see anything. 
+
+11
+00:01:46,400 --> 00:01:59,033
+[User] Oh, this stuff is important. The fine print is usually very important, for example, prescriptions
+
+12
+00:01:59,033 --> 00:02:04,433
+[Yiling] So do you shop for over the counter medicine?
+
+13
+00:02:04,433 --> 00:02:10,899
+[User] No, if I need.
+
+14
+00:02:10,900 --> 00:02:18,866
+[User] I definitely would not do it online.
+
+15
+00:02:18,866 --> 00:02:30,166
+[User] It's not very ratifying, you don't get anything like certification
+
+16
+00:02:30,166 --> 00:02:33,999
+[User] Especially for over the counter medication, or anything over the counter. I'd like to pick it up and looking at it.
+
+17
+00:02:34,000 --> 00:02:37,233
+[User] I'd like evaluating...
+
+18
+00:02:37,233 --> 00:02:41,666
+[User] You can't see much online
+
+19
+00:02:41,666 --> 00:03:04,332
+[Tanay] Can you find the Ibuprofen tablet on the website?
+
+20
+00:03:04,333 --> 00:03:07,666
+[User] 67, there are lot of things they have
+
+21
+00:03:07,666 --> 00:03:11,666
+[User] Ibuprofen
+
+22
+00:03:11,666 --> 00:03:14,832
+[User] Liquid
+
+23
+00:03:14,833 --> 00:03:17,699
+[User] Tablet
+
+24
+00:03:17,700 --> 00:03:29,000
+[User] And children's medication. [Tanay] Suppose you have to choose one for yourself, how would you choose that?
+
+25
+00:03:29,000 --> 00:03:32,633
+[User] Well there are 67 choices.
+
+26
+00:03:32,633 --> 00:03:53,966
+
+
+27
+00:03:53,966 --> 00:04:04,932
+[User] I just sort of page through a couple of list just to see what they offer, what the brands are and it seems like they always present CVS brand first
+
+28
+00:04:04,933 --> 00:04:07,966
+[User] Even though I don't think they would be the first
+
+29
+00:04:07,966 --> 00:04:21,132
+[Tanay] So in general you would like to go through different pages, not just the first page. [User] I do if I can, if it takes too long then I get frustrated. And I'll try to refine the search
+
+30
+00:04:21,133 --> 00:04:27,266
+[User] But in this case is exploratory so I don't know the differences
+
+31
+00:04:27,266 --> 00:04:30,699
+[User] I mean I don't know, I've never seen this before.
+
+32
+00:04:30,700 --> 00:04:36,666
+
+
+33
+00:04:36,666 --> 00:04:45,866
+[User] If there is something for seeing all the results, I'll click on that. I don't like changing, cause it's taking too long.
+
+34
+00:04:45,866 --> 00:04:50,432
+[Tanay] OK
+
+35
+00:04:50,433 --> 00:04:57,966
+[User] Oh, I see, results per page, here we are.
+
+36
+00:04:57,966 --> 00:05:11,266
+[Tanay] Do you like the placement of the option to change the number of result per page? It makes sense but I didn't notice it.
+
+37
+00:05:11,266 --> 00:05:18,799
+[User] It's one of the things I don't notice for the first time
+
+38
+00:05:18,800 --> 00:05:31,200
+[User] you usually don't see most reviewed, so I like that option.
+
+39
+00:05:31,200 --> 00:05:40,766
+[Tanay] Suppose you have to find by the brand name "Advil", how would you go through the website
+
+40
+00:05:40,766 --> 00:05:45,166
+[User] I would just search for it, let's see how much they have.
+
+41
+00:05:45,166 --> 00:05:58,466
+[Rolly] Do you consider reviews? [User] I never look at the rating without reading the reviews.
+
+42
+00:05:58,466 --> 00:06:05,099
+[Chengcheng] Why, maybe it can provide some information for you to decide whether you want to buy the medicine. 
+
+43
+00:06:05,100 --> 00:06:11,766
+[User] For the reviews I definitely read the reviews, opinions other people write
+
+44
+00:06:11,766 --> 00:06:29,799
+[User] Because if it is something fantastic, I'm going to ignore it, but if it's negative, I want to know why it's negative. And if they have some real complain that I would agree with.
+
+45
+00:06:29,800 --> 00:06:51,333
+[User] Oh, you have a touch screen, thanks.
+
+46
+00:06:51,333 --> 00:06:58,899
+
+
+47
+00:06:58,900 --> 00:07:03,833
+[User] The other thing is, there is lots of information, I mean a lot of spaces that is wasted.
+
+48
+00:07:03,833 --> 00:07:13,433
+[User] I would like to see as many options as possible. See like this four things at a time and then I have to scroll is frustrating.  
+
+49
+00:07:13,433 --> 00:07:23,033
+[Tanay] So according to you the website does not have enough information for you to decide.
+
+50
+00:07:23,033 --> 00:07:26,966
+[User] Well, it takes a long time
+
+51
+00:07:26,966 --> 00:07:31,466
+[User] Because its presenting piecemeal, a few results at a time.
+
+52
+00:07:31,466 --> 00:07:38,432
+[User] Yeah, I would like to see all the result, that would be my preference for every page. Instead, it just reset. 
+
+53
+00:07:38,433 --> 00:07:45,399
+[User] When I made the query, it alwayss give me top rated, whereas before I have set the most reviewed.
+
+54
+00:07:45,400 --> 00:07:50,333
+[User] So I guess I would like to memorize my preferences for browsing
+
+55
+00:07:50,333 --> 00:07:55,966
+[Rolly] Do you like it as a list, like you scroll as a list and by icons
+
+56
+00:07:55,966 --> 00:08:04,999
+[User] Yeah, small icons, maybe. And maybe as a list that you can read it very quickly.
+
+00:08:05,000 --> 00:08:11,166
+[User] It's funny there are only a couple of reviews
+
+
+
+56
+
+00:08:11,166 --> 00:08:33,332
+[User] 5 stars by one person
+
+
+
+57
+
+00:08:33,333 --> 00:08:41,933
+[User] They're like "best there is". What do they evaluate?
+
+
+
+58
+
+00:08:41,933 --> 00:08:44,499
+[User] This looks like something made by the company.
+
+
+
+59
+
+00:08:44,500 --> 00:08:54,800
+[Tanay] And if you had to look up for drug information on ibuprofen. [User] Like drug interaction?
+
+
+
+60
+
+00:08:54,800 --> 00:09:05,100
+[Tanay] Yes the information about ibuprofen like what it is and stuff like that the website. Ingredients and its side effects.
+
+
+
+61
+
+00:09:05,100 --> 00:09:07,966
+[Tanay] So if you wanted to maybe try finding that on the website.
+
+
+
+62
+
+00:09:07,966 --> 00:09:11,966
+[Tanay] where would you go? [User] I would do another search on google
+
+
+
+63
+
+00:09:11,966 --> 00:09:18,399
+[Tanay] So if you wanted to maybe try finding that on the website.
+
+
+
+64
+
+00:09:18,400 --> 00:09:29,400
+[User] ohh they have health resources, drug information. Here we go.
+
+
+
+65
+
+00:09:29,400 --> 00:09:47,100
+[User] So all of this....
+
+
+
+66
+
+00:09:47,100 --> 00:09:58,900
+[Tanay] How do you find the organizaiton of the information
+page. [User] I don't know why it gives me infant first.
+
+
+
+67
+
+00:09:58,900 --> 00:10:03,100
+[User] I was just thinking of the migraine stuff.
+
+
+
+68
+
+00:10:03,100 --> 00:10:06,133
+
+
+
+
+
+69
+
+00:10:06,133 --> 00:10:20,233
+[User] So if you notice they have all the same introduction. It's not salient. We have all these different products and they all have the same introduction.
+
+
+
+70
+
+00:10:20,233 --> 00:10:32,999
+[User] Watch a video... This is cool!
+
+
+
+71
+
+00:10:33,000 --> 00:10:34,733
+
+
+
+
+
+72
+
+00:10:34,733 --> 00:10:38,899
+
+
+
+
+
+73
+
+00:10:38,900 --> 00:10:47,633
+
+
+
+
+
+74
+
+00:10:47,633 --> 00:10:50,333
+
+
+
+
+
+75
+
+00:10:50,333 --> 00:10:57,966
+[Tanay] What do you have to say about this?
+
+
+
+76
+
+00:10:57,966 --> 00:11:01,332
+[User] Points about the drug.
+
+
+
+77
+
+00:11:01,333 --> 00:11:09,133
+[User] I would like the standard display. I was just interested... Oh here we go, interaction!
+
+
+
+78
+
+00:11:09,133 --> 00:11:26,133
+
+
+
+
+
+79
+
+00:11:26,133 --> 00:11:29,333
+[User] I don't understand any of this.
+
+
+
+80
+
+00:11:29,333 --> 00:11:33,733
+
+
+
+
+
+81
+
+00:11:33,733 --> 00:11:48,466
+[User] Something that would help. Alcohol, aspitrin, diuretics. It would be nice to see something that explains what they are. Maybe alcohol we can understand. But warfarin, I've never explicitly encountered it.
+
+
+
+82
+
+00:11:48,466 --> 00:12:03,199
+[User] this stuff I wouldn't know where to find it. Maybe it would be in some other medication like nyquil or something I might be taking and I don't know. At this point, I might actually be... If there were a high risk involved
+
+
+
+83
+
+00:12:03,200 --> 00:12:10,133
+[User] and I'm unfamiliar with this. I would be spending a lot more time looking up these other things to understand what they are.
+
+
+
+84
+
+00:12:10,133 --> 00:12:22,633
+[Tanay] So now let's suppose you had a symptom like acid reflux and you had to buy a medicine for that online. So how would you go about choosing a medicine?
+
+
+
+85
+
+00:12:22,633 --> 00:12:26,966
+[User] How would I find?
+
+
+
+86
+
+00:12:26,966 --> 00:12:30,366
+[User] Let me see...
+
+
+
+87
+
+00:12:30,366 --> 00:12:35,899
+[User] Uhh they probably don't go by acid reflux. Acid reflux is the 
+
+
+
+88
+
+00:12:35,900 --> 00:13:11,833
+[User] pretty popular as a term. I would use heartburn as well.
+
+
+
+89
+
+00:13:11,833 --> 00:13:16,166
+[User] So it's always good to have an overview of when you
+
+
+
+90
+
+00:13:16,166 --> 00:13:18,366
+[User] use something
+
+
+
+91
+
+00:13:18,366 --> 00:13:22,299
+[User] obviously things come in different forms and for different purpose
+
+
+
+92
+
+00:13:22,300 --> 00:13:24,966
+[User] but there's never any explicit information about that.
+
+
+
+93
+
+00:13:24,966 --> 00:13:33,532
+[User] They assume, they always assume that we know or that we have our preferences. And the only thing you get is the brand information, you don't get anything else to
+
+
+
+94
+
+00:13:33,533 --> 00:13:42,099
+[User] help aside. So for example the pharmacy they have their own. Am I going to find CVS brands or am I going to find things that
+
+
+
+95
+
+00:13:42,100 --> 00:13:49,000
+[User] for which I need a prescription or I need to ask the pharmacist.
+
+
+
+96
+
+00:13:49,000 --> 00:13:58,133
+
+
+
+
+
+97
+
+00:13:58,133 --> 00:14:11,933
+[Tanay] We have a final task for you in which you have to buy a bottle of fish oil, one bottle of Vitamin D and one bottle of Calcium taablets and then you have to checkout.
+
+
+
+98
+
+00:14:11,933 --> 00:14:25,766
+[Tanay] We'll see how you go through that. [User] SO I have to actually go to...? [Tanay] No. [User] Go through the process of buying. I should tell you that I took
+
+
+
+99
+
+00:14:25,766 --> 00:14:32,899
+[User] for fish oil I actually spent 2 hours one day reading about
+
+
+
+100
+
+00:14:32,900 --> 00:14:50,500
+[Tanay] fish oil. [User] Not just on the pharmacy website. But in general finding reviews of different qualities of fish oils. And what to look for in the ingredients.
+
+
+
+101
+
+00:14:50,500 --> 00:15:00,466
+[User] In similar for Vitamin D. What is the recommended dosage of vitamin D. For calcium tablets, I haven't been interested in so I have never looked at it.
+
+
+
+102
+
+00:15:00,466 --> 00:15:09,766
+[User] So there'd be all this background. So you're talking about 3-4 hours of research for each of the items not necessarily on the website but I'll do the
+
+
+
+103
+
+00:15:09,766 --> 00:15:13,499
+[User] the thing for finding fish oil, vitamin D
+
+
+
+104
+
+00:15:13,500 --> 00:15:29,033
+
+
+
+
+
+105
+
+00:15:29,033 --> 00:15:40,099
+
+
+
+
+
+106
+
+00:15:40,100 --> 00:15:43,166
+[User] They don't have the kind I would buy anyway.
+
+
+
+107
+
+00:15:43,166 --> 00:15:44,732
+[User] I'll just grab one.
+
+
+
+108
+
+00:15:44,733 --> 00:15:50,066
+[Rolly] What are you looking for specifically?
+
+
+
+109
+
+00:15:50,066 --> 00:15:54,766
+[User] The kind I look for is the molecularly distilled fish oil.
+
+
+
+110
+
+00:15:54,766 --> 00:15:58,199
+[Rolly] Maybe you wanna search by different filters.
+
+
+
+111
+
+00:15:58,200 --> 00:16:04,533
+
+
+
+
+
+112
+
+00:16:04,533 --> 00:16:09,399
+[User] Well it could be they do not have it by I could look again
+
+
+
+113
+
+00:16:09,400 --> 00:16:16,300
+[User] Are there filters?
+
+
+
+114
+
+00:16:16,300 --> 00:16:24,300
+
+
+
+
+
+115
+
+00:16:24,300 --> 00:16:28,400
+[User] I'm not familiar with natrol or twinlab.
+
+124
+00:17:21,500 --> 00:17:45,500
+[User] So this is mostly useful.
+
+125
+00:17:45,500 --> 00:18:07,166
+[User] No reviews right here? But I will just grab this.
+
+126
+00:18:07,166 --> 00:18:11,532
+[User] So how do I add this to my cart?
+
+127
+00:18:11,533 --> 00:18:19,833
+[Tanay] So the option is not displayed? [User] I don't see any.
+
+128
+00:18:19,833 --> 00:18:27,299
+[User] Go into this page as before?
+
+129
+00:18:27,300 --> 00:18:34,100
+[User] Oh I see, add to basket.
+
+130
+00:18:34,100 --> 00:18:40,366
+[User] OK.
+
+131
+00:18:40,366 --> 00:19:35,266
+[User] Now I need to find Vitamin D.
+
+132
+00:19:35,266 --> 00:19:38,732
+[Tanay] We should provide a filter for tabelet?
+
+133
+00:19:38,733 --> 00:20:09,166
+[User] Tabelet. The firm. And just pure (Vitamin) nothing else added to it. I've never seen that option before.
+
+134
+00:20:09,166 --> 00:20:30,266
+[User] Buy one get one free. Ok so what do I need to do? Do I need to say two?
+
+135
+00:20:30,266 --> 00:20:40,199
+[Tanay] Do you usually look for any offers specifically? [User] Sometimes. But in this case I prefer to go to the store because you see it immediately.
+
+136
+00:20:40,200 --> 00:21:01,466
+[User] While online you have to read carefully. And it's really different to figure out. I guess I need to say two?
+
+137
+00:21:01,466 --> 00:21:05,299
+[User] So do I need to say anything? Ahh I guess no.
+
+138
+00:21:05,300 --> 00:21:30,600
+[User] Ok, what's next? [Tanay] Calcium tablet.
+
+139
+00:21:30,600 --> 00:21:34,466
+[Tanay] So you're looking at drug information and instruction page?
+
+140
+00:21:34,466 --> 00:21:41,866
+[User] Yea.
+
+141
+00:21:41,866 --> 00:21:54,499
+[Tanay] Is that right according to you that drug information page coming up instead of product page?
+
+142
+00:21:54,500 --> 00:21:59,100
+[User] I wasn't excepting it and it didn't give me much information.
+
+143
+00:21:59,100 --> 00:22:10,300
+[User] It's always the same information.
+
+144
+00:22:10,300 --> 00:22:31,366
+[User] The thing I want to filter out just Calcium by itself.
+
+145
+00:22:31,366 --> 00:22:48,066
+[User] Here's Calcium 600.
+
+146
+00:22:48,066 --> 00:22:56,266
+[User] Ok, add to basket.
+
+147
+00:22:56,266 --> 00:23:01,832
+[User] So I should check out? [Tanay] Yea, you can check out.
+
+148
+00:23:01,833 --> 00:23:09,966
+[User] 34.07.. Let me make sure this 34 is buy one get one free price.
+
+149
+00:23:09,966 --> 00:23:13,299
+[User] So that's buy one get one free price. Yep. Okay.
+
+150
+00:23:13,300 --> 00:23:22,766
+[Tanay] Suppose you have to delete or remove an item from the cart.
+
+151
+00:23:22,766 --> 00:23:29,199
+[User] How would I delete it? [Tanay] Yep. [User] Good question.
+
+152
+00:23:29,200 --> 00:23:33,200
+[User]  Ahh.. Oh right, remove.
+
+153
+00:23:33,200 --> 00:23:35,633
+[User] So I just change the number or just remove.
+
+154
+00:23:35,633 --> 00:23:48,666
+[User] The confirmation is until you want to remove anything. 
+
+155
+00:23:48,666 --> 00:23:56,332
+[User] It just says do you want to remove it, so if I click the wrong thing, I think.
+
+156
+00:23:56,333 --> 00:24:06,066
+[User] OK.
+
+157
+00:24:06,066 --> 00:24:11,699
+[Tanay] So how would you rate the whole experience in this website?
+
+158
+00:24:11,700 --> 00:24:15,700
+[Tanay] Out of five. One to five.
+
+159
+00:24:15,700 --> 00:24:27,233
+[User] One to five? [Tanay] Yea. [User] So five being better, the best? [Tanay] Yes the best.
+
+160
+00:24:27,233 --> 00:24:42,599
+[User] It's like a 3.5, almost 4. The thing is it's what you expect. It's not what I need but what I expect.
+
+161
+00:24:42,600 --> 00:24:54,266
+[User] I mean a 5 will be something suprising but it's easy to use and it gives me information the way I'm looking for it. But for example, the drug, I mean you can't filter just based on the ingredients.
+
+199
+00:24:54,266 --> 00:25:05,966
+[User] If I want just one type of Vitamin, if I want D, I don't want D with everything else and I can't filter that.  If I want the form in which it is dispensed, the only thing you can filter on is "Brand".
+
+200
+00:25:05,966 --> 00:25:07,499
+[User] Which isn't too useful.
+
+201
+00:25:07,500 --> 00:25:08,900
+[User] and price.
+
+202
+00:25:08,900 --> 00:25:21,700
+[User] And in terms of the research, it gives you the same abstract paragraph which is uninformative. I mean, I would like something that is little more salient.
+
+203
+00:25:21,700 --> 00:25:28,666
+[User] But, Everything else seems fine, I mean the way of buying is straigthforward I think.
+
+204
+00:25:28,666 --> 00:25:38,266
+[Rolly] I think you have to cancel the order and maybe...[Tanay] He did that. Okay, you mean the whole order.
+
+205
+00:25:38,266 --> 00:25:42,099
+[Rolly] So, would that be a hassle?
+
+206
+00:25:42,100 --> 00:25:45,133
+[User] Would it be difficult to cancel it?
+
+207
+00:25:45,133 --> 00:25:55,233
+[User] I would just close the whole browser!
+
+208
+00:25:55,233 --> 00:25:59,833
+[Tanay] Now let's checkout riteaid.com
+
+209
+00:25:59,833 --> 00:26:03,799
+[User] Alright, okay. [Tanay] Rite Aid Pharmacy.
+
+210
+00:26:03,800 --> 00:26:08,233
+[User] Cancel everything?
+
+211
+00:26:08,233 --> 00:26:12,299
+riteaid.com
+
+212
+00:26:12,300 --> 00:26:21,100
+[Tanay] Which store do you buy from generally?
+
+213
+00:26:21,100 --> 00:26:23,633
+medicines
+
+214
+00:26:23,633 --> 00:26:27,966
+[User] Uhmm
+
+215
+00:26:27,966 --> 00:26:39,299
+If CVS is on the way to where I work... But, I don't neccessarily stop there. I don't know, it depends. If I know they have something I am looking for, I'll go directly there.
+
+216
+00:26:39,300 --> 00:26:52,466
+So.... It's just riteaid.com right?
+
+217
+00:26:52,466 --> 00:27:15,799
+so-
+
+218
+00:27:15,800 --> 00:27:20,400
+[Tanay] Once again, the same Ibuprofen if you had to look that up?
+
+219
+00:27:20,400 --> 00:27:23,766
+[Yiling] What's your first impression of the website?
+
+220
+00:27:23,766 --> 00:27:28,599
+[User] Dizzy! The colors are nice but...
+
+221
+00:27:28,600 --> 00:27:33,266
+[Tanay] Is it better than the previous one?
+
+222
+00:27:33,266 --> 00:27:38,599
+[User] I don't know...Uhmm
+
+223
+00:27:38,600 --> 00:27:47,700
+In terms of layout, its probably nicer because the CVS website had the same borders and the subsection.
+
+224
+00:27:47,700 --> 00:27:53,266
+Ultimately when you are looking for stuff you just go to the search bar,
+
+225
+00:27:53,266 --> 00:28:05,232
+It has a similar structure. [Tanay] Okay.
+
+226
+00:28:05,233 --> 00:28:12,333
+[User] One thing that I find irritating is all these links to social media
+
+227
+00:28:12,333 --> 00:28:29,099
+[Yiling] Why? [User] Because I have blockers on my browser so the browser will not load the page until all of these guys are loading or I'll have to explicitly allow this and allow that.
+
+228
+00:28:29,100 --> 00:28:37,800
+So they are irritating.
+
+229
+00:28:37,800 --> 00:28:59,000
+[User] What am I looking for? Ibuprofen? [Tanay] Ibuprofen.
+
+230
+00:28:59,000 --> 00:29:02,600
+[Tanay] Is this layout better than the previous one? CVS one?
+
+231
+00:29:02,600 --> 00:29:11,533
+[User] It's more compact. There are fewer choices.
+
+232
+00:29:11,533 --> 00:29:14,799
+I still can't see everything on the same page,
+
+233
+00:29:14,800 --> 00:29:19,600
+I made a more specific search than before.
+
+234
+00:29:19,600 --> 00:29:22,700
+And a...
+
+235
+00:29:22,700 --> 00:29:31,533
+It has this weird number... multiples of 12 for things that it shows.
+
+236
+00:29:31,533 --> 00:29:34,166
+Oh wait... There's a feature for seeing in a list mode... Maybe
+
+237
+00:29:34,166 --> 00:29:40,499
+that's what I want
+
+238
+00:29:40,500 --> 00:29:48,500
+[Tanay] So you prefer this kind of layout?
+
+239
+00:29:48,500 --> 00:29:56,433
+[User]I don't know.... The other one has for instance, three in a row. So...
+
+240
+00:29:56,433 --> 00:30:01,699
+You know, what I would like is to be able to click
+
+241
+00:30:01,700 --> 00:30:03,500
+compare this
+
+242
+00:30:03,500 --> 00:30:08,000
+in which you can play side by side comparison of some of the options. Like
+
+243
+00:30:08,000 --> 00:30:16,066
+in a web page, if you need to configure a computer, you can click on the nearest for selecting it.
+
+244
+00:30:16,066 --> 00:30:21,199
+[Tanay] And
+
+245
+00:30:21,200 --> 00:30:27,966
+if you had to choose one of these. [User] Which would I
+
+246
+00:30:27,966 --> 00:30:29,999
+choose? [Tanay] Yeah.
+
+247
+00:30:30,000 --> 00:30:31,333
+[User] Let's see which one
+
+248
+00:30:31,333 --> 00:30:36,099
+"Made in the US". Let's see what that does.
+
+249
+00:30:36,100 --> 00:30:42,000
+Alright, there's also Adult and Child.
+
+250
+00:30:42,000 --> 00:30:50,666
+Uhmm
+
+251
+00:30:50,666 --> 00:30:53,199
+Well, the filters seem to be a little more relevant,
+
+252
+00:30:53,200 --> 00:30:55,000
+It's a
+
+253
+00:30:55,000 --> 00:30:57,966
+not just price and brand
+
+254
+00:30:57,966 --> 00:31:00,532
+Actually, I don't even see the brand,
+
+255
+00:31:00,533 --> 00:31:02,833
+Which is good. I like that!
+
+256
+00:31:02,833 --> 00:31:12,499
+[Tanay] And if drug information you had to lookup? I'm sure 
+
+257
+00:31:12,500 --> 00:31:16,900
+I'm sure Advil you can find since it's on the front. We had a question on finding Advil.
+
+258
+00:31:16,900 --> 00:31:30,333
+[User] Yeah maybe it's here. Let's see if it can help.
+
+259
+00:31:30,333 --> 00:31:33,199
+I don't understand these results.
+
+260
+00:31:33,200 --> 00:31:37,100
+I clicked on medicine and health and I got the same page again. 
+
+261
+00:31:37,100 --> 00:31:42,366
+Ohh they are just treating it as a category.
+
+262
+00:31:42,366 --> 00:31:47,499
+[Tanay] You wannna explore the content tab of this?
+
+263
+00:31:47,500 --> 00:31:50,833
+[User] I thought thaat's what I did before.
+
+264
+00:31:50,833 --> 00:32:03,066
+[Tanay] So, as far as information is concerned, maybe the previous one was better? What do you have to say?
+
+265
+00:32:03,066 --> 00:32:09,166
+[User] Well, there's no information on drug interactions for example.
+284
+00:32:09,166 --> 00:32:15,732
+[Tanay] So they don't provide enough information for you [USER] No.
+
+285
+00:32:15,733 --> 00:32:24,233
+[Tanay] Now the same message that you want to try to search the 
+condition
+
+286
+00:32:24,233 --> 00:32:53,533
+Interesting
+
+287
+00:32:53,533 --> 00:33:03,199
+an
+
+288
+00:33:03,200 --> 00:33:26,600
+[USER] Strength Training?
+
+289
+00:33:26,600 --> 00:33:29,966
+[USER] Here we go, finally
+
+290
+00:33:29,966 --> 00:33:32,999
+[USER] That's not too good
+
+291
+00:33:33,000 --> 00:33:34,800
+[USER] There is no content on that
+
+292
+00:33:34,800 --> 00:33:36,400
+[USER] That's bad
+
+293
+00:33:36,400 --> 00:33:38,066
+[USER] So the searcher is really bad.
+
+294
+00:33:38,066 --> 00:33:39,566
+[USER] Ok
+
+295
+00:33:39,566 --> 00:33:48,099
+[Tanay] The same task for one bottle of fish oil, one vitamin D and one calcium tablet
+
+296
+00:33:48,100 --> 00:34:21,566
+[USER] I need to do this very quickly
+
+297
+00:34:21,566 --> 00:34:23,932
+[USER] Interesting, 
+
+298
+00:34:23,933 --> 00:34:26,566
+[USER] I wouldn't know how to shop that
+
+299
+00:34:26,566 --> 00:34:27,966
+
+
+300
+00:34:27,966 --> 00:34:50,699
+[USER] Let me check this one
+
+301
+00:34:50,700 --> 00:35:28,366
+[USER] what else should I find, vitamin d? [Tanay] Yes
+
+302
+00:35:28,366 --> 00:35:48,632
+[USER] It's pretty slow.
+
+303
+00:35:48,633 --> 00:36:22,099
+[USER] Now I need calcium.
+
+304
+00:36:22,100 --> 00:36:38,166
+[USER] Should I go change the quantity, I guess I will go here.
+
+305
+00:36:38,166 --> 00:36:40,466
+[USER] Some nice and convenient trash can.
+
+306
+00:36:40,466 --> 00:36:46,766
+[USER] Should I see anything else?
+
+307
+00:36:46,766 --> 00:37:00,166
+[Tanay] Do you think it's better than CVS check out interface?
+
+308
+00:37:00,166 --> 00:37:01,666
+[USER] I don't see any shipping.
+
+309
+00:37:01,666 --> 00:37:18,599
+[USER] Oh I can get estimate here
+
+310
+00:37:18,600 --> 00:37:25,000
+[USER] The zip code should not require any specify of the state
+
+311
+00:37:25,000 --> 00:37:49,200
+[USER] It's redundant.
+
+312
+00:37:49,200 --> 00:37:53,300
+
+
+313
+00:37:53,300 --> 00:38:07,300
+[USER] Well, let me think
+
+314
+00:38:07,300 --> 00:38:14,000
+[USER] I like this layout but CVS seems better because I can see 
+everything without scrolling.
+
+315
+00:38:14,000 --> 00:38:20,200
+[USER] Whereas here I have to scroll back and forth and it seems I forget what I am looking in.
+
+316
+00:38:20,200 --> 00:38:26,000
+
+
+317
+00:38:26,000 --> 00:38:30,800
+[USER] Also, on a scale of one to five
+
+318
+00:38:30,800 --> 00:38:34,966
+
+
+319
+00:38:34,966 --> 00:38:49,099
+[USER] It is difficult to find more information here. And the search 
+didn't work well
+
+320
+00:38:49,100 --> 00:38:52,900
+[USER] In terms of navigation
+
+321
+00:38:52,900 --> 00:38:58,466
+[USER] Well, I like the filter of Rite Aid, the filter is better than CVS
+
+322
+00:38:58,466 --> 00:39:01,099
+[USER] The front page is perhaps more appealing, It is less 
+crowded than CVS
+
+323
+00:39:01,100 --> 00:39:17,666
+[USER] But actually when I go down to do the search, the content 
+has same presentation and  so it does not change much.
+
+324
+00:39:17,666 --> 00:39:19,999
+[Tanay] How much do you rate the Rite Aid.
+
+325
+00:39:20,000 --> 00:39:23,400
+
+
+326
+00:39:23,400 --> 00:39:29,333
+[USER] I will say three and half as well
+
+327
+00:39:29,333 --> 00:39:36,599
+[USER] Becuase it's a trade off. I think when things get refusing is when they offer special and deals.
+
+328
+00:39:36,600 --> 00:39:40,833
+[USER] You have spend time to think about them in CVS
+
+329
+00:39:40,833 --> 00:39:45,099
+[USER] But Rite Aid has a clear policy, 10 Dollars off on 50 purchase
+
+330
+00:39:45,100 --> 00:39:49,966
+[USER] It writes clearly here, that' easy, you don't have to think 
+about it.
+
+331
+00:39:49,966 --> 00:40:03,132
+[USER] CVS has lots of hyperlinks and something to find more about discount
+
+332
+00:40:03,133 --> 00:40:10,433
+[USER] If you can't tell me immediately, just don't tell me
+
+333
+00:40:10,433 --> 00:40:13,533
+[USER] I find those things to be disttractive. I'd like to keep things simple. 
+
+334
+00:40:13,533 --> 00:40:15,499
+[USER] You know what you are looking for.
+
+335
+00:40:15,500 --> 00:40:19,566
+[Tanay] If you have to buy from one of these two, which one would you buy from?
+
+336
+00:40:19,566 --> 00:40:27,399
+[USER] Assuming the products are the same? I would probably go with rite aid. If they have cheaper shipping, lower price.
+
+337
+00:40:27,400 --> 00:40:35,600
+[USER] In terms of the website experiences, they both about the same.
+
+338
+00:40:35,600 --> 00:40:40,733
+[USER] There is always a trade off, one offers you a little bit more.
+
+339
+00:40:40,733 --> 00:40:47,633
+[USER] If they put more thought into the website, I might actually more committed to work with them.
+
+340
+00:40:47,633 --> 00:40:57,299
+[USER] The thing I don't like CVS is that it's all about money. You'll choose this based on the brand and price.
+
+341
+00:40:57,300 --> 00:40:59,433
+[Tanay] That's it.
+

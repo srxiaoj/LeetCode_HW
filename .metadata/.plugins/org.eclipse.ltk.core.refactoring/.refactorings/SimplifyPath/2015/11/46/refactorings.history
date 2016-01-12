@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SimplifyPath.java&apos; to &apos;String/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;SimplifyPath&apos;&#x0D;&#x0A;- Destination element: &apos;String/src/(default package)&apos;&#x0D;&#x0A;- Original element: &apos;SimplifyPath.java&apos;" description="Copy compilation unit" destination="=String/src&lt;" element1="/src&lt;{SimplifyPath.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1447260214143" units="1" version="1.0"/>
+</session>

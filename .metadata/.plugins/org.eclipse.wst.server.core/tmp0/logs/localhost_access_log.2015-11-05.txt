@@ -1,0 +1,11 @@
+127.0.0.1 - - [05/Nov/2015:11:19:48 -0500] "GET / HTTP/1.1" 200 11452
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:11:19:49 -0500] "GET /ServletsIntro/HelloWorld HTTP/1.1" 200 159
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:11:19:59 -0500] "GET /ServletsIntro/HelloX HTTP/1.1" 200 249
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:11:25:17 -0500] "GET /ServletsIntro/Show HTTP/1.1" 200 127303
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:11:25:28 -0500] "GET /ServletsIntro/Space HTTP/1.1" 200 208
+172.19.3.15 - - [05/Nov/2015:11:33:30 -0500] "GET /cctWXnoNYjNU HTTP/1.1" 404 1018
+172.19.3.15 - - [05/Nov/2015:11:33:30 -0500] "GET /jmx-console/HtmlAdaptor HTTP/1.1" 404 1040
+172.19.3.15 - - [05/Nov/2015:11:33:30 -0500] "GET /status HTTP/1.1" 404 1006
+172.19.3.15 - - [05/Nov/2015:11:33:30 -0500] "GET /web-console/ServerInfo.jsp HTTP/1.1" 404 1046
+172.19.3.15 - - [05/Nov/2015:11:33:30 -0500] "GET /web-console/Invoker HTTP/1.1" 404 1032
+172.19.3.15 - - [05/Nov/2015:11:33:30 -0500] "GET /invoker/JMXInvokerServlet HTTP/1.1" 404 1044

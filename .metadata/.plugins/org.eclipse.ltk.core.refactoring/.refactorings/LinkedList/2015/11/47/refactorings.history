@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;root&apos; in &apos;ListNode.printListNode(...)&apos; to &apos;head&apos;&#x0D;&#x0A;- Original project: &apos;LinkedList&apos;&#x0D;&#x0A;- Original element: &apos;ListNode.printListNode(ListNode).root&apos;&#x0D;&#x0A;- Renamed element: &apos;root&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;root&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{ListNode.java[ListNode~printListNode~QListNode;@root!133!145!142!145!QListNode;!0!true" name="head" references="true" stamp="1447624079040" version="1.0"/>
+</session>

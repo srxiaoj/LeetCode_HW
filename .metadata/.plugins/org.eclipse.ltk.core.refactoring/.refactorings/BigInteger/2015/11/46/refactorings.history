@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;preBit&apos; in &apos;MultiplyStrings.multiply(...)&apos; to &apos;newBit&apos;&#x0D;&#x0A;- Original project: &apos;BigInteger&apos;&#x0D;&#x0A;- Original element: &apos;MultiplyStrings.multiply(String, String).preBit&apos;&#x0D;&#x0A;- Renamed element: &apos;preBit&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;preBit&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{MultiplyStrings.java[MultiplyStrings~multiply~QString;~QString;@preBit!1586!1651!1590!1595!I!0!false" name="newBit" references="true" stamp="1447287972627" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;indice&apos; in &apos;TwoSumIIInputArraySorted.twoSum(...)&apos; to &apos;res&apos;&#x0A;- Original project: &apos;Two Pointers&apos;&#x0A;- Original element: &apos;TwoSumIIInputArraySorted.twoSum(int[], int).indice&apos;&#x0A;- Renamed element: &apos;indice&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;indice&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{TwoSumIIInputArraySorted.java[TwoSumIIInputArraySorted~twoSum~\[I~I@indice!616!641!622!627!\[I!0!false" name="res" references="true" stamp="1448736389016" version="1.0"/>
+</session>

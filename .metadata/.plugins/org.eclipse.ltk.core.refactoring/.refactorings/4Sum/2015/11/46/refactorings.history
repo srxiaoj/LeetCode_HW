@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;Two Pointers/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;4Sum&apos;&#x0D;&#x0A;- Destination element: &apos;Two Pointers/src/(default package)&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     ThreeSum.java&#x0D;&#x0A;     FourSum.java" description="Copy compilation units" destination="=Two Pointers/src&lt;" element1="/src&lt;{ThreeSum.java" element2="/src&lt;{FourSum.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1447283283504" units="2" version="1.0"/>
+</session>

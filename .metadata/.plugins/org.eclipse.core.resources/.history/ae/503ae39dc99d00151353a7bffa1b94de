@@ -1,0 +1,82 @@
+public class MaxTree {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        int[] a = new int[] {2, 5, 6, 1, 3, 2, 4};
+//        int[] a = new int[] {6, 2, 4, 3, 1};
+//        int[] a = new int[] {2, 5, 16, 1, 2, 9, 3, 7, 8, 4};
+        MaxTree obj = new MaxTree();
+        TreeNode res = obj.maxTree(a);
+        res.printTreeInOrder(res);
+        System.out.println();
+//        res.preorderRecursive(res);
+        
+//        System.out.println("Tree test:");
+//        TreeNode root = new TreeNode(6);
+//        root.left = new TreeNode(5);
+//        root.left.left = new TreeNode(2);
+//        root.right = new TreeNode(4);
+//        root.right.left = new TreeNode(3);
+//        root.right.left.left = new TreeNode(1);
+//        root.right.left.right = new TreeNode(2);
+//        root.printTreeInOrder(root);
+        
+    }
+    public TreeNode maxTree(int[] a) {
+//        int len = a.length;
+//        TreeNode[] stk = new TreeNode[len];
+//        for (int i = 0; i < len; ++i)
+//            stk[i] = new TreeNode(0);
+//        int cnt = 0;
+//        for (int i = 0; i < len; ++i) {
+//            TreeNode tmp = new TreeNode(a[i]);
+//            while (cnt > 0 && a[i] > stk[cnt-1].val) {
+//                tmp.left = stk[cnt-1];
+//                cnt --;
+//            }
+//            if (cnt > 0)
+//                stk[cnt - 1].right = tmp;
+//            stk[cnt++] = tmp;
+//        }
+//        return stk[0];
+
+        
+        if (a.length == 0) return null;
+        TreeNode curNode = new TreeNode(a[0]);
+        int i = 1;
+        int max = a[0];
+        TreeNode root = new TreeNode(max);
+        while (i < a.length) {
+            TreeNode last = curNode;
+            TreeNode secondMax = curNode;
+            if (a[i - 1] < a[i]) {
+                curNode = new TreeNode(a[i]);
+                System.out.println("curNode< is: " + curNode.val);
+                System.out.println("lastMax is: " + secondMax.val);
+                System.out.println("last is: " + last.val);
+                curNode.left = secondMax;
+                if (curNode.val > root.val) {
+                    TreeNode lastRoot = root;
+                    root = curNode;
+                    root.left = lastRoot;
+                }
+                if (curNode.val < root.val && curNode.val > secondMax.val) {
+                    TreeNode lastSecondMax = secondMax;
+                    secondMax = curNode;
+                    root.right = secondMax;
+                    secondMax.left = lastSecondMax;
+                }
+                if (curNode.val < root.val && curNode.val < secondMax.val) {
+                    last.right = curNode;
+                }
+            } else {//a[i - 1] >= a[i]
+                curNode = new TreeNode(a[i]);
+                System.out.println("curNode> is: " + curNode.val);
+                last.right = curNode;
+            }
+            
+            i++;
+        }
+        return root;
+    }
+}

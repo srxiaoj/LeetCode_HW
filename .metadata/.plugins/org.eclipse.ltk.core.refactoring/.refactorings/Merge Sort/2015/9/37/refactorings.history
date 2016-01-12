@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;mergeSort.java&apos; to &apos;MergeSort.java&apos;&#x0D;&#x0A;- Original project: &apos;Merge Sort&apos;&#x0D;&#x0A;- Original element: &apos;mergeSort.java&apos;&#x0D;&#x0A;- Renamed element: &apos;MergeSort.java&apos;" description="Rename compilation unit &apos;mergeSort.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;{mergeSort.java" name="MergeSort.java" references="false" stamp="1441826959900" version="1.0"/>
+</session>

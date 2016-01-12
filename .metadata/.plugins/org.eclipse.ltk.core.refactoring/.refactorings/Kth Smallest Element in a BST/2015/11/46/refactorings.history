@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;KthSmallest.java&apos; to &apos;Binary Search/src&apos;&#x0D;&#x0A;- Original project: &apos;Kth Smallest Element in a BST&apos;&#x0D;&#x0A;- Destination element: &apos;Binary Search/src&apos;&#x0D;&#x0A;- Original element: &apos;KthSmallest.java&apos;" description="Copy compilation unit" destination="=Binary Search/src" element1="/src&lt;{KthSmallest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1447283983097" units="1" version="1.0"/>
+</session>

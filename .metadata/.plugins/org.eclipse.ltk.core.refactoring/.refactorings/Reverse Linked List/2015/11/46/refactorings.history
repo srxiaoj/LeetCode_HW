@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ReverseLinkedList.java&apos; to &apos;AddTwoNumbers.java&apos;&#x0D;&#x0A;- Original project: &apos;Reverse Linked List&apos;&#x0D;&#x0A;- Destination element: &apos;AddTwoNumbers.java&apos;&#x0D;&#x0A;- Original element: &apos;ReverseLinkedList.java&apos;" description="Copy compilation unit" destination="=LinkedList/src&lt;{AddTwoNumbers.java" element1="/src&lt;{ReverseLinkedList.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1447283790589" units="1" version="1.0"/>
+</session>
