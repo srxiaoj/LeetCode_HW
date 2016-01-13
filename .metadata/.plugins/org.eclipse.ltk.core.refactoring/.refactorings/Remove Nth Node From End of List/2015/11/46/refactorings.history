@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;RemoveNode.java&apos; to &apos;ReverseLinkedList.java&apos;&#x0D;&#x0A;- Original project: &apos;Remove Nth Node From End of List&apos;&#x0D;&#x0A;- Destination element: &apos;ReverseLinkedList.java&apos;&#x0D;&#x0A;- Original element: &apos;RemoveNode.java&apos;" description="Copy compilation unit" destination="=LinkedList/src&lt;{ReverseLinkedList.java" element1="/src&lt;{RemoveNode.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1447283894288" units="1" version="1.0"/>
-</session>

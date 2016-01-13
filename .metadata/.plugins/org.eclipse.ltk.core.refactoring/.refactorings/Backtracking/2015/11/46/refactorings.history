@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename method &apos;RestoreIPAddresses.isValidSession(...)&apos; to &apos;isValid&apos;&#x0D;&#x0A;- Original project: &apos;Backtracking&apos;&#x0D;&#x0A;- Original element: &apos;RestoreIPAddresses.isValidSession(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;RestoreIPAddresses.isValid(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;isValidSession&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{RestoreIPAddresses.java[RestoreIPAddresses~isValidSession~QString;" name="isValid" references="true" stamp="1447285999968" version="1.0"/>
-</session>

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;WordSearch.java&apos; to &apos;Backtracking/src&apos;&#x0D;&#x0A;- Original project: &apos;Word Search&apos;&#x0D;&#x0A;- Destination element: &apos;Backtracking/src&apos;&#x0D;&#x0A;- Original element: &apos;WordSearch.java&apos;" description="Copy compilation unit" destination="=Backtracking/src" element1="/src&lt;{WordSearch.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1446588795412" units="1" version="1.0"/>
-</session>

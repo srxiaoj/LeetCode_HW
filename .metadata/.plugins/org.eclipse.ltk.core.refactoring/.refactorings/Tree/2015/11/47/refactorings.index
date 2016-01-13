@@ -1,8 +1,0 @@
-1447701060331	Rename local variable 'cur'
-1447702834901	Rename method 'serialize'
-1447702859754	Rename method 'serialize3'
-1447702882123	Rename method 'deserialize'
-1447702888895	Rename method 'serializePreOrder'
-1447702896417	Rename method 'serializeLevelOrder'
-1447702906754	Rename method 'deserialize3'
-1447703271599	Rename method 'printTree'

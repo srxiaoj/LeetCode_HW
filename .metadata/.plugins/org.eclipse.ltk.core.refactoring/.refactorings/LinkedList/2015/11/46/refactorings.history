@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;RemoveNode&apos; to &apos;RemoveNthNodeFromEndofList&apos;&#x0D;&#x0A;- Original project: &apos;LinkedList&apos;&#x0D;&#x0A;- Original element: &apos;RemoveNode&apos;&#x0D;&#x0A;- Renamed element: &apos;RemoveNthNodeFromEndofList&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;RemoveNode&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{RemoveNode.java[RemoveNode" matchStrategy="1" name="RemoveNthNodeFromEndofList" qualified="false" references="true" similarDeclarations="false" stamp="1447283935412" textual="false" version="1.0"/>
-</session>

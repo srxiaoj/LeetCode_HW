@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;iterator&apos; in &apos;PeekingIterator.PeekingIterator(...)&apos; to &apos;iteratorA&apos;&#x0D;&#x0A;- Original project: &apos;Peeking Iterator&apos;&#x0D;&#x0A;- Original element: &apos;PeekingIterator.PeekingIterator(Iterator&lt;Integer&gt;).iterator&apos;&#x0D;&#x0A;- Renamed element: &apos;iterator&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;iterator&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{PeekingIterator.java[PeekingIterator~PeekingIterator~QIterator\&lt;QInteger;&gt;;@iterator!260!340!332!339!QIterator\&lt;QInteger;&gt;;!75497490!false" name="iteratorA" references="true" stamp="1443156586781" version="1.0"/>
-</session>

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;test&apos; in &apos;GameofLife.main(...)&apos; to &apos;block&apos;&#x0D;&#x0A;- Original project: &apos;Game of Life&apos;&#x0D;&#x0A;- Original element: &apos;GameofLife.main(String[]).test&apos;&#x0D;&#x0A;- Renamed element: &apos;test&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;test&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{GameofLife.java[GameofLife~main~\[QString;@test!129!158!137!140!\[\[I!0!false" name="block" references="true" stamp="1444269287173" version="1.0"/>
-</session>

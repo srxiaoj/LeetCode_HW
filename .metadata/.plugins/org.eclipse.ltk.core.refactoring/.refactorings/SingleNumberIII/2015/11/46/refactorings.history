@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy 2 elements to &apos;Bit Manipulation/src&apos;&#x0D;&#x0A;- Original project: &apos;SingleNumberIII&apos;&#x0D;&#x0A;- Destination element: &apos;Bit Manipulation/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     SingleNumber.java&#x0D;&#x0A;     SingleNumberIII.java" description="Copy compilation units" destination="=Bit Manipulation/src" element1="/src&lt;{SingleNumber.java" element2="/src&lt;{SingleNumberIII.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1447283412248" units="2" version="1.0"/>
-</session>

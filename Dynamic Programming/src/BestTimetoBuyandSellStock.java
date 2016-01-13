@@ -1,6 +1,3 @@
-import java.util.LinkedList;
-import java.util.List;
-
 
 public class BestTimetoBuyandSellStock {
 
@@ -21,7 +18,7 @@ public class BestTimetoBuyandSellStock {
 	 * 	The KEY point is that the maximum profit should be the maximum between current sell price plus previous balance (prices[i]+buy[j]) and previous sell[j],
 	 * and the maximum buy should be the maximum between current sell[j-1]-prices[i] (balance of previous profit minus current price[i]) 
 	 * and previous balance buy[j], more information can be found in the note named: 
-	 * E:\srxiaoj\ÍøÅÌ\COURSE\Knowledge\Computer Science\Best Time to Buy and Sell Stock.JPG
+	 * E:\srxiaoj\ï¿½ï¿½ï¿½ï¿½\COURSE\Knowledge\Computer Science\Best Time to Buy and Sell Stock.JPG
 	 */
 	public int maxProfit(int k, int[] prices) {
 		int len = prices.length;

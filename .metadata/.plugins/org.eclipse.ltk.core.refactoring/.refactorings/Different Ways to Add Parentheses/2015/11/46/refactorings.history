@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;DifferentWaystoAddParentheses.java&apos; to &apos;Divide and Conquer/src&apos;&#x0D;&#x0A;- Original project: &apos;Different Ways to Add Parentheses&apos;&#x0D;&#x0A;- Destination element: &apos;Divide and Conquer/src&apos;&#x0D;&#x0A;- Original element: &apos;DifferentWaystoAddParentheses.java&apos;" description="Copy compilation unit" destination="=Divide and Conquer/src" element1="/src&lt;{DifferentWaystoAddParentheses.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1447284048848" units="1" version="1.0"/>
-</session>

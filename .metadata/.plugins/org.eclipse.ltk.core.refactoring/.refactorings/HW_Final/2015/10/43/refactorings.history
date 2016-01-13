@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename method &apos;FinalData.getID()&apos; to &apos;getFullName&apos;&#x0D;&#x0A;- Original project: &apos;HW_Final&apos;&#x0D;&#x0A;- Original element: &apos;FinalData.getID()&apos;&#x0D;&#x0A;- Renamed element: &apos;FinalData.getFullName()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;getID&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{FinalData.java[FinalData~getID" name="getFullName" references="true" stamp="1445554946586" version="1.0"/>
-</session>
