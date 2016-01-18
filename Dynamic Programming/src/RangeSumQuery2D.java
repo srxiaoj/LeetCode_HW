@@ -14,6 +14,12 @@ public class RangeSumQuery2D {
         System.out.println(obj.sumRegion(2, 1, 4, 3));
         System.out.println(obj.sumRegion(1, 1, 2, 2));
         System.out.println(obj.sumRegion(1, 2, 2, 4));
+
+        int[][] matrix2 = {{}};
+        NumMatrix obj2 = new NumMatrix(matrix);
+        System.out.println(obj2.sumRegion(2, 1, 4, 3));
+        System.out.println(obj2.sumRegion(1, 1, 2, 2));
+        System.out.println(obj2.sumRegion(1, 2, 2, 4));
     }
 
     private static class NumMatrix {
@@ -22,6 +28,12 @@ public class RangeSumQuery2D {
         private int[][] rowSum;
 
         public NumMatrix(int[][] matrix) {
+            if (matrix == null || matrix.length == 0) {
+                rowSum = null;
+                colSum = null;
+                sum = null;
+                return;
+            }
             rowSum = new int[matrix.length][matrix[0].length + 1];
             colSum = new int[matrix.length + 1][matrix[0].length];
             sum = new int[matrix.length + 1][matrix[0].length + 1];
@@ -49,6 +61,7 @@ public class RangeSumQuery2D {
         }
 
         public int sumRegion(int row1, int col1, int row2, int col2) {
+            if (sum == null) return 0;
             return sum[row2 + 1][col2 + 1] - sum[row2 + 1][col1] - sum[row1][col2 + 1] + sum[row1][col1];
         }
 

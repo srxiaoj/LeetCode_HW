@@ -3,30 +3,28 @@
  */
 public class WiggleSort {
     public static void main(String[] args) {
-//        int[] test1 = new int[]{3, 5, 2, 1, 6, 4};
-        int[] test2 = new int[]{1, 2, 3, 4, 5};
+        int[] test1 = new int[]{3, 5, 2, 1, 6, 4};
+        int[] test2 = new int[]{4, 5, 5, 6};
         WiggleSort obj = new WiggleSort();
-//        obj.wiggleSort(test1);
+        obj.wiggleSort(test1);
         obj.wiggleSort(test2);
-//        printArray(test1);
+        printArray(test1);
         printArray(test2);
     }
 
     public void wiggleSort(int[] nums) {
-        for (int i = 0; i < nums.length; i++) {
+/*        for (int i = 0; i < nums.length; i++) {
             if (i % 2 == 1) {
                 if (nums[i - 1] > nums[i]) swap(nums, i);
             } else if (i != 0 && nums[i - 1] < nums[i]) {
                 swap(nums, i);
             }
-        }
-        /*
+        }*/
         int i = 0;
         while (i < nums.length) {
             partialSort(nums, i, nums.length);
             i = i + 2;
         }
-        */
     }
 
     /**

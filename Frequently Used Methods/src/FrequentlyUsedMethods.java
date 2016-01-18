@@ -48,10 +48,11 @@ public class FrequentlyUsedMethods {
         for(int i = 0; i < A.length; i++)
         {
             for (int j = 0; j < A[i].length; j++) {
-                if(j != A[i].length-1)
+                if(j != A[i].length-1) {
                     System.out.print(A[i][j] + ", ");
-                else
+                } else
                     System.out.print(A[i][j]);
+
             }
             System.out.println("");
         }
