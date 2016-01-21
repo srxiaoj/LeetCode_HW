@@ -5,7 +5,7 @@ public class PalindromePermutationII {
         // TODO Auto-generated method stub
 
     }
-    public List<String> generatePalindromes(String s) {
+/*    public List<String> generatePalindromes(String s) {
         
-    }
+    }*/
 }
