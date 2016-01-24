@@ -21,6 +21,9 @@ public class ValidateBinarySearchTree {
         root.right.left = new TreeNode(17);
         root.right.left.left = new TreeNode(16);
         System.out.println(isValidBST(root));
+
+        TreeNode root2 = null;
+        System.out.println(isValidBST(root2));
     }
     public static boolean isValidBST(TreeNode root) {
         List<Integer> list = inorderTraversal(root);
