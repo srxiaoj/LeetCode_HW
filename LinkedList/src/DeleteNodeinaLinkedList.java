@@ -12,10 +12,3 @@ public class DeleteNodeinaLinkedList {
         node.next = node.next.next;//relink the next to the next.next
     }
 }
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode (int x) {
-        val = x;
-    }
-}
