@@ -12,7 +12,7 @@ public class BinaryTreePostTraversal {
         root.left.left = new TreeNode(5);
         root.right.left = new TreeNode(17);
         root.right.left.left = new TreeNode(16);
-        postorderRecursive(root);
+        TreeNode.printNode(root);
         System.out.println("");
 //        System.out.println(postorderTraversal(root));
         System.out.println(postorderTraversalIterate(root));
@@ -23,7 +23,33 @@ public class BinaryTreePostTraversal {
      * @return
      */
     public static List<Integer> postorderTraversalIterate(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> res = new ArrayList<>();
+        if (root == null) return res;
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode cur = stack.lastElement();
+            if (cur.left != null) {
+                stack.push(cur.left);
+                cur.left = null;
+            } else if (cur.right != null) {
+                stack.push(cur.right);
+                cur.right = null;
+                /*cur = cur.right;
+                while (cur != null) {
+                    stack.push(cur);
+                    if (cur.left != null)
+                        cur = cur.left;
+                }*/
+            } else {
+                cur = stack.pop();
+                res.add(cur.val);
+            }
+        }
+        return res;
+
+       /* List<Integer> list = new ArrayList<>();
         if (root == null) return list;
         Stack<TreeNode> stack = new Stack<>();
         stack.add(root);
@@ -40,7 +66,7 @@ public class BinaryTreePostTraversal {
                 stack.pop();
             }
         }
-        return list;
+        return list;*/
     }
     /**
      * recursive

@@ -5,10 +5,15 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        int[] preorder = {15, 8, 5, 20, 17, 16};
+        int[] preorder = {15, 8, 5, 17, 16, 20};
         int[] inorder = {5, 8, 15, 16, 17, 20};
+        int[] preorder2 = {1, 2, 3};
+        int[] inorder2 = {2, 3, 1};
 //        TreeNode res = buildTreeDivideAndConquer(preorder, inorder);
         TreeNode res = buildTree(preorder, inorder);
+        TreeNode.printNode(res);
+        TreeNode res2 = buildTree(preorder2, inorder2);
+        TreeNode.printNode(res2);
     }
     /**
      * Iterative.
@@ -17,7 +22,36 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
      * @return
      */
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
-        TreeNode root = null;
+        if (preorder == null || inorder == null || preorder.length == 0 || inorder.length == 0) return null;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < inorder.length; i++) {
+            map.put(inorder[i], i);
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode root = new TreeNode(preorder[0]);
+        stack.add(root);
+        for (int i = 1; i < preorder.length; i++) {
+            TreeNode node = stack.peek();
+            int lastNumPos = map.get(node.val);
+            int curNumPos = map.get(preorder[i]);
+            if (lastNumPos > curNumPos) {
+                TreeNode newNode = new TreeNode(preorder[i]);
+                node.left = newNode;
+                stack.add(newNode);
+            } else {
+                while (!stack.isEmpty() && lastNumPos < curNumPos) {
+                    node = stack.pop();
+                    if (stack.isEmpty()) break;
+                    lastNumPos = map.get(stack.peek().val);
+                }
+                TreeNode newNode = new TreeNode(preorder[i]);
+                node.right = newNode;
+                stack.add(newNode);
+            }
+        }
+        return root;
+
+        /*TreeNode root = null;
         if (preorder.length != inorder.length)
             return root;
 
@@ -48,7 +82,7 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
             }
             stack.add(node);
         }
-        return root;
+        return root;*/
 
     }
     /**

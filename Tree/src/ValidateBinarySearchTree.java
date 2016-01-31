@@ -14,17 +14,19 @@ public class ValidateBinarySearchTree {
          *               /
          *              16
          */
+        ValidateBinarySearchTree obj = new ValidateBinarySearchTree();
         TreeNode root = new TreeNode(15);
         root.left = new TreeNode(8);
         root.right = new TreeNode(20);
         root.left.left = new TreeNode(5);
         root.right.left = new TreeNode(17);
         root.right.left.left = new TreeNode(16);
-        System.out.println(isValidBST(root));
+        System.out.println(obj.isValidBST(root));
 
         TreeNode root2 = null;
-        System.out.println(isValidBST(root2));
+        System.out.println(obj.isValidBST(root2));
     }
+
     public static boolean isValidBST(TreeNode root) {
         List<Integer> list = inorderTraversal(root);
         for (int i = 1; i < list.size(); i++) {

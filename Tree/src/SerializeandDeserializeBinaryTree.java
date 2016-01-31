@@ -16,6 +16,7 @@ public class SerializeandDeserializeBinaryTree {
          *              / \     / \
          *             3   5   13  15 
          */
+        SerializeandDeserializeBinaryTree codec = new SerializeandDeserializeBinaryTree();
         TreeNode root = new TreeNode(6);
         root.left = new TreeNode(2);
         root.right = new TreeNode(8);
@@ -27,7 +28,12 @@ public class SerializeandDeserializeBinaryTree {
         root.left.right.right = new TreeNode(5);
         root.right.right.left = new TreeNode(13);
         root.right.right.right = new TreeNode(15);
-        SerializeandDeserializeBinaryTree codec = new SerializeandDeserializeBinaryTree();
+//        TreeNode.printNode(root);
+        String cyber = codec.serializeLevelorder(root);
+        System.out.println(cyber);
+        TreeNode reverse = codec.deserializeLevelorder(cyber);
+        TreeNode.printNode(reverse);
+        /*
         String serial = codec.serializePreorder(root);
         System.out.println(serial);
         System.out.println("***********");
@@ -43,7 +49,7 @@ public class SerializeandDeserializeBinaryTree {
         System.out.println("***********");
         String testString = "6,2,8,0,4,7,9,null,null,3,5,null,null,13,15";
         TreeNode testRoot = codec.deserializeLevelorder(testString);
-        testRoot.printTreeInOrder(testRoot);
+        testRoot.printTreeInOrder(testRoot);*/
     }
     private static final String SPLITTER = ",";
     private static final String NN = "null";
@@ -80,7 +86,7 @@ public class SerializeandDeserializeBinaryTree {
         // method 2: level order traversal
         if (root == null) return "";
         int  level= height(root);
-//        System.out.println("height is: " + level);
+//        System.out.println("getHeight is: " + level);
         int arrayLength = (int) Math.pow(2, level) - 1;
 //        System.out.println("arraylength is: " + arrayLength);
         TreeNode[] list = new TreeNode[arrayLength];

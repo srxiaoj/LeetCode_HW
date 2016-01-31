@@ -7,18 +7,26 @@ public class UniqueBinarySearchTreesII {
         // TODO Auto-generated method stub
 
     }
-//    public List<TreeNode> generateTrees(int n) {
-//        List<TreeNode> res = new LinkedList<>();
+    public List<TreeNode> generateTrees(int n) {
+        List<TreeNode> res = new LinkedList<>();
+
+        return res;
+    }
+
+//    public TreeNode addNewNode(TreeNode node, int n) {
+//        TreeNode cur = node;
+//
 //    }
 
-}
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
+        TreeNode(int x) {
+            val = x;
+        }
     }
+
 }
+

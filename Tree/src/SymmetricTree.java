@@ -32,12 +32,21 @@ public class SymmetricTree {
         return isSymmetricHelper(root.left, root.right);
     }
     private static boolean isSymmetricHelper(TreeNode left, TreeNode right) {
-        if (left == null || right == null) {
-            return left == right;
+        if (left == null && right == null) return true; // both children are null
+        if (left == null || right == null) return false; // one of the child is null
+        // none of the children are null
+        if (left.val != right.val) {
+            return false;
         } else {
-            if (left.val != right.val)
-                return false;
+            return isSymmetricHelper(left.left, right.right) && isSymmetricHelper(left.right, right.left);
         }
-        return isSymmetricHelper(left.left, right.right) && isSymmetricHelper(left.right, right.left);
+
+//        if (left == null || right == null) {
+//            return left == right;
+//        } else { // left != null && right != null
+//            if (left.val != right.val)
+//                return false;
+//        }
+//        return isSymmetricHelper(left.left, right.right) && isSymmetricHelper(left.right, right.left);
     }
 }
