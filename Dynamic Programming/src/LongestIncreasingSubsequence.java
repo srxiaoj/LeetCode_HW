@@ -4,14 +4,32 @@ public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         int[] test = {10, 9, 2, 5, 3, 7, 101, 18};
-        int[] test2 = {1,3,6,7,9,4,10,5,6};
-        int[] test3 = {10,9,2,5,3,4};
-//        System.out.println(lengthOfLIS(test));
+        int[] test2 = {1, 3, 6, 7, 9, 4, 10, 5, 6};
+        int[] test3 = {10, 9, 2, 5, 3, 4};
+        int[] test4 = {2, 2};
+        System.out.println(lengthOfLIS(test));
         System.out.println(lengthOfLIS(test2));
-//        System.out.println(lengthOfLIS(test3));
+        System.out.println(lengthOfLIS(test3));
+        System.out.println(lengthOfLIS(test4));
     }
+
     public static int lengthOfLIS(int[] nums) {
-        if (nums.length == 0) return 0;
+        int n = nums.length;
+        int[] dp = new int[n + 1];
+        int max = 0;
+        for (int i = 1; i < n + 1; i++) {
+            dp[i] = 1;
+            for (int j = 1; j < i; j++) {
+                if (nums[i - 1] > nums[j - 1]) {
+                    dp[i] = Math.max(dp[j] + 1, dp[i]);
+                }
+            }
+            max = Math.max(max, dp[i]);
+        }
+//        System.out.println();
+        return max;
+
+/*        if (nums.length == 0) return 0;
         int n = nums.length;
         int max = 0;
         int[] res = new int[n];
@@ -28,7 +46,7 @@ public class LongestIncreasingSubsequence {
             max = Math.max(max, res[i]);
         }
 
-        return max;
+        return max;*/
         /*
         //failed solution
         int n = nums.length;

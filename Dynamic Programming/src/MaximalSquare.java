@@ -13,7 +13,7 @@ public class MaximalSquare {
         System.out.println(maximalSquare(test2));
     }
     public static int maximalSquare(char[][] matrix) {
-        
+
         //method 1: DP
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return 0;
