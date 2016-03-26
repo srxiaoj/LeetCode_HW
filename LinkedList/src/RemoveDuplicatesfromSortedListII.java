@@ -6,6 +6,8 @@ public class RemoveDuplicatesfromSortedListII {
         RemoveDuplicatesfromSortedListII obj = new RemoveDuplicatesfromSortedListII();
         int[] a = {1, 2, 3, 3, 4, 4, 5, 6, 6, 6};
         int[] b = {1, 1, 2, 2, 2, 3, 3, 4};
+//        int[] a = {1, 1, 2, 2};
+//        int[] b = {1, 1, 2, 2, 2, 3, 3, 4};
         ListNode l1 = ListNode.create(a);
         ListNode r1 = obj.deleteDuplicates(l1);
         ListNode.printListNode(r1);
@@ -16,23 +18,25 @@ public class RemoveDuplicatesfromSortedListII {
     }
 
     public ListNode deleteDuplicates(ListNode head) {
+
+
         if (head == null) return null;
-        ListNode fakeHead = new ListNode(0);
-        fakeHead.next = head;
-        ListNode last = fakeHead;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode pre = dummy;
         ListNode cur = head;
         while (cur != null) {
             while (cur.next != null && cur.val == cur.next.val) {
                 cur = cur.next;
             }
             // cur node has no duplicates
-            if (last.next == cur) {
-                last = last.next;
+            if (pre.next == cur) {
+                pre = pre.next;
             } else {
-                last.next = cur.next;
+                pre.next = cur.next;
             }
             cur = cur.next;
         }
-        return fakeHead.next;
+        return dummy.next;
     }
 }

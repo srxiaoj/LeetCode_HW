@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -27,6 +28,7 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
         for (int i = 0; i < inorder.length; i++) {
             map.put(inorder[i], i);
         }
+        Arrays.sort(inorder);
         Stack<TreeNode> stack = new Stack<>();
         TreeNode root = new TreeNode(preorder[0]);
         stack.add(root);

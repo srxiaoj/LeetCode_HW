@@ -1,4 +1,7 @@
 // Java program for Knight Tour problem
+
+import java.util.Arrays;
+import java.util.Scanner;
 public class KnightTour {
     private static int N = 8;
 
@@ -6,7 +9,7 @@ public class KnightTour {
        valid indexes for N*N chessboard */
     private static boolean isSafe(int x, int y, int board[][]) {
         return (x >= 0 && x < N && y >= 0 &&
-                y < N && board[x][y] == -1);
+                y < N && board[x][y] == -1 && board[x][y] != '+');
     }
 
     /* A utility function to print solution
@@ -60,7 +63,7 @@ public class KnightTour {
     private static boolean solveKTUtil(int x, int y, int moveIndex,
                                int board[][], int xMove[],
                                int yMove[]) {
-        int k, next_x, next_y;
+        int k, nextX, nextY;
         if (moveIndex == N * N)
             return true;
 
@@ -68,15 +71,15 @@ public class KnightTour {
             x, y */
         int directionOfMove = 8;
         for (k = 0; k < directionOfMove; k++) {
-            next_x = x + xMove[k];
-            next_y = y + yMove[k];
-            if (isSafe(next_x, next_y, board)) {
-                board[next_x][next_y] = moveIndex;
-                if (solveKTUtil(next_x, next_y, moveIndex + 1,
+            nextX = x + xMove[k];
+            nextY = y + yMove[k];
+            if (isSafe(nextX, nextY, board)) {
+                board[nextX][nextY] = moveIndex;
+                if (solveKTUtil(nextX, nextY, moveIndex + 1,
                         board, xMove, yMove)) {
                     return true;
                 } else {
-                    board[next_x][next_y] = -1;// backtracking
+                    board[nextX][nextY] = -1;// backtracking
                 }
             }
         }
@@ -85,8 +88,81 @@ public class KnightTour {
     }
 
     /* Driver program to test above functions */
+//    public static void main(String args[]) {
+//        solveKT();
+//    }
+
     public static void main(String args[]) {
-        solveKT();
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        String[] fields = input.split(" ");
+        // get board size
+        int row = Integer.parseInt(fields[0]);
+        int col = Integer.parseInt((fields[1]));
+        int[][] board = new int[row][col];
+        Arrays.fill(board, -1);
+        // get start x, y
+        input = sc.nextLine();
+        fields = input.split(" ");
+        int startX = Integer.parseInt(fields[0]);
+        int startY = Integer.parseInt(fields[1]);
+        // get target x, y
+        input = sc.nextLine();
+        fields = input.split(" ");
+        int targetX = Integer.parseInt(fields[0]);
+        int targetY = Integer.parseInt(fields[1]);
+        // get blocks
+        input = sc.nextLine();
+        int n = Integer.parseInt(input);
+        if (n != 0) ;
+        int i = 0;
+        while (i < n) {
+            input = sc.next();
+            int blockX = Integer.parseInt(fields[0]);
+            int blockY = Integer.parseInt(fields[1]);
+            board[blockX][blockY] = '+';
+        }
     }
+
+/*    public static int countDistance(char[][] board, int m, int n, int start_x, int start_y){
+        int distance = 0;
+        Deque<Integer> x = new LinkedList<>(); // store the x position of the point
+        Deque<Integer> y = new LinkedList<>(); // store the y position of the point
+        x.add(start_x);
+        y.add(start_y);
+        board[start_x][start_y] = '*';
+        while(!x.isEmpty()){
+            int size = x.size();
+            distance++;
+            for(int i = 0; i < size; i++){
+                int pointX = x.remove();
+                int pointY = y.remove();
+                for(int j = -2; j <= 2; j = j + 4){
+                    for(int k = -1; k <= 1; k = k+2){
+                        if(pointX + j >= 0 && pointX + j < m && pointY + k >= 0
+                                && pointY + k < n && board[pointX + j][pointY + k] != '*' && board[pointX + j][pointY + k] != '1'){
+                            if(board[pointX + j][pointY + k] == 'e'){
+                                return distance;
+                            }
+                            x.add(pointX + j);
+                            y.add(pointY + k);
+                            board[pointX + j][pointY + k] = '*';
+                        }
+                        if(pointX + k >= 0 && pointX + k < m && pointY + j >= 0
+                                && pointY + j < n && board[pointX + k][pointY + j] != '*' && board[pointX + k][pointY + j] != '1'){
+                            if(board[pointX + k][pointY + j] == 'e'){
+                                return distance;
+                            }
+                            x.add(pointX + k);
+                            y.add(pointY + j);
+                            board[pointX + k][pointY + j] = '*';
+                        }
+                    }
+                }
+            }
+        }
+        return distance;
+
+    }*/
 }
 // This code is contributed by Abhishek Shankhadhar

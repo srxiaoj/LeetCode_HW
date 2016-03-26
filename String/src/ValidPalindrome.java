@@ -1,19 +1,37 @@
-import java.util.Stack;
-
-import javax.xml.bind.ValidationEvent;
-
 public class ValidPalindrome {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         ValidPalindrome obj = new ValidPalindrome();
         String test = "A man, a plan, a canal: Panama";
-        String test2 = "abba";
+        String test2 = "a a";
         System.out.println(obj.isPalindrome(test));
         System.out.println(obj.isPalindrome(test2));
         
     }
     public boolean isPalindrome(String s) {
+        if (s == null || s.length() == 0) return true;
+        String sLow = s.toLowerCase().replaceAll("\\s", "");
+        System.out.println(sLow);
+        int i = 0;
+        int j = sLow.length() - 1;
+        while (i <= j) {
+            while (i <= j && !Character.isLetterOrDigit(sLow.charAt(i))) {
+                i++;
+            }
+            while (i <= j && !Character.isLetterOrDigit(sLow.charAt(j))) {
+                j--;
+            }
+            if (i >= sLow.length() || j < 0 || i > j) break;
+            if (sLow.charAt(i) != sLow.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+
+
         /*
         // Method 1: use stack
         Stack<Character> stack = new Stack<>();
@@ -38,7 +56,7 @@ public class ValidPalindrome {
         */
         
         // method 2: two pointers
-        StringBuilder sb = new StringBuilder("");
+        /*StringBuilder sb = new StringBuilder("");
         for (int i = 0; i < s.length(); i++){
             if (Character.isLetterOrDigit(s.charAt(i))) {
                 sb.append(s.charAt(i));
@@ -55,6 +73,6 @@ public class ValidPalindrome {
             j--;
             
         }
-        return true;
+        return true;*/
     }
 }

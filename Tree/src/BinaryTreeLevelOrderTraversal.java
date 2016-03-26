@@ -16,18 +16,20 @@ public class BinaryTreeLevelOrderTraversal {
          *               /
          *              16
          */
-        
+        BinaryTreeLevelOrderTraversal obj = new BinaryTreeLevelOrderTraversal();
         TreeNode root = new TreeNode(15);
         root.left = new TreeNode(8);
         root.right = new TreeNode(20);
         root.left.left = new TreeNode(5);
         root.right.left = new TreeNode(17);
         root.right.left.left = new TreeNode(16);
+        TreeNode.printNode(root);
+        System.out.println(obj.levelOrder(root));
 //        printTwoDArrayList(levelOrderTraversal(root));
-        root.inorderRecursive(root);
-        System.out.println("");
-        root.preorderRecursive(root);
-        System.out.println("");
+//        root.inorderRecursive(root);
+//        System.out.println("");
+//        root.preorderRecursive(root);
+//        System.out.println("");
 //        System.out.println("************");
         
         /**
@@ -48,11 +50,12 @@ public class BinaryTreeLevelOrderTraversal {
         root2.right.right = new TreeNode(9);
         root2.left.right.left = new TreeNode(3);
         root2.left.right.right = new TreeNode(5);
+        TreeNode.printNode(root2);
 //        printTwoDArrayList(levelOrderTraversal(root2));
-        root2.inorderRecursive(root2);
-        System.out.println("");
-        root2.preorderRecursive(root2);
-        System.out.println("");
+//        root2.inorderRecursive(root2);
+//        System.out.println("");
+//        root2.preorderRecursive(root2);
+//        System.out.println("");
     }
     /**
      * Iterative, BFS.

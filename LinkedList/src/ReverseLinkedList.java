@@ -3,25 +3,49 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        ListNode a = new ListNode(9);
-        a.next = new ListNode(9);
-        a.next.next = new ListNode(9);
-        a.next.next.next = new ListNode(9);
-        a.next.next.next.next = new ListNode(10);
-        ListNode res = reverseList(a);
-        printList(res);
+//        ListNode a = new ListNode(9);
+//        a.next = new ListNode(9);
+//        a.next.next = new ListNode(9);
+//        a.next.next.next = new ListNode(9);
+//        a.next.next.next.next = new ListNode(10);
+//        ListNode res = reverseList(a);
+//        printList(res);
+
+        int[] array = {1, 3, 7, 4, 6};
+        ListNode test = ListNode.create(array);
+        printList(reverseList(test));
     }
     public static ListNode reverseList(ListNode head) {
-        /**iterate method*/
-        
+        /*
+        // Iterative method 1:
+        if (head == null) return head;
         ListNode pre = null;
-        while(head != null){
-            //tmp listnode to store the next value
-            ListNode nex = head.next;
-            head.next = pre;
-            pre = head;
-            head = nex;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode nxt = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = nxt;
         }
+        return pre;
+        */
+
+        // Iterative method 2:
+        /*if (head == null || head.next == null) return head;
+        ListNode pre = new ListNode(0);
+        pre.next = head;
+        ListNode curStart = head;
+        ListNode curEnd = head;
+        while (curEnd != null && curEnd.next != null) {
+            ListNode nxt = curEnd.next;
+            curEnd.next = nxt.next;
+            nxt.next = curStart;
+            pre.next = nxt;
+            curStart = nxt;
+        }
+        return pre.next;*/
+
+
         /*
         //if current digit is higher than 10, then get the mod of current dig, add one to this node, if next node doesn't exist, creat new node
         ListNode start = pre;
@@ -39,11 +63,11 @@ public class ReverseLinkedList {
                 start = start.next;
         }
         */
-        return pre;
+//        return pre;
         
         
         /**recursive method*/
-        //return reverse(head, null);
+        return reverse(head, null);
     }
     
     /**recursive method helper*/

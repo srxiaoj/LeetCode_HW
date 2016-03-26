@@ -80,7 +80,7 @@ public class MajorityElement {
     }
     /**
      * Bit manipulation 2
-     * @param nums
+     * @param num
      * @return
      */
     public static int majorityElement4(int[] num) {

@@ -16,15 +16,52 @@ public class PalindromeLinkedList {
         
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(2);
-        head.next.next.next.next = new ListNode(1);
+//        head.next.next = new ListNode(3);
+//        head.next.next.next = new ListNode(2);
+//        head.next.next.next.next = new ListNode(1);
         head.printListNode(head);
 //        head.printListNode(head.reverse(head));
         System.out.println(isPalindrome(head));
     }
     public static boolean isPalindrome(ListNode head) {
-        ListNode slow = head;
+        if (head == null || head.next == null) return true;
+        ListNode copy = head;
+        ListNode cur = new ListNode(0);
+        ListNode curCopy = cur;
+        cur.next = new ListNode(-1);
+        cur = cur.next;
+        ListNode reverse = null;
+        while (copy != null) {
+            ListNode nxt = copy.next;
+            cur.val = copy.val;
+
+            copy.next = reverse;
+            reverse = copy;
+            copy = nxt;
+
+            if (copy != null) {
+                cur.next = new ListNode(-1);
+                cur = cur.next;
+            } else {
+                cur.next = null;
+                cur = cur.next;
+            }
+        }
+        cur = curCopy.next;
+        ListNode.printListNode(cur);
+        while (cur != null) {
+            // System.out.println(cur.val);
+            if (cur.val != reverse.val) {
+                return false;
+            }
+
+            reverse = reverse.next;
+            cur = cur.next;
+        }
+        return true;
+
+
+        /*ListNode slow = head;
         ListNode fast = head;
         
         // find the half of the list, and reverse half of that
@@ -47,7 +84,7 @@ public class PalindromeLinkedList {
             slow = slow.next;
             firstHalf = firstHalf.next;
         }
-        return true;
+        return true;*/
     }
     public static ListNode reverse(ListNode head) {
         ListNode pre = null, next = head;

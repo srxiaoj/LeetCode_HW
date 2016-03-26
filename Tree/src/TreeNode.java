@@ -9,7 +9,6 @@ public class TreeNode {
     TreeNode (int x) { val = x; }
 
 
-
     /**
      * print tree with in order traversal.
      */
@@ -20,6 +19,7 @@ public class TreeNode {
             printTreeInOrder(root.right);
         }
     }
+
     public int height(TreeNode root) {
         if (root == null) return 0;
         return Math.max(height(root.left), height(root.right)) + 1;

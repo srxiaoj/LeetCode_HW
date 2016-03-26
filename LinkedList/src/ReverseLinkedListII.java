@@ -8,10 +8,45 @@ public class ReverseLinkedListII {
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
-        printList(reverseBetween(head, 1, 5));
+        ListNode.printListNode(reverseBetween(head, 1, 2));
     }
+
     public static ListNode reverseBetween(ListNode head, int m, int n) {
-        ListNode res = new ListNode(0);
+        if (head == null || head.next == null || m == n) return head;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        int i = 0;
+        ListNode cur = dummy;
+        ListNode firstPre = dummy;
+        while (i < m) {
+            firstPre = cur;
+            cur = cur.next;
+            i++;
+        }
+        ListNode first = cur;
+
+        ListNode secondPre = cur;
+        while (i < n) {
+            secondPre = cur;
+            cur = cur.next;
+            i++;
+        }
+        // ListNode firstNxt = first.next;
+        ListNode second = cur;
+        ListNode pre = second.next;
+        cur = first;
+        i = 0;
+        while (cur != null && i <= n - m) {
+            ListNode nxt = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = nxt;
+            i++;
+        }
+        firstPre.next = pre;
+        return dummy.next;
+
+        /*ListNode res = new ListNode(0);
         res.next = head;
         ListNode start = res;
         int i = 0;
@@ -46,8 +81,9 @@ public class ReverseLinkedListII {
             i++;
         }
         startReverse.next = pre;
-        return res.next;
+        return res.next;*/
     }
+
     //print out list
     private static void printList(ListNode res) {
         while (res != null) {
@@ -55,7 +91,7 @@ public class ReverseLinkedListII {
             res = res.next;
         }
         System.out.println("");
-    }      
+    }
 }
 
 //class ListNode {

@@ -1,5 +1,5 @@
+import java.util.Scanner;
 import java.util.Stack;
-
 public class ValidParentheses {
 
     public static void main(String[] args) {
@@ -11,7 +11,27 @@ public class ValidParentheses {
         System.out.println(obj.isValid(test2));
     }
     public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<Character>();
+        Scanner sc = new Scanner(System.in);
+        s = sc.nextLine();
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                stack.push(')');
+            } else if (c == '{') {
+                stack.push('}');
+            } else if (c == '[') {
+                stack.push(']');
+            } else if (c == '<') {
+                stack.push('>');
+            } else {
+                if (stack.isEmpty() || stack.pop() != c) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+
+        /*Stack<Character> stack = new Stack<Character>();
         for (char c : s.toCharArray()) {
             if (c == '(')
                 stack.push(')');
@@ -22,7 +42,7 @@ public class ValidParentheses {
             else if (stack.isEmpty() || stack.pop() != c)
                 return false;
         }
-        return stack.isEmpty();
+        return stack.isEmpty();*/
         
         
 //        int length = s.length() + 1; // make sure the program runs into while loop the first time.
