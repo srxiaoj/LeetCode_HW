@@ -1,5 +1,5 @@
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class ConstructBinaryTreefromPreorderandInorderTraversal {
@@ -8,8 +8,8 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
         // TODO Auto-generated method stub
         int[] preorder = {15, 8, 5, 17, 16, 20};
         int[] inorder = {5, 8, 15, 16, 17, 20};
-        int[] preorder2 = {1, 2, 3};
-        int[] inorder2 = {2, 3, 1};
+        int[] preorder2 = {5,8,1,2,9,11};
+        int[] inorder2 = {1,8,2,5,9,11};
 //        TreeNode res = buildTreeDivideAndConquer(preorder, inorder);
         TreeNode res = buildTree(preorder, inorder);
         TreeNode.printNode(res);
@@ -23,12 +23,12 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
      * @return
      */
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
-        if (preorder == null || inorder == null || preorder.length == 0 || inorder.length == 0) return null;
+        /*if (preorder == null || inorder == null || preorder.length == 0 || inorder.length == 0) return null;
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < inorder.length; i++) {
             map.put(inorder[i], i);
         }
-        Arrays.sort(inorder);
+//        Arrays.sort(inorder);
         Stack<TreeNode> stack = new Stack<>();
         TreeNode root = new TreeNode(preorder[0]);
         stack.add(root);
@@ -51,40 +51,36 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
                 stack.add(newNode);
             }
         }
-        return root;
-
-        /*TreeNode root = null;
-        if (preorder.length != inorder.length)
-            return root;
-
-        HashMap<Integer,Integer> map = new HashMap<>();
-        for (int i = 0; i < inorder.length; i++)
-            map.put(inorder[i], i);
-
-        TreeNode current = root;
-        Stack<TreeNode> stack = new Stack<>();
-
-        for (int i = 0; i < preorder.length; i++) {
-            int temp = map.get(preorder[i]);
-            TreeNode node = new TreeNode(preorder[i]);
-            if (stack.isEmpty()) {
-                root = node;
-                stack.add(node);
-                current = root;
-            } else {
-                if (temp < map.get(stack.peek().val)) {
-                    current.left = node;
-                    current = current.left;
-                } else {
-                    while (!stack.isEmpty() && temp > map.get(stack.peek().val))
-                        current = stack.pop();
-                    current.right = node;
-                    current = current.right;
-                }
-            }
-            stack.add(node);
-        }
         return root;*/
+
+        if (preorder == null || inorder == null || preorder.length == 0 || inorder.length == 0) return null;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < inorder.length; i++) {
+            map.put(inorder[i], i);
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode root = new TreeNode(preorder[0]);
+        stack.add(root);
+        for (int i = 1; i < preorder.length; i++) {
+            TreeNode node = stack.lastElement();
+            int pos = map.get(node.val);
+            int cur = map.get(preorder[i]);
+            if (cur < pos) {
+                TreeNode left = new TreeNode(preorder[i]);
+                node.left = left;
+                stack.add(left);
+            } else {
+                while (!stack.isEmpty() && cur > pos) {
+                    node = stack.pop();
+                    if (stack.isEmpty()) break;
+                    pos = map.get(stack.peek().val);
+                }
+                TreeNode right = new TreeNode(preorder[i]);
+                node.right = right;
+                stack.add(right);
+            }
+        }
+        return root;
 
     }
     /**

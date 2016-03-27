@@ -24,7 +24,7 @@ public class SymmetricTree {
         
         TreeNode root3 = new TreeNode(1);
         root3.left = new TreeNode(2);
-        root3.right = new TreeNode(3);
+        root3.right = new TreeNode(2);
         System.out.println(isSymmetric(root3));
     }
     public static boolean isSymmetric(TreeNode root) {

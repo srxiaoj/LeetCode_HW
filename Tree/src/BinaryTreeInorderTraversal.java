@@ -16,6 +16,7 @@ public class BinaryTreeInorderTraversal {
 //        System.out.println("");
 //        root.printTree(root);
 //        System.out.println(inorderTraversal(root));
+        TreeNode.printNode(root);
         System.out.println(inorderTraversalIterate(root));
     }
     /**
