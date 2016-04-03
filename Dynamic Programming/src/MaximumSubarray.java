@@ -10,6 +10,12 @@ public class MaximumSubarray {
         System.out.println(obj.maxSubArray(b));
     }
 
+    /**
+     * 当前local最大为累计最大和当前值比较
+     * 全局最大为local最大和全局最大比较
+     * @param nums
+     * @return
+     */
     public int maxSubArray(int[] nums) {
         int max = nums[0], maxCur = nums[0];
         for (int i = 1; i < nums.length; ++i) {

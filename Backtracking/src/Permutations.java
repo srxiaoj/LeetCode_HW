@@ -13,11 +13,11 @@ public class Permutations {
     }
 
     public List<List<Integer>> permute2(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        if (nums.length == 0) return list;
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums.length == 0) return res;
 
-        collectPermutations(nums, 0, new ArrayList<>(), list);
-        return list;
+        collectPermutations(nums, 0, new ArrayList<>(), res);
+        return res;
     }
 
     /**
@@ -29,17 +29,17 @@ public class Permutations {
      * @param nums
      * @param start
      * @param part
-     * @param list
+     * @param res
      */
-    private void collectPermutations(int[] nums, int start, List<Integer> part, List<List<Integer>> list) {
+    private void collectPermutations(int[] nums, int start, List<Integer> part, List<List<Integer>> res) {
         if (part.size() == nums.length) {
-            list.add(part);
+            res.add(part);
             return;
         }
         for (int i = 0; i <= part.size(); i++) {
             List<Integer> newPermutation = new ArrayList<>(part);
             newPermutation.add(i, nums[start]);
-            collectPermutations(nums, start + 1, newPermutation, list);
+            collectPermutations(nums, start + 1, newPermutation, res);
         }
     }
 
