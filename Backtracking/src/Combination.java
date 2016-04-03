@@ -4,35 +4,37 @@ import java.util.List;
 
 
 public class Combination {
+    public static void main(String[] args) {
+        /**
+         * Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+         * for example,
+         * If n = 4 and k = 2, a solution is:
+         * [[2,4],[3,4],[2,3],[1,2],[1,3],[1,4]]
+         */
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	    /**
-	     * Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
-	     * for example,
-	     * If n = 4 and k = 2, a solution is:
-	     * [
-	     *  [2,4],
-	     *  [3,4],
-	     *  [2,3],
-	     *  [1,2],
-	     *  [1,3],
-	     *  [1,4],
-	     * ]
-	     */
-	    
-		List<List<Integer>> A = combine(4,3);
-		printArray(A);
-	}
-	public static List<List<Integer>> combine(int n, int k)
-	{
+        List<List<Integer>> A = combine(4, 3);
+        printArray(A);
+    }
+
+    /**
+     * 每一层在上一层的基础上加一个更大的element
+     * start: []
+     * add 1st level: [1, 2, 3, 4]
+     * add 2nd level: [[1,2],[1,3],[2,3],[1,4],[2,4],[3,4]
+     * add 3rd level: [[1,2,3],[1,2,4],[1,3,4],[2,3,4]
+     * @param n
+     * @param k
+     * @return
+     */
+    public static List<List<Integer>> combine(int n, int k) {
         if (n == 0 || k == 0 || k > n)
             return null;
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        for (int i = 1; i <= n; i++)
-            res.add(Arrays.asList(i));// get the array for the first element
-        for (int i = 2; i <= k; i++)// iterate all the combination numbers
-        {
+        for (int i = 1; i <= n; i++) {
+            res.add(Arrays.asList(i)); // get the array for the first element
+        }
+
+        for (int i = 2; i <= k; i++) { // iterate all the combination numbers
             List<List<Integer>> tmp = new ArrayList<List<Integer>>();
             for (int j = i; j <= n; j++) {
                 for (List<Integer> list : res) {
@@ -50,13 +52,13 @@ public class Combination {
             res = tmp;
         }
         return res;
-	}
-	public static void printArray(List<List<Integer>> A)
-	{
-		for(int i = 0; i < A.size(); i++)
-		{
-			System.out.print(A.get(i) + " ");
-		}
-	}
+    }
+
+
+    public static void printArray(List<List<Integer>> A) {
+        for (int i = 0; i < A.size(); i++) {
+            System.out.print(A.get(i) + " ");
+        }
+    }
 
 }
