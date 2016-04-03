@@ -2,7 +2,11 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
- * Created by thanksgiving on 2/25/16.
+ * if (!visited && grid[i][j] == '1'
+ *  dfs(i, j, visited, grid);
+ *  sum++
+ *
+ *
  */
 public class NumberofIslands {
     public static void main(String[] args) {
@@ -14,6 +18,42 @@ public class NumberofIslands {
                 {'0', '0', '0', '1', '1'}
         };
         System.out.println(obj.numIslandsBfs(test));
+    }
+
+    /**
+     * dfs
+     *
+     * @param grid
+     * @return
+     */
+    public int numIslands(char[][] grid) {
+        int m = grid.length;
+        if (m == 0) return 0;
+        int n = grid[0].length;
+        int sum = 0;
+        boolean[][] isVisited = new boolean[m][n];
+        for (boolean[] a : isVisited) {
+            Arrays.fill(a, false);
+        }
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (!isVisited[i][j] && grid[i][j] == '1') {
+                    dfs(grid, isVisited, i, j);
+                    sum++;
+                }
+            }
+        }
+        return sum;
+    }
+
+    private void dfs(char[][] grid, boolean[][] isVisited, int i, int j) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || isVisited[i][j] == true || grid[i][j] == '0')
+            return;
+        isVisited[i][j] = true;
+        dfs(grid, isVisited, i + 1, j);
+        dfs(grid, isVisited, i - 1, j);
+        dfs(grid, isVisited, i, j + 1);
+        dfs(grid, isVisited, i, j - 1);
     }
 
     public int numIslandsBfs(char[][] grid) {
@@ -61,41 +101,5 @@ public class NumberofIslands {
                 grid[i][j + 1] = '0';
             }
         }
-    }
-
-    /**
-     * dfs
-     *
-     * @param grid
-     * @return
-     */
-    public int numIslands(char[][] grid) {
-        int m = grid.length;
-        if (m == 0) return 0;
-        int n = grid[0].length;
-        int sum = 0;
-        boolean[][] isVisited = new boolean[m][n];
-        for (boolean[] a : isVisited) {
-            Arrays.fill(a, false);
-        }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (!isVisited[i][j] && grid[i][j] == '1') {
-                    dfs(grid, isVisited, i, j);
-                    sum++;
-                }
-            }
-        }
-        return sum;
-    }
-
-    private void dfs(char[][] grid, boolean[][] isVisited, int i, int j) {
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || isVisited[i][j] == true || grid[i][j] == '0')
-            return;
-        isVisited[i][j] = true;
-        dfs(grid, isVisited, i + 1, j);
-        dfs(grid, isVisited, i - 1, j);
-        dfs(grid, isVisited, i, j + 1);
-        dfs(grid, isVisited, i, j - 1);
     }
 }
