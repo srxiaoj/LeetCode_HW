@@ -1,14 +1,10 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import org.omg.CORBA.INTERNAL;
 
 public class PermutationsII {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
 //        int[] nums = {-1,2,-1,2,1,-1,2,1};
         int[] nums = {1, 2, 1, 1};
         List<List<Integer>> res = permute(nums);

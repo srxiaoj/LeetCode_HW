@@ -8,6 +8,7 @@ public class QuickSort {
         quicksort(test, 0, test.length-1);
         printArray(test);
     }
+
     public static void quicksort(int[] array, int l, int r) {
         int pivot;
         if (l < r) {

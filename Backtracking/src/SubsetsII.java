@@ -12,6 +12,16 @@ public class SubsetsII {
         System.out.println(obj.subsetsWithDup(nums));
     }
 
+    /**
+     * 每次在上一次结果基础上添加nums中一个新元素，要排序，如果有重复元素则从上一个结果(startIndex = size.get(i - 1))后开始添加，而不是从0位开始添加
+     * start: []
+     * add 1: [1]
+     * add 2: [2],[1,2]
+     * add 2: [2,2],[1,2,2]
+     * add 2: [2,2,2],[1,2,2,2]
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         res.add(new ArrayList<>());

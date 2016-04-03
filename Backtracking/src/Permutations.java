@@ -20,6 +20,17 @@ public class Permutations {
         return list;
     }
 
+    /**
+     * method 1
+     * start: []
+     * add 1: [1]
+     * add 2: [2,1]                     [1,2]
+     * add 3: [3,2,1],[2,3,1],[2,1,3]   [3,1,2],[1,3,2],[1,2,3]
+     * @param nums
+     * @param start
+     * @param part
+     * @param list
+     */
     private void collectPermutations(int[] nums, int start, List<Integer> part, List<List<Integer>> list) {
         if (part.size() == nums.length) {
             list.add(part);
@@ -32,6 +43,11 @@ public class Permutations {
         }
     }
 
+    /**
+     * method 2
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> permute(int[] nums) {
         // record down the position of the numbers
         List<List<Integer>> res = new ArrayList<List<Integer>>();

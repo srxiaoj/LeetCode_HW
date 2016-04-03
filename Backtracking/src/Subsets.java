@@ -12,6 +12,15 @@ public class Subsets {
         System.out.println(obj.subsets(nums));
     }
 
+    /**
+     * 每次在上一次结果基础上添加nums中一个新元素，依次添加顺序为
+     * start: []
+     * add 1: [1]
+     * add 2: [2],[1,2]
+     * add 3: [3],[1,3],[2,3],[1,2,3]
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         res.add(new ArrayList<Integer>());

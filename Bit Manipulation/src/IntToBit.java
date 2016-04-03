@@ -16,6 +16,11 @@ public class IntToBit {
         System.out.println(obj.intToBit(n5));
         int n6 = 6;
         System.out.println(obj.intToBit(n6));
+
+        int i = 700;
+        System.out.println(i << 1);
+        System.out.println(i >> 1);
+        System.out.println(i >> 31);
     }
 
     /**

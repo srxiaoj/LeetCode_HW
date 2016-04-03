@@ -6,20 +6,25 @@ import java.util.List;
 public class NextPermutation {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-//        int[] test1 = new int[] {1, 3, 2};
-//        nextPermutation(test1);
-//        printArray(test1);
-        
         List<Integer> t1 = new ArrayList<Integer>(Arrays.asList(1, 3, 2));
         nextPermu(t1);
         System.out.println(t1);
         
         int[] test2 = new int[] {1, 2, 5, 4, 3};
         nextPermutation(test2);
-//        printArray(test2);
-//        int[] test3 = new int[] {3, 1, 2};
+        printArray(test2);
+
+        int[] test3 = new int[] {3, 2, 1};
+        nextPermutation(test3);
+        printArray(test3);
     }
+
+    /**
+     * Input is an array
+     * 从后往前loop，如果前面一个数小于当前的数，那么则要将这个小的数替换为下一个比他稍大的数
+     * 那么则需要对当前之后的array进行排序，然后寻找到第一个这个稍大的数进行swap
+     * @param num
+     */
     public static void nextPermutation(int[] num) {
         for (int i = num.length - 1; i > 0; i--) {
             if (num[i - 1] < num[i]) {
@@ -36,6 +41,7 @@ public class NextPermutation {
         Arrays.sort(num);
         return;
     }
+
     /**
      * In place swap.
      * @param num
@@ -48,8 +54,9 @@ public class NextPermutation {
         num[j] = num[i] - num[j];
         num[i] = num[i] - num[j];
     }
+
     /**
-     * From list to list.
+     * Input is a list
      * @param list
      * @return
      */
