@@ -18,6 +18,11 @@ public class IntToBit {
         System.out.println(obj.intToBit(n6));
     }
 
+    /**
+     * 一直对2取模，所得的模连接为String再逆过来
+     * @param num
+     * @return
+     */
     public String intToBit(int num) {
         // print a bit with total length
         int totalDigit = 4;
