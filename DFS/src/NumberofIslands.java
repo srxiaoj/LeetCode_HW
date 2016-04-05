@@ -21,6 +21,59 @@ public class NumberofIslands {
     }
 
     /**
+     * bfs
+     * @param grid
+     * @return
+     */
+    public int numIslandsBfs(char[][] grid) {
+        int count = 0;
+        for (int i = 0; i < grid.length; i++)
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '1') {
+                    bfsFill(grid, i, j);
+                    count++;
+                }
+            }
+        return count;
+    }
+
+    private void bfsFill(char[][] grid, int x, int y) {
+        grid[x][y] = '0';
+        int n = grid.length;
+        int m = grid[0].length;
+        LinkedList<Integer> queue = new LinkedList<>();
+        int code = x * m + y;
+        queue.offer(code);
+        while (!queue.isEmpty()) {
+            code = queue.poll();
+            // get the index of next block with '1'
+            int i = code / m;
+            int j = code % m;
+
+            //search upward and mark adjacent '1's as '0'.
+            if (i > 0 && grid[i - 1][j] == '1') {
+                queue.offer((i - 1) * m + j);
+                grid[i - 1][j] = '0';
+            }
+            //down
+            if (i < n - 1 && grid[i + 1][j] == '1') {
+                queue.offer((i + 1) * m + j);
+                grid[i + 1][j] = '0';
+            }
+            //left
+            if (j > 0 && grid[i][j - 1] == '1') {
+                queue.offer(i * m + j - 1);
+                grid[i][j - 1] = '0';
+            }
+            //right
+            if (j < m - 1 && grid[i][j + 1] == '1') {
+                queue.offer(i * m + j + 1);
+                grid[i][j + 1] = '0';
+            }
+        }
+    }
+
+    /**
      * dfs
      *
      * @param grid
@@ -54,52 +107,5 @@ public class NumberofIslands {
         dfs(grid, isVisited, i - 1, j);
         dfs(grid, isVisited, i, j + 1);
         dfs(grid, isVisited, i, j - 1);
-    }
-
-    public int numIslandsBfs(char[][] grid) {
-        int count = 0;
-        for (int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == '1') {
-                    bfsFill(grid, i, j);
-                    count++;
-                }
-            }
-        return count;
-    }
-
-    private void bfsFill(char[][] grid, int x, int y) {
-        grid[x][y] = '0';
-        int n = grid.length;
-        int m = grid[0].length;
-        LinkedList<Integer> queue = new LinkedList<>();
-        int code = x * m + y;
-        queue.offer(code);
-        while (!queue.isEmpty()) {
-            code = queue.poll();
-            // get the index of next block with '1'
-            int i = code / m;
-            int j = code % m;
-            //search upward and mark adjacent '1's as '0'.
-            if (i > 0 && grid[i - 1][j] == '1') {
-                queue.offer((i - 1) * m + j);
-                grid[i - 1][j] = '0';
-            }
-            //down
-            if (i < n - 1 && grid[i + 1][j] == '1') {
-                queue.offer((i + 1) * m + j);
-                grid[i + 1][j] = '0';
-            }
-            //left
-            if (j > 0 && grid[i][j - 1] == '1') {
-                queue.offer(i * m + j - 1);
-                grid[i][j - 1] = '0';
-            }
-            //right
-            if (j < m - 1 && grid[i][j + 1] == '1') {
-                queue.offer(i * m + j + 1);
-                grid[i][j + 1] = '0';
-            }
-        }
     }
 }

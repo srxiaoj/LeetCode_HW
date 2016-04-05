@@ -28,6 +28,11 @@ public class FlattenBinaryTreetoLinkedList {
         obj.flatten(root);
         TreeNode.printTreeInOrder(root);
     }
+
+    /**
+     * 借用preorder思路，将stack中下一个node放入上一个node的右侧，并将上一个的left变为null
+     * @param root
+     */
     public void flatten(TreeNode root) {
         if (root == null) return;
         TreeNode copy = root;
