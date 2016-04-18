@@ -24,7 +24,7 @@ public class IntToBit {
     }
 
     /**
-     * 一直对2取模，所得的模连接为String再逆过来
+     * 一直对2取模，所得的余数连接为String再逆过来
      * @param num
      * @return
      */
