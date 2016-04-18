@@ -4,18 +4,9 @@
 public class IntToBit {
     public static void main(String[] args) {
         IntToBit obj = new IntToBit();
-        int n1 = 1;
-        System.out.println(obj.intToBit(n1));
-        int n2 = 2;
-        System.out.println(obj.intToBit(n2));
-        int n3 = 3;
-        System.out.println(obj.intToBit(n3));
-        int n4 = 4;
-        System.out.println(obj.intToBit(n4));
-        int n5 = 5;
-        System.out.println(obj.intToBit(n5));
-        int n6 = 6;
-        System.out.println(obj.intToBit(n6));
+        for (int i = 0; i <= 32; i++) {
+            System.out.println(i + " " + obj.intToBit(i));
+        }
 
         int i = 700;
         System.out.println(i << 1);
