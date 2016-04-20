@@ -1,5 +1,3 @@
-package Peeking
-
 import java.util.Iterator;
 
 
