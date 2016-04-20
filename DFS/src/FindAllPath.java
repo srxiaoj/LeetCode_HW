@@ -61,10 +61,16 @@ public class FindAllPath {
         List<String> res = new ArrayList<>();
         StringBuilder part = new StringBuilder(start);
         helper(res, part, start, end, map);
+        // if no end has been found
+        if (part.toString().equals(start)) {
+            return new ArrayList<>();
+        }
         return res;
     }
 
     public void helper(List<String> res, StringBuilder part, String lastWord, String end, Map<String, String[]> map) {
+        // this node has no out link
+        if (!map.containsKey(lastWord)) return;
         String[] nextList = map.get(lastWord);
         for (String s : nextList) {
             // avoid cycle in graph
