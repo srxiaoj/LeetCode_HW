@@ -5,10 +5,10 @@ import java.util.*;
 /**
  * Created by thanksgiving on 4/19/16.
  */
-public class FindAllPath {
+public class PathFinder {
     public static void main(String[] args) {
-        String file = "/home/thanksgiving/leetCodeWorkSpace/DFS/FindAllPath";
-        FindAllPath obj = new FindAllPath();
+        String file = "/home/thanksgiving/leetCodeWorkSpace/DFS/PathFinder";
+        PathFinder obj = new PathFinder();
         List<String> res = obj.getPath(file);
         System.out.println(res);
     }
@@ -45,6 +45,9 @@ public class FindAllPath {
             e.printStackTrace();
         }
         String line = sc.nextLine();
+        if (line.split("\\s+").length != 2) {
+            return new ArrayList<>();
+        }
         String start = line.split("\\s+")[0];
         String end = line.split("\\s+")[1];
 
@@ -62,9 +65,9 @@ public class FindAllPath {
         StringBuilder part = new StringBuilder(start);
         helper(res, part, start, end, map);
         // if no end has been found
-        if (part.toString().equals(start)) {
-            return new ArrayList<>();
-        }
+//        if (part.toString().equals(start)) {
+//            return new ArrayList<>();
+//        }
         return res;
     }
 
