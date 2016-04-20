@@ -49,13 +49,12 @@ public class ComputeOnlineTime {
                     connectTime += disConnectDate.getTime() - connectDate.getTime();
                 }
                 if (fields[1].trim().equals(shutdown)) {
-                    if (isConnect) {
-                        isConnect = false;
-                        disConnectDate = pattern.parse(time);
-                        connectTime += disConnectDate.getTime() - connectDate.getTime();
-                    }
                     shutdownDate = pattern.parse(time);
                     totalTime = shutdownDate.getTime() - startDate.getTime();
+                    if (isConnect) {
+                        isConnect = false;
+                        connectTime += shutdownDate.getTime() - connectDate.getTime();
+                    }
 
                 }
             }
