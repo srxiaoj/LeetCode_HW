@@ -1,39 +1,50 @@
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 public class LongestSubstringWithoutRepeatingCharacters {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        String test = "tmmzuxt";
-        
+        String test = "abba";
         System.out.println(lengthOfLongestSubstring(test));
     }
     public static int lengthOfLongestSubstring(String s) {
-        int max = 0;
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
-        int i = 0, j = 0, count = 0;
-        while (i < s.length() && j < s.length()) {
-            if (!map.containsKey(s.charAt(j))) {
-                map.put(s.charAt(j), j);
+        /**
+         * O(N^2)
+         * 每次添加新字符时判断该字符是否已经存在，存在则达到该起始点 i 所能达到的最大长度
+         * 起始点+1
+         */
+        /*if (s == null || s.length() == 0) return 0;
+        int max = 1;
+        for (int i = 0; i < s.length() - 1; i++) {
+            int j = i + 1;
+            while (j < s.length() && !s.substring(i, j).contains(String.valueOf(s.charAt(j)))) {
                 j++;
-                count++;
-            } else {
-                int previousPosition = map.get(s.charAt(j)); // get the index of match character
-                if (previousPosition >= i) { // if the match character is after the new starting index i, then update i
-                    map.put(s.charAt(j), j); // update the new character position
-                    i = previousPosition + 1;
-                    count = j - i + 1;
-                    j++;
-                } else { // if the match character is before the new starting index i, then update this character position
-                    map.put(s.charAt(j), j); // update the new character position
-                    count++;
-                    j++;
-                }
             }
-            max = Math.max(max,  count);
+            if (max < s.substring(i, j).length()) {
+                max = s.substring(i, j).length();
+            }
+        }
+        return max;*/
+
+        /**
+         * O(N)
+         * i 记录unique index的位置
+         * j 为最后一个重复的char之后的index
+         * i - j + 1则为两个相同char之间的unique字符串的长度
+         */
+        if (s.length() == 0) return 0;
+        //keep a hashmap which stores the characters in string as keys and their positions as values
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        int max = 0;
+        int j = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                // j 为最后一个重复的char之后的index, 所以要用Math.max
+                j = Math.max(j, map.get(s.charAt(i)) + 1);
+//                j = map.get(s.charAt(i)) + 1;
+            }
+            //else put in map and get max pointer update with the current longest string
+            map.put(s.charAt(i), i);
+            max = Math.max(max, i - j + 1);
         }
         return max;
     }

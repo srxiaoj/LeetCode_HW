@@ -1,16 +1,13 @@
-import javax.print.attribute.standard.NumberUpSupported;
-
 public class TwoSumIIInputArraySorted {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        
-        int[] test = new int[]{1,2,3,4,4,9,56,90};
+        int[] test = new int[]{1, 2, 3, 4, 4, 9, 56, 90};
         int[] res = twoSum(test, 8);
         System.out.println("res is: " + res[0] + ", " + res[1]);
-        
+
 //        System.out.println(binarySearch(test, 0, 3, 16));
     }
+
     /**
      * assume each input has exactly one solution
      */
@@ -52,9 +49,10 @@ public class TwoSumIIInputArraySorted {
         return res;
         */
     }
-    
+
     /**
      * find the target in num from i to j index, if not found, return -1
+     *
      * @param num
      * @param l
      * @param r
