@@ -20,15 +20,9 @@ public class PaintHouse {
             expense[0][j] = costs[0][j];
         }
         for (int i = 1; i < n; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (j == 0) {
-                    expense[i][0] = Math.min(expense[i - 1][1], expense[i - 1][2]) + costs[i][0];
-                } else if (j == 1) {
-                    expense[i][1] = Math.min(expense[i - 1][0], expense[i - 1][2]) + costs[i][1];
-                } else {
-                    expense[i][2] = Math.min(expense[i - 1][0], expense[i - 1][1]) + costs[i][2];
-                }
-            }
+            expense[i][0] = Math.min(expense[i - 1][1], expense[i - 1][2]) + costs[i][0];
+            expense[i][1] = Math.min(expense[i - 1][0], expense[i - 1][2]) + costs[i][1];
+            expense[i][2] = Math.min(expense[i - 1][0], expense[i - 1][1]) + costs[i][2];
         }
         return Math.min(expense[n - 1][0], Math.min(expense[n - 1][1], expense[n - 1][2]));
     }
