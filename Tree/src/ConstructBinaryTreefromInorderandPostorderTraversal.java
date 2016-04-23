@@ -42,9 +42,8 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
         int[] postOrder2 = {3, 2, 1};
         TreeNode res2 = obj.buildTree(inorder2, postOrder2);
         TreeNode.printNode(res2);
-
-
     }
+
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         if (inorder.length == 0) return null;
         HashMap<Integer, Integer> map = new HashMap<>();

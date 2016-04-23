@@ -22,39 +22,24 @@ public class PathSumII {
     }
 
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        List<List<Integer>> res = new ArrayList<>();
-        List<List<Integer>> trueResult = new ArrayList<>();
-        if (root == null) return res;
-        helper(root, new ArrayList<>(), res);
-        for (List<Integer> sub : res) {
-            if (isMatch(sub, sum)) {
-                trueResult.add(sub);
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> part = new ArrayList<>();
+        helper(result, part, root, sum);
+        return result;
+
+    }
+
+    public void helper(List<List<Integer>> result, List<Integer> part, TreeNode node, int target) {
+        if (node == null) return;
+        target -= node.val;
+        part.add(node.val);
+        if (node.left == null && node.right == null) {
+            if (target == 0) {
+                result.add(new ArrayList<>(part));
+                return;
             }
         }
-        return trueResult;
-    }
-
-    private boolean isMatch(List<Integer> sub, int sum) {
-        if (sub == null) return false;
-        int res = 0;
-        for (Integer i : sub) {
-            res += i;
-        }
-        return res == sum;
-    }
-
-    private void helper(TreeNode node, List<Integer> part, List<List<Integer>> res) {
-        if (node == null) return;
-        if (node.left == null && node.right == null) {
-            part.add(node.val);
-            List<Integer> newList = new ArrayList<>(part);
-            res.add(newList);
-            return;
-        }
-        part.add(node.val);
-        List<Integer> newList = new ArrayList<>(part); // create new arraylist to avoid modify old result
-        List<Integer> newList2 = new ArrayList<>(part);
-        helper(node.left, newList, res);
-        helper(node.right, newList2, res);
+        helper(result, new ArrayList<>(part), node.left, target);
+        helper(result, new ArrayList<>(part), node.right, target);
     }
 }
