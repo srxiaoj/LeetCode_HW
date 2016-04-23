@@ -38,7 +38,7 @@ public class TwoSumIIInputArraySorted {
         /*
         int[] res = new int[2];
         int len = numbers.length;
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < len - 1; i++) {
             int k = target - numbers[i];
             if (binarySearch(numbers, i + 1, len - 1, k) != -1) {
                 res[0] = i + 1;

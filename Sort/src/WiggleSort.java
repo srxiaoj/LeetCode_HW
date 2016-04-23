@@ -17,13 +17,24 @@ public class WiggleSort {
      * O(n)， 两两交换，需要交换的情况： 奇数时nums[i] < nums[i - 1], 偶数时nums[i] > nums[i - 1]
      */
     public void wiggleSort(int[] nums) {
-        for (int i = 1; i < nums.length; i++) {
-            if ((i % 2 == 1 && nums[i] < nums[i - 1]) || (i % 2 == 0 && nums[i] > nums[i - 1])) {
-                int tmp = nums[i];
-                nums[i] = nums[i -1];
-                nums[i - 1] = tmp;
+        if (nums == null || nums.length <= 1) return;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (i % 2 == 0) {
+                if (nums[i] > nums[i + 1]) {
+                    swap(nums, i, i + 1);
+                }
+            } else {
+                if (nums[i] < nums[i + 1]) {
+                    swap(nums, i, i + 1);
+                }
             }
         }
+    }
+
+    public void swap(int[] n, int i, int j) {
+        int temp = n[i];
+        n[i] = n[j];
+        n[j] = temp;
     }
 
 
