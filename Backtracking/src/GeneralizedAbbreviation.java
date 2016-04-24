@@ -11,15 +11,16 @@ public class GeneralizedAbbreviation {
     }
 
     public List<String> generateAbbreviations(String word) {
-        List<String> res = new ArrayList<String>();
+        List<String> res = new ArrayList<>();
         int len = word.length();
         if (len == 0) {
             res.add("");
         } else {
             res.add(String.valueOf(len));
         }
-        for (int i = 0; i < len; i++)
-            for (String right : generateAbbreviations(word.substring(i + 1))) {
+        for (int i = 0; i < len; i++) {
+            List<String> next = generateAbbreviations(word.substring(i + 1));
+            for (String right : next) {
                 String leftNum;
                 if (i > 0) {
                     leftNum = String.valueOf(i);
@@ -28,6 +29,7 @@ public class GeneralizedAbbreviation {
                 }
                 res.add(leftNum + word.substring(i, i + 1) + right);
             }
+        }
         return res;
     }
 }
