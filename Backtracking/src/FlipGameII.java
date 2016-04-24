@@ -7,7 +7,8 @@ import java.util.List;
 public class FlipGameII {
     public static void main(String[] args) {
         FlipGameII obj = new FlipGameII();
-        String s = "+++++++++";
+//        String s = "+++++++++";
+        String s = "++++";
         System.out.println(obj.canWin(s));
     }
 
