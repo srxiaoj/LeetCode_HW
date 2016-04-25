@@ -3,9 +3,8 @@
  */
 public class IntToBit {
     public static void main(String[] args) {
-        IntToBit obj = new IntToBit();
         for (int i = 0; i <= 32; i++) {
-            System.out.println(i + " " + obj.intToBit(i));
+            System.out.println(i + " " + intToBit(i));
         }
 
         int i = 700;
@@ -19,9 +18,9 @@ public class IntToBit {
      * @param num
      * @return
      */
-    public String intToBit(int num) {
+    public static String intToBit(int num) {
         // print a bit with total length
-        int totalDigit = 4;
+        int totalDigit = 31;
         StringBuilder sb = new StringBuilder();
         while (num > 0) {
             int mod = num % 2;
