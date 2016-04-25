@@ -3,9 +3,14 @@ import java.util.Arrays;
 public class UniqueBinarySearchTrees {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         System.out.println(numTrees(2));
     }
+
+    /**
+     * 要用array去存下每一级的结果，用recursive会超时
+     * @param n
+     * @return
+     */
     public static int numTrees(int n) {
         if (n == 0) return 1;
         if (n == 1) return 1;
