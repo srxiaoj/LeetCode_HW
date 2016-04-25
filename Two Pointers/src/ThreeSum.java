@@ -20,7 +20,7 @@ public class ThreeSum {
     }
     public static List<List<Integer>> threeSum(int[] num) {
         /**
-         * 1. 先排序，再对 2Sum 用 2 pointer binary search
+         * 1. 先排序，再对 2Sum 用 2 pointer search
          * 2. loop第一个数时候要去重，loop后面两个数也要去重
          */
         List<List<Integer>> res = new ArrayList<>();

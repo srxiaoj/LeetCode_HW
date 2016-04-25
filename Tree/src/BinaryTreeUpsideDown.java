@@ -38,7 +38,7 @@ public class BinaryTreeUpsideDown {
      * 注意观察， 左节点分别为 1 - 2 - 4
      *     1
      *    / \
-     *   2   3
+     *   2   e
      *  / \
      * 4   5
      *
