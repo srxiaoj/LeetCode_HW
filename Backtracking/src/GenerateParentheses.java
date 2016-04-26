@@ -10,7 +10,6 @@ public class GenerateParentheses {
         System.out.println(obj.generateParenthesis(3));
     }
 
-
     /**
      * 优先填左括号至等于n, 然后去填)至右括号数量等于左括号数
      * ((()))

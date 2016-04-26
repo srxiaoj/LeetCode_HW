@@ -1,54 +1,54 @@
-import org.omg.IOP.Codec;
-
 public class BinaryTreeLongestConsecutiveSequence {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+        BinaryTreeLongestConsecutiveSequence obj = new BinaryTreeLongestConsecutiveSequence();
         /**
          *         1
          *          \
          *           3
          *          / \
          *         2   4
-         *              \ 
+         *              \
          *               5
          */
-        BinaryTreeLongestConsecutiveSequence obj = new BinaryTreeLongestConsecutiveSequence();
-        SerializeandDeserializeBinaryTree codec = new SerializeandDeserializeBinaryTree();
-//        TreeNode a = new TreeNode(1);
-//        a.right = new TreeNode(3);
-//        a.right.left = new TreeNode(2);
-//        a.right.right = new TreeNode(4);
-//        a.right.right.right = new TreeNode(5);
-//        a.printTree(a);
-//        System.out.println("");
-//        System.out.println(obj.longestConsecutive(a));
+        TreeNode root1 = TreeNode.deserializeLevelorder("1,null,3,2,4,null,null,null,5");
+        System.out.println(obj.longestConsecutive2(root1));
 
-//        String bStr = "2,null,3,2,null,1,null";
-//        SerializeandDeserializeBinaryTree codec = new SerializeandDeserializeBinaryTree();
-//        TreeNode b = codec.deserialize(bStr);
-//        b.printTree(b);
-//        System.out.println("");
-//        System.out.println(obj.longestConsecutive(b));
-        
-        /**
-         *         1
-         *        / 
-         *       2  
-         *      /   
-         *     1      
-         *    / \         
-         *   7   2         
-         */
-        TreeNode c = new TreeNode(1);
-        c.left = new TreeNode(2);
-        c.left.left = new TreeNode(1);
-        c.left.left.left = new TreeNode(7);
-        c.left.left.right = new TreeNode(2);
-        System.out.println(obj.longestConsecutive(c));
-        System.out.println(codec.serializeLevelorder(c));
-        c.inorderRecursive(c);
+        TreeNode c = TreeNode.deserializeLevelorder("2,null,3,2,null,1,null");
+        TreeNode.printNode(c);
+        System.out.println(obj.longestConsecutive2(c));
     }
+
+
+    /**
+     * 判断parent与child关系，如果parent.val == child.val - 1，则localMax + 1,且不断update globalMax
+     * @param root
+     * @return
+     */
+    public int longestConsecutive2(TreeNode root) {
+        if (root == null) return 0;
+        int[] max = new int[1];
+        max[0] = 1;
+        helper(root, root.left, max, 1);
+        helper(root, root.right, max, 1);
+        return max[0];
+    }
+
+    public void helper(TreeNode parent, TreeNode node, int[] max, int localMax) {
+        if (node == null) return;
+        if (parent.val == node.val - 1) {
+            localMax++;
+        } else {
+            localMax = 1;
+        }
+        if (max[0] < localMax) {
+            max[0] = localMax;
+        }
+        helper(node, node.left, max, localMax);
+        helper(node, node.right, max, localMax);
+    }
+
+
     private int max = 0;
     private TreeNode rt = null;
     public int longestConsecutive(TreeNode root) {
