@@ -1,62 +1,43 @@
-
 public class CountUnivalueSubtrees {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         CountUnivalueSubtrees obj = new CountUnivalueSubtrees();
-        TreeNode root = new TreeNode(5);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(5);
-        root.left.left = new TreeNode(5);
-        root.left.right = new TreeNode(5);
-        root.right.right = new TreeNode(5);
+        TreeNode root = TreeNode.deserializeLevelorder("5,1,5,5,5,null,5");
         TreeNode.printNode(root);
         System.out.println("number of uni subtree: " + obj.countUnivalSubtrees(root));
 
     }
-    private static int count = 0;
     public int countUnivalSubtrees(TreeNode root) {
-        helper(root);
-        return count;
+        return helper(root).count;
     }
 
-    private boolean helper(TreeNode node) {
-        if (node == null) {
-            return true;
-        }
-        if (node.left == null && node.right == null) {
-            count++;
-            return true;
-        }
-        boolean left = helper(node.left);
-        boolean right = helper(node.right);
-        if (left && right) {
-            if (node.left != null && node.right != null) {
-                if (node.val == node.left.val && node.val == node.right.val) {
-                    count++;
-                    return true;
-                } else {
-                    return false;
-                }
-            } else if (node.left == null) {
-                if (node.right.val == node.val) {
-                    count++;
-                    return true;
-                } else {
-                    return false;
-                }
+    public ResultSet helper(TreeNode node) {
+        if (node == null) return new ResultSet(true, 0);
+        if (node.left == null && node.right == null) return new ResultSet(true, 1);
+        ResultSet left = helper(node.left);
+        ResultSet right = helper(node.right);
+        int count = left.count + right.count;
+        if (left.isUniValue && right.isUniValue) {
+            if (node.left != null && node.left.val != node.val){
+                return new ResultSet(false, count);
+            } else if (node.right != null && node.right.val != node.val) {
+                return new ResultSet(false, count);
             } else {
-                if (node.left.val == node.val) {
-                    count++;
-                    return true;
-                } else {
-                    return false;
-                }
+                count++;
+                return new ResultSet(true, count);
             }
         }
-        return false;
+        return new ResultSet(false, count);
     }
 
+    class ResultSet {
+        boolean isUniValue;
+        int count;
+        public ResultSet(boolean a, int b) {
+            isUniValue = a;
+            count = b;
+        }
+    }
 
     /*
     public static int countUnivalSubtrees(TreeNode root) {
