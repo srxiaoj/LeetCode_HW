@@ -22,7 +22,7 @@ public class StrobogrammaticNumberII {
     public List<String> helper(int cur, int n) {
         List<String> res = new LinkedList<>();
         HashMap<String, String> map = new HashMap<>();
-//        map.put("0", "0");
+//        cache.put("0", "0");
         map.put("1", "1");
         map.put("6", "9");
         map.put("9", "6");
