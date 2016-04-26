@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class TreeNode {
     int val;
@@ -19,7 +17,40 @@ public class TreeNode {
             printTreeInOrder(root.right);
         }
     }
+    /**
+     * Decodes your encoded data to tree, level order traversal
+     * @param data
+     * @return
+     */
+    private static final String NN = "null";
+    public static TreeNode deserializeLevelorder(String data) {
+        // method 2
+        String[] nodes = data.split("\\,");
+//        System.out.println("The total number of nodes is in level order deserial: " + nodes.length);
+        if (nodes.length == 1) return null;
 
+        TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(root);
+        int i = 1;           // starting from the second node if root is not null
+
+        while (i < nodes.length) {
+            TreeNode node = queue.poll();
+
+            String left = nodes[i++], right = nodes[i++];
+            if (!left.equals(NN)) {
+                TreeNode lChild = new TreeNode(Integer.parseInt(left));
+                node.left = lChild;
+                queue.offer(lChild);
+            }
+            if (!right.equals(NN)) {
+                TreeNode rChild = new TreeNode(Integer.parseInt(right));
+                node.right = rChild;
+                queue.offer(rChild);
+            }
+        }
+        return root;
+    }
     public int height(TreeNode root) {
         if (root == null) return 0;
         return Math.max(height(root.left), height(root.right)) + 1;

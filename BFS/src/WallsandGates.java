@@ -15,6 +15,10 @@ public class WallsandGates {
         printArray(rooms);
     }
 
+    /**
+     * 从rooms[i][j] == 0的点开始bfs， 只更新rooms[i][j] > distance的点，每次扩张distance + 1
+     * @param rooms
+     */
     public void wallsAndGates(int[][] rooms) {
         int row = rooms.length;
         if (row == 0) return;
@@ -28,6 +32,7 @@ public class WallsandGates {
     }
 
     private void bfs(int[][] rooms, int i, int j, int distance) {
+        // core step, only update when rooms[i][j] > distance
         if (i < 0 || i >= rooms.length || j < 0 || j >= rooms[0].length || rooms[i][j] < distance) return;
         rooms[i][j] = distance;
         bfs(rooms, i - 1, j, distance + 1);
