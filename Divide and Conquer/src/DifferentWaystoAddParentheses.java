@@ -6,7 +6,6 @@ import java.util.List;
 public class DifferentWaystoAddParentheses {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         String test = "2*3-4*5";
         List<Integer> result = diffWaysToCompute(test);
         System.out.println(result);

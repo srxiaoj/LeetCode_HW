@@ -1,5 +1,3 @@
-
-
 /**
  * Created by thanksgiving on 4/25/16.
  */
@@ -17,30 +15,26 @@ public class HouseRobberIII {
 
     }
 
-    class ResultSet {
-        int maxWithRoot;
-        int maxNoRoot;
-
-        public ResultSet() {
-            maxWithRoot = 0;
-            maxNoRoot = 0;
-        }
-
-        public ResultSet(int a, int b) {
-            maxWithRoot = a;
-            maxNoRoot = b;
-        }
-    }
+    /**
+     * dynamic programming
+     * @param root
+     * @return
+     */
     public int rob(TreeNode root) {
-        ResultSet res = helper(root);
-        return Math.max(res.maxWithRoot, res.maxNoRoot);
+        int[] maxVal = dpRob(root);
+        return Math.max(maxVal[0], maxVal[1]);
     }
-
-    private ResultSet helper(TreeNode root) {
-        if (root == null) return new ResultSet(0, 0);
-        ResultSet res = new ResultSet();
-        res.maxWithRoot = Math.max(Math.max(helper(root.left).maxNoRoot + helper(root.right).maxNoRoot + root.val, res.maxWithRoot), res.maxNoRoot);
-        res.maxNoRoot = Math.max(helper(root.left).maxWithRoot + helper(root.right).maxWithRoot, res.maxNoRoot);
-        return res;
+    public int[] dpRob(TreeNode root) {
+        if (root == null) {
+            return new int[]{0, 0};
+        } else {
+            //maxVal[0] store the max value without robing current node, maxVal[1] store the max value with robing current node,
+            int[] maxVal = new int[2];
+            int[] leftMax = dpRob(root.left);
+            int[] rightMax = dpRob(root.right);
+            maxVal[0] = Math.max(leftMax[0], leftMax[1]) + Math.max(rightMax[0], rightMax[1]);
+            maxVal[1] = leftMax[0] + rightMax[0] + root.val;
+            return maxVal;
+        }
     }
 }
