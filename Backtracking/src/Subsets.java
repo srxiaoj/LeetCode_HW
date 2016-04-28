@@ -9,8 +9,31 @@ public class Subsets {
     public static void main(String[] args) {
         Subsets obj = new Subsets();
         int[] nums = {1, 2, 3};
-        System.out.println(obj.subsets(nums));
+        System.out.println(obj.subsets2(nums));
     }
+
+    /**
+     * recursive
+     */
+    public List<List<Integer>> subsets2(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            res.add(new ArrayList<>());
+            return res;
+        }
+        int first = nums[nums.length - 1];
+        int[] rest = Arrays.copyOfRange(nums, 0, nums.length - 1);
+        List<List<Integer>> sub = subsets2(rest);
+        res.addAll(sub);
+        for (List<Integer> set : sub) {
+            List<Integer> newSet = new ArrayList<>(set);
+            newSet.add(first);
+            res.add(newSet);
+        }
+        return res;
+    }
+
 
     /**
      * 每次在上一次结果基础上添加nums中一个新元素，依次添加顺序为

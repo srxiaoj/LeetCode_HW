@@ -10,7 +10,13 @@ public class SubsetsII {
         SubsetsII obj = new SubsetsII();
         int[] nums = {1, 2, 2, 2};
         System.out.println(obj.subsetsWithDup(nums));
+        int[] copy = Arrays.copyOfRange(nums, 1, nums.length);
+        for (int i = 0; i < copy.length; i++) {
+            System.out.print(copy[i] + " ");
+        }
     }
+
+
 
     /**
      * 每次在上一次结果基础上添加nums中一个新元素，要排序，如果有重复元素则从上一个结果(startIndex = size.get(i - 1))后开始添加，而不是从0位开始添加
