@@ -25,6 +25,11 @@ public class LRUCache {
     ArrayList<Integer> list;
     int count;
 
+    /**
+     * 添加以及删除时都要更新list中位置，新添加时添加到尾部，移除时移除 0 位置
+     * list.remove 需要 remove new Integer(key) object
+     * @param capacity
+     */
     public LRUCache(int capacity) {
         cache = new HashMap<Integer, Integer>(capacity);
         list = new ArrayList<Integer>(capacity);
@@ -33,6 +38,7 @@ public class LRUCache {
 
     public int get(int key) {
         if (cache.containsKey(key)) {
+            // new Integer(key) is nessary
             list.remove(new Integer(key));
             list.add(key);
             return cache.get(key);
@@ -43,6 +49,7 @@ public class LRUCache {
     public void set(int key, int value) {
         if (cache.containsKey(key)) {
             cache.put(key, value);
+            // new Integer(key) is nessary
             list.remove(new Integer(key));
             list.add(key);
         } else {
