@@ -10,6 +10,10 @@ public class CombinationSumIII {
         System.out.println(obj.combinationSum3(3, 9));
     }
 
+    /**
+     * 外循环为 start - 9, 再在内部加一个判断size 是否大于k
+     * 其他细节与1， 2相同
+     */
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<>();
         dfs(res, new ArrayList<Integer>(), k, 1, n);
@@ -24,9 +28,11 @@ public class CombinationSumIII {
         }
         for (int i = start; i <= 9; i++) {
             if (part.size() < k) {
-                part.add(i);
-                dfs(res, part, k, i + 1, n - i);
-                part.remove(part.size() - 1);
+                List<Integer> newPart = new ArrayList<>(part);
+                newPart.add(i);
+                dfs(res, newPart, k, i + 1, n - i);
+                // if create new copy of part, then don't need this line
+//                part.remove(part.size() - 1);
             }
         }
     }
