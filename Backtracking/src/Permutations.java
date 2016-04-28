@@ -15,11 +15,9 @@ public class Permutations {
     public List<List<Integer>> permute2(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums.length == 0) return res;
-
-        collectPermutations(nums, 0, new ArrayList<>(), res);
+        helper(nums, 0, new ArrayList<>(), res);
         return res;
     }
-
     /**
      * method 1
      * start: []
@@ -31,7 +29,7 @@ public class Permutations {
      * @param part
      * @param res
      */
-    private void collectPermutations(int[] nums, int start, List<Integer> part, List<List<Integer>> res) {
+    private void helper(int[] nums, int start, List<Integer> part, List<List<Integer>> res) {
         if (part.size() == nums.length) {
             res.add(part);
             return;
@@ -39,7 +37,7 @@ public class Permutations {
         for (int i = 0; i <= part.size(); i++) {
             List<Integer> newPermutation = new ArrayList<>(part);
             newPermutation.add(i, nums[start]);
-            collectPermutations(nums, start + 1, newPermutation, res);
+            helper(nums, start + 1, newPermutation, res);
         }
     }
 
@@ -78,13 +76,9 @@ public class Permutations {
             for (int j = 0; j < res.get(i).size(); j++) {
                 subRes.add(nums[res.get(i).get(j)]);
             }
-            /**
-             * if want no repeat arrays
-             */
             if (!permutation.contains(subRes)) {
                 permutation.add(subRes);
             }
-//            permutation.add(subRes);
         }
         return permutation;
     }

@@ -10,6 +10,10 @@ public class PermutationsII {
         List<List<Integer>> res = permute(nums);
         printArray(res);
     }
+
+    /**
+     * 套用next permute方法，一直循环找下一个permute number直到出现重复组合
+     */
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> input = arrayToList(nums);
@@ -47,7 +51,6 @@ public class PermutationsII {
         Collections.sort(list);
         return list;
     }
-    
     private static List<Integer> arrayToList(int[] nums) {
         List<Integer> input = new ArrayList<Integer>();
         for (int i = 0; i < nums.length; i++) {

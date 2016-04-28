@@ -9,12 +9,12 @@ public class NextPermutation {
         List<Integer> t1 = new ArrayList<Integer>(Arrays.asList(1, 3, 2));
         nextPermu(t1);
         System.out.println(t1);
-        
-        int[] test2 = new int[] {1, 2, 5, 4, 3};
+
+        int[] test2 = new int[]{1, 2, 5, 4, 3};
         nextPermutation(test2);
         printArray(test2);
 
-        int[] test3 = new int[] {3, 2, 1};
+        int[] test3 = new int[]{1, 2, 4, 5, 3};
         nextPermutation(test3);
         printArray(test3);
     }
@@ -23,6 +23,7 @@ public class NextPermutation {
      * Input is an array
      * 从后往前loop，如果前面一个数小于当前的数，那么则要将这个小的数替换为下一个比他稍大的数
      * 那么则需要对当前之后的array进行排序，然后寻找到第一个这个稍大的数进行swap
+     *
      * @param num
      */
     public static void nextPermutation(int[] num) {
@@ -44,6 +45,7 @@ public class NextPermutation {
 
     /**
      * In place swap.
+     *
      * @param num
      * @param i
      * @param j
@@ -57,6 +59,7 @@ public class NextPermutation {
 
     /**
      * Input is a list
+     *
      * @param list
      * @return
      */
@@ -75,13 +78,11 @@ public class NextPermutation {
         Collections.sort(list);
         return list;
     }
-    
+
     //print array
-    public static void printArray(int[] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
-            if(i != A.length-1)
+    public static void printArray(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
                 System.out.print(A[i] + ", ");
             else
                 System.out.print(A[i]);
