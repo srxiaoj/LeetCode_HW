@@ -13,7 +13,8 @@ public class Subsets {
     }
 
     /**
-     * recursive
+     * recursive, 先排序，每次对除了最后一个数之外的数组进行递归，然后把最后
+     * 一个数加到前面的递归结果中
      */
     public List<List<Integer>> subsets2(int[] nums) {
         Arrays.sort(nums);
