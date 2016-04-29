@@ -5,20 +5,28 @@ public class UnlimitedArraySearch {
     public static void main(String[] args) {
         UnlimitedArraySearch obj = new UnlimitedArraySearch();
         int[] nums = {1, 2, 3, 4, 5, 6, 9, 15, 16, 20, 22};
+        System.out.println(obj.search(nums, 1));
+        System.out.println(obj.search(nums, 2));
         System.out.println(obj.search(nums, 15));
-
+        System.out.println(obj.search(nums, 20));
     }
 
     public int search(int[] nums, int target) {
         int start = 0;
-        int next = (int) Math.pow(2, start);
-        while (next < target) {
+        int next = nums[(int) Math.pow(2, start) - 1];
+        while (Math.pow(2, start) < nums.length && next <= target) {
             start++;
-            next = (int) Math.pow(2, start);
+            if (Math.pow(2, start) >= nums.length) break;
+            next = nums[(int) Math.pow(2, start) - 1];
         }
-        int l = start - 1;
-        int r = start;
-        return nums[binarySearch(nums, l, r, target) + l];
+        int l = (int) Math.pow(2, start - 1) - 1;
+        int r = (int) Math.pow(2, start) - 1;
+        r = Math.min(r, nums.length - 1);
+        System.out.println("start " + l);
+        System.out.println("end " + r);
+        int res = binarySearch(nums, l, r, target);
+        System.out.println("res " + res);
+        return nums[res];
     }
 
     public int binarySearch(int[] nums, int l, int r, int target) {
@@ -35,7 +43,7 @@ public class UnlimitedArraySearch {
 
         if (nums[l] == target) {
             return l + 1;
-        } else if (nums[r] == target){
+        } else if (nums[r] == target) {
             return r + 1;
         } else {
             return l + 1;
