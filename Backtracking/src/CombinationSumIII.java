@@ -16,24 +16,22 @@ public class CombinationSumIII {
      */
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<>();
-        dfs(res, new ArrayList<Integer>(), k, 1, n);
+        List<Integer> part = new ArrayList<>();
+        helper(res, part, n, k, 1);
         return res;
     }
 
-    private void dfs(List<List<Integer>> res, List<Integer> part, int k, int start, int n) {
-        if (part.size() == k && n == 0) {
-            List<Integer> li = new ArrayList<Integer>(part);
-            res.add(li);
+    public void helper(List<List<Integer>> res, List<Integer> part, int target, int k, int start) {
+        if (part.size() > k) return;
+        if (part.size() == k && target == 0) {
+            res.add(new ArrayList<>(part));
             return;
         }
+
         for (int i = start; i <= 9; i++) {
-            if (part.size() < k) {
-                List<Integer> newPart = new ArrayList<>(part);
-                newPart.add(i);
-                dfs(res, newPart, k, i + 1, n - i);
-                // if create new copy of part, then don't need this line
-//                part.remove(part.size() - 1);
-            }
+            List<Integer> newPart = new ArrayList<>(part);
+            newPart.add(i);
+            helper(res, newPart, target - i, k, i + 1);
         }
     }
 

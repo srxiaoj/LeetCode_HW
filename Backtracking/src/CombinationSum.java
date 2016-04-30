@@ -17,7 +17,7 @@ public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         Arrays.sort(candidates);
         ArrayList<List<Integer>> res = new ArrayList<List<Integer>>();
-        add(res, new ArrayList<Integer>(), candidates, 0, target);
+        helper(res, new ArrayList<Integer>(), candidates, 0, target);
         return res;
     }
 
@@ -31,7 +31,7 @@ public class CombinationSum {
      * @param start
      * @param target
      */
-    private void add(ArrayList<List<Integer>> res, ArrayList<Integer> part, int[] candidates, int start, int target) {
+    private void helper(ArrayList<List<Integer>> res, ArrayList<Integer> part, int[] candidates, int start, int target) {
         if (target < 0) return;
         else if (target == 0) {
             res.add(part);
@@ -40,7 +40,7 @@ public class CombinationSum {
         for (int i = start; i < candidates.length; i++) {
             ArrayList<Integer> newPart = new ArrayList<Integer>(part);
             newPart.add(candidates[i]);
-            add(res, newPart, candidates, i, target - candidates[i]);
+            helper(res, newPart, candidates, i, target - candidates[i]);
         }
     }
 
