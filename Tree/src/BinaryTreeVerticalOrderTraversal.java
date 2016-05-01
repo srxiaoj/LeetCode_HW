@@ -8,7 +8,6 @@ import java.util.Queue;
 public class BinaryTreeVerticalOrderTraversal {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         TreeNode a = new TreeNode(3);
         a.left = new TreeNode(9);
         a.right = new TreeNode(20);

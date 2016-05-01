@@ -5,7 +5,6 @@ import java.util.Stack;
 public class ConstructBinaryTreefromPreorderandInorderTraversal {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         int[] preorder = {15, 8, 5, 17, 16, 20};
         int[] inorder = {5, 8, 15, 16, 17, 20};
         int[] preorder2 = {5,8,1,2,9,11};

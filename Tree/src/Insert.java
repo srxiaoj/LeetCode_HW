@@ -2,13 +2,7 @@
 public class Insert {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        TreeNode root = new TreeNode(15);
-        root.left = new TreeNode(8);
-        root.right = new TreeNode(20);
-        root.left.left = new TreeNode(5);
-        root.right.left = new TreeNode(17);
-        root.right.left.left = new TreeNode(16);
+        TreeNode root = TreeNode.deserializeLevelorder("15,8,20,5,null,17,null,null,null,16,null");
         insert(10, root);
         System.out.println(root.left.right.val);
     }

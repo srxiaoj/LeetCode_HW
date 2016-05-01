@@ -5,17 +5,7 @@ import java.util.Stack;
 public class BinaryTreeInorderTraversal {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        TreeNode root = new TreeNode(15);
-        root.left = new TreeNode(8);
-        root.right = new TreeNode(20);
-        root.left.left = new TreeNode(5);
-        root.right.left = new TreeNode(17);
-        root.right.left.left = new TreeNode(16);
-//        inOrderRecursive(root);
-//        System.out.println("");
-//        root.printTree(root);
-//        System.out.println(inorderTraversal(root));
+        TreeNode root = TreeNode.deserializeLevelorder("15,8,20,5,null,17,null,null,null,16,null");
         TreeNode.printNode(root);
         System.out.println(inorderTraversalIterate(root));
     }

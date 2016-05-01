@@ -29,7 +29,7 @@ public class TreeNode {
 //        System.out.println("The total number of nodes is in level order deserial: " + nodes.length);
         if (nodes.length == 1) return null;
 
-        TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
+        TreeNode root = new TreeNode(Integer.parseInt(nodes[0].trim()));
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(root);
         int i = 1;           // starting from the second node if root is not null
@@ -37,7 +37,7 @@ public class TreeNode {
         while (i < nodes.length) {
             TreeNode node = queue.poll();
 
-            String left = nodes[i++], right = nodes[i++];
+            String left = nodes[i++].trim(), right = nodes[i++].trim();
             if (!left.equals(NN)) {
                 TreeNode lChild = new TreeNode(Integer.parseInt(left));
                 node.left = lChild;

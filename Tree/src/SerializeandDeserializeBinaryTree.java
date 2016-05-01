@@ -16,17 +16,7 @@ public class SerializeandDeserializeBinaryTree {
          *             3   5   13  15 
          */
         SerializeandDeserializeBinaryTree codec = new SerializeandDeserializeBinaryTree();
-        TreeNode root = new TreeNode(6);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(8);
-        root.left.left = new TreeNode(0);
-        root.left.right = new TreeNode(4);
-        root.right.left = new TreeNode(7);
-        root.right.right = new TreeNode(9);
-        root.left.right.left = new TreeNode(3);
-        root.left.right.right = new TreeNode(5);
-        root.right.right.left = new TreeNode(13);
-        root.right.right.right = new TreeNode(15);
+        TreeNode root = TreeNode.deserializeLevelorder("6,2,8,0,4,7,9,null,null,3,5,null,null,13,15");
         TreeNode.printNode(root);
 
 

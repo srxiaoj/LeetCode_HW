@@ -3,28 +3,21 @@ import java.util.Stack;
 public class BinaryTreeUpsideDown {
 
     public static void main(String[] args) {
-//        TreeNode root = new TreeNode(1);
-//        root.left = new TreeNode(2);
-//        root.right = new TreeNode(3);
-//        root.left.left = new TreeNode(4);
-//        root.left.right = new TreeNode(5);
-//        System.out.println("Before inverse");
-//        TreeNode.printNode(root);
-//        System.out.println("After inverse");
-//        TreeNode res = upsideDownBinaryTree(root);
-//        TreeNode.printNode(res);
-//
-//        TreeNode root2 = new TreeNode(1);
-//        root2.left = new TreeNode(2);
-//        System.out.println("Before inverse");
-//        TreeNode.printNode(root2);
-//        System.out.println("After inverse");
-//        TreeNode res2 = upsideDownBinaryTree(root2);
-//        TreeNode.printNode(res2);
+        TreeNode root = TreeNode.deserializeLevelorder("1,2,3,4,5");
+        System.out.println("Before inverse");
+        TreeNode.printNode(root);
+        System.out.println("After inverse");
+        TreeNode res = upsideDownBinaryTree(root);
+        TreeNode.printNode(res);
 
-        TreeNode root3 = new TreeNode(1);
-        root3.left = new TreeNode(2);
-        root3.left.left = new TreeNode(3);
+        TreeNode root2 = TreeNode.deserializeLevelorder("1,2,null");
+        System.out.println("Before inverse");
+        TreeNode.printNode(root2);
+        System.out.println("After inverse");
+        TreeNode res2 = upsideDownBinaryTree(root2);
+        TreeNode.printNode(res2);
+
+        TreeNode root3 = TreeNode.deserializeLevelorder("1,2,null,3,null");
         System.out.println("Before inverse");
         TreeNode.printNode(root3);
         System.out.println("After inverse");

@@ -17,12 +17,7 @@ public class BinaryTreeLevelOrderTraversal {
          *              16
          */
         BinaryTreeLevelOrderTraversal obj = new BinaryTreeLevelOrderTraversal();
-        TreeNode root = new TreeNode(15);
-        root.left = new TreeNode(8);
-        root.right = new TreeNode(20);
-        root.left.left = new TreeNode(5);
-        root.right.left = new TreeNode(17);
-        root.right.left.left = new TreeNode(16);
+        TreeNode root = TreeNode.deserializeLevelorder("15,8,20,5,null,17,null,null,null,16,null");
         TreeNode.printNode(root);
         System.out.println(obj.levelOrder(root));
 //        printTwoDArrayList(levelOrderTraversal(root));
@@ -41,15 +36,7 @@ public class BinaryTreeLevelOrderTraversal {
          *              / \
          *             3   5 
          */
-        TreeNode root2 = new TreeNode(6);
-        root2.left = new TreeNode(2);
-        root2.right = new TreeNode(8);
-        root2.left.left = new TreeNode(0);
-        root2.left.right = new TreeNode(4);
-        root2.right.left = new TreeNode(7);
-        root2.right.right = new TreeNode(9);
-        root2.left.right.left = new TreeNode(3);
-        root2.left.right.right = new TreeNode(5);
+        TreeNode root2 = TreeNode.deserializeLevelorder("6,2,8,0,4,7,9,null,null,3,5");
         TreeNode.printNode(root2);
 //        printTwoDArrayList(levelOrderTraversal(root2));
 //        root2.inorderRecursive(root2);

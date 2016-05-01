@@ -20,11 +20,9 @@ public class InsertionSort {
         }
     }
     //print array
-    private static void printArray(int[] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
-            if(i != A.length-1)
+    private static void printArray(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
                 System.out.print(A[i] + ", ");
             else
                 System.out.print(A[i]);

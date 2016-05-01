@@ -7,9 +7,7 @@ public class BinarySearchTreeIterator {
     public static void main(String[] args) {
 
 //        Your BSTIterator will be called like this:
-        TreeNode root = new TreeNode(2);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(3);
+        TreeNode root = TreeNode.deserializeLevelorder("2, 1, 3");
         BSTIterator i = new BSTIterator(root);
         while (i.hasNext()) {
             System.out.print(i.next() + ",");

@@ -1,5 +1,3 @@
-import org.omg.CosNaming._BindingIteratorImplBase;
-
 public class Delete {
 
     public static void main(String[] args) {
@@ -14,17 +12,7 @@ public class Delete {
          *             3   5 
          */
         TreeNode parentOfRoot = new TreeNode(Integer.MAX_VALUE);
-        
-        TreeNode root = new TreeNode(6);
-        parentOfRoot.left = root;
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(8);
-        root.left.left = new TreeNode(0);
-        root.left.right = new TreeNode(4);
-        root.right.left = new TreeNode(7);
-        root.right.right = new TreeNode(9);
-        root.left.right.left = new TreeNode(3);
-        root.left.right.right = new TreeNode(5);
+        TreeNode root = TreeNode.deserializeLevelorder("6,2,8,0,4,7,9,null,null,3,5");
 //        root.printTree(parentOfRoot.left);
 //        System.out.println("");
 //        delete(parentOfRoot, 6);

@@ -27,13 +27,16 @@ public class GenerateParentheses {
     }
 
     public void helper(List<String> list, String str, int left, int right, int max) {
-        if (str.length() == max * 2) {
+        if (str.length() == 2 * max) {
             list.add(str);
             return;
         }
-        if (left < max)
+
+        if (left < max) {
             helper(list, str + "(", left + 1, right, max);
-        if (right < left)
+        }
+        if (right < left) {
             helper(list, str + ")", left, right + 1, max);
+        }
     }
 }

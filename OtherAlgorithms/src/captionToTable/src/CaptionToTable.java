@@ -1,4 +1,4 @@
-package CaptionToTable.src;
+package captionToTable.src;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

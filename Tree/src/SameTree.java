@@ -2,14 +2,8 @@
 public class SameTree {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        TreeNode root1 = new TreeNode(15);
-        root1.left = new TreeNode(8);
-        root1.right = new TreeNode(20);
-        TreeNode root2 = new TreeNode(15);
-        root2.left = new TreeNode(8);
-        root2.right = new TreeNode(20);
-        
+        TreeNode root1 = TreeNode.deserializeLevelorder("15, 8, 20");
+        TreeNode root2 = TreeNode.deserializeLevelorder("15, 8, 20");
         System.out.println(isSameTree(root1, root2));
     }
     public static boolean isSameTree(TreeNode p, TreeNode q) {
