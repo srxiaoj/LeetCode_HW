@@ -1,6 +1,3 @@
-import java.util.Arrays;
-
-
 public class Test {
     // instance variable
     private int x = 1;
@@ -20,7 +17,6 @@ public class Test {
     }
         
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
 //        double x = 2.2;
 //        int y = 6;
 //        int res = (int) x;
@@ -47,7 +43,7 @@ public class Test {
 //        int[] test = {5, 1, 6, 3, 9};
 //        Arrays.sort(test);
 //        System.out.println(test[0]);
-        
+
     }
 
 }
