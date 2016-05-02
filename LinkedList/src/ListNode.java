@@ -4,6 +4,10 @@ public class ListNode {
     ListNode(int x) { val = x; }
     
     public static void printListNode(ListNode head) {
+        if (head == null) {
+            System.out.println("null");
+            return;
+        }
         StringBuilder sb = new StringBuilder();
         System.out.println("print the linked list");
         while (head != null) {
