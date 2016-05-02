@@ -18,7 +18,7 @@ public class InsertionSortList {
     public ListNode insertionSortList(ListNode head) {
         if (head == null || head.next == null) return head;
         // create a dummy head and insert new element and keep this list sorted
-        ListNode dummy = new ListNode(Integer.MIN_VALUE);
+        ListNode dummy = new ListNode(0);
         ListNode cur = head;
         while (cur != null) {
             ListNode next = cur.next;
