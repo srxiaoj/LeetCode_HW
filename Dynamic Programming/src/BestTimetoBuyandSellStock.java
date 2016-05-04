@@ -2,7 +2,6 @@
 public class BestTimetoBuyandSellStock {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		BestTimetoBuyandSellStock agent = new BestTimetoBuyandSellStock();
 		int[] p = new int[]{1, 3, 1, 9, 1, 6};
 		int max = agent.maxProfit(2, p);
