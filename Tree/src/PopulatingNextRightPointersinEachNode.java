@@ -4,17 +4,18 @@
 public class PopulatingNextRightPointersinEachNode {
     public void connect(TreeLinkNode root) {
         if (root == null) return;
-        TreeLinkNode pre = root;
-        while (pre.left != null) {
-            TreeLinkNode curLevel = pre;
-            while (curLevel != null) {
-                curLevel.left.next = curLevel.right;
-                if (curLevel.next != null) {
-                    curLevel.right.next = curLevel.next.left;
+        TreeLinkNode height = root;
+        // 到height.left == null时结束
+        while (height.left != null) {
+            TreeLinkNode horizon = height;
+            while (horizon != null) {
+                horizon.left.next = horizon.right;
+                if (horizon.next != null) {
+                    horizon.right.next = horizon.next.left;
                 }
-                curLevel = curLevel.next;
+                horizon = horizon.next;
             }
-            pre = pre.left;
+            height = height.left;
         }
 
         /*if (root == null) return;
