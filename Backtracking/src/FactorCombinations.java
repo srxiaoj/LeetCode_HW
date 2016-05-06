@@ -8,17 +8,13 @@ import java.util.List;
 public class FactorCombinations {
     public static void main(String[] args) {
         FactorCombinations obj = new FactorCombinations();
-        System.out.println(obj.getFactors(32));
+        System.out.println(obj.getFactors(6));
     }
 
     /**
      * My idea is that the results are coming from the combination of the factors of the number, thus we can pre-compute
      * the factors and save them in a list, therefore later we just need to pick element from this factor list.
-     *
-     * @param n
-     * @return
      */
-
     public List<List<Integer>> getFactors(int n) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         List<Integer> factors = new ArrayList<Integer>();
@@ -45,8 +41,7 @@ public class FactorCombinations {
 
     public void getFactorsHelper(List<List<Integer>> result, List<Integer> part, List<Integer> factors, int target, int start) {
         if (target == 1) {
-            List<Integer> out = new ArrayList<Integer>(part);
-            result.add(out);
+            result.add(new ArrayList<>(part));
             return;
         }
         for (int i = start; i < factors.size(); i++) {
@@ -65,23 +60,22 @@ public class FactorCombinations {
     public List<List<Integer>> getFactors(int n) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> part = new ArrayList<>();
-        dfs(n, res, part, 1, 2);
+        helper(res, part, n, 1, 2);
         return res;
     }
 
-    private void dfs(int n, List<List<Integer>> res, List<Integer> part, int product, int start) {
-        if (product == n) {
-            List<Integer> list = new ArrayList<>(part);
-//            Collections.sort(list);
-//            if (!res.contains(list))
-            res.add(list);
+    public void helper(List<List<Integer>> res, List<Integer> part, int n, int total, int start) {
+        if (total > n || n == 1) return;
+        if (total == n) {
+            res.add(new ArrayList<>(part));
             return;
         }
+
         for (int i = start; i <= n / 2; i++) {
-            if (n % (product * i) == 0) {
-                part.add(i);
-                dfs(n, res, part, product * i, i);
-                part.remove(part.size() - 1);
+            if (n / total % i == 0) {
+                List<Integer> newPart = new ArrayList<>(part);
+                newPart.add(i);
+                helper(res, newPart, n, total * i, start + 1);
             }
         }
     }
