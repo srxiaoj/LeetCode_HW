@@ -6,10 +6,10 @@ import java.util.*;
 public class MeetingRoomsII {
     public static void main(String[] args) {
         MeetingRoomsII obj = new MeetingRoomsII();
-        Interval[] test = new Interval[2];
-        test[0] = new Interval(13, 15);
-        test[1] = new Interval(1, 3);
-//        test[2] = new Interval(5, 10);
+        Interval[] test = new Interval[3];
+        test[0] = new Interval(0, 30);
+        test[1] = new Interval(5, 10);
+        test[2] = new Interval(15, 20);
         System.out.println(obj.minMeetingRooms(test));
 
         Interval[] test2 = new Interval[3];
@@ -26,35 +26,79 @@ public class MeetingRoomsII {
     }
 
     public int minMeetingRooms(Interval[] intervals) {
-        if (intervals.length == 0) return 0;
-        List<Interval> list = sort(intervals);
-        List<Interval> combine = new ArrayList<>();
-        combine.add(list.get(0));
-        int count = 1;
-        outer:
-        for (int i = 1; i < list.size(); i++) {
-            for (int j = 0; j < combine.size(); j++) {
-                if (canCombine(combine.get(j), list.get(i))) {
-                    Interval newRange = new Interval(combine.get(j).start, list.get(i).end);
-                    combine.set(j, newRange);
-                    continue outer;
-                }
-            }
-            combine.add(list.get(i));
+        /**
+         * 方法1： 将start与end分别提取出来，变成两个array，进行排序
+         *        对比两个array有多少overlap的区间, 思维难度高, nlog(n)
+         */
+       /* if (intervals == null || intervals.length == 0) {
+            return 0;
         }
-        return combine.size();
+
+        int len = intervals.length;
+        int[] startTime = new int[len];
+        int[] endTime = new int[len];
+        for (int i = 0; i < len; i++) {
+            Interval curr = intervals[i];
+            startTime[i] = curr.start;
+            endTime[i] = curr.end;
+        }
+
+        // Sort the start and end time
+        Arrays.sort(startTime);
+        Arrays.sort(endTime);
+
+        int activeMeetings = 0;
+        int numMeetingRooms = 0;
+
+        int i = 0;
+        int j = 0;
+
+        while (i < len && j < len) {
+            if (startTime[i] < endTime[j]) {
+                activeMeetings++;
+                numMeetingRooms = Math.max(numMeetingRooms, activeMeetings);
+                i++;
+            } else {
+                activeMeetings--;
+                j++;
+            }
+        }
+        return numMeetingRooms;*/
+
+
+        /**
+         * 方法2: nlog(n)
+         */
+        if (intervals == null || intervals.length == 0) {
+            return 0;
+        }
+
+        Arrays.sort(intervals, new IntervalComparator());
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        int numRooms = 1;
+
+        pq.offer(intervals[0].end);
+
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i].start < pq.peek()) {
+                numRooms++;
+                pq.offer(intervals[i].end);
+            } else {
+                pq.poll();
+                pq.offer(intervals[i].end);
+            }
+        }
+
+        return numRooms;
+
     }
 
-    private boolean canCombine(Interval a, Interval b) {
-        if (a == null) return true;
-        if (a.start > b.start) return false;
-        if (a.end <= b.start) return true;
-        return false;
-    }
-    private List<Interval> sort(Interval[] intervals) {
-        List<Interval> list = new ArrayList<>(Arrays.asList(intervals));
-        Collections.sort(list, new myComparator());
-        return list;
+    public class IntervalComparator implements Comparator<Interval> {
+        @Override
+        public int compare(Interval a, Interval b) {
+            return a.start - b.start;
+        }
     }
 
     private static class Interval {
@@ -62,18 +106,5 @@ public class MeetingRoomsII {
         int end;
         Interval() { start = 0; end = 0; }
         Interval(int s, int e) { start = s; end = e; }
-    }
-
-    private class myComparator implements Comparator<Interval> {
-        @Override
-        public int compare (Interval a, Interval b) {
-            if (a.start < b.start) {
-                return -1;
-            } else if (a.start > b.start) {
-                return 1;
-            } else {
-                return b.end - a.end;
-            }
-        }
     }
 }

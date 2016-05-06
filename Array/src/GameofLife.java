@@ -2,9 +2,8 @@
 public class GameofLife {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         //block
-        int[][] block = new int [4][4];
+        int[][] block = new int[4][4];
         initialize(block);
         block[1][1] = 1;
         block[1][2] = 1;
@@ -25,17 +24,18 @@ public class GameofLife {
         blinker[2][1] = 1;
         blinker[2][2] = 1;
         blinker[2][3] = 1;
-        
+
         printArray(beehive);
         System.out.println("Start game of life");
         gameOfLife(beehive);
         printArray(beehive);
-        
+
     }
+
     public static void gameOfLife(int[][] board) {
         int row = board.length;
         int col = board[0].length;
-        int[][] res = new int [row][col];
+        int[][] res = new int[row][col];
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (board[i][j] == 1) {
@@ -55,10 +55,9 @@ public class GameofLife {
         }
         replaceArray(board, res);
     }
+
     /**
      * replace board with res.
-     * @param board
-     * @param res
      */
     private static void replaceArray(int[][] board, int[][] res) {
         for (int i = 0; i < board.length; i++) {
@@ -67,12 +66,9 @@ public class GameofLife {
             }
         }
     }
+
     /**
      * get nearby live cell number.
-     * @param board 
-     * @param x current x index
-     * @param y current y index
-     * @return
      */
     private static int getNearbyLive(int[][] board, int x, int y) {
         int count = 0;
@@ -84,16 +80,14 @@ public class GameofLife {
                 }
             }
         }
+        // shouldn't count board[x][y]
         if (board[x][y] == 1) count--;
         //System.out.println(x + ", " + y + " has " + count + " nearby live");
         return count;
     }
+
     /**
      * get nearby dead cell number.
-     * @param board
-     * @param x current x index
-     * @param y current y index
-     * @return
      */
     private static int getNearbyDead(int[][] board, int x, int y) {
         int count = 0;
@@ -105,20 +99,19 @@ public class GameofLife {
                 }
             }
         }
+        // shouldn't count board[x][y]
         if (board[x][y] == 0) count--;
         //System.out.println(x + ", " + y + " has " + count + " nearby dead");
         return count;
     }
+
     /**
      * print 2D array.
-     * @param A array
      */
-    public static void printArray(int[][] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
+    public static void printArray(int[][] A) {
+        for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < A[i].length; j++) {
-                if(j != A[i].length-1)
+                if (j != A[i].length - 1)
                     System.out.print(A[i][j] + ", ");
                 else
                     System.out.print(A[i][j]);
@@ -127,12 +120,12 @@ public class GameofLife {
         }
         System.out.println("");
     }
+
     /**
      * initialize the board with 0.
-     * @param board array
      */
     private static void initialize(int[][] board) {
-        for (int i = 0; i < board.length; i ++) {
+        for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 board[i][j] = 0;
             }
