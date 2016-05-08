@@ -29,6 +29,10 @@ class Vector2D {
     private List<Integer> list = new ArrayList<>();
     private Iterator<Integer> it;
 
+    /**
+     * 将2d vector 变为一个 1d arraylist
+     * 返回iterator
+     */
     public Vector2D(List<List<Integer>> vec2d) {
         if (vec2d == null || vec2d.isEmpty()) return;
         for (int i = 0; i < vec2d.size(); i++) {
