@@ -7,7 +7,7 @@ import java.util.List;
 public class SumRoottoLeafNumbers {
     public static void main(String[] args) {
         SumRoottoLeafNumbers obj = new SumRoottoLeafNumbers();
-        TreeNode root = TreeNode.deserializeLevelorder("6,2,8,0,4,7,9,null,null,3,5");
+        TreeNode root = TreeNode.deserializeLevelorder("1,2,3");
 //        TreeNode.printNode(root);
         System.out.println(obj.sumNumbers(root));
     }
@@ -25,15 +25,14 @@ public class SumRoottoLeafNumbers {
     }
 
     private void helper(TreeNode node, String part, List<String> list) {
+        if (node == null) return;
         if (node.left == null && node.right == null) {
             String newRes = part + String.valueOf(node.val);
             list.add(newRes);
             return;
         }
         String newRes = part + String.valueOf(node.val);
-        if (node.left != null)
-            helper(node.left, newRes, list);
-        if (node.right != null)
-            helper(node.right, newRes, list);
+        helper(node.left, newRes, list);
+        helper(node.right, newRes, list);
     }
 }
