@@ -1,4 +1,3 @@
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,10 +18,12 @@ public class StrobogrammaticNumberII {
         return res;
     }
 
+    /**
+     * 在Strobogrammatic(2)的基础上前后插入翻转数对
+     */
     public List<String> helper(int cur, int n) {
         List<String> res = new LinkedList<>();
         HashMap<String, String> map = new HashMap<>();
-//        cache.put("0", "0");
         map.put("1", "1");
         map.put("6", "9");
         map.put("9", "6");

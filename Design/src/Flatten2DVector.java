@@ -47,7 +47,8 @@ class Vector2D {
         return res;
     }
 
+    //it cannot be null
     public boolean hasNext() {
         return it != null && it.hasNext();
-    }//it cannot be null
+    }
 }
