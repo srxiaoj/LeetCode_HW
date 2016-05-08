@@ -13,8 +13,6 @@ public class IncreasingTripletSubsequence {
     /**
      * 利用if else特性，进入第三个else的条件一定为已经不满足前两个的条件
      * 那么说明最小以及第二小数已经被找到
-     * @param nums
-     * @return
      */
     public boolean increasingTriplet(int[] nums) {
         if (nums == null || nums.length < 3) {
@@ -34,5 +32,24 @@ public class IncreasingTripletSubsequence {
             i++;
         }
         return false;
+
+        // method 2： 借用Longest Increasing Subsequence方法, dp
+       /* if (nums == null || nums.length < 3) {
+            return false;
+        }
+        int n = nums.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[j] + 1, dp[i]);
+                    if (dp[i] >= 3) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;*/
     }
 }
