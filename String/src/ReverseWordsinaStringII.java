@@ -13,25 +13,30 @@ public class ReverseWordsinaStringII {
         System.out.println("After reverse");
         System.out.println(s);
     }
+
+    /**
+     * 先将整个char[] reverse，然后将每个' '隔开的单词reverse，注意最后一个单词也要reverse
+     */
     public void reverseWords(char[] s) {
-        if (s == null) return;
-        int len = s.length;
-        int start = 0, end = 1;
-        for (int i = 0; i < len; i++) {
-            while (i < len && s[i] != ' ') {
-                i++;
+        int l = 0, r = s.length - 1;
+        swap(s, l, r);
+        int start = 0;
+        for (int i = 0; i < s.length; i++) {
+            if (s[i] == ' ') {
+                swap(s, start ,i - 1);
+                start = i + 1;
             }
-            end = i - 1;
-            reverse(s, start, end);
-            start = i + 1;
+            if (i == s.length - 1) {
+                swap(s, start, i);
+            }
         }
-        reverse(s, 0, len - 1);
     }
-    private void reverse(char[] s, int l, int r) {
-        while (l < r) {
-            char tmp = s[l];
-            s[l] = s[r];
-            s[r] = tmp;
+
+    private void swap(char[] a, int l, int r) {
+        while (l <= r) {
+            char temp = a[l];
+            a[l] = a[r];
+            a[r] = temp;
             l++;
             r--;
         }
