@@ -1,89 +1,74 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 public class BinaryTreeVerticalOrderTraversal {
 
     public static void main(String[] args) {
-        TreeNode a = new TreeNode(3);
-        a.left = new TreeNode(9);
-        a.right = new TreeNode(20);
-        a.right.left = new TreeNode(15);
-        a.right.right = new TreeNode(7);
+        TreeNode a = TreeNode.deserializeLevelorder("3,9,30,null,null,15,7");
         BinaryTreeVerticalOrderTraversal obj = new BinaryTreeVerticalOrderTraversal();
         List<List<Integer>> res = obj.verticalOrder(a);
         printTwoDArrayList(res);
         System.out.println("*********************");
-//        
-        TreeNode b = new TreeNode(3);
-        b.left = new TreeNode(9);
-        b.right = new TreeNode(20);
-        b.left.left = new TreeNode(4);
-        b.left.right = new TreeNode(5);
-        b.right.left = new TreeNode(2);
-        b.right.right = new TreeNode(7);
+//
+        TreeNode b = TreeNode.deserializeLevelorder("3,9,8,4,0,1,7,null,null,null,2,5,null");
+        TreeNode.printNode(b);
         List<List<Integer>> res2 = obj.verticalOrder(b);
         printTwoDArrayList(res2);
         System.out.println("*********************");
     }
+
+
+    /**
+     * 使用一个map 存每个col有多少node
+     * 使用一个map 存每个node的位置
+     * 需要用bfs，不能使用dfs
+     */
     public List<List<Integer>> verticalOrder(TreeNode root) {
-       
-        //wrong result if using stack and using Integer map instead of TreeNode map
-        List<List<Integer>> list = new ArrayList<List<Integer>>();
-        if (root == null)
-            return list;
-        Map<Integer, List<Integer>> posToListMap = new HashMap<>();
-        Map<TreeNode, Integer> valToPosMap = new HashMap<>();
-        valToPosMap.put(root, 0);
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        Map<TreeNode, Integer> pos = new HashMap<>();
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        pos.put(root, 0);
+
         Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        int least = 0;
-        while (!queue.isEmpty()) {
+        queue.offer(root);
+        while(!queue.isEmpty()) {
             TreeNode node = queue.poll();
-//            System.out.println("curNode val: " + node.val);
-            int curNodePos = valToPosMap.get(node);
-//            List<Integer> sub = posToListMap.get(curNodePos + 1);
-            if (!posToListMap.containsKey(curNodePos)) {
-                posToListMap.put(curNodePos, new ArrayList<>());
+            int curPos = pos.get(node);
+            // update map
+            List<Integer> sub;
+            if (!map.containsKey(curPos)) {
+                sub = new ArrayList<>();
+            } else {
+                sub = map.get(curPos);
             }
-            posToListMap.get(curNodePos).add(node.val);
+            sub.add(node.val);
+            map.put(curPos, sub);
+
             if (node.left != null) {
-                queue.add(node.left);
-//                System.out.println("curNode position at left is: " + curNodePos);
-                valToPosMap.put(node.left, curNodePos - 1);
+                queue.offer(node.left);
+                pos.put(node.left, curPos - 1);
             }
             if (node.right != null) {
-                queue.add(node.right);
-//                System.out.println("curNode position at right is: " + curNodePos);
-                valToPosMap.put(node.right, curNodePos + 1);
+                queue.offer(node.right);
+                pos.put(node.right, curPos + 1);
             }
-            
-            least = Math.min(curNodePos, least);
-//            System.out.println("valToPosMap.get(node): " + valToPosMap.get(node));
-//            System.out.println("isStackEmpty ? " + stack.isEmpty());
-//            System.out.println("least is: " + least);
         }
-//        System.out.println("least " + least);
-        while (posToListMap.containsKey(least)) {
-//            System.out.println("get least: " + least);
-            list.add(posToListMap.get(least));
-            least++;
+
+        TreeMap<Integer, List<Integer>> treeMap = new TreeMap<>(map);
+        for (Map.Entry entry : treeMap.entrySet()) {
+            res.add((List<Integer>) entry.getValue());
         }
-        return list;
-        
+        return res;
     }
     //print two dimensional array list, which can also be replaced by simply System.out.println(A)
-    public static void printTwoDArrayList(List<List<Integer>> A)
-    {
-        for(int i = 0; i < A.size(); i++)
-        {
-            
+    public static void printTwoDArrayList(List<List<Integer>> A) {
+        for (int i = 0; i < A.size(); i++) {
+
             System.out.print(A.get(i) + " ");
             System.out.println("");
         }
-        
+
     }
 }
