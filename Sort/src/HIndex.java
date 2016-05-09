@@ -1,36 +1,48 @@
-import java.util.Arrays;
-
 public class HIndex {
     public static void main(String[] args) {
-        int test[] = new int[] {7,1,4,5,6};
+        int test[] = new int[]{3, 0, 6, 1, 5};
         System.out.println("The h index is: " + hIndex(test));
     }
+
     public static int hIndex(int[] citations) {
-        if(citations.length == 0) return 0;
-        sort(citations);
-        int h = 0;
-        while (h < citations.length && h+1 <= citations[h]) {
-            h++;
+        // method 1: 排序再数大于citation[i]的个数
+        /*Arrays.sort(citations);
+        int n = citations.length;
+        int max = 0;
+        for (int i = 0; i < n; i++) {
+            int k = n - i;
+            if (k <= citations[i]) {
+                max = Math.max(k, max);
+            }
         }
-        return h;
+        return max;*/
+
+        /**
+         * method2: Basically we iterate the array for two rounds.
+         * In first round we count how many citation in each bucket and
+         * in the second round we traverse back to find the maximum h.
+         */
+        int n = citations.length;
+        int[] count = new int[n + 1];
+
+        for (int i = 0; i < n; i++) {
+            int index = Math.min(n, citations[i]);
+            count[index]++;
+        }
+
+        int sum = 0;
+        for (int i = n; i >= 0; i--) {
+            sum += count[i];
+            if (sum >= i) {
+                return i;
+            }
+        }
+        return 0;
     }
-    /*descendent sort*/
-    private static void sort(int[] a) {
-        Arrays.sort(a);
-        int[] tmp = new int[a.length];
-        for(int i = 0; i < a.length; i++){
-            tmp[i] = a[i];
-        }
-        for(int i = 0; i < a.length; i++) {
-            a[i] = tmp[a.length-1-i];
-        }
-        printArray(a);
-    }
+
     //print array
-    public static void printArray(int [] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
+    public static void printArray(int[] A) {
+        for (int i = 0; i < A.length; i++) {
             System.out.print(A[i] + " ");
         }
         System.out.println(" ");

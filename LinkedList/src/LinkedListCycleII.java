@@ -22,25 +22,24 @@ public class LinkedListCycleII {
 
     public ListNode detectCycle(ListNode head) {
         if (head == null || head.next == null) return null;
+        ListNode cur = head;
         ListNode slow = head;
         ListNode fast = head;
-        ListNode cur = head;
         while (cur != null) {
             while (fast != null && fast.next != null) {
                 slow = slow.next;
                 fast = fast.next.next;
-                if (slow == cur || fast == cur) {
+                if (fast == cur || slow == cur) {
                     return cur;
+                }
+                if (fast == null || fast.next == null) {
+                    return null;
                 }
                 if (slow == fast) {
                     break;
                 }
             }
-            if (fast == null || fast.next == null) {
-                return null;
-            } else {
-                cur = cur.next;
-            }
+            cur = cur.next;
         }
         return null;
     }
