@@ -17,7 +17,7 @@ public class PermutationsII {
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> input = arrayToList(nums);
-        
+
         while (!res.contains(input)) {
             List<Integer> newList = new ArrayList<>(input);
             res.add(newList);
@@ -31,10 +31,9 @@ public class PermutationsII {
         }
         return res;
     }
+
     /**
      * get next larger permutation.
-     * @param list
-     * @return
      */
     public static List<Integer> nextPermu(List<Integer> list) {
         for (int i = list.size() - 1; i > 0; i--) {
@@ -51,6 +50,7 @@ public class PermutationsII {
         Collections.sort(list);
         return list;
     }
+
     private static List<Integer> arrayToList(int[] nums) {
         List<Integer> input = new ArrayList<Integer>();
         for (int i = 0; i < nums.length; i++) {
@@ -58,10 +58,9 @@ public class PermutationsII {
         }
         return input;
     }
-    public static void printArray(List<List<Integer>> A)
-    {
-        for(int i = 0; i < A.size(); i++)
-        {
+
+    public static void printArray(List<List<Integer>> A) {
+        for (int i = 0; i < A.size(); i++) {
             System.out.print(A.get(i) + " ");
         }
         System.out.println("");

@@ -45,10 +45,6 @@ public class NextPermutation {
 
     /**
      * In place swap.
-     *
-     * @param num
-     * @param i
-     * @param j
      */
     private static void swap(int[] num, int i, int j) {
         // swap num[i-1] and num[j]
@@ -59,9 +55,6 @@ public class NextPermutation {
 
     /**
      * Input is a list
-     *
-     * @param list
-     * @return
      */
     public static List<Integer> nextPermu(List<Integer> list) {
         for (int i = list.size() - 1; i > 0; i--) {
