@@ -1,14 +1,18 @@
 import java.util.Arrays;
 
-/**
- * Created by thanksgiving on 12/24/15.
- */
+
 public class ThreeSumClosest {
     public static void main(String[] args) {
         ThreeSumClosest obj = new ThreeSumClosest();
         int[] test1 = new int[] {-1, -5, -3, -4, 2, -2};
         System.out.println(obj.threeSumClosest(test1, 0));
     }
+
+    /**
+     * O(n^2) 复杂度
+     * 如果 min > Math.abs(nums[i] + nums[r] + nums[l] - target) 则更新min
+     * 注意要返回 nums[i] + nums[r] + nums[l]
+     */
     public int threeSumClosest(int[] nums, int target) {
         int l;
         int r;
