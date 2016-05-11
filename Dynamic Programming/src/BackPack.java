@@ -6,8 +6,8 @@ import java.util.Arrays;
 public class BackPack {
     public static void main(String[] args) {
         BackPack obj = new BackPack();
-        int[] A = {2, 3, 5, 7};
-        System.out.println(obj.backPack(13, A));
+        int[] A = {2, 2, 3, 2};
+        System.out.println(obj.backPack(8, A));
     }
 
     /**
@@ -24,7 +24,7 @@ public class BackPack {
             for (int j = 0; j <= m; j++) {
                 // not include item i
                 dp[i + 1][j] = dp[i][j];
-                // include item i
+                // include item i, j >= A[i] just to make sure no outOfBoundary error
                 if (j >= A[i] && dp[i][j - A[i]]) {
                     dp[i + 1][j] = true;
                 }

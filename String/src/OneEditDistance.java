@@ -12,73 +12,31 @@ public class OneEditDistance {
         System.out.println(obj.isOneEditDistance(c, d));
     }
 
+    /**
+     * There're 3 possibilities to satisfy one edit distance apart:
+     * <p>
+     * 1) Replace 1 char:
+     * s: a B c
+     * t: a D c
+     * 2) Delete 1 char from s:
+     * s: a D  b c
+     * t: a    b c
+     * 3) Delete 1 char from t
+     * s: a   b c
+     * t: a D b c
+     */
     public boolean isOneEditDistance(String s, String t) {
-
-        if (s.equals(t)) return false;
-        int sLen = s.length();
-        int tLen = t.length();
-        if (Math.abs(sLen - tLen) > 1) return false;
-        // case1: two strings have equal length
-        if (sLen == tLen) {
-            int numDiffChar = 0;
-            for (int i = 0; i < sLen; i++) {
-                if (s.charAt(i) != t.charAt(i)) {
-                    numDiffChar++;
-                }
-            }
-            if (numDiffChar > 1) return false;
-            return true;
-        } else if (sLen < tLen) { // case2: string s is one letter less than string t
-            int i = 0, j = tLen - 1;
-            while (i < sLen && s.charAt(i) == t.charAt(i)) {
-                i++;
-            }
-            if (i == sLen) return true;
-            return (s.substring(i).equals(t.substring(i + 1)));
-        } else {
-            return isOneEditDistance(t, s);
-        }
-
-
-        /*
-        if (s == null || t == null) return false;
-        int sLen = s.length();
-        int tLen = t.length();
-        // if diff is more than one then return false
-        if (Math.abs(sLen - tLen) > 1) return false;
-
-        if (s.length() > t.length()) {
-            return isOneEditDistance(t, s);
-        }
-
-        int x = 0, y = 0;
-
-        boolean diffOneChar = false;
-        while (x < sLen && y < tLen) {
-            if (s.charAt(x++) != t.charAt(y++)) {
-                diffOneChar = true;
-                if (sLen != tLen) x--;
-                break;
+        for (int i = 0; i < Math.min(s.length(), t.length()); i++) {
+            if (s.charAt(i) != t.charAt(i)) {
+                if (s.length() == t.length()) // s has the same length as t, so the only possibility is replacing one char in s and t
+                    return s.substring(i + 1).equals(t.substring(i + 1));
+                else if (s.length() < t.length()) // t is longer than s, so the only possibility is deleting one char from t
+                    return s.substring(i).equals(t.substring(i + 1));
+                else // s is longer than t, so the only possibility is deleting one char from s
+                    return t.substring(i).equals(s.substring(i + 1));
             }
         }
-
-        // check whether 's' matched with 't' all the way and diff is 1
-
-        if (x == sLen && tLen - x == 1) return true;
-
-        while (x < sLen && y < tLen) {
-            if (s.charAt(x++) != t.charAt(y++)) {
-                return false;
-            }
-        }
-
-        // length of both s and t are same but it differs with one character
-
-        if (diffOneChar && y == tLen && x == sLen) return true;
-
-        return false;
-        */
-
-
+        //All previous chars are the same, the only possibility is deleting the end char in the longer one of s and t
+        return Math.abs(s.length() - t.length()) == 1;
     }
 }
