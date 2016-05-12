@@ -13,6 +13,7 @@ public class PermutationsII {
 
     /**
      * 套用next permute方法，一直循环找下一个permute number直到出现重复组合
+     * 需要将int[] 转换为List<Integer>
      */
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();

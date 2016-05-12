@@ -3,7 +3,7 @@
  */
 public class ConvertSortedListtoBST {
     public static void main(String[] args) {
-        int[] a = {1, 2};
+        int[] a = {1, 2, 3, 4};
         ListNode test = ListNode.create(a);
         ConvertSortedListtoBST obj = new ConvertSortedListtoBST();
         TreeNode res = obj.sortedListToBST(test);
@@ -17,36 +17,42 @@ public class ConvertSortedListtoBST {
         return helper(head);
     }
 
+    /**
+     * 找到中点为root，需要注意如果slow == root，则左边可能为null，需要单独判断一下
+     */
     private TreeNode helper(ListNode node) {
         if (node == null) return null;
         if (node.next == null) return new TreeNode(node.val);
-        ListNode pre = node;
+
         ListNode slow = node;
-        ListNode fast = node;
-        while (fast.next != null && fast.next.next != null) {
+        ListNode fast = node.next;
+        ListNode pre = null;
+        while (fast != null && fast.next != null) {
             pre = slow;
             slow = slow.next;
             fast = fast.next.next;
         }
-        ListNode second = slow.next;
-        pre.next = null;
-        ListNode first = node;
         TreeNode root = new TreeNode(slow.val);
-        // if slow is the first element, then root.next = null
-        if (slow == node) {
+        ListNode second = slow.next;
+        if (pre != null) {
+            pre.next = null;
+        }
+
+        if (pre == null) {
             root.left = null;
         } else {
-            root.left = helper(first);
+            root.left = helper(node);
         }
         root.right = helper(second);
         return root;
     }
 
-    private class TreeNode{
+    private class TreeNode {
         TreeNode left;
         TreeNode right;
         int val;
-        TreeNode (int a) {
+
+        TreeNode(int a) {
             this.val = a;
         }
     }
