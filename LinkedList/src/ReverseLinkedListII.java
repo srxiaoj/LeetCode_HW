@@ -2,7 +2,6 @@
 public class ReverseLinkedListII {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
         head.next.next = new ListNode(3);
@@ -12,11 +11,11 @@ public class ReverseLinkedListII {
     }
 
     public static ListNode reverseBetween(ListNode head, int m, int n) {
-        if (head == null || head.next == null || m == n) return head;
+        if (head == null || head.next == null) return head;
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        int i = 0;
         ListNode cur = dummy;
+        int i = 0;
         ListNode firstPre = dummy;
         while (i < m) {
             firstPre = cur;
@@ -24,14 +23,10 @@ public class ReverseLinkedListII {
             i++;
         }
         ListNode first = cur;
-
-        ListNode secondPre = cur;
         while (i < n) {
-            secondPre = cur;
             cur = cur.next;
             i++;
         }
-        // ListNode firstNxt = first.next;
         ListNode second = cur;
         ListNode pre = second.next;
         cur = first;
@@ -45,43 +40,6 @@ public class ReverseLinkedListII {
         }
         firstPre.next = pre;
         return dummy.next;
-
-        /*ListNode res = new ListNode(0);
-        res.next = head;
-        ListNode start = res;
-        int i = 0;
-        while (i < m-1) {
-            start = start.next;
-            i++;
-        }
-        //store the start reverse node
-        ListNode startReverse = start;
-        //System.out.println("at m-1");
-        //printList(startReverse);
-        start = start.next;
-        //reverse the node
-        while (i < n) {
-            start = start.next;
-            i++;
-        }
-        ListNode endReverse = start;
-        //System.out.println("at n+1");
-        //printList(endReverse);
-        //move start back to start reverse the list
-        start = startReverse.next;
-        //System.out.println("at m");
-        //printList(start);
-        ListNode pre = endReverse;
-        i = m;
-        while (i <= n) {
-            ListNode nxt = start.next;
-            start.next = pre;
-            pre = start;
-            start = nxt;
-            i++;
-        }
-        startReverse.next = pre;
-        return res.next;*/
     }
 
     //print out list
