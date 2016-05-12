@@ -12,7 +12,7 @@ public class GasStation {
     /**
      * 如果跑完 i 轮所剩下的tank油为负，则唯一有可能的解是 i + 1
      * 如果跑完所有轮，每轮 tank +　gas[i] 都 大于 cost[i]，则说明最后能跑完一轮
-     * 注意要处理跑完最后一轮的情况，则可以将所有sumCost 与sumGas比较
+     * 如果sumGas > sumCost，则是一定有解的
      */
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int sumGas = 0;
