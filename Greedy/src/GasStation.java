@@ -3,11 +3,17 @@
  */
 public class GasStation {
     public static void main(String[] args) {
-        int[] gas = {3, 4, 5};
-        int[] cost = {4, 3, 1};
+        int[] gas = {2, 1, 4};
+        int[] cost = {5, 3, 1};
         GasStation obj = new GasStation();
         System.out.println(obj.canCompleteCircuit(gas, cost));
     }
+
+    /**
+     * 如果跑完 i 轮所剩下的tank油为负，则唯一有可能的解是 i + 1
+     * 如果跑完所有轮，每轮 tank +　gas[i] 都 大于 cost[i]，则说明最后能跑完一轮
+     * 注意要处理跑完最后一轮的情况，则可以将所有sumCost 与sumGas比较
+     */
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int sumGas = 0;
         int sumCost = 0;
