@@ -47,81 +47,44 @@ public class PalindromePartitioning {
     }
 
     /**
-     * dfs
-     *
-     * @param s
-     * @return
+     * dfs, 每次判断s.substring(start, i)是不是palindrome， 是的话就添加到list中
+     * a, a, b true
+     * a, ab false
+     * aa, b true
      */
     public List<List<String>> partition(String s) {
-        List<List<String>> result = new ArrayList<>();
-
-        if (s == null || s.length() == 0) {
-            return result;
-        }
-
-        List<String> partition = new ArrayList<String>();//track each possible partition
-        addPalindrome(s, 0, partition, result);
-//        partitionStr(s, 0, partition, result);
-        return result;
+        List<List<String>> res = new ArrayList<>();
+        if (s == null || s.length() == 0) return res;
+        List<String> part = new ArrayList<>();
+        add(res, part, s, 0);
+        return res;
     }
 
-    /**
-     * partition a string into substrings of palindrome
-     *
-     * @param s
-     * @param start
-     * @param partition
-     * @param result
-     */
-    private void addPalindrome(String s, int start, List<String> partition,
-                               List<List<String>> result) {
-        //stop condition
+    private void add(List<List<String>> res, List<String> part, String s, int start) {
         if (start == s.length()) {
-            List<String> temp = new ArrayList<String>(partition);
-            result.add(temp);
+            res.add(new ArrayList<>(part));
             return;
         }
 
         for (int i = start + 1; i <= s.length(); i++) {
             String str = s.substring(start, i);
             if (isPalindrome(str)) {
-                partition.add(str);
-                addPalindrome(s, i, partition, result);
-                partition.remove(partition.size() - 1);
+                List<String> newPart = new ArrayList<>(part);
+                newPart.add(str);
+                add(res, newPart, s, i);
             }
-        }
-    }
-
-    /**
-     * partition a string into substrings
-     *
-     * @param s
-     * @param start
-     * @param partition
-     * @param result
-     */
-    private void partitionStr(String s, int start, List<String> partition, List<List<String>> result) {
-        //stop condition
-        if (start == s.length()) {
-            List<String> temp = new ArrayList<String>(partition);
-            result.add(temp);
-            return;
-        }
-
-        for (int i = start + 1; i <= s.length(); i++) {
-            String str = s.substring(start, i);
-            partition.add(str);
-            partitionStr(s, i, partition, result);
-            partition.remove(partition.size() - 1);
         }
     }
 
     private boolean isPalindrome(String s) {
-        int len = s.length() - 1;
-        for (int i = 0; i <= len / 2; i++) {
-            if (s.charAt(i) != s.charAt(len - i)) {
+        int l = 0;
+        int r = s.length() - 1;
+        while (l <= r) {
+            if (s.charAt(l) != s.charAt(r)) {
                 return false;
             }
+            l++;
+            r--;
         }
         return true;
     }
