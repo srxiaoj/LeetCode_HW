@@ -43,10 +43,35 @@ public class PermutationSequence {
     public static void main(String[] args) {
         PermutationSequence obj = new PermutationSequence();
         System.out.println(obj.getPermutation(3, 4));
+        System.out.println(obj.getPermutation(8, 8590));
     }
 
     public String getPermutation(int n, int k) {
-        List<Integer> numbers = new ArrayList<>();
+        int[] fac = new int[n + 1];
+        fac[0] = 1;
+        for (int i = 1; i <= n; i++) {
+            fac[i] = fac[i - 1] * i;
+        }
+
+        List<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            list.add(i);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        k--;
+        int i = 1;
+        while (i <= n) {
+            int index = k / fac[n - i];
+            k -= index * fac[n - i];
+            sb.append(list.get(index));
+            list.remove(index);
+            i++;
+        }
+        return sb.toString();
+
+
+/*        List<Integer> numbers = new ArrayList<>();
         int[] factorial = new int[n + 1];
         StringBuilder sb = new StringBuilder();
         // create an array of factorial lookup
@@ -70,6 +95,6 @@ public class PermutationSequence {
             numbers.remove(index);
             k -= index * factorial[n - i];
         }
-        return String.valueOf(sb);
+        return String.valueOf(sb);*/
     }
 }
