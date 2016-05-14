@@ -13,14 +13,16 @@ public class FourSum {
         System.out.println(res);
     }
 
+    /**
+     * 套用threeSum的结果，在每个threeSum结果前面加上nums[i]
+     * 注意要去除duplicate数
+     */
     public static List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> res = new LinkedList<>();
         Arrays.sort(nums);
-        //printArray(nums);
         for (int i = 0; i < nums.length; i++) {
             int[] newNums = Arrays.copyOfRange(nums, i + 1, nums.length);
             List<List<Integer>> need = threeSum(newNums, target - nums[i]);
-            //System.out.println(need);
             if (need.size() != 0) {//result has been found
                 for (int j = 0; j < need.size(); j++) {
                     need.get(j).add(0, nums[i]);
@@ -38,8 +40,6 @@ public class FourSum {
         List<List<Integer>> res = new LinkedList<>();
         Arrays.sort(num);//sort the array
 
-        //if(num.length <3)
-        //  return res;
         for (int i = 0; i < num.length - 2; i++) {//note the num.length-2 boundary
             int target = k - num[i];//get the target value so that target+num[i] = 0
             int l = i + 1;

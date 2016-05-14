@@ -15,7 +15,7 @@ public class TwoSumIIInputArraySorted {
         /**
          * method 1: two pointers
          */
-        int[] res = new int[2];
+       /* int[] res = new int[2];
         if (numbers == null || numbers.length < 2)
             return res;
         int l = 0, r = numbers.length - 1;
@@ -31,11 +31,10 @@ public class TwoSumIIInputArraySorted {
                 l++;
             }
         }
-        return res;
+        return res;*/
         /**
          * method 2: binary search: O(nlogn)
          */
-        /*
         int[] res = new int[2];
         int len = numbers.length;
         for (int i = 0; i < len - 1; i++) {
@@ -47,7 +46,6 @@ public class TwoSumIIInputArraySorted {
             }
         }
         return res;
-        */
     }
 
     /**
