@@ -4,31 +4,39 @@ import java.util.List;
 public class SummaryRanges {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         int[] test = {0, 1, 2, 4, 5, 7};
         int[] test2 = {};
         
         System.out.println(summaryRanges(test));
     }
+
     public static List<String> summaryRanges(int[] nums) {
         List<String> res = new ArrayList<>();
-        StringBuilder sbRes = new StringBuilder();
+        if (nums == null || nums.length == 0) return res;
+
+        int n = nums.length;
         int start = 0;
-        int end = 1;
-        while (start < nums.length) {
-            while (end < nums.length
-                    && nums[end] - nums[start] == end - start) {
-                end++;
+        int i = 0;
+        while (i < n) {
+            while (i + 1 < n && nums[i + 1] == nums[i] + 1) {
+                i++;
             }
-            int preEnd = end - 1;
-            if (preEnd > start) {
-                sbRes = new StringBuilder(nums[start] + "->" + nums[preEnd]);
+            // 如果是最后一个数字，并且比上一个大1
+            if (i + 1 == n - 1 && nums[i + 1] == nums[i] + 1) {
+                String s = String.valueOf(nums[start]);
+                String e = String.valueOf(nums[i + 1]);
+                res.add(s + "->" + e);
             } else {
-                sbRes = new StringBuilder(nums[start] + "");
+                if (i == start) {
+                    res.add(String.valueOf(nums[i]));
+                } else {
+                    String s = String.valueOf(nums[start]);
+                    String e = String.valueOf(nums[i]);
+                    res.add(s + "->" + e);
+                }
             }
-            res.add(sbRes.toString());
-            start = end;
-            end = end + 1;
+            i++;
+            start = i;
         }
         return res;
     }
