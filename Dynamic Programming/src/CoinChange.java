@@ -11,6 +11,9 @@ public class CoinChange {
         System.out.println(obj.coinChange(coins, amount));
     }
 
+    /**
+     * 如果dp[i - coins[j]] == Integer.MAX_VALUE 则说明i - coins[j]无法由coins[] 组合拼出来
+     */
     public int coinChange(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
