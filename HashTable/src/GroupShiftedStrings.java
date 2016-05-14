@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by thanksgiving on 1/8/16.
@@ -52,7 +49,44 @@ public class GroupShiftedStrings {
         System.out.println(obj.groupStrings(test));
     }
 
+    /**
+     * 将所有string归一化为a开头的string，以该string为key来存list
+     */
     public List<List<String>> groupStrings(String[] strings) {
+        List<List<String>> res = new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+        for (String s : strings) {
+            List<String> list;
+            if (!map.containsKey(shift(s))) {
+                list = new ArrayList<>();
+            } else {
+                list = map.get(shift(s));
+            }
+            list.add(s);
+            map.put(shift(s), list);
+        }
+
+        for (String key : map.keySet()) {
+            List<String> sub = map.get(key);
+            Collections.sort(sub);
+            res.add(sub);
+        }
+        return res;
+    }
+
+    private String shift(String s) {
+        if (s.startsWith("a")) {
+            return s;
+        }
+
+        int n = s.charAt(0) - 'a';
+        char[] num = new char[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            num[i] = (char) (((s.charAt(i) - 'a' + (26 - n)) % 26) + 'a');
+        }
+        return new String(num);
+    }
+   /* public List<List<String>> groupStrings(String[] strings) {
         HashMap<String, List<String>> map = new HashMap<>();
         List<List<String>> res = new ArrayList<>();
         Outer:
@@ -97,5 +131,5 @@ public class GroupShiftedStrings {
             }
         }
         return true;
-    }
+    }*/
 }

@@ -1,8 +1,5 @@
-//i/home/thanksgiving/leetCodeWorkSpace/Treemport java.util.LinkedList;
-//import java.util.Queue;/home/thanksgiving/leetCodeWorkSpace/Tree
 
 public class CountCompleteTreeNodes {
-
     public static void main(String[] args) {
         /**
          *                6
@@ -17,8 +14,8 @@ public class CountCompleteTreeNodes {
 //        TreeNode root = TreeNode.deserializeLevelorder("6,2,8,0,4,7,9");
         System.out.println("number of nodes: " + countNodes(root));
     }
-    public static int countNodes(TreeNode root) {
 
+    public static int countNodes(TreeNode root) {
         if (root == null) return 0;
         int n = 0;
         int h = getHeight(root);
