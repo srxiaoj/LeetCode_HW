@@ -5,6 +5,7 @@ import java.util.*;
  */
 public class CloneGraph {
     public static void main(String[] args) {
+        CloneGraph obj = new CloneGraph();
         UndirectedGraphNode node0 = new UndirectedGraphNode(0);
         UndirectedGraphNode node1 = new UndirectedGraphNode(1);
         UndirectedGraphNode node2 = new UndirectedGraphNode(2);
@@ -13,29 +14,30 @@ public class CloneGraph {
         List<UndirectedGraphNode> list2 = new ArrayList<>(Arrays.asList(node2));
         node1.neighbors = list2;
         node2.neighbors = list2;
-
-        CloneGraph obj = new CloneGraph();
         UndirectedGraphNode res = obj.cloneGraph(node0);
-
         UndirectedGraphNode.printGraph(res);
 
     }
-    private HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
+
+    /**
+     * dfs不断搜索node的neighbors,把新的neighbors放入map
+     */
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
-        return clone(node);
+        HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
+        return helper(node, map);
     }
 
-    private UndirectedGraphNode clone(UndirectedGraphNode node) {
+    public UndirectedGraphNode helper(UndirectedGraphNode node, HashMap<Integer, UndirectedGraphNode> map) {
         if (node == null) return null;
-
-        if (map.containsKey(node.label)) {
+        if (!map.containsKey(node.label)) {
+            UndirectedGraphNode newNode = new UndirectedGraphNode(node.label);
+            map.put(newNode.label, newNode);
+            for (UndirectedGraphNode sub : node.neighbors) {
+                newNode.neighbors.add(helper(sub, map));
+            }
+            return newNode;
+        } else {
             return map.get(node.label);
         }
-        UndirectedGraphNode clone = new UndirectedGraphNode(node.label);
-        map.put(clone.label, clone);
-        for (UndirectedGraphNode neighbor : node.neighbors) {
-            clone.neighbors.add(clone(neighbor));
-        }
-        return clone;
     }
 }

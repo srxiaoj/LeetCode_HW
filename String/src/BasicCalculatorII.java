@@ -1,15 +1,73 @@
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class BasicCalculatorII {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        String s2 = "42";
+        String s1 = " 3+5 / 2 ";
+        String s2 = "3+5 / 2  + 1 * 2";
         String s3 = "0-2147483647";
-        System.out.println(calculate(s3));
+//        System.out.println(calculate3(s1));
+        System.out.println(calculate3(s2));
+        System.out.println(calculate3(s3));
     }
-    public static int calculate(String s) {
+
+    public static int calculate3(String s) {
+        if (s == null || s.length() == 0) return 0;
+        s = s.trim();
+        int len = s.length();
+
+        int sign = 1;
+        int start = 0;
+        if (s.charAt(0) == '-') {
+            sign = -1;
+            start = 1;
+        }
+
+        List<Character> op = new ArrayList<>(Arrays.asList('+','-','*','/'));
+        int i = start;
+        int res = 0;
+        boolean hasOp = false;
+        while (i < len) {
+            char c = s.charAt(i);
+            if (op.contains(c)) {
+                hasOp = true;
+                int first = Integer.parseInt(s.substring(start, i).trim());
+                if (c == '+') {
+                    return sign * (first + calculate3(s.substring(i + 1)));
+                } else if (c == '-') {
+                    return sign * (first - calculate3(s.substring(i + 1)));
+                } else if (c == '*') {
+                    int last = i;
+                    while (i < len && !op.contains(s.charAt(i))) {
+                        i++;
+                    }
+                    int second = Integer.parseInt(s.substring(last, i).trim());
+                    res += first * second;
+                } else {
+                    i++;
+                    int last = i;
+                    while (i < len && !op.contains(s.charAt(i))) {
+                        i++;
+                    }
+                    int second = Integer.parseInt(s.substring(last, i).trim());
+                    res += first / second;
+                }
+            }
+
+            i++;
+        }
+        if (!hasOp) {
+            return Integer.parseInt(s.trim());
+        } else {
+            return sign * res;
+        }
+
+    }
+
+   /* public static int calculate(String s) {
         int len = s.length();
         if(s==null || len==0) return 0;
         Stack<Integer> stack = new Stack<Integer>();
@@ -43,10 +101,10 @@ public class BasicCalculatorII {
         }
         return re;
         
-        /*
+        *//*
          * method 2
-         */
-        /*
+         *//*
+        *//*
         s = s.replaceAll("\\s", "");//remove all spaces
         if (s.length() == 0) return 0;
         //compute the * and / first
@@ -105,15 +163,9 @@ public class BasicCalculatorII {
                 
         }
         return Integer.parseInt(s);
-        */
-    }
-    /**
-     * 
-     * @param a
-     * @param op
-     * @param b
-     * @return
-     */
+        *//*
+    }*/
+
     private static int operator(String a, char op, String b) {
         int i1;
         if (a.charAt(0) == '-')
