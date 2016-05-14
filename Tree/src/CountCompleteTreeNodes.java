@@ -15,6 +15,12 @@ public class CountCompleteTreeNodes {
         System.out.println("number of nodes: " + countNodes(root));
     }
 
+
+    /**
+     * n 记录最底层的node数
+     * 如果getHeight(2) == getHeight(8)， 那么意味着2对应着的最底层的4个一定不是null，则最底层 n += 4
+     * 计算当前node扩展到最底层的方法为，i: 当前层数，h： 总层数 num = 1 << (h - i)
+     */
     public static int countNodes(TreeNode root) {
         if (root == null) return 0;
         int n = 0;
@@ -26,32 +32,13 @@ public class CountCompleteTreeNodes {
                 root = root.right;
 //                n += Math.pow(2, h - i);
                 n = n + (1 << h - i);
-                i++;
             } else {
                 root = root.left;
-                i++;
             }
+            i++;
         }
 //        return (int) Math.pow(2, h - 1) - 1 + n + 1;
         return (int) (1 << h - 1) - 1 + n + 1;
-
-       /* if (root == null) return 0;
-        if (root.left == null && root.right == null) return 1;
-        else if (root.left != null && root.right == null) return 2;
-        
-        int right = getHeight(root.right);
-//        System.out.println("right getHeight is:" + right + ", right value is: " + root.right.val);
-        int left = getHeight(root.left);
-//        System.out.println("left getHeight is: " + left + ", left value is: " + root.left.val);
-        int result = 0;
-        if (right == left) {
-//            result = (int) Math.pow(2, left) - 1 + countNodes(root.right);
-            result = (1 << left) - 1 + countNodes(root.right); //shift by one bit is faster than Math.pow
-        } else {
-//            result = (int) Math.pow(2, right) - 1 + countNodes(root.left);
-            result = (1 << right) - 1 + countNodes(root.left);
-        }
-        return result + 1;*/
     }
     public static int getHeight(TreeNode root) {
         if (root == null) return 0;
