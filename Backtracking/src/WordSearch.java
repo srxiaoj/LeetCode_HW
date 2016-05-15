@@ -1,13 +1,6 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
-
-
 public class WordSearch {
     private static boolean[][] visited;
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
         System.out.println(exist(board, "ABCCED"));
         System.out.println(exist(board, "SEE"));
@@ -16,6 +9,10 @@ public class WordSearch {
         System.out.println((exist(test, "a")));
         
     }
+
+    /**
+     * 注意当4个方向搜索完结果都为false的时候，要把visited[i][j]恢复为false
+     */
     public static boolean exist(char[][] board, String word) {
         int row = board.length;
         int col = board[0].length;
@@ -43,10 +40,8 @@ public class WordSearch {
             return false;
         //start to visit this position
         visited[i][j] = true;
-        if (search(board, word, i-1, j, index+1) || 
-            search(board, word, i+1, j, index+1) ||
-            search(board, word, i, j-1, index+1) ||
-            search(board, word, i, j+1, index+1)) {
+        if (search(board, word, i-1, j, index+1) || search(board, word, i+1, j, index+1) ||
+            search(board, word, i, j-1, index+1) || search(board, word, i, j+1, index+1)) {
             return true;
         }
         //if current position failed to convert a result, change the visit status to false

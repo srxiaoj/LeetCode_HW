@@ -8,8 +8,8 @@ public class LongestPalindromic {
         String my = "aaabaaaa";
         System.out.println(ob.longestPalindrome(my));
     }
-    private static int globalMax = 0;
-    private static int start = 0;
+    private int globalMax = 0;
+    private int start = 0;
     public String longestPalindrome(String s) {
         if (s == null || s.length() < 2) return s;
         for (int i = 0; i < s.length(); i++) {

@@ -1,6 +1,4 @@
-/**
- * Created by thanksgiving on 1/13/16.
- */
+
 public class WiggleSortII {
     public static void main(String[] args) {
         WiggleSortII obj = new WiggleSortII();
