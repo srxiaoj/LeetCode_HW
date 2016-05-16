@@ -5,7 +5,7 @@ public class ReverseWordsinaString {
     public static void main(String[] args) {
         ReverseWordsinaString obj = new ReverseWordsinaString();
 //        String a = "the sky is blue";
-        String s = "the sky is blue";
+        String s = "the   sky is blue";
         System.out.println("Before reverse");
         System.out.println(s);
         s = obj.reverseWords(s);
@@ -16,15 +16,15 @@ public class ReverseWordsinaString {
         String s1 = "  ";
         System.out.println("Before reverse");
         System.out.println(s1);
-        s = obj.reverseWords(s1);
+        s1 = obj.reverseWords(s1);
         System.out.println("After reverse");
         System.out.println(s1);
 
 
-        String s2 = "  blue";
+        String s2 = "     blue";
         System.out.println("Before reverse");
         System.out.println(s2);
-        s = obj.reverseWords(s2);
+        s2 = obj.reverseWords(s2);
         System.out.println("After reverse");
         System.out.println(s2);
     }
@@ -34,6 +34,7 @@ public class ReverseWordsinaString {
      */
     public String reverseWords(String s) {
         if (s == null || s.length() == 0) return s;
+        s = s.replaceAll("[ ]+", " ").trim();
         char[] a = s.toCharArray();
         swap(a, 0, a.length - 1);
         int index = 0;
