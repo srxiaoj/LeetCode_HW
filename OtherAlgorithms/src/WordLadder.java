@@ -5,9 +5,7 @@ import java.util.Set;
 
 
 public class WordLadder {
-
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         String begin = "hit";
         String end = "cog";
         Set<String> test = new HashSet<>();
@@ -31,27 +29,21 @@ public class WordLadder {
         queue.add(null);
 
         // Mark visited word
-        Set<String> visited = new HashSet<String>();
+        Set<String> visited = new HashSet<>();
         visited.add(beginWord);
 
         int level = 1;
-
         while (!queue.isEmpty()) {
-          String str = queue.poll();
-
-          if (str != null) {
-            // Modify str's each character (so word distance is 1)
-            for (int i = 0; i < str.length(); i++) {
-              char[] chars = str.toCharArray();
-
+          String prevWord = queue.poll();
+          if (prevWord != null) {
+            // Modify prevWord's each character (so word distance is 1)
+            for (int i = 0; i < prevWord.length(); i++) {
+              char[] chars = prevWord.toCharArray();
               for (char c = 'a'; c <= 'z'; c++) {
                 chars[i] = c;
-
                 String word = new String(chars);
-
                 // Found the end word
                 if (word.equals(endWord)) return level + 1;
-
                 // Put it to the queue
                 if (wordList.contains(word) && !visited.contains(word)) {
                   queue.add(word);
@@ -61,13 +53,11 @@ public class WordLadder {
             }
           } else {
             level++;
-
-            if (!queue.isEmpty()) { 
+            if (!queue.isEmpty()) {
               queue.add(null);
             }
           }
         }
-
         return 0;
         
         /*
@@ -133,10 +123,6 @@ public class WordLadder {
     }
     /**
      * get the index of next string with one change of character
-     * @param st string list
-     * @param u target string
-     * @param reached 
-     * @return
      */
     private static int getNextMove(int[] dist, boolean[] reached) {
         int min = Integer.MAX_VALUE, minIndex = 0;

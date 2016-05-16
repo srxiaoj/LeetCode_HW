@@ -1,7 +1,7 @@
 /**
  * Created by thanksgiving on 1/13/16.
  */
-public class WallsandGates {
+public class WallsandGates {
     public static final int INF = Integer.MAX_VALUE;
     public static void main(String[] args) {
         WallsandGates obj = new WallsandGates();

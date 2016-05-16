@@ -7,7 +7,7 @@ public class RestoreIPAddresses {
         RestoreIPAddresses obj = new RestoreIPAddresses();
         String test = "010010";
         System.out.println(obj.restoreIpAddresses(test));
-        String test2 = "25525511135";
+        String test2 ="25525511135";
         System.out.println(obj.restoreIpAddresses(test2));
     }
     public List<String> restoreIpAddresses(String s) {

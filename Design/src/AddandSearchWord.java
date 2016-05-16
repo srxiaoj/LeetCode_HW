@@ -1,8 +1,3 @@
-import java.util.HashMap;
-
-/**
- * Created by thanksgiving on 1/6/16.
- */
 public class AddandSearchWord {
     public static void main(String[] args) {
         // Your WordDictionary object will be instantiated and called as such:
@@ -29,12 +24,72 @@ public class AddandSearchWord {
 }
 
 class WordDictionary {
+    private TrieNode root;
+    public WordDictionary() {
+        root = new TrieNode();
+    }
+
     private class TrieNode {
-        private boolean isLeaf;
+        private boolean hasWord = false;
+        private TrieNode[] children = new TrieNode[26];
+        private char val;
+
+        public TrieNode() {
+            this.val = ' ';
+        }
+        public TrieNode(char c) {
+            this.val = c;
+        }
+    }
+
+    // Adds a word into the data structure.
+    public void addWord(String word) {
+        TrieNode cur = root;
+        for (char c : word.toCharArray()) {
+            if (cur.children[c - 'a'] == null) {
+                cur.children[c - 'a'] = new TrieNode(c);
+            }
+            cur = cur.children[c - 'a'];
+        }
+        cur.hasWord = true;
+    }
+
+    // Returns if the word is in the data structure. A word could
+    // contain the dot character '.' to represent any one letter.
+    public boolean search(String word) {
+        TrieNode cur = root;
+        return helper(cur, word, 0);
+    }
+
+    private boolean helper(TrieNode cur, String word, int pos) {
+        if (cur == null) return false;
+        if (pos == word.length()) return cur.hasWord;
+        char c = word.charAt(pos);
+        if (c != '.' && cur.children[c - 'a'] == null) {
+            return false;
+        }
+        if (c == '.') {
+            for (int i = 0; i < 26; i++) {
+                if (helper(cur.children[i], word, pos + 1)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return helper(cur.children[c - 'a'], word, pos + 1);
+
+    }
+
+
+
+
+
+   /* private class TrieNode {
+        private boolean hasWord;
         private HashMap<Character, TrieNode> children;
 
         public TrieNode() {
-            isLeaf = false;
+            hasWord = false;
             children = new HashMap<Character, TrieNode>();
         }
     }
@@ -50,7 +105,7 @@ class WordDictionary {
             }
             cur = cur.children.get(word.charAt(i));
         }
-        cur.isLeaf = true;
+        cur.hasWord = true;
     }
 
     // Returns if the word is in the data structure. A word could
@@ -62,7 +117,7 @@ class WordDictionary {
     private boolean searchHelper(TrieNode node, int pos, String word) {
         //if the word has all been scanned, return
         if (pos == word.length()) {
-            return node.isLeaf;
+            return node.hasWord;
         }
         //reach the leaf before finishing scanning the word
         if (node.children.size() == 0) {
@@ -87,5 +142,5 @@ class WordDictionary {
         //if character at current position matches the node,
         //recursively search the remaining word
         return searchHelper(node.children.get(word.charAt(pos)), pos + 1, word);
-    }
+    }*/
 }

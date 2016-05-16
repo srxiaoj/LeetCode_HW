@@ -8,7 +8,6 @@ import java.util.Set;
 public class SimplifyPath {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String path = "/home/users/../";
 		String path2 = "/a/./b/../../c/d";
 		System.out.println(simplifyPath(path));
