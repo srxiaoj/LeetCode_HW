@@ -22,6 +22,7 @@ public class WordLadder {
         test.add("b");
         System.out.println(ladderLength(s, e, test2));
     }
+
     public static int ladderLength(String beginWord, String endWord, Set<String> wordList) {
         // Use queue to help BFS
         Queue<String> queue = new LinkedList<String>();
@@ -34,29 +35,29 @@ public class WordLadder {
 
         int level = 1;
         while (!queue.isEmpty()) {
-          String prevWord = queue.poll();
-          if (prevWord != null) {
-            // Modify prevWord's each character (so word distance is 1)
-            for (int i = 0; i < prevWord.length(); i++) {
-              char[] chars = prevWord.toCharArray();
-              for (char c = 'a'; c <= 'z'; c++) {
-                chars[i] = c;
-                String word = new String(chars);
-                // Found the end word
-                if (word.equals(endWord)) return level + 1;
-                // Put it to the queue
-                if (wordList.contains(word) && !visited.contains(word)) {
-                  queue.add(word);
-                  visited.add(word);
+            String prevWord = queue.poll();
+            if (prevWord != null) {
+                // Modify prevWord's each character (so word distance is 1)
+                for (int i = 0; i < prevWord.length(); i++) {
+                    char[] chars = prevWord.toCharArray();
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        chars[i] = c;
+                        String word = new String(chars);
+                        // Found the end word
+                        if (word.equals(endWord)) return level + 1;
+                        // Put it to the queue
+                        if (wordList.contains(word) && !visited.contains(word)) {
+                            queue.add(word);
+                            visited.add(word);
+                        }
+                    }
                 }
-              }
+            } else {
+                level++;
+                if (!queue.isEmpty()) {
+                    queue.add(null);
+                }
             }
-          } else {
-            level++;
-            if (!queue.isEmpty()) {
-              queue.add(null);
-            }
-          }
         }
         return 0;
         
@@ -94,11 +95,12 @@ public class WordLadder {
         return 0;
         */
     }
+
     private static String[] getSource(String beginWord, String endWord, Set<String> wordList) {
-        int n = wordList.size()+2;//including the begin and end word      
+        int n = wordList.size() + 2;//including the begin and end word
         String[] list = new String[n];
         list[0] = beginWord;
-        list[n-1] = endWord;
+        list[n - 1] = endWord;
         int k = 1;
         for (String s : wordList) {
             list[k] = s;
@@ -106,8 +108,9 @@ public class WordLadder {
         }
         return list;
     }
+
     private static int[][] getAdjacentMatrix(String beginWord, String endWord, Set<String> wordList) {
-        int n = wordList.size()+2;
+        int n = wordList.size() + 2;
         String[] list = getSource(beginWord, endWord, wordList);
         int[][] matrix = new int[n][n];
         for (int i = 0; i < n; i++) {
@@ -121,6 +124,7 @@ public class WordLadder {
         }
         return matrix;
     }
+
     /**
      * get the index of next string with one change of character
      */
@@ -134,8 +138,10 @@ public class WordLadder {
         }
         return minIndex;
     }
+
     /**
      * check whether a and b are only one move away
+     *
      * @param a string a
      * @param b string b
      * @return true or false
@@ -149,31 +155,30 @@ public class WordLadder {
         if (count == 1) return true;
         else return false;
     }
+
     private static void printSolution(int[] dist, int n) {
         System.out.printf("Vertex   Distance from Source\n");
         for (int i = 0; i < n; i++) {
             System.out.printf("%d \t\t %d\n", i, dist[i]);
         }
     }
+
     //print array
-    public static void printSolution(String[] A, int n)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
-            if(i != A.length-1)
+    public static void printSolution(String[] A, int n) {
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
                 System.out.print(A[i] + ", ");
             else
                 System.out.print(A[i]);
         }
         System.out.println("");
     }
+
     //print two D array
-    public static void printArray(int[][] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
+    public static void printArray(int[][] A) {
+        for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < A.length; j++) {
-                if(j != A.length-1)
+                if (j != A.length - 1)
                     System.out.print(A[i][j] + ", ");
                 else
                     System.out.print(A[i][j]);

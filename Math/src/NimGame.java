@@ -1,8 +1,5 @@
-
 public class NimGame {
-
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         NimGame obj = new NimGame();
         // System.out.println(obj.canWinNim(1348820612));
         System.out.println(obj.canWinNim(7));
