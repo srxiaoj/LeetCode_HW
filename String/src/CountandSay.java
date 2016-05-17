@@ -2,7 +2,6 @@
 public class CountandSay {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         CountandSay obj = new CountandSay();
         String sequence = "1, 11, 21, 1211, 111221, 312211,"
                 + "13112221, 1113213211, 31131211131221...";

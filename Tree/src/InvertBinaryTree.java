@@ -14,13 +14,17 @@ public class InvertBinaryTree {
         System.out.println(newTree.left.val);
         System.out.println(newTree.left.right.val);
     }
+
+    /**
+     * 将left child存为temp, 然后recursive call invertTree方法
+     * root.left = invertTree(right)
+     * root.right = invertTree(temp)
+     */
     public static TreeNode invertTree(TreeNode root) {
         if (root == null) return root;
-        TreeNode tmp = root.left;
-        root.left = root.right;
-        root.right = tmp;
-        invertTree(root.left);
-        invertTree(root.right);
+        TreeNode temp = root.left;
+        root.left = invertTree(root.right);
+        root.right = invertTree(temp);
         return root;
     }
 }
