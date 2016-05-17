@@ -11,10 +11,61 @@ public class Atoi {
         System.out.println(myAtoi(a3));
         String a4 = "1.3";
         System.out.println(myAtoi(a4));
+        String a5 = "+1";
+        System.out.println(myAtoi(a5));
+        String a6 = "9223372036854775809";
+        System.out.println(myAtoi(a6));
+        String a7 = "abc";
+        System.out.println(myAtoi(a7));
+        String a8 = "+-2";
+        System.out.println(myAtoi(a8));
     }
 
+    /**
+     * 注意所有的corner case
+     */
     public static int myAtoi(String str) {
-        if (str.isEmpty()) return 0;
+        int n = str.length();
+        int i = 0;
+        int sign = 1;
+        StringBuilder sb = new StringBuilder();
+        while (i < n && str.charAt(i) == ' ') {
+            i++;
+        }
+        if (i == n) return 0;
+        if (str.charAt(i) == '+') {
+            sign = 1;
+            i++;
+        } else if (str.charAt(i) == '-') {
+            sign = -1;
+            i++;
+        }
+        int digit = 1;
+        while (i < n && Character.isDigit(str.charAt(i))) {
+            digit++;
+            if (digit > 12) {
+                break;
+            }
+            sb.append(str.charAt(i));
+            i++;
+        }
+        if (sb.length() == 0) {
+            return 0;
+        } else {
+            long res = (long) (sign * Long.parseLong(sb.toString()));
+            if (res < Integer.MIN_VALUE) {
+                return Integer.MIN_VALUE;
+            } else if (res > Integer.MAX_VALUE) {
+                return Integer.MAX_VALUE;
+            } else {
+                return (int) (res);
+            }
+        }
+
+
+
+
+       /* if (str.isEmpty()) return 0;
         int sign = 1, base = 0, i = 0;
         while (str.charAt(i) == ' ')
             i++;
@@ -26,6 +77,6 @@ public class Atoi {
             }
             base = 10 * base + (str.charAt(i++) - '0');
         }
-        return base * sign;
+        return base * sign;*/
     }
 }

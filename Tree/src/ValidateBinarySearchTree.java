@@ -21,9 +21,23 @@ public class ValidateBinarySearchTree {
     }
 
     /**
+     * top down方法
+     * 访问左子树时候更新左子树的max为node.val， 访问右子树时候更新右子树的min为node.val
+     * 注意要用double防止Integer.MAX_VALUE为root的val
+     */
+    public boolean isValidBST2(TreeNode root) {
+        return helper(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
+    }
+
+    private boolean helper(TreeNode node, double min, double max) {
+        if (node == null) return true;
+        if (node.val <= min || node.val >= max) return false;
+        return (helper(node.left, min, (double) node.val) && helper(node.right, (double) node.val, max));
+    }
+
+    /**
      * 调用ResultType，存放isValid，以及左右子树最大，最小值
-     * @param root
-     * @return
+     * bottom up 方法
      */
     public static boolean isValidBST(TreeNode root) {
         return isValid(root).isValid;
