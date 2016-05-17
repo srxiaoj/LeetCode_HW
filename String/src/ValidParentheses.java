@@ -3,7 +3,6 @@ import java.util.Stack;
 public class ValidParentheses {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         String test = "()[]{}";
         String test2 = "([])";
         ValidParentheses obj = new ValidParentheses();
