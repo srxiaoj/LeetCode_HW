@@ -29,6 +29,9 @@ public class RotateArray {
     }*/
 
 
+    /**
+     * 先把两部分分别翻转，然后再翻转全部array
+     */
     public void rotate(int[] nums, int k) {
         if (nums == null || nums.length <= 1) return;
         int n = nums.length;
