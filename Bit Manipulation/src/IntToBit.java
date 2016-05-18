@@ -7,6 +7,8 @@ public class IntToBit {
             System.out.println(i + " " + intToBit(i));
         }
 
+        System.out.println("38: " + intToBit(38));
+
         int i = 700;
         System.out.println(i << 1);
         System.out.println(i >> 1);
