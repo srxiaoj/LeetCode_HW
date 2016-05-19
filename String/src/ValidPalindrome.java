@@ -11,8 +11,7 @@ public class ValidPalindrome {
     }
     public boolean isPalindrome(String s) {
         if (s == null || s.length() == 0) return true;
-        String sLow = s.toLowerCase().replaceAll("\\s", "");
-        System.out.println(sLow);
+        String sLow = s.toLowerCase();
         int i = 0;
         int j = sLow.length() - 1;
         while (i <= j) {
@@ -22,7 +21,7 @@ public class ValidPalindrome {
             while (i <= j && !Character.isLetterOrDigit(sLow.charAt(j))) {
                 j--;
             }
-            if (i >= sLow.length() || j < 0 || i > j) break;
+            if (i > j) break;
             if (sLow.charAt(i) != sLow.charAt(j)) {
                 return false;
             }
