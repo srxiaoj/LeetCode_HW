@@ -1,13 +1,11 @@
 public class ValidPalindrome {
-
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         ValidPalindrome obj = new ValidPalindrome();
         String test = "A man, a plan, a canal: Panama";
         String test2 = "a a";
         System.out.println(obj.isPalindrome(test));
         System.out.println(obj.isPalindrome(test2));
-        
+
     }
     public boolean isPalindrome(String s) {
         if (s == null || s.length() == 0) return true;

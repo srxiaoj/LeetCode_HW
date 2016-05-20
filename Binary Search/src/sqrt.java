@@ -2,12 +2,13 @@
  * Created by thanksgiving on 3/26/16.
  */
 public class sqrt {
-
     public static void main(String[] args) {
-        System.out.println(mySqrt(13));
+//        System.out.println(mySqrt(13));
         System.out.println(mySqrt(2147395599));
         System.out.println(mySqrt(2147483647));
         System.out.println(mySqrt(16));
+        // sqrt(2147483647) = 46340
+        System.out.println(2147483647 / 46340);
     }
     public static int mySqrt(int x) {
         int start = 0;

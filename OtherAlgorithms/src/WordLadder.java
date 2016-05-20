@@ -1,7 +1,4 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 
 public class WordLadder {
@@ -23,8 +20,48 @@ public class WordLadder {
         System.out.println(ladderLength(s, e, test2));
     }
 
+    /**
+     * 利用bfs的idea，每次将一个单词的所有变形放入一个list，然后判断改list的单词是否是endword
+     * 如果不是，则将这个list的单词全部重新放入queue, 进入下一层
+     */
     public static int ladderLength(String beginWord, String endWord, Set<String> wordList) {
-        // Use queue to help BFS
+        Queue<List<String>> queue = new LinkedList<>();
+        List<String> list = new ArrayList<>();
+        list.add(beginWord);
+        queue.offer(list);
+        Set<String> visited = new HashSet<>();
+        visited.add(beginWord);
+        int level = 1;
+        while (!queue.isEmpty()) {
+            List<String> sub = queue.poll();
+            List<String> next = new ArrayList<>();
+            for (int i = 0; i < sub.size(); i++) {
+                String prev = sub.get(i);
+                for (int k = 0; k < prev.length(); k++) {
+                    char[] array = prev.toCharArray();
+                    for (int j = 0; j < 26; j++) {
+                        array[k] = (char) ('a' + j);
+                        String newWord = new String(array);
+                        if (newWord.equals(endWord)) {
+                            return level + 1;
+                        }
+                        if (wordList.contains(newWord) && !visited.contains(newWord)) {
+                            next.add(newWord);
+                            visited.add(newWord);
+                        }
+                    }
+                }
+            }
+            if (!next.isEmpty()) {
+                level++;
+                queue.offer(next);
+            }
+        }
+        return 0;
+
+
+
+       /* // Use queue to help BFS
         Queue<String> queue = new LinkedList<String>();
         queue.add(beginWord);
         queue.add(null);
@@ -59,7 +96,7 @@ public class WordLadder {
                 }
             }
         }
-        return 0;
+        return 0;*/
         
         /*
         // method 2: dijkstra search, using adjacent matrix, O(n^2)
