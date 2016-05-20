@@ -1,6 +1,9 @@
 13. Roman to Integer
 88. Merge Sorted Array
 33. Search in Rotated Sorted Array
+12. Integer to Roman
+22. Generate Parentheses
+165. Compare Version Numbers
 
 
 
@@ -32,7 +35,6 @@
 323. Number of Connected Components in an Undirected GraphInterface
 294. Flip Game II
 320. Generalized Abbreviation
-22.	Generate Parentheses
 250. Count Univalue Subtrees
 254. Factor Combinations
 199. Binary Tree Right Side Views

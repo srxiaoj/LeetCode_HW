@@ -1,24 +1,19 @@
-
 public class RemoveNthNodeFromEndofList {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
+        ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
         //ListNode result = removeNthFromEnd(head, 2);
-        
-        ListNode test = new ListNode(1);
-        //test.next = new ListNode(2);
+
+        ListNode test = ListNode.create(new int[]{1,2});
         ListNode res = removeNthFromEnd(test, 1);
+        ListNode.printListNode(res);
     }
+
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         
         /*
-        ListNode start = new ListNode(0);
-        ListNode slow = start, fast = start;
+        ListNode dummy = new ListNode(0);
+        ListNode slow = dummy, fast = dummy;
         slow.next = head;
         //getLevelOfList(slow);
         //move fast ahead so that the gap between slow and fast is n
@@ -31,41 +26,34 @@ public class RemoveNthNodeFromEndofList {
             fast = fast.next;
         }
         slow.next = slow.next.next;
-        //getLevelOfList(start);
-        return start.next;
+        //getLevelOfList(dummy);
+        return dummy.next;
         */
-        
-        int level = 0;
-        ListNode start = new ListNode(0);
-        ListNode res = start;
+
+        ListNode dummy = new ListNode(0);
+        ListNode res = dummy;
         res.next = head;
-        while (res != null) {
-            //System.out.println(res.val);
-            res = res.next;
-            level++;
-        }
-        getLevelOfList(head);
-        res = start;
+        int level = getLevelOfList(head);
+        res = dummy;
         int j = 0;
-        while (j < level-n-1) {
+        while (j < level - n) {
             res = res.next;
             //System.out.println(res.val);
             j++;
         }
         res.next = res.next.next;
-        getLevelOfList(start.next);
-        return start.next;
-        
+        return dummy.next;
+
     }
-    private static void getLevelOfList(ListNode head) {
+
+    private static int getLevelOfList(ListNode head) {
         ListNode res = head;
         int level = 0;
         while (res != null) {
-            System.out.println("level " + level + ": " + res.val);
             res = res.next;
             level++;
         }
-        System.out.println("level is: " + level);     
+        return level;
     }
 
 }
