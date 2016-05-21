@@ -10,6 +10,10 @@ public class RotateImage {
         printArray(matrix);
     }
 
+    /**
+     * 注意 i，j的范围, i为 0 to (n - 1) / 2, j 为 0 to n / 2 - 1
+     * @param matrix
+     */
     public static void rotate(int[][] matrix) {
         if (matrix == null) return;
         int n = matrix.length;
