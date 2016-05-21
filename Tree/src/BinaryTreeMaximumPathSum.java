@@ -2,7 +2,6 @@
 public class BinaryTreeMaximumPathSum {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         /**
          *                 6
          *              /    \
@@ -17,31 +16,29 @@ public class BinaryTreeMaximumPathSum {
         BinaryTreeMaximumPathSum obj = new BinaryTreeMaximumPathSum();
         System.out.println(obj.maxPathSum(root));
     }
-    private int max = Integer.MIN_VALUE;
-    public int maxPathSum(TreeNode root) {
-        dfs(root);
-        return max;
-    }
-    private int dfs(TreeNode root) {
-        if (root == null) return 0;
-        // 2 possible choices
-        // 1.Already calculated in left or right child
-        // 2.left max path + right max path + root
-        int lMax = dfs(root.left);
-        int rMax = dfs(root.right);
-        if (lMax + rMax + root.val > max) {
-            max = lMax + rMax + root.val; // continuing update max while calculating lMax and rMax
-        }
-        // if the below path is negative, just make it 0 so that we could 'ignore' it
-        return Math.max(0, root.val + Math.max(lMax, rMax));
-    }
+
     /**
-     * return the sum of all the children value including the root
-     * @param root
-     * @return
+     * 用一个pathMax记录单条path（包含当前node）的最大值
+     * 用一个max记录该node所能达到的最大值
      */
-    private static int nodeTotalSum(TreeNode root) {
-        if (root == null) return 0;
-        return root.val + nodeTotalSum(root.left) + nodeTotalSum(root.right);
+    public int maxPathSum(TreeNode root) {
+        return helper(root).max;
+    }
+
+    private Result helper(TreeNode node) {
+        if (node == null) return new Result(0, Integer.MIN_VALUE);
+        Result left = helper(node.left);
+        Result right = helper(node.right);
+        int path = Math.max(Math.max(left.pathMax, right.pathMax) + node.val, 0);
+        int max = Math.max(left.pathMax + right.pathMax + node.val, Math.max(left.max, right.max));
+        return new Result(path, max);
+    }
+    private class Result {
+        int pathMax;
+        int max;
+        public Result(int pathMax, int max) {
+            this.pathMax = pathMax;
+            this.max = max;
+        }
     }
 }
