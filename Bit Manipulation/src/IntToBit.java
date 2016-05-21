@@ -22,7 +22,7 @@ public class IntToBit {
      */
     public static String intToBit(int num) {
         // print a bit with total length
-        int totalDigit = 31;
+        int totalDigit = 32;
         StringBuilder sb = new StringBuilder();
         while (num > 0) {
             int mod = num % 2;
