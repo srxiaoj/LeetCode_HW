@@ -12,6 +12,14 @@ public class LengthofLastWord {
         System.out.println(lengthOfLastWord("day  "));
     }
 
+    /**
+     * 先找到最后一个空格，如果不存在则返回 s.length()
+     * 如果这个空格不是在最后一位，那么之后的string长度则为last word的长度
+     * 如果空格在最后一位，则要往前看前一个单词
+     * 如果存在前一个单词，则要找到这个单词前的空格和之后的空格之间的差
+     * @param s
+     * @return
+     */
     public static int lengthOfLastWord(String s) {
         if (s == null || s.length() == 0) return 0;
         int n = s.length();
