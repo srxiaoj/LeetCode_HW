@@ -2,7 +2,6 @@
 public class PalindromeLinkedList {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         /**
          * slow: 1->2->3->2->1 -> 1->2->3->2->1 -> 1->2->3->2->1
          * fast: 1->3->1->2->2 -> 1->3->1->2->2 -> 1->3->1->2->2
@@ -14,17 +13,36 @@ public class PalindromeLinkedList {
          * fast: 1->3->6->1->3->6 -> 1->3->6->1->3->6 -> 1->3->6->1->3->6
          */
         
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-//        head.next.next = new ListNode(3);
-//        head.next.next.next = new ListNode(2);
-//        head.next.next.next.next = new ListNode(1);
-        head.printListNode(head);
+        ListNode head = ListNode.create(new int[]{1,1,2,1});
+        ListNode.printListNode(head);
 //        head.printListNode(head.reverse(head));
         System.out.println(isPalindrome(head));
     }
     public static boolean isPalindrome(ListNode head) {
-        if (head == null || head.next == null) return true;
+        if (head == null) return true;
+        ListNode cur = head;
+        ListNode dummy = new ListNode(0);
+        ListNode copy = dummy;
+        while (cur != null) {
+            copy.next = new ListNode(cur.val);
+            copy = copy.next;
+            cur = cur.next;
+        }
+        cur = head;
+        ListNode reverse = reverse(cur);
+        cur = dummy.next;
+        while (cur != null) {
+            if (cur.val != reverse.val) {
+                return false;
+            } else {
+                cur = cur.next;
+                reverse = reverse.next;
+            }
+        }
+        return true;
+
+
+       /* if (head == null || head.next == null) return true;
         ListNode copy = head;
         ListNode cur = new ListNode(0);
         ListNode curCopy = cur;
@@ -58,7 +76,7 @@ public class PalindromeLinkedList {
             reverse = reverse.next;
             cur = cur.next;
         }
-        return true;
+        return true;*/
 
 
         /*ListNode slow = head;
