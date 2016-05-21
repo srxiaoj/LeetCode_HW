@@ -24,18 +24,20 @@ public class ThreeSumClosest {
             l = i + 1;
             r = nums.length - 1;
             while (l < r) {
-                if (nums[l] + nums[r] <= needed) {
+                if (nums[l] + nums[r] < needed) {
                     if (min > Math.abs(nums[i] + nums[r] + nums[l] - target)) {
                         min = Math.abs(nums[i] + nums[r] + nums[l] - target);
                         res = nums[i] + nums[r] + nums[l];
                     }
                     l++;
-                } else {
+                } else if (nums[l] + nums[r] > needed) {
                     if (min > Math.abs(nums[i] + nums[r] + nums[l] - target)) {
                         min = Math.abs(nums[i] + nums[r] + nums[l] - target);
                         res = nums[i] + nums[r] + nums[l];
                     }
                     r--;
+                } else {
+                    return target;
                 }
             }
         }
