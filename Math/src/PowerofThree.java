@@ -12,13 +12,13 @@ public class PowerofThree {
     }
 
     public boolean isPowerOfThree(int n) {
-        double x = Math.log(n) / Math.log(3);
-        return (Math.abs(x - Math.rint(x)) <= 0.00000000000001);
+      /*  double x = Math.log(n) / Math.log(3);
+        return (Math.abs(x - Math.rint(x)) <= 0.00000000000001);*/
 
-       /* while ((n % 3 == 0) && n > 1) {
+        while ((n % 3 == 0) && n > 1) {
             n /= 3;
         }
-        return n == 1;*/
+        return n == 1;
 
         /*long copy = n;
         if (n <= 0) return false;
