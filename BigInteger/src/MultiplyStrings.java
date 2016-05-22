@@ -25,27 +25,33 @@ public class MultiplyStrings {
      *   5
      *  4
      */
-    public static String multiply(String num1, String num2) {
-        int len1 = num1.length(), len2 = num2.length();
-        int[] res = new int[len1 + len2];
-        for (int i = len1 - 1; i >= 0; i--) {
-            for (int j = len2 - 1; j >= 0; j--) {
-                int tmp = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
-                res[i + j] += (tmp + res[i + j + 1]) / 10;
-                if (res[i + j] > 9) {
-                    res[i + j - 1] += 1;
-                    res[i + j] = res[i + j] % 10;
-                }
-                res[i + j + 1] = (tmp + res[i + j + 1]) % 10;
+    public static String multiply(String a, String b) {
+        int m = a.length();
+        int n = b.length();
+        int[] res = new int[m + n];
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                int first = a.charAt(i) - '0';
+                int second = b.charAt(j) - '0';
+                int product = first * second;
+                res[i + j] += (product + res[i + j + 1]) / 10;
+                res[i + j + 1] = (product + res[i + j + 1]) % 10;
             }
         }
+
         StringBuilder sb = new StringBuilder();
-        for (int i : res) {
-            if (sb.length() > 0 || i > 0) {
-                sb.append(i);
-            }
+        int i = 0;
+        while (i < res.length && res[i] == 0) {
+            i++;
         }
-        return sb.length() == 0 ? "0" : sb.toString();
+        while (i < res.length) {
+            sb.append(res[i]);
+            i++;
+        }
+        if (sb.length() == 0) {
+            return "0";
+        }
+        return sb.toString();
         /*
         // method 2: BigInteger
         if (num1 == null || num2 == null) return null;

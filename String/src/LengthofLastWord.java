@@ -17,11 +17,27 @@ public class LengthofLastWord {
      * 如果这个空格不是在最后一位，那么之后的string长度则为last word的长度
      * 如果空格在最后一位，则要往前看前一个单词
      * 如果存在前一个单词，则要找到这个单词前的空格和之后的空格之间的差
+     *
      * @param s
      * @return
      */
     public static int lengthOfLastWord(String s) {
-        if (s == null || s.length() == 0) return 0;
+        // 方法1：
+        int i = s.length(), lastLength = 0;
+        // 找到第一个不是空格
+        while (i > 0 && s.charAt(i - 1) == ' ') {
+            i--;
+        }
+        // 找到第一个空格
+        while (i > 0 && s.charAt(i - 1) != ' ') {
+            lastLength++;
+            i--;
+        }
+        return lastLength;
+
+
+        // 方法2：
+       /* if (s == null || s.length() == 0) return 0;
         int n = s.length();
         // 如果单词出现在空格之后
         int lastSpace = s.lastIndexOf(" ");
@@ -38,6 +54,6 @@ public class LengthofLastWord {
         if (i < 0) return 0;
         int secondLastSpace = s.substring(0, i).lastIndexOf(" ");
         if (secondLastSpace == -1) return i + 1;
-        return i - secondLastSpace;
+        return i - secondLastSpace;*/
     }
 }
