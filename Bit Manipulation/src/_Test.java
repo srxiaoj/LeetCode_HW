@@ -4,7 +4,7 @@
 public class _Test {
     public static void main(String[] args) {
         // shift test
-        int n1 = 16;
+/*        int n1 = 16;
         System.out.println(n1 + ": " + IntToBit.intToBit(n1));
         int n1LeftShift = n1 << 3;
         System.out.println(n1LeftShift + ": " + IntToBit.intToBit(n1LeftShift));
@@ -15,6 +15,10 @@ public class _Test {
         for (int i = 0; i < 5; i++) {
             cur = cur << 2;
             System.out.print(cur + " ");
-        }
+        }*/
+
+
+        int n = -1;
+        System.out.println((n & 1));
     }
 }
