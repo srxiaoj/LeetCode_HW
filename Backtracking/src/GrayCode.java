@@ -13,6 +13,7 @@ public class GrayCode {
 
     /**
      * 非常巧妙的解法：i ^ (i >> 1)
+     *
      * @param n
      * @return
      */

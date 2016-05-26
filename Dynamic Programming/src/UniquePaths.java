@@ -12,6 +12,8 @@ public class UniquePaths {
 
     /**
      * 纯数学解法
+     * 从起点到终点一共要走m + n - 2步，每一步有2种组合
+     * 所以全部的方法一共是C(m + n - 2, 2);
      */
     public int uniquePathsMath(int m, int n) {
         if (m == 0 && n == 0) return 0;
