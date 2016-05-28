@@ -13,12 +13,19 @@ public class ExcelSheetColumnTitle {
     }
 
     public static String convertToTitle(int n) {
-        StringBuilder sb = new StringBuilder();
+       /* StringBuilder sb = new StringBuilder();
         while (n > 0) {
-            char c = (char) ((n - 1) % 26 + 'A');
+//            char c = (char) ((n - 1) % 26 + 'A');
+            int tmp = n % 26 + 26;
+            char c = (char) ((n % 26 + 25) % 26 + 'A');
             sb.append(c);
             n = (n - 1) / 26;
         }
-        return sb.reverse().toString();
+        return sb.reverse().toString();*/
+
+        if ((n - 1) / 26 == 0) return String.valueOf ((char) ((n - 1) % 26 + 'A'));
+        String first = String.valueOf((char)((n - 1) % 26 + 'A'));
+        String sub = convertToTitle((n - 1) / 26);
+        return sub + first;
     }
 }

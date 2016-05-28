@@ -7,11 +7,11 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
     public static void main(String[] args) {
         int[] preorder = {15, 8, 5, 17, 16, 20};
         int[] inorder = {5, 8, 15, 16, 17, 20};
-        int[] preorder2 = {5,8,1,2,9,11};
-        int[] inorder2 = {1,8,2,5,9,11};
+        int[] preorder2 = {1, 2, 3};
+        int[] inorder2 = {2, 3, 1};
 //        TreeNode res = buildTreeDivideAndConquer(preorder, inorder);
-        TreeNode res = buildTree(preorder, inorder);
-        TreeNode.printNode(res);
+//        TreeNode res = buildTree(preorder, inorder);
+//        TreeNode.printNode(res);
         TreeNode res2 = buildTree(preorder2, inorder2);
         TreeNode.printNode(res2);
     }

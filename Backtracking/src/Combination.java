@@ -16,6 +16,26 @@ public class Combination {
         printArray(A);
     }
 
+public List<List<Integer>> combine2(int n, int k) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> part = new ArrayList<>();
+        helper(res, part, n, k, 1);
+        return res;
+    }
+
+    public void helper(List<List<Integer>> res, List<Integer> part, int n, int k, int start) {
+        if (part.size() == k) {
+            res.add(new ArrayList<>(part));
+            return;
+        }
+
+        for (int i = start; i <=n; i++) {
+            List<Integer> newPart = new ArrayList<>(part);
+            newPart.add(i);
+            helper(res, newPart, n, k, i + 1);
+        }
+    }
+
     /**
      * 每一层在上一层的基础上加一个更大的element
      * start: []

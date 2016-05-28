@@ -94,7 +94,6 @@ public class TreeNode {
 
     public static void printNode(TreeNode root) {
         int maxLevel = maxLevel(root);
-
         printNodeInternal(Collections.singletonList(root), 1, maxLevel);
     }
 

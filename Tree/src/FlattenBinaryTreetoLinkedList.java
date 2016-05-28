@@ -31,9 +31,9 @@ public class FlattenBinaryTreetoLinkedList {
         stack.add(root);
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
-            TreeNode parent = node;
             if (node != root) {
                 root.right = node;
+                root.left = null;
                 root = root.right;
             }
             if (node.right != null) {
@@ -42,7 +42,6 @@ public class FlattenBinaryTreetoLinkedList {
             if (node.left != null) {
                 stack.add(node.left);
             }
-            parent.left = null;
         }
         root = copy;
     }
