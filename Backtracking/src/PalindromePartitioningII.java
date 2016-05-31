@@ -55,10 +55,6 @@ public class PalindromePartitioningII {
 
     /**
      * partition a string into substrings of palindrome
-     * @param s
-     * @param start
-     * @param partition
-     * @param result
      */
     private void addPalindrome(String s, int start, List<String> partition,
                                List<List<String>> result, int count) {

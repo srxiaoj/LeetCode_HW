@@ -14,10 +14,7 @@ public class PalindromePartitioning {
     }
 
     /**
-     * dynamic programming
-     *
-     * @param s
-     * @return
+     * 方法1：dynamic programming
      */
     public static List<List<String>> palindromePartitioning(String s) {
         int len = s.length();
@@ -47,7 +44,7 @@ public class PalindromePartitioning {
     }
 
     /**
-     * dfs, 每次判断s.substring(start, i)是不是palindrome， 是的话就添加到list中
+     * 方法2：dfs, 每次判断s.substring(start, i)是不是palindrome， 是的话就添加到list中
      * a, a, b true
      * a, ab false
      * aa, b true
@@ -65,7 +62,6 @@ public class PalindromePartitioning {
             res.add(new ArrayList<>(part));
             return;
         }
-
         for (int i = start + 1; i <= s.length(); i++) {
             String str = s.substring(start, i);
             if (isPalindrome(str)) {
