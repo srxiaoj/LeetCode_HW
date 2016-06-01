@@ -40,7 +40,7 @@ public class CountCompleteTreeNodes {
             i++;
         }
 //        return (int) Math.pow(2, h - 1) - 1 + n + 1;
-        return (1 << h - 1) - 1 + n + 1;
+        return (1 << h - 1) - 1 + n + 1; // the final n + 1 is to account for the right child of the final node
     }
     public static int getHeight(TreeNode root) {
         if (root == null) return 0;

@@ -26,7 +26,7 @@ public class BinaryTreeLevelOrderTraversal {
 //        root.preorderRecursive(root);
 //        System.out.println("");
 //        System.out.println("************");
-        
+
         /**
          *                 6
          *              /    \
@@ -44,25 +44,27 @@ public class BinaryTreeLevelOrderTraversal {
 //        root2.preorderRecursive(root2);
 //        System.out.println("");
     }
+
     /**
      * Iterative, BFS.
+     *
      * @param root
      * @return
      */
-    public static List<List<Integer>>levelOrderTraversal(TreeNode root) {
+    public static List<List<Integer>> levelOrderTraversal(TreeNode root) {
         List<List<Integer>> intRes = new ArrayList<>();
         if (root == null) return intRes;
         List<Integer> intRoot = new ArrayList<>();
         intRoot.add(root.val);
         intRes.add(intRoot);
-        
+
         Stack<List<TreeNode>> stack = new Stack<>();
         List<List<TreeNode>> res = new ArrayList<>();
         List<TreeNode> onedList = new ArrayList<>();
         onedList.add(root);
         stack.add(onedList);
         boolean hasNextLevelValue = false; // assume there is no element in next level
-        
+
         while (!stack.isEmpty()) {
             List<TreeNode> currentList = stack.pop();
             List<TreeNode> treeToAddList = new ArrayList<>();
@@ -89,20 +91,23 @@ public class BinaryTreeLevelOrderTraversal {
             }
         }
         return intRes;
-        
+
     }
+
     /**
      * Recursive, DFS.
+     *
      * @param root
      * @return
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res =  new LinkedList<List<Integer>>();
+        List<List<Integer>> res = new LinkedList<List<Integer>>();
         int level = 0;
         helper(root, res, level);
         return res;
     }
-    private static void helper(TreeNode root, List<List<Integer>> res, int level){
+
+    private static void helper(TreeNode root, List<List<Integer>> res, int level) {
         if (root == null)
             return;
         if (level > res.size() - 1)
@@ -111,15 +116,14 @@ public class BinaryTreeLevelOrderTraversal {
         helper(root.left, res, level + 1);
         helper(root.right, res, level + 1);
     }
+
     //print two dimensional array list, which can also be replaced by simply System.out.println(A)
-    public static void printTwoDArrayList(List<List<Integer>> A)
-    {
-        for(int i = 0; i < A.size(); i++)
-        {
-            
+    public static void printTwoDArrayList(List<List<Integer>> A) {
+        for (int i = 0; i < A.size(); i++) {
+
             System.out.print(A.get(i) + "");
             System.out.println("");
         }
-        
+
     }
 }

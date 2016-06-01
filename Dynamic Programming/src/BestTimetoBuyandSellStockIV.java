@@ -1,9 +1,9 @@
 public class BestTimetoBuyandSellStockIV {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         BestTimetoBuyandSellStockIV agent = new BestTimetoBuyandSellStockIV();
-        int[] p = new int[]{2, 1, 3, 2, 3, 1, 100};
+//        int[] p = new int[]{2, 1, 3, 2, 3, 1, 100};
+        int[] p = new int[]{4, 9, 1, 3, 5, 10, 13, 2, 7};
         int max = agent.maxProfit(2, p);
         System.out.println(max);
     }
@@ -37,8 +37,11 @@ public class BestTimetoBuyandSellStockIV {
                 sell[j] = Math.max(sell[j], prices[i] + buy[j]);
                 buy[j] = Math.max(buy[j], sell[j - 1] - prices[i]);
             }
+            System.out.print("sell: ");
+            printArray(sell);
+            System.out.print("buy: ");
+            printArray(buy);
         }
-
         return sell[k];
     }
 
@@ -48,5 +51,16 @@ public class BestTimetoBuyandSellStockIV {
             // as long as there is a price gap, we gain a profit.
             if (prices[i] > prices[i - 1]) profit += prices[i] - prices[i - 1];
         return profit;
+    }
+
+    //print array
+    public static void printArray(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("");
     }
 }

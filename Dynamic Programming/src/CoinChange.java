@@ -30,8 +30,21 @@ public class CoinChange {
                 }
             }
         }
+        printArray(dp);
+
         if (dp[amount] != Integer.MAX_VALUE)
             return dp[amount];
         else return -1;
+    }
+
+    //print array
+    public static void printArray(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("");
     }
 }
