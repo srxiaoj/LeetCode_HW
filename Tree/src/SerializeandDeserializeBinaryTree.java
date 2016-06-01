@@ -1,10 +1,6 @@
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class SerializeandDeserializeBinaryTree {
-
     public static void main(String[] args) {
         /**
          *                 6
@@ -19,22 +15,15 @@ public class SerializeandDeserializeBinaryTree {
         TreeNode root = TreeNode.deserializeLevelorder("6,2,8,0,4,7,9,null,null,3,5,null,null,13,15");
         TreeNode.printNode(root);
 
-
-        /**
-         * level serialization
-         */
-        String afterSerialize = codec.serializeLevelorder(root);
+        /*String afterSerialize = codec.serializeLevelorder(root);
         System.out.println("after levelorder Serialize: " + afterSerialize);
-        TreeNode afterDeserialize = codec.deserializeLevelorder(afterSerialize);
-//        System.out.println("after levelorder Deserialize: ");
-//        TreeNode.printNode(afterDeserialize);
+        TreeNode afterDeserialize = codec.deserializeLevelorder(afterSerialize);*/
 
-        /**
-         * preorder serialization
-         */
         System.out.println("-----------------------");
         String serial = codec.serializePreorder(root);
         System.out.println("after preorder Serialize: " + serial);
+        TreeNode afterDeserialize2 = codec.deserializePreorder(serial);
+        TreeNode.printNode(afterDeserialize2);
 
     }
     private static final String SPLITTER = ",";
@@ -62,13 +51,39 @@ public class SerializeandDeserializeBinaryTree {
             serializeRecursive(node.right,sb);
         }
     }
+
+    /**
+     * Decodes your encoded data to tree, preorder traversal 
+     */
+    public TreeNode deserializePreorder(String data) {
+        System.out.println(data);
+        String[] tokens = data.split(SPLITTER);
+        List<String> list = new ArrayList<>(Arrays.asList(tokens));
+        TreeNode root = helper(list);
+        return root;
+    }
+
+    private TreeNode helper(List<String> list) {
+        if (list.size() > 0) {
+            String next = list.get(0);
+            list.remove(0);
+            TreeNode node;
+            if (next.equals(NN)) {
+                return null;
+            }
+            node = new TreeNode(Integer.parseInt(next));
+            node.left = helper(list);
+            node.right = helper(list);
+            return node;
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Encodes a tree to a single string, level order traversal, iterative.
-     * @param root
-     * @return
      */
     public String serializeLevelorder(TreeNode root) {
-        // method 2: level order traversal
         if (root == null) return NN;
         int height = height(root);
         int numOfNodes = (int) Math.pow(2, height) - 1;
@@ -76,7 +91,7 @@ public class SerializeandDeserializeBinaryTree {
         StringBuilder res = new StringBuilder();
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(root);
-        
+
         int i = 0;
         while (!queue.isEmpty() && i < numOfNodes) {
             TreeNode node = queue.poll();
@@ -94,39 +109,11 @@ public class SerializeandDeserializeBinaryTree {
         System.out.println("The total number of nodes is in level order serial: " + res.toString().split(",").length);
         return res.toString();
     }
-    
-    /**
-     * Decodes your encoded data to tree, preorder traversal 
-     * @param data
-     * @return
-     */
-    public TreeNode deserializePreorder(String data) {
-        
-        // method 1: preorder traversal
-        Deque<String> nodes = new LinkedList<>();
-        nodes.addAll(Arrays.asList(data.split(SPLITTER)));
-//        System.out.println("node is: " + nodes);
-        return buildTree(nodes);
-    }
-    private TreeNode buildTree(Deque<String> nodes) {
-        String val = nodes.remove();
-//        System.out.println("val is: " + val);
-        if (val.equals(NN)) return null;
-        else {
-            TreeNode node = new TreeNode(Integer.valueOf(val));
-            node.left = buildTree(nodes);
-            node.right = buildTree(nodes);
-            return node;
-        }
-    }
-    
+
     /**
      * Decodes your encoded data to tree, level order traversal 
-     * @param data
-     * @return
      */
     public TreeNode deserializeLevelorder(String data) {
-        // method 2
         String[] nodes = data.split("\\,");
 //        System.out.println("The total number of nodes is in level order deserial: " + nodes.length);
         if (nodes.length == 1) return null;
@@ -135,10 +122,8 @@ public class SerializeandDeserializeBinaryTree {
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(root);
         int i = 1;           // starting from the second node if root is not null
-
         while (i < nodes.length) {
             TreeNode node = queue.poll();
-
             String left = nodes[i++], right = nodes[i++];
             if (!left.equals(NN)) {
                 TreeNode lChild = new TreeNode(Integer.parseInt(left));
@@ -163,11 +148,9 @@ public class SerializeandDeserializeBinaryTree {
         return Math.max(height(root.left), height(root.right)) + 1;
     }
     //print array
-    public static void printArray(String[] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
-            if(i != A.length-1)
+    public static void printArray(String[] A) {
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
                 System.out.print(A[i] + ", ");
             else
                 System.out.print(A[i]);

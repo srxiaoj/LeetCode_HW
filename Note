@@ -12,6 +12,8 @@
 89. Gray Code
 111. Minimum Depth of Binary Tree
 215. Kth Largest Element in an Array
+322. Coin Change
+297. Serialize and Deserialize Binary Tree
 
 
 
@@ -30,7 +32,6 @@
 
 102. level Order Traversal
 101. Symmetric tree
-297. Serial and deserialize
 145. post order
 173. Binary Search Tree Iterator
 152. Maximum Product Subarray
