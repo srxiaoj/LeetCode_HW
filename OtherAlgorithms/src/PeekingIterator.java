@@ -6,12 +6,12 @@ public class PeekingIterator implements Iterator<Integer> {
     private boolean hasPeeked;
     private Integer peekedElement;//need to use Integer type
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
 
     }
     public PeekingIterator(Iterator<Integer> iterator) {
         // initialize any member here.
         this.iterator = iterator;
+        hasPeeked = false;
     }
 
     // Returns the next element in the iteration without advancing the iterator.
@@ -30,10 +30,8 @@ public class PeekingIterator implements Iterator<Integer> {
         if (!hasPeeked)
             return iterator.next();
         else {
-            Integer res = peekedElement;
-            peekedElement = null;//change peeked element to null
             hasPeeked = false;
-            return res;
+            return peekedElement;
         }
     }
 

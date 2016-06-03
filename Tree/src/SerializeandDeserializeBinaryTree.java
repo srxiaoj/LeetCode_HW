@@ -26,34 +26,35 @@ public class SerializeandDeserializeBinaryTree {
         TreeNode.printNode(afterDeserialize2);
 
     }
+
     private static final String SPLITTER = ",";
     private static final String NN = "null";
+
     /**
      * Encodes a tree to a single string, preorder traversal, recursive
-     * @param root
-     * @return
      */
     public String serializePreorder(TreeNode root) {
-        
+
         // method 1: preorder traversal
         StringBuilder sb = new StringBuilder();
         serializeRecursive(root, sb);
         sb.deleteCharAt(sb.length() - 1); // delete the last splitter
         System.out.println("The total number of nodes is in serializePreOrder: " + sb.toString().split(",").length);
         return sb.toString();
-    }    
+    }
+
     private void serializeRecursive(TreeNode node, StringBuilder sb) {
         if (node == null) {
             sb.append(NN).append(SPLITTER);
         } else {
             sb.append(node.val).append(SPLITTER);
             serializeRecursive(node.left, sb);
-            serializeRecursive(node.right,sb);
+            serializeRecursive(node.right, sb);
         }
     }
 
     /**
-     * Decodes your encoded data to tree, preorder traversal 
+     * Decodes your encoded data to tree, preorder traversal
      */
     public TreeNode deserializePreorder(String data) {
         System.out.println(data);
@@ -67,11 +68,10 @@ public class SerializeandDeserializeBinaryTree {
         if (list.size() > 0) {
             String next = list.get(0);
             list.remove(0);
-            TreeNode node;
             if (next.equals(NN)) {
                 return null;
             }
-            node = new TreeNode(Integer.parseInt(next));
+            TreeNode node = new TreeNode(Integer.parseInt(next));
             node.left = helper(list);
             node.right = helper(list);
             return node;
@@ -97,21 +97,20 @@ public class SerializeandDeserializeBinaryTree {
             TreeNode node = queue.poll();
             if (node == null) {
                 res.append(NN + ",");
-            }
-            else {
+            } else {
                 res.append(node.val).append(',');
                 queue.offer(node.left);
                 queue.offer(node.right);
             }
             i++;
         }
-        res.deleteCharAt(res.length()-1);
+        res.deleteCharAt(res.length() - 1);
         System.out.println("The total number of nodes is in level order serial: " + res.toString().split(",").length);
         return res.toString();
     }
 
     /**
-     * Decodes your encoded data to tree, level order traversal 
+     * Decodes your encoded data to tree, level order traversal
      */
     public TreeNode deserializeLevelorder(String data) {
         String[] nodes = data.split("\\,");
@@ -140,13 +139,11 @@ public class SerializeandDeserializeBinaryTree {
     }
 
 
-
-
-
     public int height(TreeNode root) {
         if (root == null) return 0;
         return Math.max(height(root.left), height(root.right)) + 1;
     }
+
     //print array
     public static void printArray(String[] A) {
         for (int i = 0; i < A.length; i++) {

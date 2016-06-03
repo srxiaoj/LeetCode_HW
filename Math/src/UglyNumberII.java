@@ -1,6 +1,6 @@
 public class UglyNumberII {
     public static void main(String[] args) {
-        System.out.println(nthUglyNumber(14));
+        System.out.println(nthUglyNumber(15));
     }
 
     public static int nthUglyNumber(int n) {

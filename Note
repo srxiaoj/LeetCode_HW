@@ -14,6 +14,8 @@
 215. Kth Largest Element in an Array
 322. Coin Change
 297. Serialize and Deserialize Binary Tree
+264. Ugly Number II
+300. Longest Increasing Subsequence
 
 
 
@@ -29,11 +31,6 @@
 
 
 
-
-102. level Order Traversal
-101. Symmetric tree
-145. post order
-173. Binary Search Tree Iterator
 152. Maximum Product Subarray
 82. Remove Duplicates from Sorted List II
 147. insertion sort list
@@ -48,7 +45,6 @@
 254. Factor Combinations
 199. Binary Tree Right Side Views
 253. Meeting Rooms II
-264. Ugly Number II
 247. Strobogrammatic Number II
 275. H-Index II
 267. Palindrome Permutation II
