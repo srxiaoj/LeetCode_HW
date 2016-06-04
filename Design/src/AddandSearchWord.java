@@ -58,89 +58,26 @@ class WordDictionary {
     // contain the dot character '.' to represent any one letter.
     public boolean search(String word) {
         TrieNode cur = root;
-        return helper(cur, word, 0);
+        return helper(word, cur, 0);
     }
 
-    private boolean helper(TrieNode cur, String word, int pos) {
+    private boolean helper(String word, TrieNode cur, int pos) {
         if (cur == null) return false;
         if (pos == word.length()) return cur.hasWord;
         char c = word.charAt(pos);
-        if (c != '.' && cur.children[c - 'a'] == null) {
-            return false;
-        }
         if (c == '.') {
             for (int i = 0; i < 26; i++) {
-                if (helper(cur.children[i], word, pos + 1)) {
+                if (helper(word, cur.children[i], pos + 1)) {
                     return true;
                 }
             }
             return false;
-        }
-        return helper(cur.children[c - 'a'], word, pos + 1);
-
-    }
-
-
-
-
-
-   /* private class TrieNode {
-        private boolean hasWord;
-        private HashMap<Character, TrieNode> children;
-
-        public TrieNode() {
-            hasWord = false;
-            children = new HashMap<Character, TrieNode>();
-        }
-    }
-
-    private TrieNode root = new TrieNode();
-
-    // Adds a word into the data structure.
-    public void addWord(String word) {
-        TrieNode cur = root;
-        for (int i = 0; i < word.length(); i++) {
-            if (!cur.children.containsKey(word.charAt(i))) {
-                cur.children.put(word.charAt(i), new TrieNode());
+        } else {
+            if (cur.children[c - 'a'] == null) {
+                return false;
             }
-            cur = cur.children.get(word.charAt(i));
+            return helper(word, cur.children[c - 'a'], pos + 1);
         }
-        cur.hasWord = true;
+
     }
-
-    // Returns if the word is in the data structure. A word could
-    // contain the dot character '.' to represent any one letter.
-    public boolean search(String word) {
-        return searchHelper(root, 0, word);
-    }
-
-    private boolean searchHelper(TrieNode node, int pos, String word) {
-        //if the word has all been scanned, return
-        if (pos == word.length()) {
-            return node.hasWord;
-        }
-        //reach the leaf before finishing scanning the word
-        if (node.children.size() == 0) {
-            return false;
-        }
-
-        //if the character at current position is '.',
-        //recursive check whether the remaing word is in the trie
-        if (word.charAt(pos) == '.') {
-            for (Character c : node.children.keySet()) {
-                if (searchHelper(node.children.get(c), pos + 1, word)) {
-                    return true;
-                }
-            }
-        }
-
-        //if character at position 'pos' is neither equal to the node nor '.', return false
-        if (!node.children.containsKey(word.charAt(pos))) {
-            return false;
-        }
-
-        //if character at current position matches the node,
-        //recursively search the remaining word
-        return searchHelper(node.children.get(word.charAt(pos)), pos + 1, word);
-    }*/
 }

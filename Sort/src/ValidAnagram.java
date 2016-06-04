@@ -1,11 +1,8 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 
 public class ValidAnagram {
-
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         String s = new String("nagaram");
         String t = new String("anagram");
         System.out.println(isAnagram(s, t) + " anagram");
@@ -14,7 +11,14 @@ public class ValidAnagram {
         System.out.println(isAnagram(a,b));
     }
     public static boolean isAnagram(String s, String t) {
-        if (s.length() != t.length()) return false;
+        char[] s1 = s.toCharArray();
+        char[] t1 = t.toCharArray();
+        Arrays.sort(s1);
+        Arrays.sort(t1);
+        String str = new String(s1);
+        String tstr = new String(t1);
+        return str.equals(tstr);
+       /* if (s.length() != t.length()) return false;
         if (s.equals("") && t.equals("")) return true;
         Map <Character, Integer> alphabet = new HashMap<>();
         for (int i = 97; i <= 122; i++) {
@@ -31,7 +35,6 @@ public class ValidAnagram {
                 return false;
             }
         }
-        return true;
+        return true;*/
     }
-
 }
