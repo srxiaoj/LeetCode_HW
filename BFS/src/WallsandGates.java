@@ -3,13 +3,14 @@
  */
 public class WallsandGates {
     public static final int INF = Integer.MAX_VALUE;
+
     public static void main(String[] args) {
         WallsandGates obj = new WallsandGates();
         int[][] rooms = {
-                {INF, -1,   0,   INF},
+                {INF, -1, 0, INF},
                 {INF, INF, INF, -1},
-                {INF, -1,  INF, -1},
-                {0,   -1,  INF, INF}
+                {INF, -1, INF, -1},
+                {0, -1, INF, INF}
         };
         obj.wallsAndGates(rooms);
         printArray(rooms);
@@ -17,6 +18,7 @@ public class WallsandGates {
 
     /**
      * 从rooms[i][j] == 0的点开始bfs， 只更新rooms[i][j] > distance的点，每次扩张distance + 1
+     *
      * @param rooms
      */
     public void wallsAndGates(int[][] rooms) {
@@ -43,14 +45,11 @@ public class WallsandGates {
 
     /**
      * print 2D array.
-     * @param A array
      */
-    private static void printArray(int[][] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
+    private static void printArray(int[][] A) {
+        for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < A[i].length; j++) {
-                if(j != A[i].length-1) {
+                if (j != A[i].length - 1) {
                     System.out.print(A[i][j] + ", ");
                 } else
                     System.out.print(A[i][j]);

@@ -10,6 +10,7 @@ public class CopyListwithRandomPointer {
         if (head == null) {
             return null;
         }
+
         RandomListNode cur = head;
         while (cur != null) {
             RandomListNode clone = new RandomListNode(cur.label);
@@ -53,6 +54,4 @@ public class CopyListwithRandomPointer {
             this.label = x;
         }
     }
-
-    ;
 }
