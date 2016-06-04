@@ -26,6 +26,7 @@ public class IntegerBreak {
 
         /**
          * O(n) 解法
+         * 从5， 开始后，p[i] = 3 * p[i - 3], 注意p2 = 2, p3 = 3, p4 = 4
          */
         if (n <= 2) return 1;
         if (n == 3) return 2;
