@@ -2,28 +2,38 @@
 public class sqrt {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        double test = 25;
-        System.out.println(mySqrt(test));
+        //        System.out.println(mySqrt(13));
+        System.out.println(mySqrt(2147395599));
+        System.out.println(mySqrt(2147483647));
+        System.out.println(mySqrt(16));
+        // sqrt(2147483647) = 46340
+        System.out.println(2147483647 / 46340);
     }
+
     public static int mySqrt(int x) {
-        if (x == 0) return 0;
-        int left = 1;//left pointer
-        int right = x;//right pointer
-        int ans = 0;
-        while (left <= right) {//converge condition
-            int mid = left + (right - left) / 2;
-            if (mid <= x / mid) {//verifying correct ans
-                left = mid + 1;
-                ans = mid;
+        int start = 0;
+        int end = x;
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (mid == x / mid) {
+                return mid;
+            }
+            if (mid > x / mid) {
+                end = mid;
             } else {
-                right = mid - 1;
+                start = mid;
             }
         }
-        return ans;
+        if (end != 0 && end > x / end) {
+            return start;
+        } else {
+            return end;
+        }
     }
+
     /**
      * mathematical method to get sqrt
+     *
      * @param x
      * @return
      */
@@ -34,9 +44,9 @@ public class sqrt {
         while (res != presRes) {
             presRes = res;
             System.out.println("presRes is: " + presRes);
-            res = (x/presRes + presRes) / 2;
+            res = (x / presRes + presRes) / 2;
             System.out.println("res is: " + res);
-            
+
         }
         return res;
     }

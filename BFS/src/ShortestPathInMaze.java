@@ -52,7 +52,7 @@ public class ShortestPathInMaze {
         LinkedList<Cell> path = new LinkedList<>();
         Cell cell = end;
         while (!cell.equals(start)) {
-            path.push(cell);
+            path.addFirst(cell);
             int level = levelMatrix[cell.row][cell.col];
             Cell[] nextCells = new Cell[4];
             nextCells[0] = new Cell(cell.row + 1, cell.col);
@@ -68,6 +68,7 @@ public class ShortestPathInMaze {
                 }
             }
         }
+        printArray(levelMatrix);
         return path;
     }
 
@@ -118,5 +119,23 @@ public class ShortestPathInMaze {
         }
         maze[0][0] = false;
         maze[maze.length - 1][maze[0].length - 1] = false;
+    }
+
+    /**
+     * print 2D array.
+     * @param A array
+     */
+    public static void printArray(int[][] A) {
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[i].length; j++) {
+                if (j != A[i].length - 1) {
+                    System.out.print(A[i][j] + ", ");
+                } else
+                    System.out.print(A[i][j]);
+
+            }
+            System.out.println("");
+        }
+        System.out.println("");
     }
 }
