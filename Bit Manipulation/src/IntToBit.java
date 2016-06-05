@@ -1,37 +1,38 @@
-/**
- * Created by thanksgiving on 4/3/16.
- */
 public class IntToBit {
     public static void main(String[] args) {
-        for (int i = 0; i <= 32; i++) {
+        for (int i = 0; i <= 6; i++) {
             System.out.println(i + " " + intToBit(i));
         }
-
-        System.out.println("38: " + intToBit(38));
-
-        int i = 700;
-        System.out.println(i << 1);
-        System.out.println(i >> 1);
-        System.out.println(i >> 31);
+        System.out.println("-2                             :" + intToBit(-2));
+        System.out.println("-2 - (-2147483648) = 2147483646: " + intToBit(-2 - (-2147483648)));
+        System.out.println("-1                             :" + intToBit(-1));
+        System.out.println("-1 - (-2147483648) = 2147483647: " + intToBit(-1 - (-2147483648)));
     }
 
     /**
      * 一直对2取模，所得的余数连接为String再逆过来
-     * @param num
-     * @return
+     * 负数时先得到 num - (-2147483638)的string，再在最前面append 1
      */
     public static String intToBit(int num) {
-        // print a bit with total length
-        int totalDigit = 32;
         StringBuilder sb = new StringBuilder();
-        while (num > 0) {
-            int mod = num % 2;
-            sb.append(mod);
-            num = num / 2;
+        if (num >= 0) {
+            // print a bit with total length
+            int totalDigit = 31;
+            while (num > 0) {
+                int mod = num % 2;
+                sb.append(mod);
+                num = num / 2;
+            }
+            for (int i = sb.length(); i < totalDigit; i++) {
+                sb.append(0);
+            }
+//            System.out.println(sb.length());
+            return sb.reverse().toString();
+        } else {
+            sb.append(1);
+            sb.append(intToBit(num - Integer.MIN_VALUE));
+//            System.out.println(sb.length());
+            return sb.toString();
         }
-        for (int i = sb.length(); i < totalDigit; i++) {
-            sb.append(0);
-        }
-        return sb.reverse().toString();
     }
 }
