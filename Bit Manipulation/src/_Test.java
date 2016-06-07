@@ -16,14 +16,19 @@ public class _Test {
             cur = cur << 2;
             System.out.print(cur + " ");
         }*/
+        System.out.println(IntToBit.intToBit((-2 >>> 1)));
+        System.out.println(IntToBit.intToBit((-2 >> 1)));
+        System.out.println(IntToBit.intToBit((2147483647 >>> 1)));
+        System.out.println(IntToBit.intToBit((2147483647 >> 1)));
 
-
-        int n = -1;
+        // int to bit
+/*        int n = -1;
         System.out.println((n & 1));
         System.out.println(-1 << 1);
         System.out.println(IntToBit.intToBit(-1));
         System.out.println(Integer.toBinaryString(-1));
         System.out.println(Integer.toBinaryString(-1).length());
-        System.out.println(Integer.toBinaryString(-2));
+        System.out.println(Integer.toBinaryString(-2));*/
+
     }
 }

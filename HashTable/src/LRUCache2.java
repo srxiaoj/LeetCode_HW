@@ -1,102 +1,102 @@
 import java.util.HashMap;
 import java.util.Map;
 
-class ListNode {
-    int key;
-    int val;
-    ListNode prev;
-    ListNode next;
-    public ListNode(int k, int v) { key = k; val = v; }
-    public String toString() { return String.valueOf(val); }
-}
-
-class DoublyLinkedList {
-    private ListNode head = null;
-    private ListNode tail = null;
-
-    public void addFirst(ListNode node) {
-        if (head == null) {
-            head = node;
-            tail = node;
-            return;
+public class LRUCache2 {
+    private class ListNode {
+        int key;
+        int val;
+        ListNode prev;
+        ListNode next;
+        public ListNode(int key, int val) {
+            this.key = key;
+            this.val = val;
         }
-        head.prev = node;
-        node.next = head;
-        node.prev = null;
-        head = node;
+        public String toString() { return String.valueOf(val); }
     }
-
-    public ListNode removeLast() {
-        ListNode node = tail;
-        if (tail.prev != null) {
-            tail.prev.next = null;
-            tail = tail.prev;
-        } else {
+    private class DoublyLinkedList {
+        ListNode head;
+        ListNode tail;
+        public DoublyLinkedList() {
             head = null;
             tail = null;
         }
-        return node;
-    }
 
-    /**
-     * move current node to head position
-     */
-    public void promote(ListNode node) {
-        if (node.prev == null) {
-            return;
-        }
-        node.prev.next = node.next;
-        if (node.next == null) {
-            tail = node.prev;
-        } else {
-            node.next.prev = node.prev;
+        public void addFirst(ListNode node) {
+            if (head == null) {
+                head = node;
+                tail = node;
+                return;
+            }
+            head.prev = node;
+            node.next = head;
+            node.prev = null;
+            head = node;
         }
 
-        head.prev = node;
-        node.next = head;
-        node.prev = null;
-        head = node;
+        public ListNode removeLast() {
+            ListNode node = tail;
+            if (tail.prev != null) {
+                tail.prev.next = null;
+                tail = tail.prev;
+            } else {
+                head = null;
+                tail = null;
+            }
+            return node;
+        }
+        // move node to the head of list
+        public void promote(ListNode node) {
+            if (node.prev == null) {
+                return;
+            }
+            node.prev.next = node.next;
+            if (node == tail) {
+                tail.prev.next = null;
+                tail = tail.prev;
+            } else {
+                node.prev.next = node.next;
+                node.next.prev = node.prev;
+            }
+            addFirst(node);
+        }
     }
-}
-
-public class LRUCache2 {
-    private final Map<Integer, ListNode> cachedMap = new HashMap<>();
-    private final DoublyLinkedList cachedList = new DoublyLinkedList();
-    private final int capacity;
-
+    private Map<Integer, ListNode> map;
+    private DoublyLinkedList list;
+    int capacity;
     public LRUCache2(int capacity) {
+        this.map = new HashMap<>();
+        this.list = new DoublyLinkedList();
         this.capacity = capacity;
     }
 
     public int get(int key) {
-        if (!cachedMap.containsKey(key)) {
+        if (!map.containsKey(key)) {
             return -1;
+        } else {
+            ListNode node = map.get(key);
+            list.promote(node);
+            return node.val;
         }
-        ListNode targetNode = cachedMap.get(key);
-        cachedList.promote(targetNode);
-        return targetNode.val;
     }
 
     public void set(int key, int value) {
-        ListNode targetNode;
-        if (cachedMap.containsKey(key)) {
-            targetNode = cachedMap.get(key);
-            targetNode.val = value;
-            cachedList.promote(targetNode);
-            return;
+        ListNode node = new ListNode(key, value);
+        if (!map.containsKey(key)) {
+            if (map.size() >= capacity) {
+                ListNode removed = list.removeLast();
+                map.remove(removed.key);
+            }
+            list.addFirst(node);
+            map.put(key, node);
+        } else {
+            ListNode exist = map.get(key);
+            exist.val = value;
+            list.promote(exist);
+            map.put(key, exist);
         }
-
-        if (cachedMap.size() == capacity) {
-            ListNode node = cachedList.removeLast();
-            cachedMap.remove(node.key);
-        }
-
-        targetNode = new ListNode(key, value);
-        cachedList.addFirst(targetNode);
-        cachedMap.put(targetNode.key, targetNode);
     }
 
-    public String toString() { return cachedMap.toString(); }
+    public String toString() { return map.toString(); }
 
     public static void main(String[] args) {
         LRUCache2 obj = new LRUCache2(5);
@@ -110,6 +110,6 @@ public class LRUCache2 {
         obj.set(7, 0);
         obj.get(1);
         obj.set(10, 20);
-        System.out.println(obj.cachedMap);
+        System.out.println(obj.map);
     }
 }
