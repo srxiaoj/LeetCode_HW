@@ -5,8 +5,6 @@ import java.util.LinkedList;
  * if (!visited && grid[i][j] == '1'
  *  dfs(i, j, visited, grid);
  *  sum++
- *
- *
  */
 public class NumberofIslands {
     public static void main(String[] args) {
@@ -22,8 +20,6 @@ public class NumberofIslands {
 
     /**
      * bfs
-     * @param grid
-     * @return
      */
     public int numIslandsBfs(char[][] grid) {
         int count = 0;
@@ -39,35 +35,35 @@ public class NumberofIslands {
 
     private void bfsFill(char[][] grid, int x, int y) {
         grid[x][y] = '0';
-        int n = grid.length;
-        int m = grid[0].length;
+        int m = grid.length;
+        int n = grid[0].length;
         LinkedList<Integer> queue = new LinkedList<>();
-        int code = x * m + y;
+        int code = x * n + y;
         queue.offer(code);
         while (!queue.isEmpty()) {
             code = queue.poll();
             // get the index of next block with '1'
-            int i = code / m;
-            int j = code % m;
+            int i = code / n;
+            int j = code % n;
 
             //search upward and mark adjacent '1's as '0'.
             if (i > 0 && grid[i - 1][j] == '1') {
-                queue.offer((i - 1) * m + j);
+                queue.offer((i - 1) * n + j);
                 grid[i - 1][j] = '0';
             }
             //down
-            if (i < n - 1 && grid[i + 1][j] == '1') {
-                queue.offer((i + 1) * m + j);
+            if (i < m - 1 && grid[i + 1][j] == '1') {
+                queue.offer((i + 1) * n + j);
                 grid[i + 1][j] = '0';
             }
             //left
             if (j > 0 && grid[i][j - 1] == '1') {
-                queue.offer(i * m + j - 1);
+                queue.offer(i * n + j - 1);
                 grid[i][j - 1] = '0';
             }
             //right
-            if (j < m - 1 && grid[i][j + 1] == '1') {
-                queue.offer(i * m + j + 1);
+            if (j < n - 1 && grid[i][j + 1] == '1') {
+                queue.offer(i * n + j + 1);
                 grid[i][j + 1] = '0';
             }
         }
@@ -75,9 +71,6 @@ public class NumberofIslands {
 
     /**
      * dfs
-     *
-     * @param grid
-     * @return
      */
     public int numIslands(char[][] grid) {
         int m = grid.length;
