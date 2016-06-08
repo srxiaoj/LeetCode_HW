@@ -26,6 +26,34 @@ public class Atoi {
      */
     public static int myAtoi(String str) {
         int n = str.length();
+        int i = 0, sign = 1;
+        int res = 0;
+        // remove all blanks at beginning
+        while (i < n && str.charAt(i) == ' ') {
+            i++;
+        }
+        if (str.charAt(i) == '-') {
+            sign = -1;
+            i++;
+        } else if (str.charAt(i) == '+') {
+            sign = 1;
+            i++;
+        }
+
+        while (i < n) {
+            int c = str.charAt(i) - '0';
+            int temp = res * 10 + c;
+            if (temp % 10 != c || temp / 10 != res) {
+                System.out.println(str + " is not a valid integer");
+                return -1;
+            } else {
+                res = temp;
+            }
+            i++;
+        }
+        return sign * res;
+
+/*        int n = str.length();
         int i = 0;
         int sign = 1;
         StringBuilder sb = new StringBuilder();
@@ -60,10 +88,7 @@ public class Atoi {
             } else {
                 return (int) (res);
             }
-        }
-
-
-
+        }*/
 
        /* if (str.isEmpty()) return 0;
         int sign = 1, base = 0, i = 0;
