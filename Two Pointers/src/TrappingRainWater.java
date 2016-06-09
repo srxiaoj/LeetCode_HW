@@ -1,6 +1,3 @@
-/**
- * Created by thanksgiving on 6/9/16.
- */
 public class TrappingRainWater {
     public static void main(String[] args) {
         TrappingRainWater obj = new TrappingRainWater();
