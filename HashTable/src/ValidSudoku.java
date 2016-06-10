@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by thanksgiving on 12/25/15.
@@ -88,9 +89,28 @@ public class ValidSudoku {
             }
         }
         // each sub matrix doesn't contain duplicates
-        return isValid(board, 0, 3, 0, 3, row, col);
+        return helper(board, 0, 0);
+//        return isValid(board, 0, 3, 0, 3, row, col);
     }
 
+    // 方法2
+    private boolean helper(char[][] grid, int m, int n) {
+        if (m == 9 || n == 9) return true;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = m; i < m + 3; i++) {
+            for (int j = n; j < n + 3; j++) {
+                int key = grid[i][j] - '0';
+                if (map.containsKey(key) && grid[i][j] != '.') {
+                    return false;
+                } else if (grid[i][j] != '.' && !map.containsKey(key)) {
+                    map.put(key, 1);
+                }
+            }
+        }
+        return helper(grid, m + 3, n) && helper(grid, m, n + 3);
+    }
+
+    // 方法3
     public boolean isValid(char[][] board, int rowS, int rowE, int colS, int colE, int row, int col) {
         HashMap<Character, Integer> rowMap = new HashMap<>();
         for (int i = rowS; i < rowE; i++) {
