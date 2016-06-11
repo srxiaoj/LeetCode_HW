@@ -10,8 +10,8 @@ public class WordAbbreviation {
          * l4e god internal me internet internel inte9n inten8o f4e intr9n
          */
 //        String[] strs = {"aaaaa", "aabaa", "aaaca", "god", "geed"};
-//        String[] strs = {"like", "god", "internal", "me", "internet", "internel", "intension", "intensio", "face", "intrusion"};
-        String[] strs = {"internet", "interval", "intension"};
+        String[] strs = {"like", "god", "internal", "me", "internet", "internel", "intension", "intensio", "face", "intrusion"};
+//        String[] strs = {"internet", "interval", "intension"};
         WordAbbreviation obj = new WordAbbreviation();
         String[] result = obj.encode(strs);
         printArray(result);
@@ -47,9 +47,9 @@ public class WordAbbreviation {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < s.length(); i++) {
                 if (cur.val != ' ' && cur.activeChildrenNumber != 1) {
-                    if (i != s.length() - 1) {
+//                    if (i != s.length() - 1) {
                         lastSplitIndex = i;
-                    }
+//                    }
                 }
                 cur = cur.children[s.charAt(i) - 'a'];
             }
