@@ -1,6 +1,3 @@
-/**
- * Created by thanksgiving on 1/5/16.
- */
 public class MinimumSizeSubarraySum {
     public static void main(String[] args) {
         MinimumSizeSubarraySum obj = new MinimumSizeSubarraySum();
@@ -12,6 +9,7 @@ public class MinimumSizeSubarraySum {
     }
 
     /**
+     * O(n)
      * 一直从左往右相加，如果sum大于 target则开始减去左边的Index，中间不断update min length
      */
     public int minSubArrayLen(int s, int[] nums) {

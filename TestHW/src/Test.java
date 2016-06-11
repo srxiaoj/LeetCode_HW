@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Test {
     // instance variable
     private int x = 1;
@@ -44,6 +46,22 @@ public class Test {
 //        Arrays.sort(test);
 //        System.out.println(test[0]);
 
+        //
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        int[] a = Arrays.copyOfRange(array, 0, 3);
+        int[] b = Arrays.copyOfRange(array, 3, 7);
+        printArray(a);
+        printArray(b);
     }
 
+    //print array
+    public static void printArray(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("");
+    }
 }
