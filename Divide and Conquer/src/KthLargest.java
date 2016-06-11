@@ -8,6 +8,7 @@ public class KthLargest {
     }
 
     /**
+     * Average: O(n)
      * find kth largest element.
      * If index == k - 1, which means we've got the kth element
      * If index < k - 1, the kth element is to the right of the index, we need to search from index to right

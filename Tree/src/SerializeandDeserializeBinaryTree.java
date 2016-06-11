@@ -60,10 +60,26 @@ public class SerializeandDeserializeBinaryTree {
         System.out.println(data);
         String[] tokens = data.split(SPLITTER);
         List<String> list = new ArrayList<>(Arrays.asList(tokens));
-        TreeNode root = helper(list);
+        int[] index = new int[1];
+//        TreeNode root = helper(list);
+        TreeNode root = helper(list, index);
         return root;
     }
-
+    private TreeNode helper(List<String> list, int[] index) {
+        if (list.size() > 0) {
+            String next = list.get(0);
+            list.remove(0);
+            if (next.equals(NN)) {
+                return null;
+            }
+            TreeNode node = new TreeNode(Integer.parseInt(next));
+            node.left = helper(list);
+            node.right = helper(list);
+            return node;
+        } else {
+            return null;
+        }
+    }
     private TreeNode helper(List<String> list) {
         if (list.size() > 0) {
             String next = list.get(0);

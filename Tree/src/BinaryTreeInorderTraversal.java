@@ -7,7 +7,7 @@ public class BinaryTreeInorderTraversal {
     public static void main(String[] args) {
         TreeNode root = TreeNode.deserializeLevelorder("15,8,20,5,null,17,null,null,null,16,null");
         TreeNode.printNode(root);
-        System.out.println(inorderTraversalIterate(root));
+//        System.out.println(inorderTraversalIterate(root));
     }
     /**
      * Iterative.

@@ -5,7 +5,7 @@
 public class QuickSort {
     public static void main(String[] args) {
         int[] test = {139, 54, 25, 61, 17, 8, 9, 1, 982, 918, 11, 9, 7, 6};
-        quicksort(test, 0, test.length-1);
+        quicksort(test, 0, test.length - 1);
         printArray(test);
     }
 
@@ -17,6 +17,7 @@ public class QuickSort {
             quicksort(array, pivot + 1, r);
         }
     }
+
     /**
      * use first index as initial pivot.
      * sorted in descendent sequence
@@ -36,17 +37,17 @@ public class QuickSort {
         swap(array, p, l);
         return p;
     }
+
     private static void swap(int[] array, int a, int b) {
-        int temp = array[a]; 
+        int temp = array[a];
         array[a] = array[b];
         array[b] = temp;
     }
+
     //print array
-    public static void printArray(int[] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
-            if(i != A.length-1)
+    public static void printArray(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
                 System.out.print(A[i] + ", ");
             else
                 System.out.print(A[i]);
