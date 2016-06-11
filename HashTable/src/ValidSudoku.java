@@ -95,7 +95,7 @@ public class ValidSudoku {
 
     // 方法2
     private boolean helper(char[][] grid, int m, int n) {
-        if (m == 9 || n == 9) return true;
+        if (m == grid.length || n == grid[0].length) return true;
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = m; i < m + 3; i++) {
             for (int j = n; j < n + 3; j++) {
