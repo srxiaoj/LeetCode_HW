@@ -26,7 +26,7 @@ public class SimpleWord {
 
     public static String[] simpleWords(String[] words) {
         List<String> res = new ArrayList<>();
-        HashSet<String> set = new HashSet<>();
+        Set<String> set = new HashSet<>();
         for (int i = 0; i < words.length; i++) {
             set.add(words[i]);
         }
@@ -40,7 +40,7 @@ public class SimpleWord {
         return resArray;
     }
 
-    private static boolean isCompound(String word, HashSet<String> set) {
+    private static boolean isCompound(String word, Set<String> set) {
         boolean wordIsInSet = false;
         if (set.contains(word)) {
             set.remove(word);
@@ -62,18 +62,15 @@ public class SimpleWord {
         return dp[n - 1];
     }
 
-    private static void helper(HashSet<String> set, String s, boolean[] dp) {
+    private static void helper(Set<String> set, String s, boolean[] dp) {
+        int n = s.length();
         if (set.contains(s)) {
-            dp[s.length() - 1] = true;
+            dp[n - 1] = true;
             return;
-        } else {
-            for (int i = 0; i < s.length(); i++) {
-                if (dp[i]) {
-                    if (set.contains(s.substring(i + 1, s.length()))) {
-                        dp[s.length() - 1] = true;
-                        return;
-                    }
-                }
+        }
+        for (int i = 0; i < n; i++) {
+            if (dp[i] && set.contains(s.substring(i + 1))) {
+                dp[n - 1] = true;
             }
         }
     }
@@ -87,7 +84,7 @@ public class SimpleWord {
         if (dict == null || dict.length == 0) return new String[0];
         Set<String> set = new HashSet<>();
         for (String s : dict) {
-                set.add(s);
+            set.add(s);
         }
 
         for (String s : dict) {
