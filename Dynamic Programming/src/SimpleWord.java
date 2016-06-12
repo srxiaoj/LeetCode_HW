@@ -80,14 +80,14 @@ public class SimpleWord {
      * 题型1：dict中单词能重复调用
      * by HW
      */
-    public static String[] getSimpleWords(String[] dict) {
-        if (dict == null || dict.length == 0) return new String[0];
+    public static String[] getSimpleWords(String[] words) {
+        if (words == null || words.length == 0) return new String[0];
         Set<String> set = new HashSet<>();
-        for (String s : dict) {
+        for (String s : words) {
             set.add(s);
         }
 
-        for (String s : dict) {
+        for (String s : words) {
             set.remove(s);
             boolean[] dp = new boolean[s.length() + 1];
             Arrays.fill(dp, false);
@@ -107,7 +107,7 @@ public class SimpleWord {
         }
         String[] res = new String[set.size()];
         int i = 0;
-        for (String s : dict) {
+        for (String s : words) {
             if (set.contains(s)) {
                 res[i] = s;
                 i++;

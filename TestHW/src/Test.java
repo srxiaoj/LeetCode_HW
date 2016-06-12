@@ -52,6 +52,10 @@ public class Test {
         int[] b = Arrays.copyOfRange(array, 3, 7);
         printArray(a);
         printArray(b);
+
+
+        // ascii
+        System.out.println((int) 'a');
     }
 
     //print array
