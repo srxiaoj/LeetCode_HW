@@ -6,7 +6,29 @@ public class LongestSubstringWithoutRepeatingCharacters {
         String test = "abcdbcdbggcdea";
         System.out.println(lengthOfLongestSubstring(test));
     }
+
+
+    /**
+     * 如果发现当前字符为重复字符，则将当前字符前所有字符都清空，最后再将当前字符重新放回
+     */
     public static int lengthOfLongestSubstring(String s) {
+        int[] map = new int[256]; // map from character's ASCII to its last occured index
+        int i = 0;
+        int j = 0;
+        int res = 0;
+        for (j = 0; j < s.length(); j++) {
+            while (map[s.charAt(j)] != 0 && i < j) {
+                map[s.charAt(i)] = 0;
+                i++;
+            }
+            map[s.charAt(j)] = 1;
+            res = Math.max(res, j - i + 1);
+        }
+
+        return res;
+    }
+
+    public static int lengthOfLongestSubstring2(String s) {
         /**
          * O(N)
          * i 记录unique index的位置
@@ -29,25 +51,5 @@ public class LongestSubstringWithoutRepeatingCharacters {
             max = Math.max(max, i - start + 1);
         }
         return max;
-
-
-
-        /**
-         * O(N^2)
-         * 每次添加新字符时判断该字符是否已经存在，存在则达到该起始点 i 所能达到的最大长度
-         * 起始点+1
-         */
-        /*if (s == null || s.length() == 0) return 0;
-        int max = 1;
-        for (int i = 0; i < s.length() - 1; i++) {
-            int start = i + 1;
-            while (start < s.length() && !s.substring(i, start).contains(String.valueOf(s.charAt(start)))) {
-                start++;
-            }
-            if (max < s.substring(i, start).length()) {
-                max = s.substring(i, start).length();
-            }
-        }
-        return max;*/
     }
 }
