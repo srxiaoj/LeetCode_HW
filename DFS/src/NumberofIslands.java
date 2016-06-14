@@ -39,6 +39,7 @@ public class NumberofIslands {
         int n = grid[0].length;
         LinkedList<Integer> queue = new LinkedList<>();
         int code = x * n + y;
+        grid[x][y] = '0';
         queue.offer(code);
         while (!queue.isEmpty()) {
             code = queue.poll();
