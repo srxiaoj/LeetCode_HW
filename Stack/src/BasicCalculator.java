@@ -1,12 +1,18 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 
 public class BasicCalculator {
 
     public static void main(String[] args) {
-        String t1 = new String("1-(5)");
-        System.out.println("t1 is: " + calculate(t1));
+//        System.out.println(calculate("1-(5)"));
+//        System.out.println(calculate("0"));
+//        System.out.println(calculate("1 + 1"));
+//        System.out.println(calculate(" 2-1 + 2 "));
+//        System.out.println(calculate("(1+(4+5+2)-3)+(6+8)"));
+        System.out.println(calculate("2-(5-6)"));
+        System.out.println(calculate("2-(-5-6)"));
+        System.out.println(calculate("(5-(1+(5)))"));
+        System.out.println(calculate("(7)-(0)+(4)"));
     }
 
     /**
@@ -20,25 +26,31 @@ public class BasicCalculator {
      */
     public static int calculate(String s) {
         Deque<Integer> stack = new LinkedList<>();
-        int rs = 0;
+        int res = 0;
         int sign = 1;
         stack.push(1);//set up initial sign as +1
-        for (int i = 0; i < s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == ' ') continue;
-            else if (s.charAt(i) == '('){
+            // 在 （ 时候push括号外那个符号
+            if (s.charAt(i) == '(') {
                 stack.push(stack.peekFirst() * sign);
                 sign = 1;
-            }
-            else if (s.charAt(i) == ')') stack.pop();
-            else if (s.charAt(i) == '+') sign = 1;
-            else if (s.charAt(i) == '-') sign = -1;
-            else{
+            } else if (s.charAt(i) == ')') {
+                // 在 ） 时候把上一个括号外符号移除
+                stack.pop();
+            } else if (s.charAt(i) == '+') {
+                sign = 1;
+            } else if (s.charAt(i) == '-') {
+                sign = -1;
+            } else {
                 int temp = s.charAt(i) - '0';
-                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1)))
+                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
                     temp = temp * 10 + s.charAt(++i) - '0';
-                rs += sign * stack.peekFirst() * temp;
+                }
+                res += sign * stack.peekFirst() * temp;
             }
         }
-        return rs;
+        return res;
     }
+
 }
