@@ -6,13 +6,13 @@ import java.util.Stack;
 public class MinStack {
     public static void main(String[] args) {
         MinStack minStack = new MinStack();
-        minStack.push(-2);
         minStack.push(0);
-        minStack.push(-3);
-        System.out.println(minStack.getMin());//--> Returns -3.
+        minStack.push(1);
+        minStack.push(0);
+        System.out.println(minStack.getMin());
         minStack.pop();
-        System.out.println(minStack.top());      //--> Returns 0.
-        System.out.println(minStack.getMin());   //--> Returns -2.
+        System.out.println(minStack.top());
+        System.out.println(minStack.getMin());
     }
 
     Stack<Integer> stack = new Stack<>();
@@ -22,6 +22,7 @@ public class MinStack {
      * 关键点为在update min时候每次将上一个min存入stack, 如果当前pop的等于Min,那么再把上一个Min取出来
      */
     public void push(int x) {
+        // x == min 也需要将min push进去
         if (x <= min) {
             stack.push(min);
             min = x;
