@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
 public class LetterCombinationsofaPhoneNumber {
     public static void main(String[] args) {
         LetterCombinationsofaPhoneNumber obj = new LetterCombinationsofaPhoneNumber();
-        List<String> res = obj.letterCombinations("23");
+        List<String> res = obj.letterCombinations3("23");
         System.out.println(res);
     }
 
@@ -41,6 +42,60 @@ public class LetterCombinationsofaPhoneNumber {
         String letters = KEYS[(digits.charAt(offset) - '0')];
         for (int i = 0; i < letters.length(); i++) {
             combination(prefix + letters.charAt(i), digits, offset + 1, res);
+        }
+    }
+
+    /**
+     * 方法2
+     */
+    public List<String> letterCombinations2(String digits) {
+        String[] letter = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        List<String> res = new ArrayList<>();
+        if (digits == null || digits.length() == 0) return res;
+        helper(res, "", letter, digits, 0);
+        return res;
+    }
+
+    private void helper(List<String> res, String part, String[] letter, String s, int start) {
+        if (start > s.length()) return;
+        if (start == s.length()) {
+            res.add(part);
+            return;
+        }
+
+        int index = s.charAt(start) - '0';
+        String symbol = letter[index];
+        for (int j = 0; j < symbol.length(); j++) {
+            String newPart = part + symbol.substring(j, j + 1);
+            helper(res, newPart, letter, s, start + 1);
+        }
+    }
+
+
+    /**
+     * 方法3: 使用StringBuilder
+     */
+    public List<String> letterCombinations3(String digits) {
+        String[] letter = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        List<String> res = new ArrayList<>();
+        if (digits == null || digits.length() == 0) return res;
+        helper3(res, new StringBuilder(), 0, digits, letter);
+        return res;
+    }
+
+    private void helper3(List<String> res, StringBuilder part, int start, String digits, String[] letter) {
+        if (start > digits.length()) return;
+        if (start == digits.length()) {
+            res.add(part.toString());
+            return;
+        }
+
+        int index = digits.charAt(start) - '0';
+        String symbol = letter[index];
+        for (int i = 0; i < symbol.length(); i++) {
+            StringBuilder newPart = new StringBuilder(part);
+            newPart.append(symbol.charAt(i));
+            helper3(res, newPart, start + 1, digits, letter);
         }
     }
 }
