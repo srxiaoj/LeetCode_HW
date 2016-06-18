@@ -3,8 +3,8 @@ import java.util.LinkedList;
 
 /**
  * if (!visited && grid[i][j] == '1'
- *  dfs(i, j, visited, grid);
- *  sum++
+ * dfs(i, j, visited, grid);
+ * sum++
  */
 public class NumberofIslands {
     public static void main(String[] args) {
