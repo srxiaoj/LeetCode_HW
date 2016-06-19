@@ -7,6 +7,8 @@ public class IntToBit {
         System.out.println("-2 - (-2147483648) = 2147483646: " + intToBit(-2 - (-2147483648)));
         System.out.println("-1                             :" + intToBit(-1));
         System.out.println("-1 - (-2147483648) = 2147483647: " + intToBit(-1 - (-2147483648)));
+        System.out.println(intToBit(Integer.MIN_VALUE));
+        System.out.println(intToBit(Integer.MAX_VALUE));
     }
 
     /**
