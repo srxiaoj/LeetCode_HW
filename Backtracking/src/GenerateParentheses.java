@@ -32,6 +32,7 @@ public class GenerateParentheses {
             return;
         }
 
+        // 注意是 if 不是 for loop
         if (left < max) {
             helper(list, str + "(", left + 1, right, max);
         }
