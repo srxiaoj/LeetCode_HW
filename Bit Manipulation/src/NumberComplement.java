@@ -8,15 +8,21 @@ public class NumberComplement {
     }
 
     static int getIntegerComplement(int n) {
-        String s = intToBit(n);
-        System.out.println(s);
+       /* String s = intToBit(n);
         String reverse = reverseBit(s);
-        System.out.println(reverse);
         int res = bitToInt(reverse);
+        return res;*/
+
+        // 方法2
+        String bitWithOnes = intToBitWithOnes(n);
+        int reverse = bitToInt(bitWithOnes);
+        int res = reverse ^ -1;
         return res;
 
     }
 
+
+    // 方法1：得到最高1位 后面的 bit 数, 将 1 与 0 互换位置
     static String intToBit(int num) {
         StringBuilder sb = new StringBuilder();
         if (num >= 0) {
@@ -43,6 +49,27 @@ public class NumberComplement {
             }
         }
         return new String(res);
+    }
+
+    // 方法2：得到最高1位的 bit 数，在前面补 1, 与 -1 取 xor
+    static String intToBitWithOnes(int num) {
+        StringBuilder sb = new StringBuilder();
+        if (num >= 0) {
+            int totalDigit = 32;
+            while (num > 0) {
+                int mod = num % 2;
+                sb.append(mod);
+                num = num / 2;
+            }
+            for (int i = sb.length(); i < totalDigit; i++) {
+                sb.append(1);
+            }
+            return sb.reverse().toString();
+        } else {
+            sb.append(1);
+            sb.append(intToBit(num - Integer.MIN_VALUE));
+            return sb.toString();
+        }
     }
 
     static int bitToInt(String bit) {

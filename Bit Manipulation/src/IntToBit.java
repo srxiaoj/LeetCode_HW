@@ -19,16 +19,16 @@ public class IntToBit {
         StringBuilder sb = new StringBuilder();
         if (num >= 0) {
             // print a bit with total length
-//            int totalDigit = 31;
+            int totalDigit = 31;
             while (num > 0) {
                 int mod = num % 2;
                 sb.append(mod);
                 num = num / 2;
             }
-//            for (int i = sb.length(); i < totalDigit; i++) {
-//                sb.append(0);
-//            }
-//            System.out.println(sb.length());
+            for (int i = sb.length(); i < totalDigit; i++) {
+                sb.append(0);
+            }
+            System.out.println(sb.length());
             return sb.reverse().toString();
         } else {
             sb.append(1);
