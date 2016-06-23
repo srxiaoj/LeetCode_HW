@@ -17,15 +17,15 @@ public class SearchIn2DMatrixII {
      * 从0行，n-1列开始搜索，如果target > matrix[row][col]则row++，否则col--
      */
     public static boolean searchMatrix(int[][] matrix, int target) {
-        int col = matrix[0].length - 1;
-        int row = 0;
-        while (col >= 0 && row <= matrix.length - 1) {
-            if (target == matrix[row][col]) {
+        int l = 0;
+        int r = matrix[0].length - 1;
+        while (r >= 0 && l <= matrix.length - 1) {
+            if (target == matrix[l][r]) {
                 return true;
-            } else if (target < matrix[row][col]) {
-                col--;
-            } else if (target > matrix[row][col]) {
-                row++;
+            } else if (target < matrix[l][r]) {
+                r--;
+            } else if (target > matrix[l][r]) {
+                l++;
             }
         }
         return false;
