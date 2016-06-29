@@ -13,7 +13,7 @@ public class binaryToDecimal {
                 break;
             } else {
                 int temp = binaryNumber % 10;
-//                decimal += temp * Math.pow(2, p);
+//                decimal += temp * Math.pow(2, printString);
                 decimal += temp * (1 << p);
                 binaryNumber = binaryNumber / 10;
                 p++;
