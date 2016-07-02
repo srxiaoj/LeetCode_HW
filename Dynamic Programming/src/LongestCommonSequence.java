@@ -2,7 +2,6 @@
 public class LongestCommonSequence {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         char[] X = {'A', 'B', 'C', 'B', 'D', 'A', 'B'};
         char[] Y = {'B', 'D', 'C', 'A', 'B', 'A'};
         int m = X.length;
