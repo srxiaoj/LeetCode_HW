@@ -52,6 +52,9 @@ public class LongestIncreasingSubsequence {
         return len + 1;
     }
 
+    /**
+     * 找到现有dp数组中第一个比val大的位置，如果所有值都比val小，则val放在len + 1位
+     */
     private static int binarySearch(int[] dp, int len, int val) {
         int start = 0;
         int end = len;
