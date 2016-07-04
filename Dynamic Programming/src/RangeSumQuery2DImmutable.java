@@ -1,7 +1,7 @@
 /**
  * Created by thanksgiving on 1/12/16.
  */
-public class RangeSumQuery2D {
+public class RangeSumQuery2DImmutable {
     public static void main(String[] args) {
         int[][] matrix = {
                 {3, 0, 1, 4, 2},
