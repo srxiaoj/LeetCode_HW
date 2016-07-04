@@ -6,17 +6,17 @@ import java.util.*;
 public class MeetingRoomsII {
     public static void main(String[] args) {
         MeetingRoomsII obj = new MeetingRoomsII();
-//        Interval[] test = new Interval[3];
-//        test[0] = new Interval(0, 30);
-//        test[1] = new Interval(5, 10);
-//        test[2] = new Interval(15, 20);
-//        System.out.println(obj.minMeetingRooms(test));
-//
-//        Interval[] test2 = new Interval[3];
-//        test2[0] = new Interval(9, 10);
-//        test2[1] = new Interval(4, 9);
-//        test2[2] = new Interval(4, 17);
-//        System.out.println(obj.minMeetingRooms(test2));
+        Interval[] test = new Interval[3];
+        test[0] = new Interval(0, 30);
+        test[1] = new Interval(5, 10);
+        test[2] = new Interval(15, 20);
+        System.out.println(obj.minMeetingRooms(test));
+
+        Interval[] test2 = new Interval[3];
+        test2[0] = new Interval(9, 10);
+        test2[1] = new Interval(4, 9);
+        test2[2] = new Interval(4, 17);
+        System.out.println(obj.minMeetingRooms(test2));
 
         Interval[] test3 = new Interval[4];
         test3[0] = new Interval(1, 3);
