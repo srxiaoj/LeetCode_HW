@@ -12,25 +12,15 @@ public class RangeSumQueryImmutable {
 
     private static class NumArray {
         private int[] sum;
-        private int[] array;
         public NumArray(int[] nums) {
             sum = new int[nums.length + 1];
-            array = new int[nums.length];
-            sum[0] = 0;
-            for (int i = 1; i < nums.length + 1; i++) {
+            for (int i = 1; i <= nums.length; i++) {
                 sum[i] = sum[i - 1] + nums[i - 1];
-//                System.out.print(sum[i] + " ");
             }
-            System.out.println(" ");
-            for (int i = 0; i < nums.length; i++) {
-                array[i] = nums[i];
-//                System.out.print(array[i] + " ");
-            }
-            System.out.println(" ");
         }
 
         public int sumRange(int i, int j) {
-            return sum[j + 1] - sum[i + 1] + array[i];
+            return sum[j + 1] - sum[i];
         }
     }
 }
