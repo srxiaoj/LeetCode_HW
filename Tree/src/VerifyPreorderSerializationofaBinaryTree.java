@@ -11,8 +11,8 @@ public class VerifyPreorderSerializationofaBinaryTree {
     }
 
     /**
-     * 每loop一个node，indegree加1
-     * 每loop一个非#node,outdegree加2, 若为#则outdegree不变
+     * 除了第一个node,每一个node，indegree加1
+     * 每一个非#node,outdegree加2, 若为#则outdegree为0
      * 最后indegree应该等于outdegree，且indegree任何时候都不应大于outdegree
      */
     public boolean isValidSerialization(String preorder) {
