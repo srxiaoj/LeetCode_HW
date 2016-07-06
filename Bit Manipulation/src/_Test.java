@@ -22,22 +22,22 @@ public class _Test {
         System.out.println(IntToBit.intToBit((2147483647 >> 1)));*/
 
         // int to bit
-        int n = -1;
-//        System.out.println((n & 1));
-//        System.out.println(-1 << 1);
+ /*       int n = -1;
+        System.out.println((n & 1));
+        System.out.println(-1 << 1);
         System.out.println(IntToBit.intToBit(9));
         System.out.println(Integer.toBinaryString(-9));
-//        System.out.println(Integer.toBinaryString(-1).length());
-//        System.out.println(Integer.toBinaryString(-2));
+        System.out.println(Integer.toBinaryString(-1).length());
+        System.out.println(Integer.toBinaryString(-2));*/
 
 
-        // parent of bit i
+        /*// parent of bit i
         for (int i = 1; i <= 20; i++) {
             System.out.println(getParent(i));
         }
 
         System.out.println(6 & 5);
-        System.out.println(6 & (-6));
+        System.out.println(6 & (-6));*/
 
     }
 

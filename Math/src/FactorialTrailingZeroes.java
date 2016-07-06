@@ -30,15 +30,26 @@ public class FactorialTrailingZeroes {
      * Trailing 0s in n! = Count of 5s in prime factors of n!
      * = floor(n/5) + floor(n/25) + floor(n/125) + ....
      *
-     * @param args
+     *
+     * 解释2: 实际上是5进制问题
+     *    11          10        9           8              7           6           5       4      3      2     1
+     * 2x5^1+1x5^0  2x5^1  1x5^1+4x5^0  1x5^1+3x5^0   1x5^1+2x5^0  1x5^1+1x5^0   1x5^1   4x5^0  3x5^0  2x5^0 1x5^0
+     * 11表示为021, 10表示为020， 9表示为014
+     * 1位以上的所有倍数都可以生成0
      */
     public static void main(String[] args) {
-        FactorialTrailingZeroes obj = new FactorialTrailingZeroes();
         int n = 1808548329;
-        System.out.println("The factorial of " + n + " is: " + obj.trailingZeroes(n));
+        System.out.println("The factorial of " + n + " is: " + trailingZeroes(n));
+        int n2 = 25;
+        System.out.println("The factorial of " + n2 + " is: " + trailingZeroes(n2));
+        int n3 = 100;
+        System.out.println("The factorial of " + n3 + " is: " + trailingZeroes(n3));
+        int n4 = 110;
+        System.out.println("The factorial of " + n4 + " is: " + trailingZeroes(n4));
+
     }
 
-    public int trailingZeroes(int n) {
+    public static int trailingZeroes(int n) {
         int count = 0;
         while (n > 0) {
             n /= 5;
