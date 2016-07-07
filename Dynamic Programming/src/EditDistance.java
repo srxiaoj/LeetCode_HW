@@ -68,10 +68,10 @@ public class EditDistance {
     }
 
     public static void main(String args[]) {
-        String str1 = "dinitrophenylhydrazine";
+       /* String str1 = "dinitrophenylhydrazine";
         String str2 = "benzalphenylhydrazone";
 
-        System.out.println(editDistDP(str1, str2, str1.length(), str2.length()));
+        System.out.println(editDistDP(str1, str2, str1.length(), str2.length()));*/
 
         String s1 = "sunday";
         String s2 = "saturday";
