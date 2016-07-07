@@ -20,11 +20,12 @@ public class DecodeMorseCode {
     public static List<String> decodeMorse(String str, Map<String, Character> morseRule) {
         List<String> res = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        helper(sb, res, str, morseRule);
+        helperWithString("", res, str, morseRule);
+//        helperWithStringBuilder(sb, res, str, morseRule);
         return res;
     }
 
-    private static void helper(StringBuilder sb, List<String> res, String s, Map<String, Character> morseRule) {
+    private static void helperWithStringBuilder(StringBuilder sb, List<String> res, String s, Map<String, Character> morseRule) {
         if (s.equals("")) {
             res.add(sb.toString());
             return;
@@ -33,9 +34,37 @@ public class DecodeMorseCode {
         for (int i = 0; i < s.length(); i++) {
             String first = s.substring(0, i + 1);
             if (morseRule.containsKey(first)) {
-                StringBuilder newSb = new StringBuilder(sb.toString());
-                newSb.append(morseRule.get(first));
-                helper(newSb, res, s.substring(i + 1), morseRule);
+                // version 3
+//                StringBuilder newSb = new StringBuilder(sb.toString());
+//                newSb.append(morseRule.get(first));
+//                helperWithStringBuilder(newSb, res, s.substring(i + 1), morseRule);
+
+                // version 4
+//                sb.append(morseRule.get(first));
+//                helperWithStringBuilder(sb, res, s.substring(i + 1), morseRule);
+
+                // version 5
+                helperWithStringBuilder(sb.append(morseRule.get(first)), res, s.substring(i + 1), morseRule);
+            }
+        }
+    }
+
+    private static void helperWithString(String sub, List<String> res, String s, Map<String, Character> morseRule) {
+        if (s.equals("")) {
+            res.add(sub);
+            return;
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            String first = s.substring(0, i + 1);
+            if (morseRule.containsKey(first)) {
+                // version 1
+//                sub += morseRule.get(first);
+//                helperWithString(sub, res, s.substring(i + 1), morseRule);
+
+                // version2
+                helperWithString(sub + morseRule.get(first), res, s.substring(i + 1), morseRule);
+
             }
         }
     }
