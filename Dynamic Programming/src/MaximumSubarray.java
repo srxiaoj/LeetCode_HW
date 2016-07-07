@@ -1,6 +1,3 @@
-/**
- * Created by thanksgiving on 1/31/16.
- */
 public class MaximumSubarray {
     public static void main(String[] args) {
         MaximumSubarray obj = new MaximumSubarray();

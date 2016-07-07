@@ -1,9 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by thanksgiving on 7/5/16.
- */
 public class LeftRightValueEqualTree {
     public static void main(String[] args) {
         TreeNode node = TreeNode.deserializeLevelorder("8, 1, 5, 4, 4, 2, 2");
