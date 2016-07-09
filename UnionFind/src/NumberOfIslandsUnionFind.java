@@ -60,6 +60,7 @@ public class NumberOfIslandsUnionFind {
         public void union(int node1, int node2) {
             int find1 = find(node1);
             int find2 = find(node2);
+            // if the two nodes do no have the same father, union them, and decrease the count
             if (find1 != find2) {
                 father[find1] = find2;
                 count--;
@@ -67,11 +68,16 @@ public class NumberOfIslandsUnionFind {
         }
 
         public int find(int node) {
-            if (father[node] == node) {
+            while (node != father[node]) {
+                father[node] = father[father[node]];
+                node = father[node];
+            }
+            return node;
+           /* if (father[node] == node) {
                 return node;
             }
             father[node] = find(father[node]);
-            return father[node];
+            return father[node];*/
         }
     }
 }
