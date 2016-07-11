@@ -42,7 +42,7 @@ public class PermutationSequence {
 
     public static void main(String[] args) {
         PermutationSequence obj = new PermutationSequence();
-        System.out.println(obj.getPermutation(3, 4));
+        System.out.println(obj.getPermutation(3, 2));
         System.out.println(obj.getPermutation(8, 8590));
     }
 

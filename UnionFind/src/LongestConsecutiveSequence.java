@@ -12,12 +12,14 @@ public class LongestConsecutiveSequence {
 
     /**
      * Union Find solution
+     * 注意如果碰到重复元素不用重复计算
      */
     public static int longestConsecutiveUF(int[] nums) {
         unionFind uf = new unionFind(nums.length);
         Map<Integer, Integer> map = new HashMap<Integer, Integer>(); // <value,index>
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
+                // duplicate numbers
                 continue;
             }
             map.put(nums[i], i);
@@ -53,10 +55,10 @@ public class LongestConsecutiveSequence {
             return find(i) == find(j);
         }
 
-        public void union(int p, int q) {
-            int i = find(p);
-            int j = find(q);
-            father[i] = j;
+        public void union(int node1, int node2) {
+            int find1 = find(node1);
+            int find2 = find(node2);
+            father[find1] = find2;
         }
 
         // returns the maxium size of union
