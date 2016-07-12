@@ -10,6 +10,8 @@ public class CombinationSum {
         CombinationSum obj = new CombinationSum();
         int[] test = new int[]{3, 6, 2, 7};
         printTwoDArrayList(obj.combinationSum(test, 8));
+        int[] test2 = new int[]{3, 6, 1, 2, 7};
+        printTwoDArrayList(obj.combinationSum(test2, 8));
 
     }
 
@@ -38,6 +40,7 @@ public class CombinationSum {
             return;
         }
         for (int i = start; i < candidates.length; i++) {
+            if (target - candidates[i] < 0) break;
             ArrayList<Integer> newPart = new ArrayList<Integer>(part);
             newPart.add(candidates[i]);
             helper(res, newPart, candidates, i, target - candidates[i]);
