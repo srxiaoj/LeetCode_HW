@@ -8,31 +8,106 @@ public class PalindromePartitioning {
     public static void main(String[] args) {
         PalindromePartitioning obj = new PalindromePartitioning();
         String test = "aabcb";
-        System.out.println(obj.isPalindrome(test));
-        System.out.println(obj.palindromePartitioning(test));
-//        System.out.println(obj.partition(test));
+//        System.out.println(obj.isPalindrome(test));
+//        System.out.println(obj.palindromePartitioning(test));
+        System.out.println(obj.partition2(test));
     }
+
+    public List<List<String>> partition2(String s) {
+        if (s == null || s.length() == 0) return new ArrayList<>();
+        int n = s.length();
+        List<List<String>>[] dp = new ArrayList[n + 1];
+        // add an empty array for initial result
+        dp[0] = new ArrayList<>();
+        dp[0].add(new ArrayList<>());
+
+        boolean[][] pair = new boolean[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                pair[i][j] = false;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (isPalin(s, i, j, pair)) {
+                    pair[i][j] = true;
+                }
+            }
+        }
+
+        printArray(pair);
+
+        for (int i = 0; i < n; i++) {
+            dp[i + 1] = new ArrayList<>();
+            for (int j = 0; j <= i; j++) {
+                String right = s.substring(j, i + 1);
+                if (pair[j][i]) {
+                    for (List<String> r : dp[j]) {
+                        List<String> newSub = new ArrayList<>(r);
+                        newSub.add(right);
+                        dp[i + 1].add(newSub);
+                    }
+                }
+            }
+        }
+        return dp[n];
+    }
+
+    private boolean isPalin(String s, int i, int j, boolean[][] pair) {
+        if (i > j) return false;
+        if (i == j) return true;
+        if (i == j - 1) return s.charAt(i) == s.charAt(j);
+        return s.charAt(i) == s.charAt(j) && isPalin(s, i + 1, j - 1, pair);
+
+      /*  if (i > j) return false;
+        while (i <= j) {
+            if (s.charAt(i) == s.charAt(j)) {
+                if (i + 1 <= j - 1 && pair[i + 1][j - 1]) return true;
+            } else {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;*/
+    }
+
+    public static void printArray(boolean[][] A) {
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[i].length; j++) {
+                if (j != A[i].length - 1) {
+                    System.out.print(A[i][j] + ", ");
+                } else
+                    System.out.print(A[i][j]);
+
+            }
+            System.out.println("");
+        }
+        System.out.println("");
+    }
+
 
     /**
      * 方法1：dynamic programming
      */
     public static List<List<String>> palindromePartitioning(String s) {
-        int len = s.length();
-        List<List<String>>[] result = new List[len + 1];
+        int n = s.length();
+        List<List<String>>[] result = new List[n + 1];
         result[0] = new ArrayList<List<String>>();
         result[0].add(new ArrayList<String>());
         // pair stores the result that whether a range of string is a palindrome or not
         // pair[0][1] is true means that s.substring(0, 2) is a palindrome
-        boolean[][] pair = new boolean[len][len];
+        boolean[][] pair = new boolean[n][n];
         for (int i = 0; i < s.length(); i++) {
             result[i + 1] = new ArrayList<List<String>>();
-            for (int left = 0; left <= i; left++) {
+            for (int j = 0; j <= i; j++) {
                 // core step, determine whether this is a palindrome
                 // only if the two side chars are equal and the sequence in the middle is palindrome
-                if (s.charAt(left) == s.charAt(i) && (i - left <= 1 || pair[left + 1][i - 1])) {
-                    pair[left][i] = true;
-                    String str = s.substring(left, i + 1);
-                    for (List<String> r : result[left]) {
+                if (s.charAt(j) == s.charAt(i) && (j + 1 > i - 1 || pair[j + 1][i - 1])) {
+                    pair[j][i] = true;
+                    String str = s.substring(j, i + 1);
+                    for (List<String> r : result[j]) {
                         List<String> ri = new ArrayList<String>(r);
                         ri.add(str);
                         result[i + 1].add(ri);
@@ -40,7 +115,7 @@ public class PalindromePartitioning {
                 }
             }
         }
-        return result[len];
+        return result[n];
     }
 
     /**
