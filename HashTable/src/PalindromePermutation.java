@@ -1,15 +1,11 @@
 import java.util.HashMap;
 
-/**
- * Created by thanksgiving on 1/10/16.
- */
 public class PalindromePermutation {
     public static void main(String[] args) {
         PalindromePermutation obj = new PalindromePermutation();
-        String a = "code";
-        String b = "aab";
-        System.out.println(obj.canPermutePalindrome(a));
-        System.out.println(obj.canPermutePalindrome(b));
+        System.out.println(obj.canPermutePalindrome("code"));
+        System.out.println(obj.canPermutePalindrome("aab"));
+        System.out.println(obj.canPermutePalindrome("ab"));
     }
     public boolean canPermutePalindrome(String s) {
         int n = s.length();
@@ -30,8 +26,6 @@ public class PalindromePermutation {
                     return false;
             }
         }
-        if (oddCount > 1 && n % 2 != 0)
-            return false;
         return true;
     }
 }
