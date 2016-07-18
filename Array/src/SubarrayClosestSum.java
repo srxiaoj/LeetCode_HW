@@ -7,13 +7,13 @@ import java.util.Comparator;
 public class SubarrayClosestSum {
     public static void main(String[] args) {
 //        int[] a = {-3, 2, -1, 1, 5, -2};
-//        System.out.println(subarraySumClosest(a, 0));
+//        System.out.println(subarraySumCloseToZero(a));
 
         int[] b = {-3, 2, 1, 1, 5, -3};
-        System.out.println(subarraySumClosest(b, 0));
+        System.out.println(subarraySumCloseToZero(b));
     }
 
-    public static int subarraySumClosest(int[] a, int target) {
+    public static int subarraySumCloseToZero(int[] a) {
         Point[] sum = new Point[a.length + 1];
         sum[0] = new Point(0, -1);
         for (int i = 1; i <= a.length; i++) {

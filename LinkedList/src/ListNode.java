@@ -33,7 +33,7 @@ public class ListNode {
         return res.next;
     }
 
-    public ListNode reverse(ListNode head) {
+    public static ListNode reverse(ListNode head) {
         ListNode pre = null, next = head;
         while (head != null) {
             next = head.next;

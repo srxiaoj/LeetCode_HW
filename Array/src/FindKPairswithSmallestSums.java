@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by thanksgiving on 7/3/16.
  */
-public class topKSmallestInSumOfTwoArray {
+public class FindKPairswithSmallestSums {
     public static void main(String[] args) {
         int[] a = {1, 4, 7, 20, 70, 100};
         int[] b = {1, 3, 5, 8, 40};
