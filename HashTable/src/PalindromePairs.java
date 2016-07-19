@@ -8,7 +8,8 @@ import java.util.List;
  */
 public class PalindromePairs {
     public static void main(String[] args) {
-
+        String[] words = {"abcd", "dcba", "lls", "s", "sssll"};
+        System.out.println(palindromePairs(words));
     }
 
     /**
@@ -18,7 +19,7 @@ public class PalindromePairs {
      * 3. abcll, cba
      * 4. llabc, cba
      */
-    public List<List<Integer>> palindromePairs(String[] words) {
+    public static List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if (words == null || words.length == 0) {
             return res;
@@ -78,12 +79,12 @@ public class PalindromePairs {
         return res;
     }
 
-    public String reverseStr(String str) {
+    public static String reverseStr(String str) {
         StringBuilder sb = new StringBuilder(str);
         return sb.reverse().toString();
     }
 
-    public boolean isPalindrome(String s) {
+    public static boolean isPalindrome(String s) {
         int i = 0;
         int j = s.length() - 1;
         while (i <= j) {
