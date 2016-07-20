@@ -13,6 +13,7 @@ public class PalindromeNumber {
     public static boolean isPalindrome(int x) {
         int bits = (int) Math.log10((double) x); //the length of x
         int n = (int) Math.pow(10, (double) bits);
+        System.out.println("n " + n);
 
         int l = n, r = 1;
         while (l >= r) {

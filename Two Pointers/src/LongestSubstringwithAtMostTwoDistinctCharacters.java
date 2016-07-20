@@ -7,7 +7,7 @@ public class LongestSubstringwithAtMostTwoDistinctCharacters {
     public static void main(String[] args) {
         LongestSubstringwithAtMostTwoDistinctCharacters obj = new LongestSubstringwithAtMostTwoDistinctCharacters();
         String s = "cabcccacacccbbcbb";
-        System.out.println(obj.lengthOfLongestSubstringTwoDistinct(s, 2));
+        System.out.println(obj.lengthOfLongestSubstringTwoDistinct2(s));
         System.out.println(obj.lengthOfLongestSubstringTwoDistinct(s));
     }
 
@@ -15,13 +15,13 @@ public class LongestSubstringwithAtMostTwoDistinctCharacters {
      * 方法1：搞一个map，256位，在每个character位统计character的个数，并且搞个num统计distinct number数量
      * 如果distinct number数量比k大，则不断从i开始减去开头的字符直到 num <= k为止
      */
-    public int lengthOfLongestSubstringTwoDistinct(String s, int k) {
+    public int lengthOfLongestSubstringTwoDistinct2(String s) {
         int[] map = new int[256];
         int num = 0;
         int res = 0;
         int i = 0, j = 0;
         for (j = 0; j < s.length(); j++) {
-            while (num > k && i < j) {
+            while (num > 2 && i < j) {
                 map[s.charAt(i)]--;
                 if (map[s.charAt(i)] == 0) num--;
                 i++;
@@ -29,7 +29,7 @@ public class LongestSubstringwithAtMostTwoDistinctCharacters {
             if (map[s.charAt(j)] == 0) num++;
             map[s.charAt(j)]++;
 
-            if (num <= k)
+            if (num <= 2)
                 res = Math.max(res, j - i + 1);
         }
         return res;

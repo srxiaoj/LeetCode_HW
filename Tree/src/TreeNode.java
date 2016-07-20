@@ -174,4 +174,9 @@ public class TreeNode {
 
         return true;
     }
+
+    public String toString() {
+        String output = String.valueOf(val);
+        return output;
+    }
 }

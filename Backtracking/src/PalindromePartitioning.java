@@ -50,6 +50,7 @@ public class PalindromePartitioning {
                     }
                 }
             }
+            System.out.println(dp[i]);
         }
         return dp[n];
     }
