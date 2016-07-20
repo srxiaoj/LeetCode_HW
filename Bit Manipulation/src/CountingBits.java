@@ -11,7 +11,7 @@ public class CountingBits {
     }
 
     /**
-     * 所有为2的倍数count都为0
+     * 所有为2的倍数count都为1
      * 其余则为n[num - 上一个最大的2的倍数] + 1
      * n[1] = 1
      * n[2] = 1
@@ -35,6 +35,7 @@ public class CountingBits {
                 res[i] = 1;
                 offset = nextMultipleOfTWO;
                 nextMultipleOfTWO = 2 * nextMultipleOfTWO;
+                System.out.println("offset " + offset + ", nextMultiple " + nextMultipleOfTWO);
             } else {
                 res[i] = 1 + res[i - offset];
             }

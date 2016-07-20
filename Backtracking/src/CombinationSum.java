@@ -27,11 +27,6 @@ public class CombinationSum {
      * 每个元素可以重复使用
      * 不能包含重复组合
      * 先对数组进行排序，然后不断的重复添加数组内各元素至大于target
-     * @param res
-     * @param part
-     * @param candidates
-     * @param start
-     * @param target
      */
     private void helper(ArrayList<List<Integer>> res, ArrayList<Integer> part, int[] candidates, int start, int target) {
         if (target < 0) return;

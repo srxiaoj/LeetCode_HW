@@ -18,6 +18,7 @@
 306. Additive Number
 309. Best Time to Buy and Sell Stock with Cooldown
 72. Edit Distance
+275. H-Index II
 HeapSort
 
 
@@ -47,7 +48,6 @@ HeapSort
 254. Factor Combinations
 199. Binary Tree Right Side Views
 247. Strobogrammatic Number II
-275. H-Index II
 267. Palindrome Permutation II
 330. Patching Array
 131. Palindrome Partitioning

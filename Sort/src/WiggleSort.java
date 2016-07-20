@@ -1,9 +1,9 @@
 
 public class WiggleSort {
     public static void main(String[] args) {
-        int[] test1 = new int[]{3, 5, 2, 1, 6, 4};
+        int[] test1 = new int[]{1, 5, 1, 1, 6, 4};
         int[] test2 = new int[]{4, 5, 5, 6};
-        int[] test3 = new int[]{4, 3, 5, 1};
+        int[] test3 = new int[]{1, 3, 2, 2, 3, 1};
         WiggleSort obj = new WiggleSort();
         obj.wiggleSort(test1);
         obj.wiggleSort(test2);

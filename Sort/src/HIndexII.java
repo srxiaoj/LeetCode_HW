@@ -5,6 +5,26 @@ public class HIndexII {
     }
 
     public static int hIndex(int[] citations) {
+        // wrong solution
+       /* int n = citations.length;
+        int start = 0, end = n - 1;
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (citations[mid] == n - mid) {
+                return citations[mid];
+            } else if (citations[mid] > n - mid) {
+                end = mid;
+            } else {
+                start = mid;
+            }
+        }
+        if (citations[end] == n - end) {
+            return end;
+        } else {
+            return start;
+        }*/
+
+
         int n = citations.length;
         int lo = 0, hi = n - 1;
         while (lo <= hi) {

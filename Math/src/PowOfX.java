@@ -3,13 +3,15 @@
  */
 public class PowOfX {
     public static void main(String[] args) {
-        System.out.println(myPow(4, -2));
+       /* System.out.println(myPow(4, -2));
         System.out.println(myPow(1.00000, -2147483648));
         System.out.println(myPow(2.00000, -2147483648));
         System.out.println(myPow(0.00001, 2147483647));
         System.out.println(myPow(34.00515, -3));
+        System.out.println(myPow(2, 20000000));
         System.out.println(1.0 / -2147483648);
-        System.out.println(1 / -2147483648);
+        System.out.println(1 / -2147483648);*/
+        System.out.println(myPow(2, -4));
     }
 
     /**

@@ -27,11 +27,6 @@ public class CombinationSumII {
      * 每个元素只能使用一次
      * 不能包含重复组合
      * 先对数组进行排序，然后添加当前位置后(start + 1)的数组内各元素至大于target
-     * @param res
-     * @param list
-     * @param candidates
-     * @param start
-     * @param target
      */
     private void add(ArrayList<List<Integer>> res, ArrayList<Integer> list, int[] candidates, int start, int target) {
         if (target < 0) return;

@@ -1,19 +1,17 @@
-import java.util.Arrays;
-
-
 public class HIndexII {
     public static void main(String[] args) {
-        int test[] = new int[] {3,0,6,1,5};
-        int test2[] = new int[] {3,3,3,1};
+        int test[] = new int[]{3, 0, 6, 1, 5};
+        int test2[] = new int[]{3, 3, 3, 1};
         System.out.println("The h index is: " + hIndex(test));
         System.out.println("The h index is: " + hIndex(test2));
     }
+
     public static int hIndex(int[] citations) {
-        
+
         //Arrays.sort(citations);
         printArray(citations);
-        if(citations.length == 0) return 0;
-        int res = binarySearch(citations, 0, citations.length-1);
+        if (citations.length == 0) return 0;
+        int res = binarySearch(citations, 0, citations.length - 1);
         return res;
         
         /*
@@ -25,9 +23,10 @@ public class HIndexII {
         return 0;
         */
     }
-    private static int binarySearch(int [] c, int l, int r) {
+
+    private static int binarySearch(int[] c, int l, int r) {
         while (l <= r) {
-            int mid = (l+r)/2;
+            int mid = (l + r) / 2;
             if (c[mid] == c.length - mid) {//citation h index is too high
                 return c.length - mid;
             } else if (c[mid] < c.length - mid) {
@@ -40,11 +39,10 @@ public class HIndexII {
         }
         return c.length - l;
     }
+
     //print array
-    public static void printArray(int [] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
+    public static void printArray(int[] A) {
+        for (int i = 0; i < A.length; i++) {
             System.out.print(A[i] + " ");
         }
         System.out.println(" ");

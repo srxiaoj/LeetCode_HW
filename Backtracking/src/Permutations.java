@@ -24,10 +24,6 @@ public class Permutations {
      * add 1: [1]
      * add 2: [2,1]                     [1,2]
      * add 3: [3,2,1],[2,3,1],[2,1,3]   [3,1,2],[1,3,2],[1,2,3]
-     * @param nums
-     * @param start
-     * @param part
-     * @param res
      */
     private void helper(int[] nums, int start, List<Integer> part, List<List<Integer>> res) {
         if (part.size() == nums.length) {
@@ -43,8 +39,6 @@ public class Permutations {
 
     /**
      * method 2
-     * @param nums
-     * @return
      */
     public List<List<Integer>> permute(int[] nums) {
         // record down the position of the numbers
