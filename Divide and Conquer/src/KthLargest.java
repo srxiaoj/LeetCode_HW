@@ -7,8 +7,8 @@ public class KthLargest {
         System.out.println(findKthLargest(test, 2));
     }
 
+
     /**
-     * Average: O(n)
      * find kth largest element.
      * If index == k - 1, which means we've got the kth element
      * If index < k - 1, the kth element is to the right of the index, we need to search from index to right
@@ -21,7 +21,7 @@ public class KthLargest {
         return nums[nums.length - k];
 
         /*
-        //method 2, partial quicksort, O(n)
+        //method 2, partial quicksort, O(nlogk)
         int l = 0, r = nums.length-1;
         while (true) {
             int p = partition(nums, l, r);

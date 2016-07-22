@@ -7,29 +7,24 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
     public static void main(String[] args) {
         int[] preorder = {15, 8, 5, 17, 16, 20};
         int[] inorder = {5, 8, 15, 16, 17, 20};
-        int[] preorder3 = {15, 8, 5, 17, 16, 20};
-        int[] inorder3 = {5, 17, 15, 16, 8, 20};
         int[] preorder2 = {1, 2, 3};
         int[] inorder2 = {2, 3, 1};
+        int[] preorder3 = {15, 8, 5, 17, 16, 20};
+        int[] inorder3 = {5, 17, 15, 16, 8, 20};
         TreeNode.printNode(buildTreeDivideAndConquer(preorder, inorder));
-        TreeNode.printNode(buildTreeDivideAndConquer(preorder3, inorder3));
         TreeNode.printNode(buildTreeDivideAndConquer(preorder2, inorder2));
+        TreeNode.printNode(buildTreeDivideAndConquer(preorder3, inorder3));
     }
 
     /**
      * Divide and conquer.
      */
     public static TreeNode buildTreeDivideAndConquer(int[] preorder, int[] inorder) {
-        Map<Integer, Integer> posMap = new HashMap<>();
-        for (int i = 0; i < inorder.length; i++) {
-            posMap.put(inorder[i], i);
-        }
-        return buildTreeHelper(preorder, 0, inorder, 0, inorder.length - 1, posMap);
+        return buildTreeHelper(preorder, 0, inorder, 0, inorder.length - 1);
     }
 
-    public static TreeNode buildTreeHelper(int[] preorder, int preStart, int[] inorder, int inStart, int inEnd, Map<Integer, Integer> posMap) {
+    public static TreeNode buildTreeHelper(int[] preorder, int preStart, int[] inorder, int inStart, int inEnd) {
         if (inStart > inEnd || preStart > preorder.length - 1) {
-//            System.out.println("null");
             return null;
         }
         TreeNode root = new TreeNode(preorder[preStart]);
@@ -48,8 +43,8 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
         }
         int leftIndex = preStart + 1;
         int rightIndex = preStart + 1 + (k - inStart);
-        root.left = buildTreeHelper(preorder, leftIndex, inorder, inStart, k - 1, posMap);
-        root.right = buildTreeHelper(preorder, rightIndex, inorder, k + 1, inEnd, posMap);
+        root.left = buildTreeHelper(preorder, leftIndex, inorder, inStart, k - 1);
+        root.right = buildTreeHelper(preorder, rightIndex, inorder, k + 1, inEnd);
         return root;
     }
 

@@ -1,59 +1,106 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class WiggleSortII {
     public static void main(String[] args) {
-        WiggleSortII obj = new WiggleSortII();
-//        int[] n1 = {1, 5, 1, 1, 6, 4};
-//        obj.wiggleSort(n1);
-//        printArray(n1);
+        int[] n1 = {1, 5, 1, 1, 6, 4};
+        wiggleSort(n1);
+        printArray(n1);
 
         int[] n2 = {4, 5, 5, 6};
-        obj.wiggleSort(n2);
-        printArray(n2);
+//        wiggleSort(n2);
+//        printArray(n2);
 
         int[] n3 = {1, 1, 2, 1, 2, 2, 1};
-        obj.wiggleSort(n3);
-        printArray(n3);
+//        wiggleSort(n3);
+//        printArray(n3);
 
-        int[] n4 = {1, 1, 2, 2, 2, 1};
-        obj.wiggleSort(n4);
+        int[] n4 = {5, 6, 4, 13, 2, 5};
+        wiggleSort(n4);
         printArray(n4);
     }
-    public void wiggleSort(int[] nums) {
 
-    }
-
-
-/*
-
-    public void wiggleSort(int[] nums) {
-        int i = 0, j = nums.length - 1, k = nums.length - 1;
-        while (i < nums.length - 1) {
-            if (i % 2 == 0) {
-                if (i < nums.length - 1 && nums[i] < nums[i + 1]) {
-                    i++;
-                } else if (i < nums.length - 1 && nums[i] >= nums[i + 1]) {
-                    j = Math.max(j, k);
-                    while (j > 0 && nums[j] <= nums[i]) {
-                        j--;
-                    }
-                    swap(nums, i + 1, j);
-                }
+    /**
+     * 方法1
+     * https://discuss.leetcode.com/topic/41464/step-by-step-explanation-of-index-mapping-in-java/2
+     */
+    public static void wiggleSort(int[] nums) {
+        int median = findKthLargest(nums, (nums.length + 1) / 2);
+        printArray(nums);
+        int n = nums.length;
+        int left = 0, i = 0, right = n - 1;
+        while (i <= right) {
+            int mapIndex = newIndex(i, n);
+            System.out.println("mapIndex: " + mapIndex + ", nums[mapIndex]: " + nums[mapIndex]);
+            System.out.println("BEFORE left: " + left + ", i: " + i + ", right: " + right);
+            if (nums[mapIndex] > median) {
+                swap(nums, newIndex(left++, n), newIndex(i++, n));
+            } else if (nums[mapIndex] < median) {
+                swap(nums, newIndex(right--, n), newIndex(i, n));
             } else {
-                if (i < nums.length - 1 && nums[i] > nums[i + 1]) {
-                    i++;
-                } else if (i < nums.length - 1 && nums[i] <= nums[i + 1]) {
-                    k = Math.max(j, k);
-                    while (k > 0 && nums[k] >= nums[i]) {
-                        k--;
-                    }
-                    swap(nums, i + 1, k);
-                }
+                i++;
             }
+            printArray(nums);
+            System.out.println("AFTER left: " + left + ", i: " + i + ", right: " + right);
         }
     }
-*/
 
-    private void swap(int[] nums, int i, int j) {
+    private static int newIndex(int index, int n) {
+        return (1 + 2 * index) % (n | 1);
+    }
+
+    public static int findKthLargest(int[] nums, int k) {
+        //method 2, partial quicksort, O(nlogk)
+        int l = 0, r = nums.length - 1;
+        while (true) {
+            int p = partition(nums, l, r);
+            if (p == k - 1) return nums[k - 1];
+            if (p > k - 1) r = p - 1;
+            else l = p + 1;
+        }
+    }
+
+    private static int partition(int[] array, int l, int r) {
+        int p = l;
+        int pValue = array[l];
+        for (int i = l + 1; i <= r; i++) {
+            if (array[i] > pValue) {
+                p++;
+                swap(array, i, p);
+            }
+        }
+        swap(array, p, l);
+        return p;
+    }
+
+
+    /**
+     * 方法2
+     * 先排序，然后每次取(len - 1) / 2位置以及最大位置元素
+     * O(nlog(n))
+     */
+    public static void wiggleSort2(int[] nums) {
+        if (nums == null || nums.length <= 1) return;
+        List<Integer> list = new ArrayList<>();
+        for (int i : nums) {
+            list.add(i);
+        }
+        Collections.sort(list);
+        int i = 0;
+        while (list.size() > 1) {
+            int len = list.size();
+            nums[i++] = list.get((len - 1) / 2);
+            nums[i++] = list.get(len - 1);
+            list.remove((len - 1) / 2);
+            list.remove(list.size() - 1);
+        }
+        if (list.size() == 1) {
+            nums[i] = list.get(0);
+        }
+    }
+
+    private static void swap(int[] nums, int i, int j) {
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;

@@ -4,13 +4,13 @@
  */
 public class MinimumStepToPalindrome {
     public static void main(String[] args) {
-        System.out.println(find("abc"));
-        System.out.println(find("cbbbacc"));
+        System.out.println(find2("abcde"));
+//        System.out.println(find("cbbbacc"));
         System.out.println(find2("abc"));
-        System.out.println(find2("cbbbacc"));
+//        System.out.println(find2("cbbbacc"));
     }
 
-    public static int find(String s) {
+   /* public static int find(String s) {
         char[] letters = s.toCharArray();
         int n = s.length();
         int[][] dp = new int[n][n];
@@ -23,19 +23,17 @@ public class MinimumStepToPalindrome {
                     } else {
                         dp[i][j] = dp[i + 1][j - 1];
                     }
-//                    dp[i][j] = k == 1 ? 0 : dp[i + 1][j - 1];
                 } else {
                     if (k == 1) {
                         dp[i][j] = Math.min(Math.min(dp[i + 1][j], dp[i][j - 1]), 0) + 1;
                     } else {
                         dp[i][j] = Math.min(Math.min(dp[i + 1][j], dp[i][j - 1]), dp[i + 1][j - 1]) + 1;
                     }
-//                    dp[i][j] = Math.min(Math.min(dp[i + 1][j], dp[i][j - 1]), k == 1 ? 0 : dp[i + 1][j - 1]) + 1;
                 }
             }
         }
         return dp[0][n - 1];
-    }
+    }*/
 
     public static int find2(String s) {
         int n = s.length();
@@ -54,7 +52,22 @@ public class MinimumStepToPalindrome {
                         dp[i][j] = Math.min(dp[i + 1][j - 1], Math.min(dp[i][j - 1], dp[i + 1][j])) + 1;
                 }
             }
+//            printArray(dp);
         }
         return dp[0][s.length() - 1];
+    }
+
+    public static void printArray(int[][] A) {
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[i].length; j++) {
+                if (j != A[i].length - 1) {
+                    System.out.print(A[i][j] + ", ");
+                } else
+                    System.out.print(A[i][j]);
+
+            }
+            System.out.println("");
+        }
+        System.out.println("");
     }
 }
