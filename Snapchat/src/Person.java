@@ -76,5 +76,6 @@ public class Person {
         System.out.println(getAllFriend(B));
         System.out.println(getAllFriendBfs(A));
         System.out.println(getAllFriendBfs(B));
+        System.out.println(getAllFriendBfs(C));
     }
 }
