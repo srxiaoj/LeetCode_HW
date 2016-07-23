@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Test {
     // instance variable
     private int x = 1;
@@ -19,7 +17,8 @@ public class Test {
     }
         
     public static void main(String[] args) {
-        System.out.println((-4 % 2));
+//        System.out.println((-4 % 2));
+        System.out.println("1213".compareTo("133"));
     }
 
     //print array

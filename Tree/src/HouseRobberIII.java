@@ -17,8 +17,6 @@ public class HouseRobberIII {
 
     /**
      * dynamic programming
-     * @param root
-     * @return
      */
     public int rob(TreeNode root) {
         int[] maxVal = dpRob(root);
