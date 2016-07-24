@@ -3,7 +3,7 @@ public class MultiplyStrings {
     public static void main(String[] args) {
         String num1 = "25";
         String num2 = "37";
-//        System.out.println(multiply(num1, num2));
+        System.out.println(multiply(num1, num2));
 
         String num3= "123";
         String num4 = "456";
@@ -36,6 +36,7 @@ public class MultiplyStrings {
                 int product = first * second;
                 res[i + j] += (product + res[i + j + 1]) / 10;
                 res[i + j + 1] = (product + res[i + j + 1]) % 10;
+                printArray(res);
             }
         }
 
@@ -59,5 +60,16 @@ public class MultiplyStrings {
         BigInteger b = new BigInteger(num2);
         return a.multiply(b).toString();
         */
+    }
+
+    public static void printArray(int[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }

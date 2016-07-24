@@ -77,7 +77,32 @@ class BigInt {
     }
 
     public String multiplyInt(String toMulti) {
-        return null;
+        int m = number.length();
+        int n = toMulti.length();
+        int[] res = new int[m + n];
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                int first = number.charAt(i) - '0';
+                int second = toMulti.charAt(j) - '0';
+                int product = first * second;
+                res[i + j] += (product + res[i + j + 1]) / 10;
+                res[i + j + 1] = (product + res[i + j + 1]) % 10;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while (i < res.length && res[i] == 0) {
+            i++;
+        }
+        while (i < res.length) {
+            sb.append(res[i]);
+            i++;
+        }
+        if (sb.length() == 0) {
+            return "0";
+        }
+        return sb.toString();
     }
 
     public boolean compareBigInt(String a, String b) {
@@ -99,11 +124,18 @@ class BigInt {
 
     public static void main(String[] args) {
         BigInt a = new BigInt("1111");
-        System.out.println(a.subtractBigInt("1123"));
-        System.out.println(a.subtractBigInt("1111"));
-        System.out.println(a.subtractBigInt("999"));
-        System.out.println(a.subtractBigInt("200"));
-        System.out.println(a.subtractBigInt("99"));
+        // multiply
+        System.out.println(a.multiplyInt("10"));
+        System.out.println(a.multiplyInt("999"));
+
+
+
+        // substract
+//        System.out.println(a.subtractBigInt("1123"));
+//        System.out.println(a.subtractBigInt("1111"));
+//        System.out.println(a.subtractBigInt("999"));
+//        System.out.println(a.subtractBigInt("200"));
+//        System.out.println(a.subtractBigInt("99"));
 
 
 
