@@ -5,7 +5,7 @@
  * {0, 1} is not a result because they are next to each other
  * 要求是subsequence with all characters not next to each other in s
  */
-public class StringMatchPattern {
+public class StringMatchPatternNotContinuous {
     public static void main(String[] args) {
         System.out.println(numOfMatchDP("abcacbaccbec", "abc"));
         System.out.println(numOfMatchDP("abcacb", "ab"));

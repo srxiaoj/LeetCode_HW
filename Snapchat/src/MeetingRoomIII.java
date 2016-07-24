@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Created by thanksgiving on 7/23/16.
+ * 需要输出每个meeting安排在哪个meeting room
  */
 public class MeetingRoomIII {
     public static void main(String[] args) {

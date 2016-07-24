@@ -3,10 +3,31 @@
  */
 public class SortColors {
     public static void main(String[] args) {
-        SortColors obj = new SortColors();
-        int[] nums = new int[]{0, 1, 0, 2, 1, 0, 2, 1, 0};
-        obj.sortColors(nums);
-        obj.print(nums);
+//        int[] nums = new int[]{0, 1, 0, 2, 1, 0, 2, 1, 0};
+        int[] nums = new int[]{1, 2, 1, 0, 3, 1, 2, 3, 0, 1};
+        sort(nums);
+//        printArray(nums);
+    }
+
+    public static void sort(int[] A) {
+        int idx0 = 0, idx1 = 0, idx2 = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] == 0) {
+                A[i] = 3;
+                A[idx2++] = 2;
+                A[idx1++] = 1;
+                A[idx0++] = 0;
+            } else if (A[i] == 1) {
+                A[i] = 3;
+                A[idx2++] = 2;
+                A[idx1++] = 1;
+            } else if (A[i] == 2) {
+                A[i] = 3;
+                A[idx2++] = 2;
+            }
+            printArray(A);
+            System.out.println("idx0: " + idx0 + ", idx1: " + idx1);
+        }
     }
 
     /**
@@ -37,9 +58,14 @@ public class SortColors {
         nums[j] = temp;
     }
 
-    private void print(int[] a) {
-        for (int i : a) {
-            System.out.print(i + " ");
+    public static void printArray(int[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
         }
+        System.out.println("]");
     }
 }
