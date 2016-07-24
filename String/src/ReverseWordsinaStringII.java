@@ -3,21 +3,20 @@
  */
 public class ReverseWordsinaStringII {
     public static void main(String[] args) {
-        ReverseWordsinaStringII obj = new ReverseWordsinaStringII();
 //        String a = "the sky is blue";
-        String a = "a ";
+        String a = " ";
         char[] s = a.toCharArray();
         System.out.println("Before reverse");
-        System.out.println(s);
-        obj.reverseWords(s);
+        System.out.println("[" + new String(s) +"]");
+        reverseWords(s);
         System.out.println("After reverse");
-        System.out.println(s);
+        System.out.println("[" + new String(s) +"]");
     }
 
     /**
      * 先将整个char[] reverse，然后将每个' '隔开的单词reverse，注意最后一个单词也要reverse
      */
-    public void reverseWords(char[] s) {
+    public static void reverseWords(char[] s) {
         int l = 0, r = s.length - 1;
         swap(s, l, r);
         int start = 0;
@@ -32,7 +31,7 @@ public class ReverseWordsinaStringII {
         }
     }
 
-    private void swap(char[] a, int l, int r) {
+    private static void swap(char[] a, int l, int r) {
         while (l <= r) {
             char temp = a[l];
             a[l] = a[r];
