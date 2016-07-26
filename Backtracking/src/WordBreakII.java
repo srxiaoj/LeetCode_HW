@@ -9,10 +9,10 @@ public class WordBreakII {
         Set<String> set1 = new HashSet<>();
         set1.addAll(Arrays.asList("cat", "cats", "and", "sand", "dog"));
         System.out.println(obj.wordBreak("catsanddog", set1));
-        Set<String> set2 = new HashSet<>();
-        set2.addAll(Arrays.asList("a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"));
-        System.out.println(obj.wordBreak("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", set2));
+//        Set<String> set2 = new HashSet<>();
+//        set2.addAll(Arrays.asList("a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"));
+//        System.out.println(obj.wordBreak("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+//                "aaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", set2));
     }
 
     /**
@@ -34,6 +34,7 @@ public class WordBreakII {
                     break;
                 }
             }
+            printArray(dp);
         }
         if (dp[n])
             dfs(res, "", s, wordDict, 0);
@@ -43,6 +44,7 @@ public class WordBreakII {
     private void dfs(List<String> res, String part, String s, Set<String> set, int pos) {
         if (pos > s.length()) return;
         if (pos == s.length()) {
+            // 去掉第一个空格
             part = part.substring(1);
             res.add(part);
             return;
@@ -54,5 +56,16 @@ public class WordBreakII {
                 dfs(res, newPart, s, set, i + 1);
             }
         }
+    }
+
+    public static void printArray(boolean[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }

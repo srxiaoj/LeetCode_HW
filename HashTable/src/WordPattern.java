@@ -6,7 +6,6 @@ import java.util.Set;
 public class WordPattern {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         WordPattern obj = new WordPattern();
         String pattern1 = "abba", str1 = "dog cat cat dog";
         String pattern2 = "abba", str2 = "dog cat cat fish";

@@ -30,7 +30,20 @@ public class WordBreak {
                     break;
                 }
             }
+            printArray(dp);
         }
         return dp[s.length()];
+    }
+
+
+    public static void printArray(boolean[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }
