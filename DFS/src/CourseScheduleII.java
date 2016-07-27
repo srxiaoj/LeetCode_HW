@@ -25,7 +25,7 @@ public class CourseScheduleII {
 //        return solveByDFS(adjs);
     }
 
-    private void initialiseGraph(int[] incLinkCounts, List<List<Integer>> adjs, int[][] prerequisites){
+    private void initialiseGraph(int[] incLinkCounts, List<List<Integer>> adjs, int[][] prerequisites) {
         int n = incLinkCounts.length;
         while (n-- > 0) adjs.add(new ArrayList<>());
         for (int[] edge : prerequisites) {
@@ -62,7 +62,7 @@ public class CourseScheduleII {
         return true;
     }
 
-    private int[] solveByBFS(int[] incLinkCounts, List<List<Integer>> adjs){
+    private int[] solveByBFS(int[] incLinkCounts, List<List<Integer>> adjs) {
         int[] order = new int[incLinkCounts.length];
         Queue<Integer> toVisit = new ArrayDeque<>();
         for (int i = 0; i < incLinkCounts.length; i++) {
@@ -81,11 +81,9 @@ public class CourseScheduleII {
     }
 
     //print array
-    private static void printArray(int[] A)
-    {
-        for(int i = 0; i < A.length; i++)
-        {
-            if(i != A.length-1)
+    private static void printArray(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
                 System.out.print(A[i] + ", ");
             else
                 System.out.print(A[i]);

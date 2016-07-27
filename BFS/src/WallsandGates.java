@@ -47,7 +47,26 @@ public class WallsandGates {
     }
 
     private void bfs(int[][] rooms, int i, int j) {
-        if (i < 0 || i >= rooms.length || j < 0 || j >= rooms[0].length || rooms[i][j] == -1) return;
+        int m = rooms.length;
+        int n = rooms[0].length;
+        int index = i * n + j;
+        int[][] distance = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(index);
+        while (!queue.isEmpty()) {
+            int last = queue.poll();
+            int indexI = last / n;
+            int indexJ = last % n;
+            for (int[] d : distance) {
+                int x = indexI + d[0];
+                int y = indexJ + d[1];
+                if (x >= 0 && x < m && y >= 0 && y < n && rooms[x][y] != -1 && rooms[indexI][indexJ] + 1 < rooms[x][y]) {
+                    queue.offer(x * n + y);
+                    rooms[x][y] = rooms[indexI][indexJ] + 1;
+                }
+            }
+        }
+      /*  if (i < 0 || i >= rooms.length || j < 0 || j >= rooms[0].length || rooms[i][j] == -1) return;
         Queue<Integer> queue = new LinkedList<>();
         int m = rooms.length, n = rooms[0].length;
         queue.offer(i * n + j);
@@ -75,23 +94,24 @@ public class WallsandGates {
                 rooms[x][y - 1] = rooms[x][y] + 1;
                 queue.offer(x * n + y - 1);
             }
-        }
+        }*/
     }
 
     /**
      * print 2D array.
      */
-    private static void printArray(int[][] A) {
+    public static void printArray(int[][] A) {
         for (int i = 0; i < A.length; i++) {
+            System.out.print("[");
             for (int j = 0; j < A[i].length; j++) {
                 if (j != A[i].length - 1) {
                     System.out.print(A[i][j] + ", ");
-                } else {
+                } else
                     System.out.print(A[i][j]);
-                }
+
             }
-            System.out.println(" ");
+            System.out.println("]");
         }
-        System.out.println(" ");
+        System.out.println("");
     }
 }

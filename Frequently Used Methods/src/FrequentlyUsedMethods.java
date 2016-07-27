@@ -20,11 +20,9 @@ public class FrequentlyUsedMethods {
     //print two dimensional array list, which can also be replaced by simply System.out.println(A)
     public static void printTwoDArrayList(List<List<Integer>> A) {
         for (int i = 0; i < A.size(); i++) {
-
             System.out.print(A.get(i) + " ");
             System.out.println("");
         }
-
     }
 
     //print array
@@ -41,7 +39,6 @@ public class FrequentlyUsedMethods {
 
     /**
      * print 2D array.
-     * @param A array
      */
     public static void printArray(int[][] A) {
         for (int i = 0; i < A.length; i++) {
