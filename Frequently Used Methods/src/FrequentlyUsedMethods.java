@@ -45,6 +45,7 @@ public class FrequentlyUsedMethods {
      */
     public static void printArray(int[][] A) {
         for (int i = 0; i < A.length; i++) {
+            System.out.print("[");
             for (int j = 0; j < A[i].length; j++) {
                 if (j != A[i].length - 1) {
                     System.out.print(A[i][j] + ", ");
@@ -52,7 +53,7 @@ public class FrequentlyUsedMethods {
                     System.out.print(A[i][j]);
 
             }
-            System.out.println("");
+            System.out.println("]");
         }
         System.out.println("");
     }
