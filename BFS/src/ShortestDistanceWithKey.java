@@ -15,11 +15,19 @@ public class ShortestDistanceWithKey {
         };
         System.out.println(shortestDistance(grid));
 
+        char[][] grid2 = {
+                {'a', '2', '1', 'b', '1'},
+                {'0', '1', '0', 'A', '0'},
+                {'0', 'B', '0', '0', 'B'},
+                {'0', '1', '0', '0', '1'},
+                {'0', '1', '1', '1', '3'}
+        };
+
     }
 
     public static int shortestDistance(char[][] grid) {
         int row = grid.length;
-        if (row == 0) return 0 ;
+        if (row == 0) return 0;
         int col = grid[0].length;
         int[][] step = new int[row][col];
         int[][] step2 = new int[row][col];
