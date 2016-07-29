@@ -53,23 +53,24 @@ public class WordAbbreviation2 {
      */
     /* assume no duplicate in string array.*/
     public String[] Encode(String[] strs) {
-        Map<Integer, TrieNode> wordDict = new HashMap<Integer, TrieNode>();
+        Map<String, TrieNode> wordDict = new HashMap<>();
         String[] encodeStrs = new String[strs.length];
 
         // Build trie.
         for (int i = 0; i < strs.length; i++) {
-            int len = strs[i].length();
-            if (!wordDict.containsKey(len)) {
+            String key = "" + strs[i].charAt(0) + strs[i].charAt(strs[i].length() - 1) + strs[i].length();
+            if (!wordDict.containsKey(key)) {
                 TrieNode root = new TrieNode();
-                wordDict.put(len, root);
+                wordDict.put(key, root);
             }
-            insert(strs[i], wordDict.get(len));
+            insert(strs[i], wordDict.get(key));
         }
 
         // compress each string.
         for (int i = 0; i < strs.length; i++) {
+            String key = "" + strs[i].charAt(0) + strs[i].charAt(strs[i].length() - 1) + strs[i].length();
             int len = strs[i].length();
-            String prefix = searchPrefix(strs[i], wordDict.get(len));
+            String prefix = searchPrefix(strs[i], wordDict.get(key));
             System.out.println("prefix: " + prefix);
             if (prefix.length() + 2 < len) encodeStrs[i] = prefix + "" + len + strs[i].charAt(len - 1);
             else encodeStrs[i] = strs[i];

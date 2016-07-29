@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Created by thanksgiving on 7/7/16.
  */
-public class RearrangeSameCharMinDistance {
+public class RearrangeStringkDistanceApart {
     public static void main(String[] args) {
         System.out.println(rearrange("abb", 2));
         System.out.println(rearrange("aacbbc", 3));

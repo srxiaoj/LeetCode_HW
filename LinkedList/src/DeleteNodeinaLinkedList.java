@@ -7,8 +7,15 @@ public class DeleteNodeinaLinkedList {
         System.out.println(test.next.val);
     }
     public void deleteNode(ListNode node){
-        if (node == null) return;
+       /* if (node == null) return;
         node.val = node.next.val;//replace the value want to delete with the next val
-        node.next = node.next.next;//relink the next to the next.next
+        node.next = node.next.next;//relink the next to the next.next*/
+        if (node == null) return;
+        if (node.next != null) {
+            node.val = node.next.val;
+            node.next = node.next.next;
+        } else {
+            node = null;
+        }
     }
 }
