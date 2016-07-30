@@ -7,30 +7,29 @@ public class CountandSay {
                 + "13112221, 1113213211, 31131211131221...";
         System.out.println(obj.countAndSay(4));
     }
-    public String countAndSay(int n) {
-        if (n <= 0)
-            return "-1";
-        String result = "1";
 
-        for (int i = 1; i < n; i++) {
-            result = build(result);
+    public String countAndSay(int n) {
+        int i = 1;
+        String next = "1";
+        while (i < n) {
+            next = read(next);
+            i++;
         }
-        return result;
+        return next;
     }
 
-    private String build(String result) {
-        StringBuilder builder = new StringBuilder();
+    private String read(String s) {
+        StringBuilder sb = new StringBuilder();
         int i = 0;
-        while (i < result.length()) {
-            char val = result.charAt(i);
-            int count = 0;
-
-            while (i < result.length() && result.charAt(i) == val) {
+        while (i < s.length()) {
+            int count = 1;
+            while (i + 1 < s.length() && s.charAt(i) == s.charAt(i + 1)) {
                 i++;
                 count++;
             }
-            builder.append(String.valueOf(count)).append(val);
+            sb.append(count).append(s.charAt(i));
+            i++;
         }
-        return builder.toString();
+        return sb.toString();
     }
 }
