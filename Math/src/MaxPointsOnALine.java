@@ -6,40 +6,12 @@ import java.util.Map;
  */
 public class MaxPointsOnALine {
     public static void main(String[] args) {
-        Point[] a = new Point[]{new Point(1, 2), new Point(2, 4), new Point(3, 6), new Point(2, 3)};
+        Point[] a = new Point[]{new Point(84, 250), new Point(0, 0), new Point(1, 0), new Point(0, -70),
+                new Point(0, -70), new Point(1, -1), new Point(21, 10), new Point(42, 90), new Point(-42, -230)};
+//        Point[] a = new Point[]{new Point(1, 1), new Point(1, 1), new Point(1, 1)};
         System.out.println(maxPoints2(a));
     }
 
-    public static int maxPoints2(Point[] points) {
-        if(points.length <= 0) return 0;
-        if(points.length <= 2) return points.length;
-        int result = 0;
-        for(int i = 0; i < points.length; i++){
-            HashMap<Double, Integer> map = new HashMap<>();
-            int samex = 1;
-            int samep = 0;
-            for(int j = 0; j < points.length; j++){
-                if(j != i){
-                    if((points[j].x == points[i].x) && (points[j].y == points[i].y)){
-                        samep++;
-                    }
-                    if(points[j].x == points[i].x){
-                        samex++;
-                        continue;
-                    }
-                    double k = (double)(points[j].y - points[i].y) / (double)(points[j].x - points[i].x);
-                    if(map.containsKey(k)){
-                        map.put(k,map.get(k) + 1);
-                    }else{
-                        map.put(k, 2);
-                    }
-                    result = Math.max(result, map.get(k) + samep);
-                }
-            }
-            result = Math.max(result, samex);
-        }
-        return result;
-    }
 
     public static int maxPoints(Point[] points) {
         if (points == null) return 0;
@@ -99,5 +71,41 @@ public class MaxPointsOnALine {
             x = a;
             y = b;
         }
+
+        public String toString() {
+            return "[" + x + "," + y + "]";
+        }
+    }
+
+
+    public static int maxPoints2(Point[] points) {
+        if(points.length <= 0) return 0;
+        if(points.length <= 2) return points.length;
+        int result = 0;
+        for(int i = 0; i < points.length; i++){
+            HashMap<Double, Integer> map = new HashMap<>();
+            int samex = 1;
+            int samep = 0;
+            for(int j = 0; j < points.length; j++){
+                if(j != i){
+                    if((points[j].x == points[i].x) && (points[j].y == points[i].y)){
+                        samep++;
+                    }
+                    if(points[j].x == points[i].x){
+                        samex++;
+                        continue;
+                    }
+                    double k = (double)(points[j].y - points[i].y) / (double)(points[j].x - points[i].x);
+                    if(map.containsKey(k)){
+                        map.put(k,map.get(k) + 1);
+                    }else{
+                        map.put(k, 2);
+                    }
+                    result = Math.max(result, map.get(k) + samep);
+                }
+            }
+            result = Math.max(result, samex);
+        }
+        return result;
     }
 }

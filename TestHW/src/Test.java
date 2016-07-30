@@ -15,11 +15,26 @@ public class Test {
         y = 6;
         return x - y;
     }
+
+    private static int gcd(int a, int b) {
+        if (a > b) {
+            return gcd(b, a);
+        } else {
+            if (a == 0) {
+                return 0;
+            } else if (b % a == 0) {
+                return a;
+            } else {
+                return gcd(b % a, a);
+            }
+        }
+    }
         
     public static void main(String[] args) {
 //        System.out.println((-4 % 2));
 //        System.out.println("1213".compareTo("133"));
-        System.out.println("abcd".substring(0, 4));
+//        System.out.println("abcd".substring(0, 4));
+        System.out.println(gcd(18, 0));
     }
 
     //print array
