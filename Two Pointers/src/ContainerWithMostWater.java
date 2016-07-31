@@ -13,21 +13,19 @@ public class ContainerWithMostWater {
     /**
      * 每次最大面积为Math.min(height[i], height[j]) * (j - i))与当前最大面积比较
      * 如果height[i] < height[j]， 则增加 i 去继续update最大面积，否则减少 j
-     * @param height
-     * @return
      */
     public int maxArea(int[] height) {
         if (height == null) return 0;
-        int mx = 0;
+        int max = 0;
         int i = 0, j = height.length - 1;
         while (i < j) {
-            mx = Math.max(mx, Math.min(height[i], height[j]) * (j - i));
+            max = Math.max(max, Math.min(height[i], height[j]) * (j - i));
             if (height[i] < height[j]) {
                 i++;
             } else {
                 j--;
             }
         }
-        return mx;
+        return max;
     }
 }

@@ -17,11 +17,8 @@ public class WordBreak {
      * 如果s.substring(0,j)是wordbreakable, 而且s.substring(j,i)在wordDict中，则s.substring(0, i)是wordbreakable
      */
     public boolean wordBreak(String s, Set<String> wordDict) {
-        if (s == null && wordDict == null) return true;
-        if (s == null || wordDict == null) return false;
         //dp[i] represents if s.substring(0, i) is wordbreakable.
         boolean[] dp = new boolean[s.length() + 1];
-        Arrays.fill(dp, false);
         dp[0] = true;
         for (int i = 1; i <= s.length(); i++) {
             for (int j = 0; j < i; j++) {
@@ -30,7 +27,6 @@ public class WordBreak {
                     break;
                 }
             }
-            printArray(dp);
         }
         return dp[s.length()];
     }
