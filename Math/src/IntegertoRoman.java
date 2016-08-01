@@ -14,17 +14,19 @@ public class IntegertoRoman {
      */
     public String intToRoman(int num) {
         String symbol[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-        int value[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < symbol.length; i++) {
-            int base = num / value[i];
-            // 30 / 10 = 2, need Three XXX
-            while (base != 0) {
-                base--;
-                result.append(symbol[i]);
+        int value[] =     {1000, 900, 500, 400, 100,   90,   50,  40,   10,   9,   5,   4,    1};
+        StringBuilder sb = new StringBuilder();
+        int start = 0;
+        while (num > 0) {
+            if (start < value.length && num < value[start]) {
+                start++;
+            } else {
+                for (int i = 0; i < num / value[start]; i++) {
+                    sb.append(symbol[start]);
+                }
+                num -= num / value[start] * value[start];
             }
-            num = num % value[i];
         }
-        return result.toString();
+        return sb.toString();
     }
 }

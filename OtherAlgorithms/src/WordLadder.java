@@ -11,12 +11,13 @@ public class WordLadder {
         test.add("dog");
         test.add("lot");
         test.add("log");
-        int res = ladderLength(begin, end, test);
-        System.out.println(res);
-        String s = "a";
-        String e = "c";
+        System.out.println(ladderLength(begin, end, test));
+        String s = "hot";
+        String e = "dog";
         Set<String> test2 = new HashSet<>();
-        test.add("b");
+        test2.add("hot");
+        test2.add("dog");
+        test2.add("dot");
         System.out.println(ladderLength(s, e, test2));
     }
 
@@ -25,40 +26,34 @@ public class WordLadder {
      * 如果不是，则将这个list的单词全部重新放入queue, 进入下一层
      */
     public static int ladderLength(String beginWord, String endWord, Set<String> wordList) {
-        Queue<List<String>> queue = new LinkedList<>();
-        List<String> list = new ArrayList<>();
-        list.add(beginWord);
-        queue.offer(list);
-        Set<String> visited = new HashSet<>();
-        visited.add(beginWord);
-        int level = 1;
+        Set<String> visit = new HashSet<>();
+        if (wordList.size() == 0) return -1;
+        if (beginWord.equals(endWord)) return 0;
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(beginWord);
+        visit.add(beginWord);
+        int len = 1;
+
         while (!queue.isEmpty()) {
-            List<String> sub = queue.poll();
-            List<String> next = new ArrayList<>();
-            for (int i = 0; i < sub.size(); i++) {
-                String prev = sub.get(i);
-                for (int k = 0; k < prev.length(); k++) {
-                    char[] array = prev.toCharArray();
-                    for (int j = 0; j < 26; j++) {
-                        array[k] = (char) ('a' + j);
-                        String newWord = new String(array);
-                        if (newWord.equals(endWord)) {
-                            return level + 1;
-                        }
-                        if (wordList.contains(newWord) && !visited.contains(newWord)) {
-                            next.add(newWord);
-                            visited.add(newWord);
+            int size = queue.size();
+            len++;
+            for (int i = 0; i < size; i++) {
+                String next = queue.poll();
+                for (int j = 0; j < next.length(); j++) {
+                    char[] temp = next.toCharArray();
+                    for (char k = 'a'; k <= 'z'; k++) {
+                        temp[j] = k;
+                        String newWord = new String(temp);
+                        if (newWord.equals(endWord)) return len;
+                        if (wordList.contains(newWord) && !visit.contains(newWord)) {
+                            queue.offer(newWord);
+                            visit.add(newWord);
                         }
                     }
                 }
             }
-            if (!next.isEmpty()) {
-                level++;
-                queue.offer(next);
-            }
         }
         return 0;
-
 
 
        /* // Use queue to help BFS
