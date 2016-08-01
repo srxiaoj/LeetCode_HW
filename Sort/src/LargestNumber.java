@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * Created by thanksgiving on 5/16/16.
  */
@@ -18,10 +21,51 @@ public class LargestNumber {
         System.out.println(obj.largestNumber(nums6));
     }
 
+    public String largestNumber(int[] nums) {
+        if (nums == null || nums.length == 0) return "";
+        String[] array = new String[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            array[i] = String.valueOf(nums[i]);
+        }
+        Arrays.sort(array, new MyComparator());
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < nums.length; i++) {
+            if (i == 0) {
+                while (i < nums.length && array[i].equals("0")) {
+                    i++;
+                }
+                if (i == nums.length) return "0";
+            }
+            sb.append(array[i]);
+        }
+        return sb.toString();
+    }
+
     /**
+     * 方法1
+     * 将a + b 与 b + a对比，来比较排序
+     */
+    class MyComparator implements Comparator<String> {
+        public int compare(String a, String b) {
+            String first = a + b;
+            String second = b + a;
+            if (first.compareTo(second) < 0) {
+                return 1;
+            } else if (first.compareTo(second) > 0) {
+                return -1;
+            }
+            return 0;
+        }
+    }
+
+
+
+
+    /**
+     * 方法2
      * 很多cornner case, 见例子
      */
-    public String largestNumber(int[] nums) {
+    public String largestNumber2(int[] nums) {
         for (int i = 1; i < nums.length; i++) {
             for (int j = 0; j < i; j++) {
                 String a = String.valueOf(nums[j]);
