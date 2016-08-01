@@ -9,28 +9,27 @@ public class RemoveNthNodeFromEndofList {
         ListNode.printListNode(res);
     }
 
+    /**
+     * 先移动fast n + 1 步，然后slow 赶上至 fast == null, 要注意移除第一个元素的可能
+     */
     public static ListNode removeNthFromEnd(ListNode head, int n) {
-        
-        /*
+        // one pass
         ListNode dummy = new ListNode(0);
-        ListNode slow = dummy, fast = dummy;
-        slow.next = head;
-        //getLevelOfList(slow);
-        //move fast ahead so that the gap between slow and fast is n
-        for (int i = 0; i < n+1; i++) {
+        dummy.next = head;
+        ListNode slow = dummy;
+        ListNode fast = dummy;
+        for (int i = 0; i <= n; i++) {
             fast = fast.next;
         }
-        //now move fast and slow at the same time, when fast reach null, the gap should still be n
+
         while (fast != null) {
             slow = slow.next;
             fast = fast.next;
         }
         slow.next = slow.next.next;
-        //getLevelOfList(dummy);
         return dummy.next;
-        */
 
-        ListNode dummy = new ListNode(0);
+        /*ListNode dummy = new ListNode(0);
         ListNode res = dummy;
         res.next = head;
         int level = getLevelOfList(head);
@@ -42,7 +41,7 @@ public class RemoveNthNodeFromEndofList {
             j++;
         }
         res.next = res.next.next;
-        return dummy.next;
+        return dummy.next;*/
 
     }
 
