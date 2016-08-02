@@ -3,20 +3,28 @@
  */
 public class PathSum {
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(-2);
-        root.right = new TreeNode(-3);
-        root.left.left = new TreeNode(1);
-        root.left.right = new TreeNode(3);
-        root.right.left = new TreeNode(-2);
-        root.left.left.left = new TreeNode(-1);
-        TreeNode.printNode(root);
+        TreeNode root = TreeNode.deserializeLevelorder("1, 2, null");
         PathSum obj = new PathSum();
-        System.out.println(obj.hasPathSum(root, -3));
+        System.out.println(obj.hasPathSum(root, 2));
+    }
+
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null) return false;
+        return helper(root, sum);
+    }
+
+    private boolean helper(TreeNode node, int sum) {
+        if (node == null) return false;
+        if (node.left == null && node.right == null && sum == node.val) {
+            return true;
+        }
+        boolean left = helper(node.left, sum - node.val);
+        boolean right = helper(node.right, sum - node.val);
+        return left || right;
     }
 
 
-    public boolean hasPathSum(TreeNode root, int sum) {
+    /*public boolean hasPathSum(TreeNode root, int sum) {
         if (root == null) return false;
         return helper(root, 0, sum);
 
@@ -37,5 +45,5 @@ public class PathSum {
         if (node.right != null)
             right = helper(node.right, total, sum);
         return left || right;
-    }
+    }*/
 }

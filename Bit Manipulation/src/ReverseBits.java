@@ -14,13 +14,19 @@ public class ReverseBits {
      * @return
      */
     public static int reverseBits(int n) {
-        int res = 0;
+       /* int res = 0;
         for (int i = 0; i < 32; i++) {
             res = res << 1;
             if ((n & 1) == 1) {
                 res++;
             }
             n = n >> 1;
+        }
+        return res;*/
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            int bit = (n >> i) & 1;
+            res += bit << (31 - i);
         }
         return res;
     }

@@ -27,34 +27,31 @@ public class ReorderList {
      * @param head
      */
     public void reorderList(ListNode head) {
-        if (head == null || head.next == null) return;
         ListNode slow = head;
-        ListNode fast = head;
-        ListNode pre = head;
+        ListNode fast = head.next;
         while (fast != null && fast.next != null) {
-            pre = slow;
             slow = slow.next;
             fast = fast.next.next;
         }
-        ListNode second = slow;
-        pre.next = null;
-        ListNode first = head;
-        ListNode dummy = new ListNode(0);
-        ListNode copy = dummy;
-        second = reverse(second);
-        while (first != null) {
-            copy.next = first;
-            first = first.next;
-            copy.next.next = second;
-            copy = copy.next.next;
-            second = second.next;
+        fast = slow.next;
+        slow.next = null;
+        fast = reverse(fast);
+        slow = head;
+        ListNode.printListNode(slow);
+        ListNode.printListNode(fast);
+
+        while (fast != null) {
+            ListNode fastNext = fast.next;
+            fast.next = slow.next;
+            slow.next = fast;
+            fast = fastNext;
+            slow = slow.next.next;
         }
-        head = dummy.next;
     }
 
-    private ListNode reverse(ListNode node) {
-        ListNode cur = node;
+    private ListNode reverse(ListNode head) {
         ListNode pre = null;
+        ListNode cur = head;
         while (cur != null) {
             ListNode nxt = cur.next;
             cur.next = pre;
