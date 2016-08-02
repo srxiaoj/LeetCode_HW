@@ -4,7 +4,7 @@
 public class OddEvenLinkedList {
     public static void main(String[] args) {
         OddEvenLinkedList obj = new OddEvenLinkedList();
-        int[] a = {1, 3, 5, 7, 9, 11, 13};
+        int[] a = {1,2,3,4,5,6,7};
         ListNode l = ListNode.create(a);
         ListNode.printListNode(l);
         ListNode res = obj.oddEvenList(l);
