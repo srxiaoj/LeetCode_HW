@@ -1,14 +1,14 @@
 
-public class ProductofArray {
+public class ProductofArrayExceptSelf {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         int[] test = {1, 2, 3, 4};
         printArray(productExceptSelf(test));
     }
 
     public static int[] productExceptSelf(int[] nums) {
-        int n = nums.length;
+        // O(2*n) 空间
+       /* int n = nums.length;
         int[] first = new int[n];
         first[0] = 1;
         //create an array that is the product of all the elements except last one
@@ -30,21 +30,25 @@ public class ProductofArray {
         for (int i = 0; i < n; i++) {
             res[i] = first[i] * reverse[i];
         }
-        return res;
-        /*
+        return res;*/
+
+        // O(n)空间
+
+        if (nums == null || nums.length == 0) return new int[0];
         int n = nums.length;
-        int[] res = new int[n];
-        res[0] = 1;
-        for (int i = 1; i < n; i++) {
-            res[i] = res[i - 1] * nums[i - 1];
+        int forward = 1;
+        int[] back = new int[n];
+        back[n - 1] = 1;
+        for (int i = n - 2; i >= 0; i--) {
+            back[i] = back[i + 1] * nums[i + 1];
         }
-        int right = 1;
-        for (int i = n - 1; i >= 0; i--) {
-            res[i] *= right;
-            right *= nums[i];
+
+        for (int i = 0; i < n; i++) {
+            back[i] = back[i] * forward;
+            forward = forward * nums[i];
         }
-        return res;
-        */
+        return back;
+
     }
 
     //print array

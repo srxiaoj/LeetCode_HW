@@ -2,6 +2,10 @@
 public class DecodeWays {
     public static void main(String[] args) {
         System.out.println(numDecodings("00"));
+        System.out.println(numDecodings("123"));
+        System.out.println(numDecodings("2123"));
+        System.out.println(numDecodings("1"));
+        System.out.println(numDecodings("101"));
     }
     public static int numDecodings(String s) {
         int n = s.length();
