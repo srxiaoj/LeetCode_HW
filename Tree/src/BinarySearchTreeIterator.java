@@ -7,7 +7,7 @@ public class BinarySearchTreeIterator {
     public static void main(String[] args) {
 
 //        Your BSTIterator will be called like this:
-        TreeNode root = TreeNode.deserializeLevelorder("2, 1, 3");
+        TreeNode root = TreeNode.deserializeLevelorder("8, 5, 12, 1, 7, null, null, null, null, 6, null");
         BSTIterator i = new BSTIterator(root);
         while (i.hasNext()) {
             System.out.print(i.next() + ",");
@@ -18,52 +18,30 @@ public class BinarySearchTreeIterator {
 
 class BSTIterator {
     private Stack<TreeNode> stack;
-
     public BSTIterator(TreeNode root) {
         stack = new Stack<>();
-        TreeNode cur = root;
-        while(cur != null){
-            stack.push(cur);
-            if(cur.left != null)
-                cur = cur.left;
-            else
-                break;
-        }
-        /*stack = new Stack<>();
-        if (root == null) return;
-        stack.push(root);
-        TreeNode cur = root;
-        while (cur != null) {
-            stack.push(cur.left);
-            cur = cur.left;
-        }
-        return;*/
+        pushAll(root);
     }
 
-    /**
-     * @return whether we have a next smallest number
-     */
+    /** @return whether we have a next smallest number */
     public boolean hasNext() {
         return !stack.isEmpty();
     }
 
-    /**
-     * @return the next smallest number
-     */
+    /** @return the next smallest number */
     public int next() {
-        TreeNode node = stack.pop();
-        TreeNode cur = node;
-        // traversal right branch
-        if(cur.right != null){
-            cur = cur.right;
-            while(cur != null){
-                stack.push(cur);
-                if(cur.left != null)
-                    cur = cur.left;
-                else
-                    break;
-            }
+        if (hasNext()) {
+            TreeNode last = stack.pop();
+            pushAll(last.right);
+            return last.val;
         }
-        return node.val;
+        return -1;
+    }
+
+    private void pushAll(TreeNode node) {
+        while (node != null) {
+            stack.push(node);
+            node = node.left;
+        }
     }
 }
