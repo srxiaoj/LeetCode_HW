@@ -4,42 +4,42 @@ import java.util.Map;
 public class MinimumWindowSubstring {
     public static void main(String[] args) {
         MinimumWindowSubstring obj = new MinimumWindowSubstring();
-        System.out.println(obj.minWindow("ADOBECODEBANCS", "ABC"));
-        System.out.println(obj.minWindow("a", "a"));
-        System.out.println(obj.minWindow("bbaac", "aba"));
+//        System.out.println(obj.minWindow("ADOBECODEBANCS", "ABC"));
+//        System.out.println(obj.minWindow("a", "a"));
+        System.out.println(obj.minWindow("cbbaac", "aba"));
+//        System.out.println(obj.minWindow("ab", "b"));
     }
 
-    int initTargetHash(int[] targethash, String Target) {
+    int initTargetHash(int[] map, String Target) {
         int num = 0;
         for (char c : Target.toCharArray()) {
             num++;
-            targethash[c]++;
+            map[c]++;
         }
         return num;
     }
 
-    public String minWindow(String Source, String Target) {
-        // queueing the position that matches the char in T
+    public String minWindow(String s, String t) {
         int min = Integer.MAX_VALUE;
         String minStr = "";
 
-        int[] targethash = new int[256];
+        int[] map = new int[256];
 
-        int targetnum = initTargetHash(targethash, Target);
+        int targetnum = initTargetHash(map, t);
         int sourcenum = 0;
         int i = 0, j = 0;
-        while (j < Source.length()) {
-            if (targethash[Source.charAt(j)] > 0)
+        while (j < s.length()) {
+            if (map[s.charAt(j)] > 0)
                 sourcenum++;
 
-            targethash[Source.charAt(j)]--;
+            map[s.charAt(j)]--;
             while (sourcenum >= targetnum) {
                 if (min > j - i + 1) {
                     min = Math.min(min, j - i + 1);
-                    minStr = Source.substring(i, j + 1);
+                    minStr = s.substring(i, j + 1);
                 }
-                targethash[Source.charAt(i)]++;
-                if (targethash[Source.charAt(i)] > 0)
+                map[s.charAt(i)]++;
+                if (map[s.charAt(i)] > 0)
                     sourcenum--;
                 i++;
             }
@@ -109,5 +109,16 @@ public class MinimumWindowSubstring {
             }
         }
         return true;
+    }
+
+    public static void printArray(int[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }
