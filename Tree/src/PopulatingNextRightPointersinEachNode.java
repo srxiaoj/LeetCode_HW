@@ -4,10 +4,9 @@
 public class PopulatingNextRightPointersinEachNode {
     public void connect(TreeLinkNode root) {
         if (root == null) return;
-        TreeLinkNode height = root;
-        // 到height.left == null时结束
-        while (height.left != null) {
-            TreeLinkNode horizon = height;
+        TreeLinkNode horizon = root;
+        while (horizon.left != null) {
+            TreeLinkNode left = horizon.left;
             while (horizon != null) {
                 horizon.left.next = horizon.right;
                 if (horizon.next != null) {
@@ -15,7 +14,7 @@ public class PopulatingNextRightPointersinEachNode {
                 }
                 horizon = horizon.next;
             }
-            height = height.left;
+            horizon = left;
         }
 
         /*if (root == null) return;
