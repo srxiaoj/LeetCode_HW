@@ -15,15 +15,16 @@ public class Triangle {
 //        List<List<Integer>> list2 = new ArrayList<>();
 //        System.out.println(minimumTotal(list2));
     }
-    public static int minimumTotal(List<List<Integer>> triangle) {
-        int sz = triangle.size();
-        int[] results = new int[sz+1];
 
-        for(int i=sz-1; i>=0; i--) {
+    public static int minimumTotal(List<List<Integer>> triangle) {
+        int n = triangle.size();
+        int[] results = new int[n + 1];
+
+        for (int i = n - 1; i >= 0; i--) {
             List<Integer> tmp = triangle.get(i);
 
-            for(int j=0; j<tmp.size(); j++) {
-                results[j] = Math.min(results[j], results[j+1]) + tmp.get(j);
+            for (int j = 0; j < tmp.size(); j++) {
+                results[j] = Math.min(results[j], results[j + 1]) + tmp.get(j);
             }
         }
         return results[0];

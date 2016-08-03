@@ -13,10 +13,8 @@ public class RectangleArea {
         // two rectangular have no overlap in x axis
         if (B >= H || F >= D) return (C - A) * (D - B) + (G - E) * (H - F);
 
-        int left = Math.max(A, E);
-        int right = Math.min(C, G);
-        int top = Math.min(D, H);
-        int bottom = Math.max(B, F);
-        return (C - A) * (D - B) + (G - E) * (H - F) - (right - left) * (top - bottom);
+        int width = Math.min(C, G) - Math.max(A, E);
+        int height = Math.min(D, H) - Math.max(B, F);
+        return (C - A) * (D - B) + (G - E) * (H - F) - width * height;
     }
 }

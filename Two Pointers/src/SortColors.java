@@ -9,6 +9,9 @@ public class SortColors {
 //        printArray(nums);
     }
 
+    /**
+     * idx0, idx1 存的是下一个0或者1应该放的位置,如果发现一个新的0或者1，对应的idx++
+     */
     public static void sort(int[] A) {
         int idx0 = 0, idx1 = 0, idx2 = 0;
         for (int i = 0; i < A.length; i++) {
