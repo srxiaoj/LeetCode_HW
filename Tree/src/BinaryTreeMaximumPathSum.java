@@ -29,7 +29,9 @@ public class BinaryTreeMaximumPathSum {
         if (node == null) return new Result(0, Integer.MIN_VALUE);
         Result left = helper(node.left);
         Result right = helper(node.right);
+        // pathMax 必须 >= 0
         int path = Math.max(Math.max(left.pathMax, right.pathMax) + node.val, 0);
+        // totalMax 为左右totalMax与pathMax + node.val三个之间对比
         int max = Math.max(left.pathMax + right.pathMax + node.val, Math.max(left.max, right.max));
         return new Result(path, max);
     }
