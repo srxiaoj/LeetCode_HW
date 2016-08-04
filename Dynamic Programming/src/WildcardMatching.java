@@ -8,14 +8,14 @@ public class WildcardMatching {
         //System.out.println(isMatch("bbbbbbbabbaabbabbbbaaabbabbabaaabbababbbabbbabaaabaa", "b*b*ab**ba*b**b***a"));
         //System.out.println(isMatch("bbbbbbbabbaabbabbbbaaabbabbabaaabbababbbabbbabaaabaab", "b*b*ab**ba*b**b***bba"));
 //        System.out.println(isMatch("aa", "*"));
-//        System.out.println(isMatch("aa", "a*"));
+        System.out.println(isMatch("ab", "*a"));
 //        System.out.println(isMatch("ab", "?*"));
-        System.out.println(isMatch("aab", "c*a*b"));
+//        System.out.println(isMatch("aab", "c*a*b"));
     }
 
     // 非常关键,要把 dp[0][j]中以 '*'开始的所有点全部变为true, 解决 "", "*" 和 "c" "*?*"
     public static boolean isMatch(String s, String p) {
-        // dp
+      /*  // dp
         if (s == null || p == null) return true;
         if (p.replace("*", "").length() > s.length()) return false;
         int m = s.length();
@@ -49,40 +49,36 @@ public class WildcardMatching {
             printArray(dp);
         }
 
-        return dp[m][n];
+        return dp[m][n];*/
 
         /**
          * solution 2:
          */
-        /*
-        int m = s.length(), n = p.length();
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if (p.charAt(i) == '*') count++;
-        }
-        if (count==0 && m != n) return false;
-        else if (n - count > m) return false;
-        //initialize the boolean array
-        boolean[] dp = new boolean[m+1];
-        dp[0] = true;
-        for (int i = 0; i < m; i++) {
-            dp[i+1] = false;
-        }
-        
-        for (int i = 0; i < n; i++) {
-        	//as long as the next char is * and previous dp is true, the next dp should be true
-            if (p.charAt(i) == '*') {
-                for (int j = 0; j < m; j++) {
-                    dp[j+1] = dp[j] || dp[j+1];
-                }
+        if (p.replace("*", "").length() > s.length()) return false;
+        int m = s.length();
+        int n = p.length();
+        int i = 0, j = 0, start = -1, match = 0;
+        while (i < m) {
+            if (j < n && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?')) {
+                i++;
+                j++;
+            } else if (j < n && p.charAt(j) == '*') {
+                start = j;
+                match = i;
+                j++;
+            } else if (start != -1) {
+                j = start;
+                match++;
+                i = match;
             } else {
-                for (int j = m-1; j >= 0; j--) {
-                    dp[j+1] = (p.charAt(i) == '?' || p.charAt(i) == s.charAt(j)) && dp[j];
-                }
-                dp[0] = false;
+                return false;
             }
         }
-        return dp[m];*/
+        System.out.println("j: " + j);
+        while (j < n && p.charAt(j) == '*') {
+            j++;
+        }
+        return j == p.length();
     }
 
     public static void printArray(boolean[][] A) {
