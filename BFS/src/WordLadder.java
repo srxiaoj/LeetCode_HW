@@ -5,12 +5,8 @@ public class WordLadder {
     public static void main(String[] args) {
         String begin = "hit";
         String end = "cog";
-        Set<String> test = new HashSet<>();
-        test.add("hot");
-        test.add("dot");
-        test.add("dog");
-        test.add("lot");
-        test.add("log");
+        Set<String> test = new HashSet(Arrays.asList("hot", "dot", "dog", "lot", "log"));
+
         System.out.println(ladderLength(begin, end, test));
         String s = "hot";
         String e = "dog";
@@ -56,7 +52,7 @@ public class WordLadder {
         return 0;
 
 
-       /* // Use queue to help BFS
+       /* // Use queue to help bfs
         Queue<String> queue = new LinkedList<String>();
         queue.add(beginWord);
         queue.add(null);

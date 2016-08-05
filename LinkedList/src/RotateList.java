@@ -26,75 +26,39 @@ public class RotateList {
         ListNode.printListNode(res4);
     }
     public ListNode rotateRight(ListNode head, int k) {
-        if (head == null || k == 0) return head;
-        ListNode first = head;
-        ListNode second = head;
-        int len = getLength(head);
-        if (k > len) k = k % len;
-        if (len - k == 0 || k == 0) return head;
-        int t = len - k;
-        int i = 1;
-        while (i < t) {
-            first = first.next;
-            second = second.next;
+        if (head == null || head.next == null) return head;
+        int len = len(head);
+        k = k % len;
+        if (k == 0) return head;
+        ListNode fast = head;
+        ListNode slow = head;
+        int i = 0;
+        while (i < k + 1) {
+            fast = fast.next;
             i++;
         }
-        second = second.next;
-        first.next = null;
-        first = head;
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
 
-        // rotate list
-        ListNode cur = second;
-        ListNode pre = second;
-        while (cur != null) {
-            pre = cur;
+        ListNode cur = slow.next;
+        fast = cur;
+        slow.next = null;
+        while (cur.next != null) {
             cur = cur.next;
         }
-        pre.next = first;
-        return second;
+        cur.next = head;
+        return fast;
     }
 
-    public int getLength(ListNode node) {
-        ListNode copy = node;
-        if (copy == null) return 0;
-        int len = 0;
-        while (copy != null) {
-            len++;
-            copy = copy.next;
+    private int len(ListNode node) {
+        ListNode cur = node;
+        int res = 0;
+        while (cur != null) {
+            res++;
+            cur = cur.next;
         }
-        return len;
+        return res;
     }
-
-    /*public ListNode rotateRight(ListNode head, int k) {
-        if (head == null) return null;
-        int height = height(head);
-        if (k >= height) k = k % height;
-        int len = height - k;
-        ListNode first = head, second = head;
-        ListNode firstCopy = first;
-        int interator = 0;
-        while (interator < len - 1) {
-            second = second.next;
-            first = first.next;
-            interator++;
-        }
-        ListNode secondCopy = second;
-        while (interator < height(head) - 1) {
-            secondCopy = secondCopy.next;
-            interator++;
-        }
-        secondCopy.next = firstCopy;
-        second = second.next;
-        first.next = null;
-        return second;
-    }
-    private int height(ListNode head) {
-        ListNode copy = head;
-        int count = 0;
-        while (copy != null) {
-            copy = copy.next;
-            count++;
-        }
-        return count;
-    }*/
 }
