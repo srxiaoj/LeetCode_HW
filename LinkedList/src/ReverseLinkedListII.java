@@ -2,58 +2,35 @@
 public class ReverseLinkedListII {
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
+        ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
         ListNode.printListNode(reverseBetween(head, 1, 2));
     }
 
     public static ListNode reverseBetween(ListNode head, int m, int n) {
-        if (head == null || head.next == null) return head;
-        ListNode dummy = new ListNode(0);
+        if (head == null) return null;
+        ListNode dummy = new ListNode(0); // create a dummy node to mark the head of this list
         dummy.next = head;
-        ListNode cur = dummy;
-        int i = 0;
-        ListNode firstPre = dummy;
-        while (i < m) {
-            firstPre = cur;
-            cur = cur.next;
-            i++;
+        ListNode pre = dummy; // make a pointer pre as a marker for the node before reversing
+        for (int i = 0; i < m - 1; i++) {
+            pre = pre.next;
         }
-        ListNode first = cur;
-        while (i < n) {
-            cur = cur.next;
-            i++;
+
+        ListNode cur = pre.next; // a pointer to the beginning of a sub-list that will be reversed
+        ListNode nxt = cur.next; // a pointer to a node that will be reversed
+
+        // 1 - 2 -3 - 4 - 5 ; m=2; n =4 ---> pre = 1, cur = 2, nxt = 3
+        // dummy-> 1 -> 2 -> 3 -> 4 -> 5
+
+        for (int i = 0; i < n - m; i++) {
+            cur.next = nxt.next;
+            nxt.next = pre.next;
+            pre.next = nxt;
+            nxt = cur.next;
         }
-        ListNode second = cur;
-        ListNode pre = second.next;
-        cur = first;
-        i = 0;
-        while (cur != null && i <= n - m) {
-            ListNode nxt = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = nxt;
-            i++;
-        }
-        firstPre.next = pre;
+
+        // first reversing : dummy->1 - 3 - 2 - 4 - 5; pre = 1, cur = 2, nxt = 4
+        // second reversing: dummy->1 - 4 - 3 - 2 - 5; pre = 1, cur = 2, nxt = 5 (finish)
+
         return dummy.next;
     }
-
-    //print out list
-    private static void printList(ListNode res) {
-        while (res != null) {
-            System.out.print(res.val + " ");
-            res = res.next;
-        }
-        System.out.println("");
-    }
 }
-
-//class ListNode {
-//    int val;
-//    ListNode next;
-//    ListNode(int x) { val = x; }
-//}
