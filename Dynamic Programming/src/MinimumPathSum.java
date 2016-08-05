@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by thanksgiving on 5/5/16.
  */
@@ -12,7 +14,19 @@ public class MinimumPathSum {
     }
 
     public int minPathSum(int[][] grid) {
-        if (grid == null) return 0;
+        if (grid == null || grid.length == 0) return 0;
+        int m = grid.length, n = grid[0].length;
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[1] = grid[0][0];
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (!(i == 1 && j == 1))
+                    dp[j] = Math.min(dp[j - 1], dp[j]) + grid[i - 1][j - 1];
+            }
+        }
+        return dp[n];
+       /* if (grid == null) return 0;
         int m = grid.length;
         int n = grid[0].length;
 
@@ -31,6 +45,17 @@ public class MinimumPathSum {
                 dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
             }
         }
-        return dp[m - 1][n - 1];
+        return dp[m - 1][n - 1];*/
+    }
+
+    public static void printArray(int[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }

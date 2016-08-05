@@ -5,13 +5,85 @@ import java.util.*;
  */
 public class SubstringwithConcatenationofAllWords {
     public static void main(String[] args) {
-//        System.out.println(findSubstring("barfoothefoofoobarfooman", new String[]{"foo", "bar", "foo"}));
-//        System.out.println(findSubstring("barfoofoobarthefoobarman", new String[]{"foo", "bar", "the"}));
-//        System.out.println(findSubstring("sheateateseatea", new String[]{"sea", "tea", "ate"}));
-        System.out.println(findSubstring("lingmindraboofooowingdingbarrwingmonkeypoundcake", new String[]{"fooo", "barr", "wing", "ding", "wing"}));
+        System.out.println(findSubstring("barfoothefoofoobarfooman", new String[]{"foo", "bar", "foo"})); // [9, 12]
+        System.out.println(findSubstring("barfoofoobarthefoobarman", new String[]{"foo", "bar", "the"})); // [6, 9, 12]
+        System.out.println(findSubstring("sheateateseatea", new String[]{"sea", "tea", "ate"}));          // [6]
+        System.out.println(findSubstring("lingmindraboofooowingdingbarrwingmonkeypoundcake", new String[]{"fooo", "barr", "wing", "ding", "wing"}));  // [13]
+        System.out.println(findSubstring("aaaaaaaa", new String[]{"aa", "aa", "aa"}));    // [0, 1, 2]
     }
 
     public static List<Integer> findSubstring(String s, String[] words) {
+        int n = s.length();
+        List<Integer> indexes = new ArrayList<Integer>(s.length());
+        if (words.length == 0) {
+            return indexes;
+        }
+        int k = words[0].length();
+        if (n < k * words.length) {
+            return indexes;
+        }
+        int last = n - k + 1;
+
+        //map each string in words array to some index and compute target counters
+        Map<String, Integer> map = new HashMap<String, Integer>(words.length);
+        int [][] table = new int[2][words.length];
+        int failures = 0, index = 0;
+        for (int i = 0; i < words.length; ++i) {
+            Integer mapped = map.get(words[i]);
+            if (mapped == null) {
+                ++failures;
+                map.put(words[i], index);
+                mapped = index++;
+            }
+            ++table[0][mapped];
+        }
+
+        //find all occurrences at string S and map them to their current integer, -1 means no such string is in words array
+        int [] smapping = new int[last];
+        for (int i = 0; i < last; ++i) {
+            String section = s.substring(i, i + k);
+            Integer mapped = map.get(section);
+            if (mapped == null) {
+                smapping[i] = -1;
+            } else {
+                smapping[i] = mapped;
+            }
+        }
+
+        //fix the number of linear scans
+        for (int i = 0; i < k; ++i) {
+            //reset scan variables
+            int currentFailures = failures; //number of current mismatches
+            int left = i, right = i;
+            Arrays.fill(table[1], 0);
+            //here, simple solve the minimum-window-substring problem
+            while (right < last) {
+                while (currentFailures > 0 && right < last) {
+                    int target = smapping[right];
+                    if (target != -1 && ++table[1][target] == table[0][target]) {
+                        --currentFailures;
+                    }
+                    right += k;
+                }
+                while (currentFailures == 0 && left < right) {
+                    int target = smapping[left];
+                    if (target != -1 && --table[1][target] == table[0][target] - 1) {
+                        int length = right - left;
+                        //instead of checking every window, we know exactly the length we want
+                        if ((length / k) ==  words.length) {
+                            indexes.add(left);
+                        }
+                        ++currentFailures;
+                    }
+                    left += k;
+                }
+            }
+
+        }
+        return indexes;
+    }
+
+    public static List<Integer> findSubstring2(String s, String[] words) {
         List<Integer> res = new ArrayList<>();
         if (words == null || words.length == 0) return res;
         Map<String, Integer> map = new HashMap<>();
@@ -39,8 +111,10 @@ public class SubstringwithConcatenationofAllWords {
                     if (num == targetHash) {
                         res.add(j + k - len * k);
                         i = j + k - len * k;
+                        j++;
+                    } else {
+                        j += k;
                     }
-                    j += k;
                 } else {
                     array[map.get(sub)]--;
                     num++;
@@ -60,9 +134,8 @@ public class SubstringwithConcatenationofAllWords {
                     j += k;
                 }
             } else {
-                num = 0;
-                init(words, array, map);
-                j += k;
+                // 如果上一个j不match,j只能加一，不能加k
+                j++;
             }
         }
         return res;
