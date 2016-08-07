@@ -4,8 +4,8 @@
 public class RemoveDuplicatesfromSortedArrayII {
     public static void main(String[] args) {
         RemoveDuplicatesfromSortedArrayII obj = new RemoveDuplicatesfromSortedArrayII();
-//        int[] nums = {1, 1, 1, 1, 2, 2, 2, 3};
-        int[] nums = {1, 1};
+        int[] nums = {1, 1, 1, 1, 2, 2, 2, 3};
+//        int[] nums = {1, 2, 2, 2};
         System.out.println(obj.removeDuplicates(nums));
         printArray(nums);
     }
@@ -16,7 +16,28 @@ public class RemoveDuplicatesfromSortedArrayII {
      * 2. nums[r] != lastNumber
      */
     public int removeDuplicates(int[] nums) {
-        int l = 1, r = 1;
+        if (nums.length == 0) return 0;
+        int last = nums[0];
+        int count = 1;
+        int i = 1;
+        int idx = 1;
+        while (i < nums.length) {
+            if (nums[i] == last && count == 2) {
+                i++;
+            } else {
+                if (nums[i] != last) {
+                    last = nums[i];
+                    count = 1;
+                } else {
+                    count++;
+                }
+                nums[idx] = nums[i];
+                idx++;
+                i++;
+            }
+        }
+        return idx;
+       /* int l = 1, r = 1;
         int count = 1;
         int len = 1;
         while (r < nums.length) {
@@ -39,7 +60,7 @@ public class RemoveDuplicatesfromSortedArrayII {
                 count = 1;
             }
         }
-        return len;
+        return len;*/
     }
 
     //print array
