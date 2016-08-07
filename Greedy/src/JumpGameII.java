@@ -6,12 +6,36 @@ import java.util.Arrays;
 public class JumpGameII {
     public static void main(String[] args) {
         JumpGameII obj = new JumpGameII();
-        int[] test = {2, 3, 1, 1, 1, 4, 5, 4};
-        System.out.println(obj.jump(test));
+        System.out.println(obj.jump(new int[] {2, 3, 1, 1, 1, 4, 5, 4}));
+        System.out.println(obj.jump(new int[] {2, 3, 1, 1, 4}));
+        System.out.println(obj.jump(new int[] {1, 2, 3}));
     }
 
+    /**
+     * 每到一个点，去追溯这个点所能reach的最远的点，并把那个点的最小值更新，如果达到了终点，则直接返回
+     */
     public int jump(int[] nums) {
-        if (nums.length <= 1) return 0;
+        if (nums == null || nums.length == 0) return 0;
+        int n = nums.length;
+        if (n == 1) return 0;
+        if (nums[0] >= n - 1) return 1;
+        int[] dp = new int[n];
+
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        for (int i = 0; i < n; i++) {
+            if (i != 0 && nums[i] == nums[i - 1] - 1) {
+                continue;
+            }
+            if (nums[i] + i >= n - 1) {
+                return dp[i] + 1;
+            }
+            for (int j = i + 1; j <= nums[i] + i; j++) {
+                dp[j] = Math.min(dp[j], dp[i] + 1);
+            }
+        }
+        return 0;
+       /* if (nums.length <= 1) return 0;
         // use an array to store minimum steps needed to reach it
         int[] pos = new int[nums.length];
         Arrays.fill(pos, Integer.MAX_VALUE);
@@ -30,7 +54,7 @@ public class JumpGameII {
                 }
             }
         }
-        return pos[nums.length - 1];
+        return pos[nums.length - 1];*/
     }
 
     private int updatePos(int[] nums, int[] pos, int start, int end) {
@@ -39,5 +63,16 @@ public class JumpGameII {
         } else {
             return Integer.MAX_VALUE;
         }
+    }
+
+    public static void printArray(int[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }
