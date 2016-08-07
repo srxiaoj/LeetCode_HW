@@ -19,6 +19,10 @@ public class ImplementQueueusingStacks {
     }
 }
 
+/**
+ * peek 和 pop时将元素从stack转移到rev
+ * push时反过来
+ */
 class MyQueue {
     private Stack<Integer> stack = new Stack<Integer>();
     private Stack<Integer> stackRev = new Stack<Integer>();
@@ -52,44 +56,4 @@ class MyQueue {
     public boolean empty() {
         return stackRev.isEmpty() && stack.isEmpty();
     }
-
-
-    /*private Stack<Integer> stack;
-    private Stack<Integer> copy;
-    public MyQueue() {
-        stack = new Stack<>();
-        copy = new Stack<>();
-    }
-    // Push element x to the back of queue.
-    public void push(int x) {
-        stack.push(x);
-    }
-
-    // Removes the element from in front of queue.
-    public void pop() {
-        while (!stack.isEmpty()) {
-            copy.push(stack.pop());
-        }
-        copy.pop();
-        while (!copy.isEmpty()) {
-            stack.push(copy.pop());
-        }
-    }
-
-    // Get the front element.
-    public int peek() {
-        while (!stack.isEmpty()) {
-            copy.push(stack.pop());
-        }
-        int tmp = copy.peek();
-        while (!copy.isEmpty()) {
-            stack.push(copy.pop());
-        }
-        return tmp;
-    }
-
-    // Return whether the queue is empty.
-    public boolean empty() {
-        return stack.isEmpty();
-    }*/
 }
