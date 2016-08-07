@@ -4,10 +4,13 @@
 30.	Substring with Concatenation of All Words
 89. Gray Code
 91. Decode Ways
+105. Construct Binary Tree from Preorder and Inorder Traversal
+109. Convert Sorted List to Binary Search Tree
 112. Path Sum
 124. Binary Tree Maximum Path Sum
 135. Candy
 149. Max points on a line
+154. Find Minimum in Rotated Sorted Array II
 164. Maximum Gap
 173. Binary Search Tree Iterator
 220. Contains Duplicate III

@@ -5,16 +5,34 @@ import java.util.List;
 public class PascalTriangle {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		List<List<Integer>> A = generate(5);
-		printArray(A);
+//		List<List<Integer>> A = generate(5);
+//		printArray(A);
+        System.out.println(getRow(3));
+    }
+
+	public static List<Integer> getRow(int k) {
+		if (k == 0) return new ArrayList<>();
+		List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < k+ 2; i++) {
+            res.add(0);
+        }
+		res.set(k, 1);
+		for (int i = 1; i <= k; i++) {
+			for (int j = 0; j <= k; j++) {
+				int cur = res.get(j) + res.get(j + 1);
+				res.set(j, cur);
+			}
+		}
+		res.remove(k + 1);
+		return res;
 	}
+
 	public static List<List<Integer>> generate(int numRows) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if(numRows == 0)
             return res;
-        for(int i = 0; i < numRows; i++)
-        {
+		for(int i = 0; i < numRows; i++)
+		{
         	List<Integer> tmp = new ArrayList();
         	for(int j = 0; j <= i; j++)
             {

@@ -2,9 +2,10 @@
 public class PartitionList {
     public static void main(String[] args) {
         PartitionList obj = new PartitionList();
-        int[] a = {2, 1};
-        ListNode test = ListNode.create(a);
-        ListNode.printListNode(obj.partition(test, 2));
+//        ListNode test = ListNode.create(new int[]{2, 1});
+//        ListNode.printListNode(obj.partition(test, 2));
+        ListNode test2 = ListNode.create(new int[]{1, 4, 2, 5, 3, 2});
+        ListNode.printListNode(obj.partition(test2, 3));
     }
 
     /**
