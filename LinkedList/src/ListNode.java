@@ -12,7 +12,6 @@ public class ListNode {
         System.out.println("print the linked list");
         while (head != null) {
             sb.append(head.val).append("->");
-//            System.out.print(root.val + "->");
             head = head.next;
         }
         sb.delete(sb.length() - 2, sb.length());
@@ -42,5 +41,24 @@ public class ListNode {
             head = next;
         }
         return pre;
+    }
+
+    public String toString() {
+        ListNode copy = new ListNode(val);
+        copy.next = next;
+        return listNodeToStringHelper(copy);
+    }
+
+    public static String listNodeToStringHelper(ListNode head) {
+        if (head == null) {
+            return "null";
+        }
+        StringBuilder sb = new StringBuilder();
+        while (head != null) {
+            sb.append(head.val).append("->");
+            head = head.next;
+        }
+        sb.delete(sb.length() - 2, sb.length());
+        return sb.toString();
     }
 }

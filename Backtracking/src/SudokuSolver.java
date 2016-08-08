@@ -17,14 +17,13 @@ public class SudokuSolver {
                 {1, 3, 0, 0, 0, 0, 2, 5, 0},
                 {0, 0, 0, 0, 0, 0, 0, 7, 4},
                 {0, 0, 5, 2, 0, 6, 3, 0, 0}};
-        if (obj.solveSudoku(grid) == true)
+        if (obj.solveSudoku(grid))
             printArray(grid);
         else
             System.out.println("No solution exists");
     }
 
     public boolean solveSudoku(int[][] grid) {
-        int row = grid.length - 1;
         return solve(grid);
     }
 
@@ -102,8 +101,6 @@ public class SudokuSolver {
 
     /**
      * print 2D array.
-     *
-     * @param A array
      */
     public static void printArray(int[][] A) {
         for (int i = 0; i < A.length; i++) {

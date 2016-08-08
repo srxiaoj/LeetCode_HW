@@ -1,37 +1,49 @@
 import java.util.Stack;
 
 /**
- * Created by thanksgiving on 12/29/15.
+ * Created by thanksgiving on 8/6/16.
  */
 public class LargestRectangleinHistogram {
     public static void main(String[] args) {
-        LargestRectangleinHistogram obj = new LargestRectangleinHistogram();
-        int[] test = {2, 1, 5, 6, 2, 3, 2, 2, 4};
-        System.out.println(obj.largestRectangleArea(test));
+//        System.out.println(largestRectangleArea(new int[]{6, 2, 5, 4, 5, 1, 6}));
+//        System.out.println(largestRectangleArea(new int[]{0, 2, 0}));
+        System.out.println(largestRectangleArea(new int[]{1, 2, 3, 4, 5}));
+//        System.out.println(largestRectangleArea(new int[]{1}));
+//        System.out.println(largestRectangleArea(new int[]{2, 1, 5, 6, 2, 3}));
     }
 
-    public int largestRectangleArea(int[] height) {
-        if (height == null) return 0;//Should throw exception
-        if (height.length == 0) return 0;
-
-        Stack<Integer> stack = new Stack<Integer>();
-        stack.push(-1);
-        int max = 0;
-
-        for (int i = 0; i < height.length; i++) {
-            //Start calculate the max value
-            while (stack.peek() > -1)
-                if (height[stack.peek()] > height[i]) {
-                    int top = stack.pop();
-                    max = Math.max(max, height[top] * (i - 1 - stack.peek()));
-                } else break;
-
-            stack.push(i);
+    public static int largestRectangleArea(int[] height) {
+        int len = height.length;
+        Stack<Integer> stack = new Stack<>();
+        int maxArea = 0;
+        for (int i = 0; i <= len; i++) {
+            int cur = (i == len) ? 0 : height[i];
+            if (stack.isEmpty() || cur >= height[stack.peek()]) {
+                stack.push(i);
+            } else {
+                int last = stack.pop();
+                while (!stack.isEmpty() && height[stack.peek()] >= cur) {
+                    maxArea = Math.max(maxArea, height[last] * (stack.isEmpty() ? i : i - 1 - stack.peek()));
+                    last = stack.pop();
+                }
+                maxArea = Math.max(maxArea, height[last] * (stack.isEmpty() ? i : i - 1 - stack.peek()));
+                stack.add(i);
+            }
         }
-        while (stack.peek() != -1) {
-            int top = stack.pop();
-            max = Math.max(max, height[top] * (height.length - 1 - stack.peek()));
+        return maxArea;
+      /*  int len = height.length;
+        Stack<Integer> stack = new Stack<>();
+        int maxArea = 0;
+        for (int i = 0; i <= len; i++) {
+            int cur = (i == len ? 0 : height[i]);
+            if (stack.isEmpty() || cur >= height[stack.peek()]) {
+                stack.push(i);
+            } else {
+                int last = stack.pop();
+                maxArea = Math.max(maxArea, height[last] * (stack.isEmpty() ? i : i - 1 - stack.peek()));
+                i--;
+            }
         }
-        return max;
+        return maxArea;*/
     }
 }
