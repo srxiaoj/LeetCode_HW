@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ public class CombinationSum {
 
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        Arrays.sort(candidates);
+//        Arrays.sort(candidates);
         ArrayList<List<Integer>> res = new ArrayList<List<Integer>>();
         helper(res, new ArrayList<Integer>(), candidates, 0, target);
         return res;

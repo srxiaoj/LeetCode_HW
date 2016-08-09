@@ -1,13 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by thanksgiving on 12/26/15.
- */
 public class NQueensAllSolutions {
     public static void main(String[] args) {
         NQueensAllSolutions queen = new NQueensAllSolutions();
-        List<String[]> res = queen.solveNQueens(4);
+        List<String[]> res = queen.solveNQueens(5);
         for (int i = 0; i < res.size(); i++) {
             printArray(res.get(i));
         }
@@ -34,7 +31,7 @@ public class NQueensAllSolutions {
                 row--;
             }
         }
-        //System.out.println("count is:" + count);
+        System.out.println("count is:" + count);
         return res;
     }
 
