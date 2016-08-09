@@ -176,7 +176,9 @@ public class TreeNode {
     }
 
     public String toString() {
-        String output = String.valueOf(val);
+        String leftString = (left == null) ? "null" : ("" + left.val);
+        String rightString = (right == null) ? "null" : ("" + right.val);
+        String output = "" + val + " (" + leftString + "," + rightString + ")";
         return output;
     }
 }
