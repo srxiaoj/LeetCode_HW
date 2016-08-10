@@ -6,51 +6,40 @@ import java.util.Set;
 class WordPatternII {
     public static void main(String[] args) {
         WordPatternII obj = new WordPatternII();
-//        System.out.println(obj.match("rbbr", "redbluebluered"));
-        System.out.println(obj.match("rbbr", "redredredred"));
+        System.out.println(obj.wordPatternMatch("rbbr", "redbluebluered"));
+        System.out.println(obj.wordPatternMatch("rbbr", "redredredred"));
+        System.out.println(obj.wordPatternMatch("d", "e"));
     }
 
     Map<Character, String> map = new HashMap();
     Set<String> set = new HashSet();
 
-    public boolean match(String p, String s) {
-        if (p == null && s == null || p.equals("") && s.equals("")) return true;
-        if (p.length() == 1) {
-            if (map.containsKey(p.charAt(0)) && map.get(p.charAt(0)).equals(s)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+    public boolean wordPatternMatch(String p, String s) {
+        if (p.isEmpty()) return s.isEmpty();
         if (p.length() > s.length()) {
             return false;
         }
-        for (int i = 1; i < s.length(); i++) {
-            String key = s.substring(0, i);
-            if (set.contains(key)) continue;
-            if (!map.containsKey(p.charAt(0))) {
+        if (!map.containsKey(p.charAt(0))) {
+            for (int i = 1; i <= s.length(); i++) {
+                String key = s.substring(0, i);
+                if (set.contains(key)) continue;
                 set.add(key);
                 map.put(p.charAt(0), key);
-                if (match(p.substring(1), s.substring(i))) {
+                if (wordPatternMatch(p.substring(1), s.substring(i))) {
                     return true;
-                } else {
-                    set.remove(key);
-                    map.remove(p.charAt(0));
                 }
-            } else {
-                String toMatch = map.get(p.charAt(0));
-                int len = toMatch.length();
-                if (s.length() > len && s.substring(0, len).equals(toMatch)) {
-//                    System.out.println(map);
-//                    System.out.println(p + " " + s.substring(len));
-                    if (match(p.substring(1), s.substring(i))) return true;
-                    else {
-                        set.remove(map.get(p.charAt(0)));
-                        map.remove(p.charAt(0));
-                    }
-                }
+                set.remove(key);
+                map.remove(p.charAt(0));
             }
+        } else {
+            String toMatch = map.get(p.charAt(0));
+            int len = toMatch.length();
+            if (s.length() >= len && s.substring(0, len).equals(toMatch)) {
+                if (wordPatternMatch(p.substring(1), s.substring(len))) return true;
+            }
+            return false;
         }
+
         return false;
     }
 
