@@ -1,21 +1,50 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class PermutationsII {
 
     public static void main(String[] args) {
-//        int[] nums = {-1,2,-1,2,1,-1,2,1};
-        int[] nums = {1, 2, 1, 1};
+        int[] nums = {1, 2, 1};
         List<List<Integer>> res = permute(nums);
         printArray(res);
     }
 
+    public static List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if (nums == null || nums.length == 0) return res;
+        boolean[] vist = new boolean[nums.length];
+
+        Arrays.sort(nums);
+        dfs(nums, vist, new ArrayList<>(), res);
+        return res;
+    }
+
+    public static void dfs(int[] nums, boolean[] visit, List<Integer> part, List<List<Integer>> res) {
+        if (part.size() == nums.length) {
+            res.add(new ArrayList<Integer>(part));
+            return;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (visit[i]) continue;
+            if (i > 0 && nums[i - 1] == nums[i] && !visit[i - 1]) continue;
+            visit[i] = true;
+            part.add(nums[i]);
+            dfs(nums, visit, part, res);
+            visit[i] = false;
+            part.remove(part.size() - 1);
+        }
+    }
+
+
     /**
+     * 方法2
      * 套用next permute方法，一直循环找下一个permute number直到出现重复组合
      * 需要将int[] 转换为List<Integer>
      */
-    public static List<List<Integer>> permute(int[] nums) {
+    public static List<List<Integer>> permute2(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> input = arrayToList(nums);
 

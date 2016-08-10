@@ -5,14 +5,12 @@ import java.util.List;
 public class Permutations {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         Permutations obj = new Permutations();
         int[] nums = new int[]{1, 2, 3};
-//        int[] nums = new int[]{1, 2, 1};
         printArray(obj.permute2(nums));
     }
 
-    public List<List<Integer>> permute2(int[] nums) {
+    public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums.length == 0) return res;
         helper(nums, 0, new ArrayList<>(), res);
@@ -38,9 +36,38 @@ public class Permutations {
     }
 
     /**
-     * method 2
+     * 方法2
+     * 使用一个visit[] 记录已经访问过的node
      */
-    public List<List<Integer>> permute(int[] nums) {
+    public static List<List<Integer>> permute2(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        int n = nums.length;
+        boolean[] visit = new boolean[n];
+
+        dfs(res, new ArrayList<>(), nums, visit);
+        return res;
+    }
+
+    private static void dfs(List<List<Integer>> res, List<Integer> part, int[] nums, boolean[] visit) {
+        if (part.size() == nums.length) {
+            res.add(part);
+            return;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (visit[i]) continue;
+            visit[i] = true;
+            List<Integer> newPart = new ArrayList<>(part);
+            newPart.add(nums[i]);
+            dfs(res, newPart, nums, visit);
+            visit[i] = false;
+        }
+    }
+
+    /**
+     * method 3
+     */
+    public List<List<Integer>> permute3(int[] nums) {
         // record down the position of the numbers
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         for (int i = 0; i < nums.length; i++) {
@@ -62,8 +89,6 @@ public class Permutations {
                 res = tmp;
             }
         }
-//        printArray(res);
-//        System.out.println("************");
         List<List<Integer>> permutation = new ArrayList<List<Integer>>();
         for (int i = 0; i < res.size(); i++) {
             List<Integer> subRes = new ArrayList<>();
@@ -76,6 +101,8 @@ public class Permutations {
         }
         return permutation;
     }
+
+
 
     public static void printArray(List<List<Integer>> A) {
         for (int i = 0; i < A.size(); i++) {
