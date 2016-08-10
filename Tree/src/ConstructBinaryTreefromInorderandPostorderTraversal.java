@@ -36,6 +36,28 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
         TreeNode.printNode(res2);
     }
 
+    public TreeNode buildTreeRecusive(int[] inorder, int[] postorder) {
+        return helper(postorder, postorder.length - 1, inorder, 0, inorder.length - 1);
+    }
+
+    private TreeNode helper(int[] postorder, int postEnd, int[] inorder, int inStart, int inEnd) {
+        if (postEnd >= postorder.length || inEnd < inStart) return null;
+        TreeNode root = new TreeNode(postorder[postEnd]);
+        int k = 0;
+        for (int i = inEnd; i >= inStart; i--) {
+            if (inorder[i] == postorder[postEnd]){
+                k = i;
+                break;
+            }
+        }
+
+        int leftIndex = postEnd - 1 - (inEnd - k);
+        int rightIndex = postEnd - 1;
+        root.left = helper(postorder, leftIndex, inorder, inStart, k - 1);
+        root.right = helper(postorder, rightIndex, inorder, k + 1, inEnd);
+        return root;
+    }
+
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         if (inorder.length == 0) return null;
         HashMap<Integer, Integer> map = new HashMap<>();

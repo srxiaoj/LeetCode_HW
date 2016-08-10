@@ -34,7 +34,17 @@ public class Test {
 //        System.out.println((-4 % 2));
 //        System.out.println("1213".compareTo("133"));
 //        System.out.println("abcd".substring(0, 4));
-        System.out.println(gcd(18, 0));
+//        System.out.println(gcd(18, 0));
+        String s = "great";
+        String s1 = "grea";
+        int n = s.length();
+        int n1 = s1.length();
+        System.out.println(s.substring(0, (n + 1) / 2));
+        System.out.println(s.substring(0, (n - 1) / 2));
+        System.out.println(s.substring(0, n / 2));
+        System.out.println(s1.substring(0, (n1 + 1) / 2));
+        System.out.println(s1.substring(0, (n1 - 1) / 2));
+        System.out.println(s1.substring(0, n / 2));
     }
 
     //print array

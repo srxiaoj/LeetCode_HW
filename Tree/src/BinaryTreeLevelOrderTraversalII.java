@@ -6,10 +6,9 @@ public class BinaryTreeLevelOrderTraversalII {
     public static void main(String[] args) {
 
     }
+
     /**
      * Recursive, DFS.
-     * @param root
-     * @return
      */
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         LinkedList<List<Integer>> res = new LinkedList<List<Integer>>();
@@ -17,8 +16,8 @@ public class BinaryTreeLevelOrderTraversalII {
         helper(root, res, level);
         return res;
     }
-    private void helper(TreeNode root, LinkedList<List<Integer>> res, int level)
-    {
+
+    private void helper(TreeNode root, LinkedList<List<Integer>> res, int level) {
         if (root == null)
             return;
         // if the level is smaller than res size,
