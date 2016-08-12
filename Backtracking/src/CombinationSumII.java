@@ -17,28 +17,27 @@ public class CombinationSumII {
     }
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(candidates);
-        ArrayList<List<Integer>> res = new ArrayList<List<Integer>>();
-        add(res, new ArrayList<Integer>(), candidates, 0, target);
+        boolean[] visit = new boolean[candidates.length];
+        helper(res, new ArrayList<>(), 0, candidates, target, visit);
         return res;
     }
 
-    /**
-     * 每个元素只能使用一次
-     * 不能包含重复组合
-     * 先对数组进行排序，然后添加当前位置后(start + 1)的数组内各元素至大于target
-     */
-    private void add(ArrayList<List<Integer>> res, ArrayList<Integer> list, int[] candidates, int start, int target) {
+    private void helper(List<List<Integer>> res, List<Integer> part, int index, int[] candidates, int target, boolean[] visit) {
         if (target < 0) return;
-        else if (target == 0) {
-            if (!res.contains(list))
-                res.add(list);
+        if (target == 0) {
+            res.add(part);
             return;
         }
-        for (int i = start; i < candidates.length; i++) {
-            ArrayList<Integer> temp = new ArrayList<Integer>(list);
-            temp.add(candidates[i]);
-            add(res, temp, candidates, i + 1, target - candidates[i]);
+        for (int i = index; i < candidates.length; i++) {
+            // 如果上一个重复数字已经被遍历了说明, visit[i - 1]已经为false了，此时则不再遍历这个重复的数字
+            if (i > 0 && candidates[i - 1] == candidates[i] && !visit[i - 1]) continue;
+            visit[i] = true;
+            List<Integer> newPart = new ArrayList<>(part);
+            newPart.add(candidates[i]);
+            helper(res, newPart, i + 1, candidates, target - candidates[i], visit);
+            visit[i] = false;
         }
     }
 
