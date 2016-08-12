@@ -8,12 +8,39 @@ public class PalindromePartitioningII {
     public static void main(String[] args) {
         PalindromePartitioningII obj = new PalindromePartitioningII();
 //        System.out.println(obj.minCut("ababababababababababaababababababababababaababababababababababa"));
-        System.out.println(obj.minCutDynamicProgramming("ababababababababababaababababababababababaababababababababababa"));
-        System.out.println(obj.minCutDynamicProgramming("abcd"));
+//        System.out.println(obj.minCutDynamicProgramming("ababababababababababaababababababababababaababababababababababa"));
+//        System.out.println(obj.minCutDynamicProgramming("abcd"));
+        System.out.println(obj.minCutDynamicProgramming("aabbc"));
+        System.out.println(obj.minCutDynamicProgramming("acbb"));
+        System.out.println(obj.minCutDynamicProgramming("efe"));
     }
 
     public int minCutDynamicProgramming(String s) {
         char[] c = s.toCharArray();
+        int n = s.length();
+        int[] dp = new int[n];
+        boolean[][] pair = new boolean[n][n];
+
+        for (int i = 0; i < n; i++) {
+            dp[i] = i;
+            for (int j = 0; j <= i; j++) {
+                if (c[j] == c[i]) {
+                    if (i == j + 1 || i == j || pair[j + 1][i - 1]) {
+                        pair[j][i] = true;
+                        if (j == 0) {
+                            dp[i] = 0;
+                        } else {
+                            dp[i] = Math.min(dp[i], dp[j - 1] + 1);
+                        }
+                    }
+                }
+            }
+            printArray(dp);
+        }
+        return dp[n - 1];
+
+
+       /* char[] c = s.toCharArray();
         int n = c.length;
         int[] cut = new int[n];
         boolean[][] pal = new boolean[n][n];
@@ -21,7 +48,7 @@ public class PalindromePartitioningII {
         for (int i = 0; i < n; i++) {
             cut[i] = i;
             for (int j = 0; j <= i; j++) {
-                if (c[j] == c[i] && (j + 1 > i - 1 || pal[j + 1][i - 1])) {
+                if (c[j] == c[i] && (i - j < 2 || pal[j + 1][i - 1])) {
                     pal[j][i] = true;
                     if (j == 0) {
                         cut[i] = 0;
@@ -30,8 +57,9 @@ public class PalindromePartitioningII {
                     }
                 }
             }
+            printArray(cut);
         }
-        return cut[n - 1];
+        return cut[n - 1];*/
     }
 
     private int min = Integer.MAX_VALUE;
@@ -89,7 +117,7 @@ public class PalindromePartitioningII {
     }
 
 
-    public static void printArray(boolean[][] A) {
+    public static void printArray(int[][] A) {
         for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < A[i].length; j++) {
                 if (j != A[i].length - 1) {
@@ -101,5 +129,17 @@ public class PalindromePartitioningII {
             System.out.println("");
         }
         System.out.println("");
+    }
+
+    //print array
+    public static void printArray(int[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }

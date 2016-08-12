@@ -1,7 +1,9 @@
-/**
- * Created by thanksgiving on 2/27/16.
- */
+
+
 public class PopulatingNextRightPointersinEachNodeII {
+    /**
+     * 注意下一层之后prev 和 head要初始化
+     */
     public void connect(TreeLinkNode root) {
         TreeLinkNode head = null; //head of the next level
         TreeLinkNode prev = null; //the leading node on the next level

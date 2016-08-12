@@ -1,6 +1,6 @@
 public class StringToLong {
     private static long stringToLong(String s) {
-        s = s.trim();
+       /* s = s.trim();
         if (s == null || s.length() == 0) return 0;
         int sign = 1;
         if (s.charAt(0) == '+') {
@@ -24,13 +24,13 @@ public class StringToLong {
                 }
             }
         }
-        return sign * res;
+        return sign * res;*/
 
 
 
 
 
-       /* if (s == null || s.length() == 0) return 0;
+        if (s == null || s.length() == 0) return 0;
         // trim white space
         s = s.trim();
         if (s.length() < 1) return 0;
@@ -54,7 +54,7 @@ public class StringToLong {
             result = result * 10 + (s.charAt(i) - '0');
             i++;
         }
-        return negative ? -result : result;*/
+        return negative ? -result : result;
     }
 
     public static void test() {

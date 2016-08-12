@@ -18,13 +18,14 @@ public class BinaryTreeZigzagLevelOrderTraversal {
         TreeNode root = TreeNode.deserializeLevelorder("6,2,8,0,4,7,9,null,null,3,5");
         printTwoDArrayList(zigzagLevelOrder(root));
     }
+
     public static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> intRes = new ArrayList<>();
         if (root == null) return intRes;
         List<Integer> intRoot = new ArrayList<>();
         intRoot.add(root.val);
         intRes.add(intRoot);
-        
+
         Stack<List<TreeNode>> stack = new Stack<>();
         List<List<TreeNode>> res = new ArrayList<>();
         List<TreeNode> onedList = new ArrayList<>();
@@ -32,7 +33,7 @@ public class BinaryTreeZigzagLevelOrderTraversal {
         stack.add(onedList);
         boolean hasNextLevelValue = false; // assume there is no element in next level
         boolean lastIsReadLeft = true;
-        
+
         while (!stack.isEmpty()) {
             List<TreeNode> currentList = stack.pop();
             List<TreeNode> treeToAddList = new ArrayList<>();
@@ -79,16 +80,14 @@ public class BinaryTreeZigzagLevelOrderTraversal {
         }
         return intRes;
     }
-    
+
     //print two dimensional array list, which can also be replaced by simply System.out.println(A)
-    public static void printTwoDArrayList(List<List<Integer>> A)
-    {
-        for(int i = 0; i < A.size(); i++)
-        {
-            
+    public static void printTwoDArrayList(List<List<Integer>> A) {
+        for (int i = 0; i < A.size(); i++) {
+
             System.out.print(A.get(i) + "");
             System.out.println("");
         }
-        
+
     }
 }
