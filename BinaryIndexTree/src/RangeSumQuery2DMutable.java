@@ -1,7 +1,8 @@
 /**
- * Created by thanksgiving on 1/12/16.
+ * Created by thanksgiving on 8/13/16.
  */
-public class RangeSumQuery2DImmutable {
+public class RangeSumQuery2DMutable {
+
     public static void main(String[] args) {
         int[][] matrix = {
                 {3, 0, 1, 4, 2},
@@ -17,48 +18,53 @@ public class RangeSumQuery2DImmutable {
         System.out.println(obj.sumRegion(1, 2, 2, 4));
     }
 
-    /**
-     * https://segmentfault.com/a/1190000004238792
-     * update time: O(n), space: O(1)
-     * sumRegion time: O(m), space: O(1)
-     */
-    private static class NumMatrix {
-        int[][] rowSums;
+
+    static class NumMatrix {
+        int[][] tree;
+        int[][] origin;
 
         public NumMatrix(int[][] matrix) {
-            if (matrix.length == 0) return;
-            rowSums = new int[matrix.length][matrix[0].length];
+            int m = matrix.length, n = matrix[0].length;
+            origin = matrix;
+            tree = new int[m + 1][n + 1];
+            for (int i = 1; i <= m; i++) {
+                for (int j = 1; j <= n; j++) {
+                    buildTree(i, j, matrix[i - 1][j - 1]);
+                }
+                printArray(tree);
+            }
+        }
 
-            // 建rowSums矩阵
-            for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix[0].length; j++) {
-                    rowSums[i][j] = matrix[i][j] + (j == 0 ? 0 : rowSums[i][j - 1]);
+        private void buildTree(int row, int col, int val) {
+            for (int i = row; i < tree.length; i += i & (-i)) {
+                for (int j = col; j < tree[0].length; j += j & (-j)) {
+                    tree[i][j] += val;
                 }
             }
-            printArray(rowSums);
+        }
+
+        private int get(int row, int col) {
+            int sum = 0;
+            for (int i = row; i > 0; i -= i & (-i)) {
+                for (int j = col; j > 0; j -= j & (-j)) {
+                    sum += tree[i][j];
+                }
+            }
+            return sum;
         }
 
         public void update(int row, int col, int val) {
-            // 求出新值与旧值的差
-            int diff = val - (rowSums[row][col] - (col == 0 ? 0 : rowSums[row][col - 1]));
-
-            // 更新该行受影响的sum
-            for (int j = col; j < rowSums[0].length; j++) {
-                rowSums[row][j] += diff;
-            }
+            int diff = val - origin[row][col];
+            origin[row][col] = val;
+            buildTree(row + 1, col + 1, diff);
         }
 
         public int sumRegion(int row1, int col1, int row2, int col2) {
-            int res = 0;
-
-            // 逐行求和，每行的相应和为两sum相减
-            for (int i = row1; i <= row2; i++) {
-                res += rowSums[i][col2] - (col1 == 0 ? 0 :rowSums[i][col1 - 1]);
-            }
+            int res = get(row2 + 1, col2 + 1) + get(row1, col1) - get(row2 + 1, col1) - get(row1, col2 + 1);
             return res;
         }
-
     }
+
 
     //print array
     public static void printArray(int[] A) {
