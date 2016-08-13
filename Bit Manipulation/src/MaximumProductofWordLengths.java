@@ -4,8 +4,9 @@
 public class MaximumProductofWordLengths {
     public static void main(String[] args) {
         MaximumProductofWordLengths obj = new MaximumProductofWordLengths();
-        String[] test = {"abcw", "baz", "foo", "bar", "xtfn", "abcdef"};
-        System.out.println(obj.maxProduct(test));
+//        System.out.println(obj.maxProduct(new String[]  {"abcw", "baz", "foo", "bar", "xtfn", "abcdef"}));
+        System.out.println(obj.maxProduct(new String[]  {"a", "aa", "aaa", "aaaa"}));
+        System.out.println(obj.maxProduct(new String[]  {"a", "ab", "abc", "abcd"}));
     }
 
     /**
@@ -26,6 +27,7 @@ public class MaximumProductofWordLengths {
 //                System.out.println("1 << c - 'a': " + Integer.toBinaryString(1 << c - 'a'));
 //                System.out.println(Integer.toBinaryString(bits[i]));
             }
+            printArray(bits);
         }
 
         int max = 0;
@@ -37,5 +39,17 @@ public class MaximumProductofWordLengths {
             }
         }
         return max;
+    }
+
+    //print array
+    public static void printArray(int[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }
