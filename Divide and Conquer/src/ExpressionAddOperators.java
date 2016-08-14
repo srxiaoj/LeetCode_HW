@@ -7,7 +7,7 @@ import java.util.List;
 public class ExpressionAddOperators {
     public static void main(String[] args) {
         ExpressionAddOperators obj = new ExpressionAddOperators();
-        System.out.println(obj.addOperators("123", 6));
+//        System.out.println(obj.addOperators("123", 6));
         System.out.println(obj.addOperators("105", 5));
     }
 
@@ -24,6 +24,7 @@ public class ExpressionAddOperators {
             return;
         }
         for (int i = pos; i < num.length(); i++) {
+            // "05" 被Long.parse成5
             if (i != pos && num.charAt(pos) == '0') break;
             long cur = Long.parseLong(num.substring(pos, i + 1));
             if (pos == 0) {
