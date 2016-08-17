@@ -94,4 +94,38 @@ public class BinaryTreeLongestConsecutiveSequence {
         helper(root.left, count, root.val + 1);
         helper(root.right, count, root.val + 1);
     }
+
+
+    // method 3
+    public int longestConsecutive3(TreeNode root) {
+        Pair cur = new Pair(root, 1);
+        if (root == null) return 0;
+        helper(null, cur);
+        return globalmax;
+    }
+
+    private int globalmax = 1;
+    private void helper(Pair last, Pair cur) {
+        if (cur == null || cur.node == null) return;
+        if (last != null && cur.node.val == last.node.val + 1) {
+            cur.count = last.count + 1;
+            globalmax = Math.max(cur.count, globalmax);
+        }
+
+        if (cur.node.left != null) {
+            helper(cur, new Pair(cur.node.left, 1));
+        }
+        if (cur.node.right != null) {
+            helper(cur, new Pair(cur.node.right, 1));
+        }
+    }
+
+    class Pair {
+        TreeNode node;
+        int count;
+        public Pair(TreeNode node, int c) {
+            this.node = node;
+            this.count = c;
+        }
+    }
 }
