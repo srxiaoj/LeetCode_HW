@@ -1,16 +1,22 @@
+3. Longest Substring Without Repeating Characters
+5. Longest Palindromic Substring
 6. Zigzag conversion
 12. Integer to Roman
 16. 3Sum Closest
 30.	Substring with Concatenation of All Words
 47. Permutations II
+72. Edit Distance
+75. Sort Colors
 82. Remove Duplicates from Sorted List II
 87. Scramble String
+88. Mergesort Sorted Array
 89. Gray Code
 91. Decode Ways
 92. Reverse Linked List II
 99. Recover Binary Search Tree
 105. Construct Binary Tree from Preorder and Inorder Traversal
 109. Convert Sorted List to Binary Search Tree
+111. Minimum Depth of Binary Tree
 112. Path Sum
 117. Populating Next Right Pointers in Each Node II
 124. Binary Tree Maximum Path Sum
@@ -21,29 +27,31 @@
 154. Find Minimum in Rotated Sorted Array II
 164. Maximum Gap
 173. Binary Search Tree Iterator
+190. Reverse Bits
 220. Contains Duplicate III
+227. Basic Calculator II
+247. Strobogrammatic Number II
+250. Count Univalue Subtrees
 253. Meeting Rooms II
+254. Factor Combinations
+267. Palindrome Permutation II
+275. H-Index II
 282. Expression Add Operators
 287. Find the Duplicate Number
 291. Word Pattern II
-316. Remove Duplicate Letters
-318. Maximum Product of Word Lengths
-
-
-
-88. Mergesort Sorted Array
-190. Reverse Bits
-58. Length of Last Word
-111. Minimum Depth of Binary Tree
-227. Basic Calculator II
-322. Coin Change
-264. Ugly Number II
-300. Longest Increasing Subsequence
+294. Flip Game II
+301. Remove Invalid Parentheses
 306. Additive Number
 309. Best Time to Buy and Sell Stock with Cooldown
-72. Edit Distance
-275. H-Index II
-75. Sort Colors
+311. Sparse Matrix Multiplication
+316. Remove Duplicate Letters
+318. Maximum Product of Word Lengths
+320. Generalized WordAbbreviation2
+323. Number of Connected Components in an Undirected GraphInterface
+330. Patching Array
+341. Flatten Nested List Iterator
+
+
 HeapSort
 MinimumStepToPalindrome
 
@@ -61,19 +69,5 @@ MinimumStepToPalindrome
 
 
 
-152. Maximum Product Subarray
-82. Remove Duplicates from Sorted List II
-147. insertion sort list
-148. sort list
-3. Longest Substring Without Repeating Characters
-5. Longest Palindromic Substring
-323. Number of Connected Components in an Undirected GraphInterface
-294. Flip Game II
-320. Generalized WordAbbreviation2
-250. Count Univalue Subtrees
-254. Factor Combinations
-199. Binary Tree Right Side Views
-247. Strobogrammatic Number II
-267. Palindrome Permutation II
-330. Patching Array
-222. Count Complete Tree Nodes
+
+

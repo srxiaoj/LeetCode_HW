@@ -11,20 +11,20 @@ public class MeetingRoomsII {
         test[0] = new Interval(0, 30);
         test[1] = new Interval(5, 10);
         test[2] = new Interval(15, 20);
-//        System.out.println(minMeetingRooms(test));
+        System.out.println(minMeetingRooms(test));
 
         Interval[] test2 = new Interval[3];
         test2[0] = new Interval(9, 10);
         test2[1] = new Interval(4, 9);
         test2[2] = new Interval(4, 17);
-//        System.out.println(minMeetingRooms(test2));
+        System.out.println(minMeetingRooms(test2));
 
         Interval[] test3 = new Interval[4];
         test3[0] = new Interval(1, 3);
         test3[1] = new Interval(2, 9);
         test3[2] = new Interval(12, 16);
         test3[3] = new Interval(16, 20);
-//        System.out.println(minMeetingRooms(test3));
+        System.out.println(minMeetingRooms(test3));
     }
 
     public static int minMeetingRooms(Interval[] intervals) {

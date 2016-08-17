@@ -12,7 +12,8 @@ public class QuickSort {
     public static void quicksort(int[] array, int l, int r) {
         int pivot;
         if (l < r) {
-            pivot = partition(array, l, r);
+//            pivot = partitionDesc(array, l, r);
+            pivot = partitionAsc(array, l, r);
             quicksort(array, l, pivot - 1);
             quicksort(array, pivot + 1, r);
         }
@@ -22,11 +23,31 @@ public class QuickSort {
      * use first index as initial pivot.
      * sorted in descendent sequence
      */
-    private static int partition(int[] array, int l, int r) {
+    private static int partitionDesc(int[] array, int l, int r) {
         int p = l;
         int pValue = array[l];
         for (int i = l + 1; i <= r; i++) {
             if (array[i] > pValue) {
+                p++;
+                swap(array, i, p);
+            }
+        }
+
+        // since l is the last index that is larger than p
+        // swap l and p means all elements before p is larger than pivot
+        swap(array, p, l);
+        return p;
+    }
+
+    /**
+     * use first index as initial pivot.
+     * sorted in ascending sequence
+     */
+    private static int partitionAsc(int[] array, int l, int r) {
+        int p = l;
+        int pValue = array[l];
+        for (int i = l + 1; i <= r; i++) {
+            if (array[i] < pValue) {
                 p++;
                 swap(array, i, p);
             }

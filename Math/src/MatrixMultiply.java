@@ -14,14 +14,27 @@ public class MatrixMultiply {
         };
         int[][] c = multiplyMatrix(a, b);
         printArray(c);
+
+
+        int[][] a2 = {
+                {1, 0, 0},
+                {-1, 0, 3}
+        };
+        int[][] b2 = {
+                {7, 0, 0},
+                {0, 0, 0},
+                {0, 0, 1}
+        };
+        int[][] c2 = multiplyMatrix(a2, b2);
+        printArray(c2);
     }
 
     public static int[][] multiplyMatrix(int[][] a, int[][] b) {
-        int m = a.length, n = a[0].length;
-        int[][] c = new int[m][m];
+        int m = a.length, l = a[0].length, nb = b[0].length;
+        int[][] c = new int[m][nb];
         for (int i = 0; i < m; i++) {
-            for (int j = 0; j < m; j++) {
-                for (int k = 0; k < n; k++) {
+            for (int j = 0; j < nb; j++) {
+                for (int k = 0; k < l; k++) {
                     c[i][j] += a[i][k] * b[k][j];
                 }
             }
