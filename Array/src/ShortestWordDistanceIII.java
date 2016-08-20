@@ -12,6 +12,26 @@ public class ShortestWordDistanceIII {
         System.out.println(obj.shortestWordDistance(words, "makes", "makes"));
     }
 
+    public int shortestWordDistance(String[] words, String word1, String word2) {
+        int min = words.length - 1;
+        int index1 = -1, index2 = -1;
+        boolean isWord1 = false;
+        for (int i = 0; i < words.length; i++) {
+            if (word1.equals(words[i]) && (!isWord1 || !word1.equals(word2))) {
+                index1 = i;
+                isWord1 = true;
+            } else if (word2.equals(words[i])) {
+                index2 = i;
+                isWord1 = false;
+            }
+            if (index1 != -1 && index2 != -1) {
+                min = Math.min(Math.abs(index1 - index2), min);
+            }
+        }
+        return min;
+    }
+
+
     /**
      * III 与 I唯一的区别就是在计算最小距离时，因为 I 不允许重复，那么不会出现 min = 0的情况
      * 但是III允许重复，那么则要在更新 min 的值的时候，去掉 val = 0的情况
@@ -20,7 +40,7 @@ public class ShortestWordDistanceIII {
      * @param word2
      * @return
      */
-    public int shortestWordDistance(String[] words, String word1, String word2) {
+    public int shortestWordDistance2(String[] words, String word1, String word2) {
         HashMap<String, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < words.length; i++) {
             if (!map.containsKey(words[i])) {

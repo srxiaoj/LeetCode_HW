@@ -1,40 +1,37 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * Created by thanksgiving on 7/3/16.
  */
 public class FindKPairswithSmallestSums {
     public static void main(String[] args) {
-//        int[] a = {1, 2, 4, 5, 6};
-//        int[] b = {3, 5, 7, 9};
-//        System.out.println(topKSmall(a, b, 20));
-//        System.out.println(topKSmall2(a, b, 20));
+        int[] a = {1, 2, 4, 5, 6};
+        int[] b = {3, 5, 7, 9};
+        printDensityVector(kSmallestPairsPQ(a, b, 10));
 
         int[] a1 = {1, 1, 2};
         int[] b1 = {1, 2, 3};
-        System.out.println(topKSmall(a1, b1, 10));
-        System.out.println(topKSmall2(a1, b1, 10));
+//        printDensityVector(kSmallestPairsPQ(a1, b1, 10));
     }
 
+
     /**
-     * brute force, O(m, n)
+     * PriorityQueue 方法
      */
-    public static List<Integer> topKSmall2(int[] a, int[] b, int k) {
-        List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < b.length; j++) {
-                res.add(a[i] + b[j]);
-            }
+    public static List<int[]> kSmallestPairsPQ(int[] nums1, int[] nums2, int k) {
+        PriorityQueue<int[]> queue = new PriorityQueue<>((a, b) -> a[0] + a[1] - b[0] - b[1]);
+        List<int[]> res = new ArrayList<>();
+        if (nums1.length == 0 || nums2.length == 0 || k == 0) return res;
+        for (int i = 0; i < nums1.length && i < k; i++) queue.offer(new int[]{nums1[i], nums2[0], 0});
+        while (k-- > 0 && !queue.isEmpty()) {
+            int[] cur = queue.poll();
+            res.add(new int[]{cur[0], cur[1]});
+            if (cur[2] == nums2.length - 1) continue;
+            queue.offer(new int[]{cur[0], nums2[cur[2] + 1], cur[2] + 1});
         }
-        if (k > a.length * b.length) k = a.length * b.length;
-        Collections.sort(res);
-        List<Integer> output = new ArrayList<>();
-        for (int i = 0; i < k; i++) {
-            output.add(res.get(i));
-        }
-        return output;
+        return res;
     }
 
     /**
@@ -142,5 +139,14 @@ public class FindKPairswithSmallestSums {
             index++;
         }
         return res;
+    }
+
+    public static void printDensityVector(List<int[]> lists) {
+        System.out.print("[");
+        for (int j = 0; j < lists.size(); j++) {
+            int[] temp = lists.get(j);
+            System.out.print("[" + temp[0] + "," + temp[1] + "]");
+        }
+        System.out.println("]");
     }
 }

@@ -21,6 +21,7 @@ public class VerifyPreorderSerializationofaBinaryTree {
         String[] res = preorder.split(",");
         for (String s : res) {
             indegree++;
+            // if tree start with "#", then the next indegree should be larger than outdegree
             if (indegree > outdegree) {
                 return false;
             }

@@ -55,6 +55,15 @@ public class FrequentlyUsedMethods {
         System.out.println("");
     }
 
+    public static void printDensityVector(List<int[]> lists) {
+        System.out.print("[");
+        for (int j = 0; j < lists.size(); j++) {
+            int[] temp = lists.get(j);
+            System.out.print("[" + temp[0] + "," + temp[1] + "]");
+        }
+        System.out.println("]");
+    }
+
     //print out hashtable
     private static void printHash(Map<String, Integer> map) {
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
