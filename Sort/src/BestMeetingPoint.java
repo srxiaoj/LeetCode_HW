@@ -1,10 +1,10 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BestMeetingPoint {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         int[] oneD = {1, 0, 0, 1, 0};
 //        System.out.println(minTotalDistance1D(oneD));
         
@@ -32,25 +32,34 @@ public class BestMeetingPoint {
         return min;
     }
     public static int minTotalDistance(int[][] grid) {
-        List<Loc> list = new ArrayList<>();
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
+        if (grid == null || grid.length == 0) return 0;
+        int m = grid.length, n = grid[0].length;
+
+        List<Integer> x = new ArrayList<>();
+        List<Integer> y = new ArrayList<>();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 1) {
-                    list.add(new Loc(i, j));
+                    x.add(i);
+                    y.add(j);
                 }
             }
         }
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                int distance = 0;
-                for (Loc d : list) {
-                    distance += Math.abs(d.x - i) + Math.abs(d.y - j);
-                }
-                min = Math.min(min, distance);
-            }
+
+        Collections.sort(x);
+        Collections.sort(y);
+        int midX = x.get(x.size() / 2);
+        int midY = y.get(y.size() / 2);
+
+        int res = 0;
+        for (int i : x) {
+            res += Math.abs(i - midX);
         }
-        return min;
+
+        for (int i : y) {
+            res += Math.abs(i - midY);
+        }
+        return res;
     }
 }
 

@@ -1,8 +1,0 @@
-f1 start 1
-f1 start 2
-f2 start 4
-f2 end  8
-f1 end  16
-f1 end  32
-f3 start 64
-f3 end  128
