@@ -3,9 +3,9 @@
  */
 public class GuessNumberHigherorLowerII {
     public static void main(String[] args) {
-        System.out.println(getMoneyAmount(10));
-        for (int i = 1; i <= 20; i++) {
-            System.out.print(getMoneyAmount(i) + " ");
+        System.out.println(getMoneyAmountDP(5));
+        for (int i = 1; i <= 22; i++) {
+//            System.out.print(getMoneyAmount(i) + " ");
         }
     }
 
@@ -39,7 +39,11 @@ public class GuessNumberHigherorLowerII {
                 int globalMin = Integer.MAX_VALUE;
                 for (int k = i + 1; k < j; k++) {
                     int localMax = k + Math.max(dp[i][k - 1], dp[k + 1][j]);
-                    globalMin = Math.min(globalMin, localMax);
+                    if (globalMin > localMax) {
+                        globalMin = Math.min(globalMin, localMax);
+//                        if (j == n && i == 1)
+//                            System.out.println(dp[i][k - 1] + " " + k + " " + dp[k + 1][j] + " local max " + localMax);
+                    }
                 }
                 if (i + 1 == j) {
                     dp[i][j] = i;
@@ -47,7 +51,26 @@ public class GuessNumberHigherorLowerII {
                     dp[i][j] = globalMin;
                 }
             }
+            printArray(dp);
         }
         return dp[1][n];
+    }
+
+    /**
+     * print 2D array.
+     */
+    public static void printArray(int[][] A) {
+        for (int i = 0; i < A.length; i++) {
+            System.out.print("[");
+            for (int j = 0; j < A[i].length; j++) {
+                if (j != A[i].length - 1) {
+                    System.out.print(A[i][j] + ", ");
+                } else
+                    System.out.print(A[i][j]);
+
+            }
+            System.out.println("]");
+        }
+        System.out.println("");
     }
 }
