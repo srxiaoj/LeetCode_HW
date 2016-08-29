@@ -6,11 +6,14 @@ import java.util.List;
  */
 public class GeneralizedAbbreviation {
     public static void main(String[] args) {
-        GeneralizedAbbreviation obj = new GeneralizedAbbreviation();
-        System.out.println(obj.generateAbbreviations("word"));
+//        System.out.println(generateAbbreviationsBit("word"));
+        System.out.println(generateAbbreviationsBit("dictionary"));
     }
 
-    public List<String> generateAbbreviations(String word) {
+    /**
+     * 方法1：backtracking
+     */
+    public static List<String> generateAbbreviations(String word) {
         List<String> res = new ArrayList<>();
         int len = word.length();
         if (len == 0) {
@@ -31,5 +34,34 @@ public class GeneralizedAbbreviation {
             }
         }
         return res;
+    }
+
+    public static List<String> generateAbbreviationsBit(String word) {
+        List<String> res = new ArrayList<>();
+        if (word == null || word.length() == 0) return res;
+        int n = word.length();
+        for (int i = 0; i < (1 << n); i++) {
+            res.add(binaryToWord(word, i));
+        }
+        return res;
+    }
+
+    private static String binaryToWord(String word, int num) {
+        StringBuilder sb = new StringBuilder();
+        int i = word.length() - 1;
+        while (i >= 0) {
+            if (((num >> i) & 1) == 1) {
+                int count = 0;
+                while (((num >> i) & 1) == 1) {
+                    i--;
+                    count++;
+                }
+                sb.append(count);
+            } else {
+                sb.append(word.charAt(word.length() - 1 - i));
+                i--;
+            }
+        }
+        return sb.toString();
     }
 }
