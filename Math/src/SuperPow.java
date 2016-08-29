@@ -29,16 +29,10 @@ public class SuperPow {
         return list.get(rem - 1);
     }
 
+    /**
+     * 得到所有a % 1337的list
+     */
     private static List<Integer> findLoop(int a) {
-/*        List<Integer> index = new ArrayList<>();
-        boolean[] set = new boolean[DIV];
-        int remainder = a % DIV;
-        while (!set[remainder]) {
-            set[remainder] = true;
-            index.add(remainder);
-            remainder = (remainder * a) % DIV;
-        }
-        return index;*/
         Set<Integer> set = new HashSet<>();
         List<Integer> list = new ArrayList<>();
         int remainder = a % DIV;
@@ -50,6 +44,9 @@ public class SuperPow {
         return list;
     }
 
+    /**
+     * 通过所有mod的list来找2^b % 1337所对应的那个index
+     */
     private static int modBy(int[] b, int loopsize) {
         int res = 0;
         for (int i = 0; i < b.length; i++) {
