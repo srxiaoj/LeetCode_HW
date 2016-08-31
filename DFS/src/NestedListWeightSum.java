@@ -12,6 +12,22 @@ public class NestedListWeightSum {
 
     public int depthSum(List<NestedInteger> nestedList) {
         Stack<Iterator<NestedInteger>> stack = new Stack<>();
+        stack.add(nestedList.iterator());
+        int res = 0;
+        while (!stack.isEmpty()) {
+            NestedInteger next;
+            if (!stack.peek().hasNext()) {
+                stack.pop();
+            } else if ((next = stack.peek().next()).isInteger()) {
+                System.out.println(stack.size() + " " + next.getInteger());
+                res += stack.size() * next.getInteger();
+            } else {
+                stack.push(next.getList().iterator());
+            }
+        }
+        return res;
+
+      /*  Stack<Iterator<NestedInteger>> stack = new Stack<>();
         if (nestedList == null || nestedList.size() == 0) return 0;
         stack.add(nestedList.iterator());
 
@@ -35,7 +51,7 @@ public class NestedListWeightSum {
             }
             System.out.println("level " + level);
         }
-        return res;
+        return res;*/
     }
 
     public interface NestedInteger {
