@@ -36,6 +36,7 @@
 254. Factor Combinations
 255. Verify Preorder Sequence in Binary Search Tree
 267. Palindrome Permutation II
+272. Closest Binary Search Tree Value II
 275. H-Index II
 276. Paint Fence
 282. Expression Add Operators
@@ -54,7 +55,7 @@
 341. Flatten Nested List Iterator
 375. Guess Number Higher or Lower II
 384. Shuffle an Array
-
+386. Lexicographical Numbers
 
 HeapSort
 MinimumStepToPalindrome
