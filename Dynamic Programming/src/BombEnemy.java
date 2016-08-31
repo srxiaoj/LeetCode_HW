@@ -1,16 +1,16 @@
 public class BombEnemy {
     public static void main(String[] args) {
-//        char[][] grid = {{'0'}, {'E'}, {'0'}, {'W'}};
+        char[][] grid = {{'0'}, {'E'}, {'0'}, {'W'}};
 //        System.out.println(maxKilledEnemies(grid));
-//
-//        char[][] grid2 = {{'E', 'E', 'E', 'E'},
-//                          {'0','0', '0', '0'},
-//                          {'E', 'E', 'E', 'E'}};
+
+        char[][] grid2 = {{'E', 'E', 'E', 'E'},
+                          {'0','0', '0', '0'},
+                          {'E', 'E', 'E', 'E'}};
 //        System.out.println(maxKilledEnemies(grid2));
 
-//        char[][] grid3 = {{'W', 'E', 'E', 'E', 'E', '0'},
-//                          {'E', 'E', 'E', 'E', 'E', 'W'}};
-//        System.out.println(maxKilledEnemies(grid3));
+        char[][] grid3 = {{'W', 'E', 'E', 'E', 'E', '0'},
+                          {'E', 'E', 'E', 'E', 'E', 'W'}};
+        System.out.println(maxKilledEnemies(grid3));
 
         char[][] grid4 = {
                 {'W', 'W', 'W', 'W', 'E'},
@@ -19,11 +19,43 @@ public class BombEnemy {
                 {'W', 'E', 'E', 'E', 'E'},
                 {'W', 'W', 'W', 'W', 'W'}
         };
-        System.out.println(maxKilledEnemies(grid4));
+//        System.out.println(maxKilledEnemies(grid4));
     }
 
     public static int maxKilledEnemies(char[][] grid) {
-        if (grid == null || grid.length == 0 || grid[0].length == 0) {
+        if (grid == null || grid.length == 0) return 0;
+        int m = grid.length, n = grid[0].length;
+
+        int max = 0;
+        int[] row = new int[m];
+        int[] col = new int[n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (j == 0 || grid[i][j - 1] == 'W') {
+                    row[i] = 0;
+                    for (int k = j; k < n && grid[i][k] != 'W'; k++) {
+                        if (grid[i][k] == 'E')
+                            row[i]++;
+                    }
+                }
+
+                if (i == 0 || grid[i - 1][j] == 'W') {
+                    col[j] = 0;
+                    for (int k = i; k < m && grid[k][j] != 'W'; k++) {
+                        if (grid[k][j] == 'E') {
+                            col[j]++;
+                        }
+                    }
+                }
+
+                if (grid[i][j] == '0') {
+                    max = Math.max(max, row[i] + col[j]);
+                }
+            }
+        }
+
+        return max;
+        /*if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
         }
         int res = 0;
@@ -55,7 +87,7 @@ public class BombEnemy {
                 }
             }
         }
-        return res;
+        return res;*/
     }
 
     public static void printArray(int[][] A) {
