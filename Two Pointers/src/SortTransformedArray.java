@@ -4,9 +4,49 @@
 public class SortTransformedArray {
     public static void main(String[] args) {
         int[] nums = {-4, -2, 2, 4};
-        int[] res = sortTransformedArray(nums, 0, 3, 5);
+        int[] res = sortTransformedArray2(nums, 0, 3, 5);
         printArray(res);
     }
+
+    public static int[] sortTransformedArray2(int[] nums, int a, int b, int c) {
+        int n = nums.length;
+        int[] res = new int[n];
+
+        int index = a >= 0 ? n - 1 : 0;
+
+        int i = 0, j = n - 1;
+        while (i <= j) {
+            int left = function(nums[i], a, b, c);
+            int right = function(nums[j], a, b, c);
+            if (a >= 0) {
+                if (left >= right) {
+                    res[index] = left;
+                    i++;
+                } else {
+                    res[index] = right;
+                    j--;
+                }
+                index--;
+            } else {
+                if (left < right) {
+                    res[index] = left;
+                    i++;
+                } else {
+                    res[index] = right;
+                    j--;
+                }
+                index++;
+            }
+        }
+        return res;
+    }
+
+    private static int function(int x, int a, int b, int c) {
+        return a * x * x + b * x + c;
+    }
+
+
+
 
     public static int[] sortTransformedArray(int[] nums, int a, int b, int c) {
         double mid = -b / (2.0 * a);

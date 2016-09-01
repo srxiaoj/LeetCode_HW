@@ -18,12 +18,11 @@ public class RangeAddition {
             if (sub[0] > 0) {
                 res[sub[0] - 1] -= sub[2];
             }
+            printArray(res);
         }
 
-        int sum = res[length - 1];
         for (int i = length - 2; i >= 0; i--) {
-            sum += res[i];
-            res[i] = sum;
+            res[i] += res[i + 1];
         }
         return res;
     }
