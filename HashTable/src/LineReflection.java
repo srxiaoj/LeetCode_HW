@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashSet;
 
 /**
@@ -6,7 +7,7 @@ import java.util.HashSet;
 public class LineReflection {
     public static void main(String[] args) {
         System.out.println(isReflected(new int[][]{{1, 1}, {-1, 1}}));
-        System.out.println(isReflected(new int[][]{{0, 0}, {1, 0}}));
+//        System.out.println(isReflected(new int[][]{{0, 0}, {1, 0}}));
     }
 
     public static boolean isReflected(int[][] points) {
@@ -16,13 +17,11 @@ public class LineReflection {
         for (int[] point : points) {
             max = Math.max(max, point[0]);
             min = Math.min(min, point[0]);
-            set.add(point.hashCode());
+            set.add(Arrays.hashCode(point));
         }
 
-        int[][] flip = new int[points.length][2];
         for (int i = 0; i < points.length; i++) {
-            flip[i][0] = max + min - points[i][0];
-            if (!set.contains(flip[i].hashCode())) {
+            if (!set.contains(Arrays.hashCode(new int[]{max + min - points[i][0], points[i][1]}))) {
                 return false;
             }
         }

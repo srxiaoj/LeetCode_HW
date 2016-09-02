@@ -37,39 +37,22 @@ public class DungeonGame {
         if (dungeon == null || dungeon.length == 0) return 0;
         int m = dungeon.length, n = dungeon[0].length;
 
-        int[][] cur = new int[m + 1][n + 1];
-        int[][] minRequired = new int[m + 1][n + 1];
-        int[][] maxCur = new int[m + 1][n + 1];
-
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                if (i == 1) {
-                    minRequired[i][j] = Math.max(minRequired[i][j - 1], -cur[i][j - 1] - dungeon[i - 1][j - 1] + 1);
-                    cur[i][j] = cur[i][j - 1] + dungeon[i - 1][j - 1];
-                    maxCur[i][j] = cur[i][j - 1] + dungeon[i - 1][j - 1];
-                } else if (j == 1) {
-                    minRequired[i][j] = Math.max(minRequired[i - 1][j], -cur[i - 1][j] - dungeon[i - 1][j - 1] + 1);
-                    cur[i][j] = cur[i - 1][j] + dungeon[i - 1][j - 1];
-                    maxCur[i][j] = cur[i - 1][j] + dungeon[i - 1][j - 1];
+        int[][] initHealth = new int[m][n];
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                if (i == m - 1 && j == n - 1) {
+                    initHealth[i][j] = Math.max(1, 1 - dungeon[i][j]);
+                } else if (i == m - 1) {
+                    initHealth[i][j] = Math.max(1, initHealth[i][j + 1] - dungeon[i][j]);
+                } else if (j == n - 1) {
+                    initHealth[i][j] = Math.max(1, initHealth[i + 1][j] - dungeon[i][j]);
                 } else {
-                    if (minRequired[i - 1][j] < minRequired[i][j - 1]) {
-                        minRequired[i][j] = Math.max(minRequired[i - 1][j], -cur[i - 1][j] - dungeon[i - 1][j - 1] + 1);
-                        cur[i][j] = cur[i - 1][j] + dungeon[i - 1][j - 1];
-                    } else {
-                        minRequired[i][j] = Math.max(minRequired[i][j - 1], -cur[i][j - 1] - dungeon[i - 1][j - 1] + 1);
-                        cur[i][j] = cur[i][j - 1] + dungeon[i - 1][j - 1];
-                    }
-                    maxCur[i][j] = Math.max(maxCur[i - 1][j], maxCur[i][j - 1]) + dungeon[i - 1][j - 1];
-                    if (-maxCur[i][j] > 0) {
-                        minRequired[i][j] = Math.min(-maxCur[i][j], minRequired[i][j]);
-                    }
+                    initHealth[i][j] = Math.max(Math.min(initHealth[i + 1][j], initHealth[i][j + 1]) - dungeon[i][j], 1);
                 }
             }
+            printArray(initHealth);
         }
-        printArray(minRequired);
-        printArray(cur);
-        printArray(maxCur);
-        return minRequired[m][n];
+        return initHealth[0][0];
     }
 
     /**
