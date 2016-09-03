@@ -3,15 +3,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by thanksgiving on 9/2/16.
+ * https://discuss.leetcode.com/topic/43615/segment-tree-solution-c-with-brief-explain
  */
 public class CountofRangeSum {
     public static void main(String[] args) {
         CountofRangeSum obj = new CountofRangeSum();
-//        int[] nums = {-2, 5, -1};
-        int[] nums = {0, -3, -3, 1, 1, 2};
-        System.out.println(obj.countRangeSum(nums, 3, 5));
+//        System.out.println(obj.countRangeSum(new int[]{0, -3, -3, 1, 1, 2}, 3, 5));
+//        System.out.println(obj.countRangeSum(new int[]{-2, 5, -1}, -2, 2));
+        System.out.println(obj.countRangeSum(new int[]{0, 0}, 0, 0));
     }
+
 
     class SegmentTreeNode {
         SegmentTreeNode left;
@@ -40,6 +41,9 @@ public class CountofRangeSum {
         return node;
     }
 
+    /**
+     * 把所有node.start < val < node.end的node的count加一
+     */
     private void update(SegmentTreeNode node, Long val) {
         if (node == null) return;
         if (val >= node.start && val <= node.end) {
