@@ -24,7 +24,7 @@ public class SumOfGivenRange {
     SegmentTreeNode root = null;
 
     public SumOfGivenRange(int[] nums) {
-        root = buildTree(nums, 0, nums.length-1);
+        root = buildTree(nums, 0, nums.length - 1);
     }
 
     private SegmentTreeNode buildTree(int[] nums, int start, int end) {
@@ -35,7 +35,7 @@ public class SumOfGivenRange {
             if (start == end) {
                 segmentTreeNode.sum = nums[start];
             } else {
-                int mid = start  + (end - start) / 2;
+                int mid = start + (end - start) / 2;
                 segmentTreeNode.left = buildTree(nums, start, mid);
                 segmentTreeNode.right = buildTree(nums, mid + 1, end);
                 segmentTreeNode.sum = segmentTreeNode.left.sum + segmentTreeNode.right.sum;
@@ -75,8 +75,8 @@ public class SumOfGivenRange {
                 return sumRange(root.left, i, j);
             } else if (i > mid) {
                 return sumRange(root.right, i, j);
-            }  else {
-                return sumRange(root.right, mid+1, j) + sumRange(root.left, i, mid);
+            } else {
+                return sumRange(root.right, mid + 1, j) + sumRange(root.left, i, mid);
             }
         }
     }
