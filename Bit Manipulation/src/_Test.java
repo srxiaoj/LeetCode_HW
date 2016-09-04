@@ -1,9 +1,26 @@
+import java.util.*;
+
 /**
  * Created by thanksgiving on 4/25/16.
  */
 public class _Test {
     public static void main(String[] args) {
-        // shift test
+        Integer[] num2 = new Integer[] {1, 2, 3};
+//        String[] nums = new String[]{"a", "b"};
+//        List<String> v1 = Arrays.asList(nums);
+        List<Integer> l1 = Arrays.asList(num2);
+        List<Integer> l2 = Arrays.asList(num2);
+        Set<Integer> set = new HashSet<>(Arrays.asList(num2));
+        System.out.println(set);
+        List<Integer> l3 = new ArrayList<>(Arrays.asList(num2));
+//        System.out.println(l1);
+//        System.out.println(l3);
+        num2[0] = 4;
+//        System.out.println(l1);
+//        System.out.println(l3);
+
+
+        /*// shift test
         int n1 = 16;
         System.out.println(n1 + ": " + IntToBit.intToBit(n1));
         int n1LeftShift = n1 << 3;
@@ -15,7 +32,7 @@ public class _Test {
         for (int i = 0; i < 5; i++) {
             cur = cur << 2;
             System.out.print(cur + " ");
-        }
+        }*/
       /*  System.out.println(IntToBit.intToBit((-2 >>> 1)));
         System.out.println(IntToBit.intToBit((-2 >> 1)));
         System.out.println(IntToBit.intToBit((2147483647 >>> 1)));
