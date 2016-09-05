@@ -2,7 +2,6 @@
 public class MaximalSquare {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         char[][] test = {{'1', '0', '1', '0', '0'},
                          {'1', '0', '1', '1', '1'},
                          {'1', '1', '1', '1', '1'},
