@@ -5,10 +5,11 @@ public class WildcardMatching {
 //        System.out.println(isMatch("", "*a"));
 //        System.out.println(isMatch("aab", "***b"));
 //        System.out.println(isMatch("acb", "ac*b"));
+        System.out.println(isMatch("acbbb", "ac*b"));
         //System.out.println(isMatch("bbbbbbbabbaabbabbbbaaabbabbabaaabbababbbabbbabaaabaa", "b*b*ab**ba*b**b***a"));
         //System.out.println(isMatch("bbbbbbbabbaabbabbbbaaabbabbabaaabbababbbabbbabaaabaab", "b*b*ab**ba*b**b***bba"));
 //        System.out.println(isMatch("aa", "*"));
-        System.out.println(isMatch("ab", "*a"));
+//        System.out.println(isMatch("ab", "*a"));
 //        System.out.println(isMatch("ab", "?*"));
 //        System.out.println(isMatch("aab", "c*a*b"));
     }
@@ -57,17 +58,19 @@ public class WildcardMatching {
         if (p.replace("*", "").length() > s.length()) return false;
         int m = s.length();
         int n = p.length();
-        int i = 0, j = 0, start = -1, match = 0;
+        int i = 0, j = 0, previousStarPosition = -1, match = 0;
         while (i < m) {
             if (j < n && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?')) {
                 i++;
                 j++;
             } else if (j < n && p.charAt(j) == '*') {
-                start = j;
+                previousStarPosition = j;
                 match = i;
                 j++;
-            } else if (start != -1) {
-                j = start;
+            // means there is a '*' appeared before
+            // now use this '*' to match one more character
+            } else if (previousStarPosition != -1) {
+                j = previousStarPosition;
                 match++;
                 i = match;
             } else {
