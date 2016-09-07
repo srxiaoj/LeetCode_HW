@@ -19,12 +19,12 @@ public class ZigZagConversion {
         for (int i = 0; i < sb.length; i++) sb[i] = new StringBuilder();
 //        Arrays.fill(sb, new StringBuilder());
         while (index < s.length()) {
-            for (int i = 0; i < row; i++) {
-                if (index >= s.length()) break;
+            for (int i = 0; i < row && index < s.length(); i++) {
+//                if (index >= s.length()) break;
                 sb[i].append(s.charAt(index++));
             }
-            for (int i = row - 2; i >= 1; i--) {
-                if (index >= s.length()) break;
+            for (int i = row - 2; i >= 1 && index < s.length(); i--) {
+//                if (index >= s.length()) break;
                 sb[i].append(s.charAt(index++));
             }
         }
