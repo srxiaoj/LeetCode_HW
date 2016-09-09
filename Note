@@ -10,11 +10,11 @@
 *82. Remove Duplicates from Sorted List II
 85. Maximal Rectangle
 87. Scramble String
-88. Mergesort Sorted Array
+88. Merge Sorted Array
 89. Gray Code
 91. Decode Ways
-92. Reverse Linked List II
-99. Recover Binary Search Tree
+*92. Reverse Linked List II
+*99. Recover Binary Search Tree
 105. Construct Binary Tree from Preorder and Inorder Traversal
 109. Convert Sorted List to Binary Search Tree
 111. Minimum Depth of Binary Tree
@@ -74,7 +74,7 @@
 
 HeapSort
 MinimumStepToPalindrome
-
+intToBit
 
 
 
