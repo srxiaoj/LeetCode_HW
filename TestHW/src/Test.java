@@ -1,17 +1,20 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class Test {
     // instance variable
     private int x = 1;
     private int y = 1;
-    
+
     public synchronized int getSum() {
         x = 3;
         y = 4;
         int k = 5;
         return x + y + k;
     }
-    
+
     public synchronized int getDiff() {
         x = 8;
         y = 6;
@@ -38,11 +41,45 @@ public class Test {
         }
         return Integer.parseInt(a);
     }
-        
+
     public static void main(String[] args) {
-        int[] num = {1, 2, 3, 4};
+        int a = 1;
+        int b = a++;
+        int c = ++b;
+//        System.out.println(a);
+//        System.out.println(b);
+//        System.out.println(c);
+
+        a = 1 << 2;
+        System.out.println(a);
+
+        List<String> list = new ArrayList<>(Arrays.asList("good", "bad", "bad", "bad", "yes"));
+        /*for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).equals("bad")) {
+                list.remove(i);
+            }
+        }*/
+       /* for (String s : list) {
+            if (s.equals("bad")) {
+                list.remove(s);
+            }
+        }*/
+
+       /* Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            String value = iterator.next();
+            if ("bad".equals(value)) {
+                iterator.remove();
+            }
+        }*/
+        for (Iterator itr = list.iterator(); itr.hasNext();) {
+            if ("bad".equals(itr.next())) itr.remove();
+        }
+        System.out.println(list);
+
+       /* int[] num = {1, 2, 3, 4};
         int[] copy = Arrays.copyOfRange(num, 0, 6);
-        printArray(copy);
+        printArray(copy);*/
 
 
        /* try {
