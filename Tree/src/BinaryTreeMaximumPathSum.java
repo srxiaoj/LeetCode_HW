@@ -26,6 +26,7 @@ public class BinaryTreeMaximumPathSum {
     }
 
     private Result helper(TreeNode node) {
+        // root == null 时 max = Integer.MIN_VALUE 防止全部为负数时 pathSum = 0
         if (node == null) return new Result(0, Integer.MIN_VALUE);
         Result left = helper(node.left);
         Result right = helper(node.right);
