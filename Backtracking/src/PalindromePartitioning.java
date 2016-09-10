@@ -13,6 +13,46 @@ public class PalindromePartitioning {
         System.out.println(obj.partition2(test));
     }
 
+    /**
+     * 方法3
+     */
+    public List<List<String>> partition3(String s) {
+        int n = s.length();
+        List<List<String>> res = new ArrayList<>();
+        if (n == 0) return res;
+        boolean[][] dp = new boolean[n][n];
+
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                if (i == j) {
+                    dp[i][j] = true;
+                } else if (i + 1 == j) {
+                    dp[i][j] = (s.charAt(i) == s.charAt(j));
+                } else {
+                    dp[i][j] = (s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1]);
+                }
+            }
+        }
+
+        helper(res, new ArrayList<>(), 0, s, dp);
+        return res;
+    }
+
+    private void helper(List<List<String>> res, List<String> part, int pos, String s, boolean[][] dp) {
+        if (pos == s.length()) {
+            res.add(part);
+            return;
+        }
+
+        for (int i = pos; i < s.length(); i++) {
+            if (dp[pos][i]) {
+                List<String> newPart = new ArrayList<>(part);
+                newPart.add(s.substring(pos, i + 1));
+                helper(res, newPart, i + 1, s, dp);
+            }
+        }
+    }
+
     public List<List<String>> partition2(String s) {
         if (s == null || s.length() == 0) return new ArrayList<>();
         int n = s.length();
