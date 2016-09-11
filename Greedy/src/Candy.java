@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by thanksgiving on 8/5/16.
  */
@@ -24,6 +26,38 @@ public class Candy {
      */
     public static int candy(int[] ratings) {
         if (ratings == null || ratings.length == 0) return 0;
+        int n = ratings.length;
+
+        int i = 1;
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+        while (i < n) {
+            if (ratings[i] > ratings[i - 1]) {
+                dp[i] = dp[i - 1] + 1;
+                i++;
+            } else if (ratings[i] < ratings[i - 1]) {
+                int temp = i;
+                while (i < n && ratings[i] < ratings[i - 1]) {
+                    i++;
+                }
+                for (int k = temp - 1; k < i; k++) {
+                    dp[k] = Math.max(dp[k], i - k);
+                }
+            } else {
+                dp[i] = 1;
+                i++;
+            }
+        }
+        printArray(dp);
+
+        int sum = 0;
+        for (int k = 0; k < n; k++) {
+            sum += dp[k];
+        }
+        return sum;
+
+
+     /*   if (ratings == null || ratings.length == 0) return 0;
         int n = ratings.length;
         int res = 0;
         int[] dp = new int[n];
@@ -63,7 +97,7 @@ public class Candy {
             }
         }
         printArray(dp);
-        return res;
+        return res;*/
     }
 
     public static void printArray(int[] A) {
