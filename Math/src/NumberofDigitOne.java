@@ -4,9 +4,9 @@
 public class NumberofDigitOne {
     public static void main(String[] args) {
         NumberofDigitOne obj = new NumberofDigitOne();
-        System.out.println(obj.countDigitOne(109));
         System.out.println(obj.countDigitOne(32145));
-        System.out.println(obj.countDigitOne(1410065408));
+//        System.out.println(obj.countDigitOne(109));
+//        System.out.println(obj.countDigitOne(1410065408));
     }
 
     /**
@@ -36,7 +36,32 @@ public class NumberofDigitOne {
      所以结果就应该是对每个位求1出现的个数，加起来就是最终的结果。
      */
     public int countDigitOne(int n) {
-        long iCount = 0;
+        if (n <= 0) return 0;
+        if (n < 10) return 1;
+        long fac = 10;
+        int cur = 0, high = 0, low = 0;
+        int res = 0;
+        while ((fac / 10) <= n) {
+            low = (int) (n % (fac / 10));
+            cur = (int) ((n % fac) / (fac / 10));
+            high = (int) (n / fac);
+            System.out.println(low + " " + cur + " " + high + " " + fac / 10);
+
+            if (cur == 0) {
+                res += high * (fac / 10);
+            } else if (cur == 1) {
+                res += high * (fac / 10) + low + 1;
+            } else {
+                res += (high + 1) * (fac / 10);
+            }
+
+            fac *= 10;
+        }
+        return res;
+
+
+
+       /* long iCount = 0;
         long iFactor = 1;
         int iLowerNum = 0;
         int iHigherNum = 0;
@@ -59,7 +84,7 @@ public class NumberofDigitOne {
             }
             iFactor *= 10;
         }
-        return (int) iCount;
+        return (int) iCount;*/
 
 
        /* if (n <= 0) return 0;
