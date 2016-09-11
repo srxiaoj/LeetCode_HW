@@ -8,15 +8,12 @@ import java.util.*;
  */
 public class FindFraudTransactions {
     public static void main(String[] args) {
-        String[] logs = new String[]{"Jim|4000|New York|10:35", "Sam|200|New York|10:15", "Sam|200|Chicago|11:00"};
-        String[] logs2 = new String[]{"Sam|200|New York|10:15", "Jim|4000|New York|10:35", "Sam|200|Chicago|11:00", "Jim|5000|LA|13:35"};
-        String[] logs3 = new String[]{"Jim|200|New York|10:05", "Sam|100|New York|10:15", "Sam|200|Chicago|11:00", "Jim|5000|LA|13:35"};
-//        printArray(getSuspiciousList(logs));
-//        printArray(getSuspiciousList(logs2));
-//        printArray(getSuspiciousList(logs3));
-//        System.out.println(getSuspiciousList2(logs));
-//        System.out.println(getSuspiciousList2(logs2));
-        System.out.println(getSuspiciousList2(logs3));
+        String[] logs = new String[]{"Jim|4000|New York|635", "Sam|200|New York|675", "Sam|200|Chicago|690"};
+        String[] logs2 = new String[]{"Sam|200|New York|615", "Jim|4000|New York|635", "Sam|200|Chicago|660", "Jim|5000|LA|815"};
+        String[] logs3 = new String[]{"Jim|200|New York|605", "Sam|100|New York|615", "Sam|200|Chicago|660", "Jim|5000|LA|815"};
+        printArray(getSuspiciousList(logs));
+        printArray(getSuspiciousList(logs2));
+        printArray(getSuspiciousList(logs3));
     }
 
     /**
@@ -37,24 +34,20 @@ public class FindFraudTransactions {
             String name = info[0];
             int amount = Integer.parseInt(info[1]);
             String city = info[2];
-            String[] timeStr = info[3].split(":");
-            int time = Integer.parseInt(timeStr[0]) * 60 + Integer.parseInt(timeStr[1]);
+            int time = Integer.parseInt(info[3]);
 
             Integer prevId = map.get(name);
             if (amount > 3000) {
                 res.add(0, name);
             } else if (prevId != null) {
-                String[] transactionDetailPrev = transactions[prevId].split("\\|");
-                String[] newTimeStr = transactionDetailPrev[3].split(":");
-                int oldTime = Integer.parseInt(newTimeStr[0]) * 60 + Integer.parseInt(newTimeStr[1]);
-//                System.out.println(oldTime + " " + time);
-                if (!city.equals(transactionDetailPrev[2]) && oldTime - time < 60)
+                String[] lastTranscation = transactions[prevId].split("\\|");
+                int lastTime = Integer.parseInt(lastTranscation[3]);
+                if (!city.equals(lastTranscation[2]) && lastTime - time < 60)
                     res.add(0, name);
             }
-            map.put(name, i); // add name->index map into the map; if name existed already, simply update previous index with current one
+            map.put(name, i);
         }
 
-        // list may contain duplicates, the following is to filter out duplicates with the help of a HashSet
         Set<String> existingFraudNames = new HashSet<>();
         List<String> uniqueFraudList = new ArrayList<>();
         for (String name : res) {
@@ -62,49 +55,6 @@ public class FindFraudTransactions {
             existingFraudNames.add(name);
         }
         return uniqueFraudList.toArray(new String[0]);
-    }
-
-    public static List<String> getSuspiciousList2(String[] logs) {
-        List<String> res = new ArrayList<>();
-        if (logs == null || logs.length == 0) return res;
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = logs.length - 1; i >= 0; i--) {
-            String[] info = logs[i].split("\\|");
-            String[] timeStr = info[3].split(":");
-            String city = info[2];
-            int amount = Integer.parseInt(info[1]);
-
-            int time = Integer.parseInt(timeStr[0]) * 60 + Integer.parseInt(timeStr[1]);
-
-
-            if (amount > 3000) {
-                res.add(0, info[0]);
-                continue;
-            }
-            if (!map.containsKey(info[0])) {
-                map.put(info[0], i);
-            } else {
-                String[] lastTranscation = logs[map.get(info[0])].split("\\|");
-                String[] lastTimeStr = lastTranscation[3].split(":");
-                int lastTime = Integer.parseInt(lastTimeStr[0]) * 60 + Integer.parseInt(lastTimeStr[1]);
-                System.out.println(time + " " + lastTime);
-                if (!city.equals(lastTranscation[2]) && lastTime - time < 60) {
-                    res.add(0, info[0]);
-                }
-                map.put(info[0], i);
-            }
-        }
-
-        Set<String> set = new HashSet<>();
-        List<String> uniqueRes = new ArrayList<>();
-        for (String name : res) {
-            if (!set.contains(name)) {
-                uniqueRes.add(name);
-                set.add(name);
-            }
-        }
-
-        return uniqueRes;
     }
 
     //print array
