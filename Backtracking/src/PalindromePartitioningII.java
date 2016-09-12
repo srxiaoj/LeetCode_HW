@@ -11,12 +11,35 @@ public class PalindromePartitioningII {
 //        System.out.println(obj.minCutDynamicProgramming("ababababababababababaababababababababababaababababababababababa"));
 //        System.out.println(obj.minCutDynamicProgramming("abcd"));
         System.out.println(obj.minCutDynamicProgramming("aabbc"));
-        System.out.println(obj.minCutDynamicProgramming("acbb"));
-        System.out.println(obj.minCutDynamicProgramming("efe"));
+//        System.out.println(obj.minCutDynamicProgramming("acbb"));
+//        System.out.println(obj.minCutDynamicProgramming("efe"));
     }
 
     public int minCutDynamicProgramming(String s) {
-        char[] c = s.toCharArray();
+        if (s == null || s.length() == 0) return 0;
+        int n = s.length();
+
+        boolean[][] dp = new boolean[n][n];
+        int[] cut = new int[n];
+        for (int i = n - 1; i >= 0; i--) {
+            cut[i] = n - i - 1;
+            for (int j = i; j < n; j++) {
+                if (s.charAt(i) == s.charAt(j) && (j - 1 < i + 1 || dp[i + 1][j - 1])) {
+                    dp[i][j] = true;
+                    if (j == n - 1) {
+                        cut[i] = 0;
+                    } else if (cut[j + 1] < cut[i]) {
+                        cut[i] = cut[j + 1] + 1;
+                    }
+                }
+                printArray(cut);
+            }
+            System.out.println("");
+        }
+        return cut[0];
+
+
+       /* char[] c = s.toCharArray();
         int n = s.length();
         int[] dp = new int[n];
         boolean[][] pair = new boolean[n][n];
@@ -37,29 +60,7 @@ public class PalindromePartitioningII {
             }
             printArray(dp);
         }
-        return dp[n - 1];
-
-
-       /* char[] c = s.toCharArray();
-        int n = c.length;
-        int[] cut = new int[n];
-        boolean[][] pal = new boolean[n][n];
-
-        for (int i = 0; i < n; i++) {
-            cut[i] = i;
-            for (int j = 0; j <= i; j++) {
-                if (c[j] == c[i] && (i - j < 2 || pal[j + 1][i - 1])) {
-                    pal[j][i] = true;
-                    if (j == 0) {
-                        cut[i] = 0;
-                    } else {
-                        cut[i] = Math.min(cut[i], cut[j - 1] + 1);
-                    }
-                }
-            }
-            printArray(cut);
-        }
-        return cut[n - 1];*/
+        return dp[n - 1];*/
     }
 
     private int min = Integer.MAX_VALUE;
