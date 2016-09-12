@@ -4,7 +4,8 @@
 public class FindtheDuplicateNumber {
     public static void main(String[] args) {
         FindtheDuplicateNumber obj = new FindtheDuplicateNumber();
-        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 10};
+//        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 10};
+        int[] a = {3, 1, 3, 4, 2};
         System.out.println("The duplicate number is: " + obj.findDuplicate(a));
     }
 
@@ -20,6 +21,7 @@ public class FindtheDuplicateNumber {
                     count++;
                 }
             }
+            System.out.println("l " + l + ", r " + r + ", count " + count);
             if (count <= mid) {
                 l = mid + 1;
                 count = 0;
