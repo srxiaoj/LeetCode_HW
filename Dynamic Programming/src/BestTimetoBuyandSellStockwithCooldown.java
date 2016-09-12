@@ -3,9 +3,9 @@
  */
 public class BestTimetoBuyandSellStockwithCooldown {
     public static void main(String[] args) {
-//        int[] prices = {1, 2, 3, 0, 2};
-        int[] prices = {2, 4, 1, 5, 3, 4};
-        System.out.println(maxProfit(prices));
+        int[] prices = {1, 2, 3, 0, 2};
+//        int[] prices = {2, 4, 1, 5, 3, 4};
+//        System.out.println(maxProfit(prices));
         System.out.println(maxProfit2(prices));
 
     }
@@ -55,6 +55,8 @@ public class BestTimetoBuyandSellStockwithCooldown {
                 buy[i] = Math.max(buy[i - 1], sell[i - 2] - prices[i]);
             }
         }
+        printArray(sell);
+        printArray(buy);
         return sell[prices.length - 1];
     }
 
