@@ -4,12 +4,10 @@
 public class PaintFence {
     public static void main(String[] args) {
         PaintFence obj = new PaintFence();
-        System.out.println(obj.numWaysDP(3, 3));
-        System.out.println(obj.numWaysDP(4, 3));
-        System.out.println(obj.numWaysDP(5, 3));
-        System.out.println(obj.numWaysDP(3, 2));
-        System.out.println(obj.numWaysDP(4, 2));
-        System.out.println(obj.numWaysDP(5, 2));
+        System.out.println(obj.numWaysDP(1, 4));
+        System.out.println(obj.numWaysDP(2, 4));
+        System.out.println(obj.numWaysDP(3, 4));
+        System.out.println(obj.numWaysDP(4, 4));
     }
     public int numWaysDP(int n, int k) {
         if (n == 0) return 0;
@@ -28,6 +26,13 @@ public class PaintFence {
         return same[n - 1] + diff[n - 1];
     }
 
+    /**
+     * 以 k = 4 为例子
+     * n = 1,    same = 4                      diff = 4
+     * n = 2,    same = 4 * 1                  diff = 4 * 3
+     * n = 3,    same = 4 * 3 * 1              diff = (4 * 3 + 4) * 3
+     * n = 4,    same = (4 * 3 + 4) * 3 * 1    diff = ((4 * 3 + 4) * 3 * 1) + 4 * 3 * 1) * 3
+     */
     public int numWays(int n, int k) {
         if (n == 0) return 0;
         if (n == 1) return k;
