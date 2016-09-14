@@ -49,23 +49,23 @@
 294. Flip Game II
 *301. Remove Invalid Parentheses
 306. Additive Number
-309. Best Time to Buy and Sell Stock with Cooldown
-311. Sparse Matrix Multiplication
-312. Burst Balloons
-316. Remove Duplicate Letters
-318. Maximum Product of Word Lengths
+*309. Best Time to Buy and Sell Stock with Cooldown
+*311. Sparse Matrix Multiplication
+*312. Burst Balloons
+*316. Remove Duplicate Letters
+*318. Maximum Product of Word Lengths
 320. Generalized WordAbbreviation2
 323. Number of Connected Components in an Undirected GraphInterface
-327. Count of Range Sum
+*327. Count of Range Sum
 330. Patching Array
 341. Flatten Nested List Iterator
-351. Android Unlock Patterns
-354. Russian Doll Envelopes
+*351. Android Unlock Patterns
+*354. Russian Doll Envelopes
 356. Line Reflection
 358. Rearrange String k Distance Apart
 360. Sort Transformed Array
 361. Bomb Enemy
-363. Max Sum of Rectangle No Larger Than K
+*363. Max Sum of Rectangle No Larger Than K
 370. Range Addition
 375. Guess Number Higher or Lower II
 384. Shuffle an Array
@@ -75,6 +75,7 @@
 HeapSort
 MinimumStepToPalindrome
 intToBit
+NondominantEntity
 
 
 

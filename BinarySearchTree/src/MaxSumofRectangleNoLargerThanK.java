@@ -10,13 +10,13 @@ public class MaxSumofRectangleNoLargerThanK {
                 {-4, -2, 3},
                 {1, 9, 7}
         };
-//        System.out.println(maxSumSubmatrix(matrix, 6));
+        System.out.println(maxSumSubmatrix(matrix, 6));
 
 
         int[][] matrix2 = new int[][]{
                 {2, 2, -1},
         };
-        System.out.println(maxSumSubmatrix(matrix2, 3));
+//        System.out.println(maxSumSubmatrix(matrix2, 3));
     }
 
     /* first  consider the situation matrix is 1D
@@ -41,23 +41,24 @@ public class MaxSumofRectangleNoLargerThanK {
             int[] array = new int[n];
             // sum from row j to row i
             for (int j = i; j >= 0; j--) {
-                int val = 0;
+                int sum = 0;
                 TreeSet<Integer> set = new TreeSet<Integer>();
                 set.add(0);
                 //traverse every column/row and sum up
                 for (int k = 0; k < n; k++) {
                     array[k] = array[k] + (colIsBig ? matrix[j][k] : matrix[k][j]);
-                    val = val + array[k];
+                    sum = sum + array[k];
                     //use  TreeMap to binary search previous sum to get possible result
-                    // 找 >= val-target的最小的数, 那么val - subres就是最接近target的数
-                    Integer subres = set.ceiling(val - target);
-                    if (subres != null) {
-                        res = Math.max(res, val - subres);
+                    // 找 >= sum-target的最小的数, 那么val - subres就是最接近target的数
+                    Integer leastLargerNum = set.ceiling(sum - target);
+                    if (leastLargerNum != null) {
+                        res = Math.max(res, sum - leastLargerNum);
                     }
-                    System.out.println("set: " + set);
-                    set.add(val);
-                    System.out.print("i: " + i + " " + ", val: " + val + ", subres: " + subres + "  ");
+                    System.out.print("set: " + set + " ");
+                    System.out.print(",array:  ");
                     printArray(array);
+                    set.add(sum);
+                    System.out.println("i: " + i + " " + ", sum: " + sum + ", sum-target: " + (sum - target) + ", leastLargerNum: " + leastLargerNum + ", max: " + res);
                 }
             }
         }

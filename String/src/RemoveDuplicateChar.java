@@ -7,8 +7,8 @@ public class RemoveDuplicateChar {
     public static void main(String[] args) {
         RemoveDuplicateChar obj = new RemoveDuplicateChar();
         System.out.println(obj.removeDuplicateLetters("bcabc"));
-        System.out.println(obj.removeDuplicateLetters("aabaa"));
-        System.out.println(obj.removeDuplicateLetters("cbacdcbc"));
+//        System.out.println(obj.removeDuplicateLetters("aabaa"));
+//        System.out.println(obj.removeDuplicateLetters("cbacdcbc"));
     }
 
     /**
