@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by thanksgiving on 7/18/16.
  */
@@ -5,7 +7,7 @@ public class GuessNumberHigherorLowerII {
     public static void main(String[] args) {
         System.out.println(getMoneyAmountDP(5));
         for (int i = 1; i <= 22; i++) {
-//            System.out.print(getMoneyAmount(i) + " ");
+            System.out.print(getMoneyAmount(i) + " ");
         }
     }
 
@@ -34,6 +36,28 @@ public class GuessNumberHigherorLowerII {
      */
     public static int getMoneyAmountDP(int n) {
         int[][] dp = new int[n + 1][n + 1];
+
+        for (int[] sub : dp) {
+            Arrays.fill(sub, Integer.MAX_VALUE);
+        }
+        for (int i = 1; i <= n; i++) {
+            for (int j = i; j >= 1; j--) {
+                if (i == j) {
+                    dp[j][i] = 0;
+                } else if (j + 1 == i) {
+                    dp[j][i] = j;
+                } else {
+                    for (int k = j + 1; k < i; k++) {
+                        dp[j][i] = Math.min(Math.max(dp[j][k - 1], dp[k + 1][i]) + k, dp[j][i]);
+                    }
+                }
+            }
+        }
+
+        return dp[1][n];
+
+
+       /* int[][] dp = new int[n + 1][n + 1];
         for (int j = 2; j <= n; j++) {
             for (int i = j - 1; i > 0; i--) {
                 int globalMin = Integer.MAX_VALUE;
@@ -53,7 +77,7 @@ public class GuessNumberHigherorLowerII {
             }
             printArray(dp);
         }
-        return dp[1][n];
+        return dp[1][n];*/
     }
 
     /**

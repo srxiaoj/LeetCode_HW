@@ -24,25 +24,19 @@ public class LexicographicalNumbers {
     /**
      * 四种情况
      */
-    private static int getNext(int n, int cur) {
-        if (cur * 10 <= n) { // 1 -> 10 -> 100
-//            System.out.println("1st " + cur);
-            return cur * 10;
-        } else if (cur % 10 == 9) { // 199 -> 2
-            int temp = cur;
-            int level = 0;
-            while (temp % 10 == 9) {
-                temp = temp / 10;
-                level++;
+    private static int getNext(int n, int next) {
+        if (next * 10 <= n) {
+            return next * 10;
+        } else if (next % 10 == 9) {
+            while (next % 10 == 9) {
+                next /= 10;
             }
-//            System.out.println("2nd " + cur);
-            return (cur + 1) / (int) Math.pow(10, level);
-        } else if (cur + 1 <= n) { // 11 -> 12 -> 13
-//            System.out.println("3rd " + cur);
-            return cur + 1;
-        } else { //cur + 1 > n: 13 -> 2
-//            System.out.println("4th " + cur);
-            return cur / 10 + 1;
+            next++;
+            return next;
+        } else if (next + 1 <= n) {
+            return next + 1;
+        } else {
+            return next / 10 + 1;
         }
     }
 }
