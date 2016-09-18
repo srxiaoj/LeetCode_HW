@@ -7,7 +7,8 @@ import java.util.List;
  */
 public class FindAllPrime {
     public static void main(String[] args) {
-        System.out.println(findPrime(5000).size());
+//        System.out.println(findPrime(5000).size());
+        System.out.println(findPrime(50));
     }
 
     public static List<Integer> findPrime(int n) {
