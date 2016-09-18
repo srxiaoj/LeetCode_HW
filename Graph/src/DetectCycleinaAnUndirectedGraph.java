@@ -9,7 +9,7 @@ public class DetectCycleinaAnUndirectedGraph {
         |    \
         1-----2 */
         int V = 3, E = 3;
-        Graph graph = new Graph(V, E);
+        GraphInside graph = new GraphInside(V, E);
         // add edge 0-1
         graph.edge[0].src = 0;
         graph.edge[0].dest = 1;
@@ -27,7 +27,7 @@ public class DetectCycleinaAnUndirectedGraph {
     }
 }
 
-class Graph {
+class GraphInside {
     int V, E;    // V-> no. of vertices & E->no.of edges
     Edge edge[]; // /collection of all edges
     class Edge {
@@ -35,7 +35,7 @@ class Graph {
     }
 
     // Creates a graph with V vertices and E edges
-    Graph(int v, int e) {
+    GraphInside(int v, int e) {
         V = v;
         E = e;
         edge = new Edge[E];
@@ -59,7 +59,7 @@ class Graph {
 
     // The main function to check whether a given graph
     // contains cycle or not
-    int isCycle(Graph graph) {
+    int isCycle(GraphInside graph) {
         // Allocate memory for creating V subsets
         int parent[] = new int[graph.V];
         // Initialize all subsets as single element sets

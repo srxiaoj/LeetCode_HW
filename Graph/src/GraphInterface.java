@@ -42,7 +42,7 @@ public class GraphInterface {
      * iterate using stack.
      */
     public void dfs() {
-        // DFS uses Stack data structure
+        // traversal uses Stack data structure
         int rootNode = 0;
         Stack<Integer> stack = new Stack<Integer>();
         stack.push(rootNode);
