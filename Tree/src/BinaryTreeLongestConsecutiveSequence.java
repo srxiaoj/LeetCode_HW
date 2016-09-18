@@ -12,11 +12,11 @@ public class BinaryTreeLongestConsecutiveSequence {
          *               5
          */
         TreeNode root1 = TreeNode.deserializeLevelorder("1,null,3,2,4,null,null,null,5");
-        System.out.println(obj.longestConsecutive2(root1));
+//        System.out.println(obj.longestConsecutive4(root1));
 
         TreeNode c = TreeNode.deserializeLevelorder("2,null,3,2,null,1,null");
-        TreeNode.printNode(c);
-        System.out.println(obj.longestConsecutive2(c));
+//        TreeNode.printNode(c);
+        System.out.println(obj.longestConsecutive4(c));
     }
 
 
@@ -127,5 +127,28 @@ public class BinaryTreeLongestConsecutiveSequence {
             this.node = node;
             this.count = c;
         }
+    }
+
+    // method 4
+    int myGlobalMax;
+    public int longestConsecutive4(TreeNode root) {
+        myGlobalMax = 0;
+        helper(root);
+        return myGlobalMax;
+    }
+
+    private int helper(TreeNode node) {
+        if (node == null) return 0;
+        int max = 1;
+        int left = helper(node.left);
+        int right = helper(node.right);
+        if (left != 0 && node.val == node.left.val - 1) {
+            max = Math.max(max, left + 1);
+        }
+        if (right != 0 && node.val == node.right.val - 1) {
+            max = Math.max(max, right + 1);
+        }
+        myGlobalMax = Math.max(max, myGlobalMax);
+        return max;
     }
 }
