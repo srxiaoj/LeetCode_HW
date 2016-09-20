@@ -3,13 +3,15 @@
  */
 public class SummaryRanges {
     public static void main(String[] args) {
-        System.out.println(convert(new int[] {}));
-        System.out.println(convert(new int[] {1, 2, 3, 5, 6, 8, 9, 10}));
-        System.out.println(convert(new int[] {1, 2, 3, 5, 5, 5, 9}));
-        System.out.println(convert(new int[] {1, 2, 3, 5, 5, 6, 7}));
-        System.out.println(convert(new int[] {1, 2, 4, 5, 7, 9}));
+        System.out.println(convertAllowDuplicate(new int[] {}));
+        System.out.println(convertAllowDuplicate(new int[] {1, 2, 3, 5, 6, 8, 9, 10}));
+        System.out.println(convertAllowDuplicate(new int[] {1, 2, 3, 5, 5, 5, 9}));
+        System.out.println(convertAllowDuplicate(new int[] {1, 2, 3, 5, 5, 6, 7}));
+        System.out.println(convertAllowDuplicate(new int[] {1, 2, 4, 5, 7, 9}));
+        System.out.println(convertAllowDuplicate(new int[] {1, 1, 1, 1, 1}));
         System.out.println(convertFollowUp(new int[] {1, 3, 5, 6, 9, 12}));
         System.out.println(convertFollowUp(new int[] {1, 3, 5, 6, 9, 12, 18}));
+        System.out.println(convertDontPrintDuplicate(new int[] {1, 1, 1, 1, 1}));
     }
 
     /**
@@ -22,7 +24,7 @@ public class SummaryRanges {
      *
      * 1,3,5,6,9,12 ->" 1->5/2, 6->12/3"  同时输入range和间隔。
      */
-    public static String convert(int[] nums) {
+    public static String convertAllowDuplicate(int[] nums) {
         StringBuilder sb = new StringBuilder();
         if (nums == null || nums.length == 0) return sb.toString();
         int n = nums.length;
@@ -35,6 +37,34 @@ public class SummaryRanges {
             }
 
             if (i == start) {
+                sb.append(nums[i]).append(", ");
+            } else {
+                sb.append(nums[start] + "->" + nums[i] + ", ");
+            }
+            i++;
+        }
+//        System.out.println("i: " + i + ", n " + n);
+//        if (n > 1 && !(nums[n - 1] == nums[n - 2] || nums[n - 1] == nums[n - 2] + 1)) {
+        if (n == i + 1) {
+            sb.append(nums[n - 1]).append(", ");
+        }
+        String res = sb.substring(0, sb.length() - 2);
+        return res;
+    }
+
+    public static String convertDontPrintDuplicate(int[] nums) {
+        StringBuilder sb = new StringBuilder();
+        if (nums == null || nums.length == 0) return sb.toString();
+        int n = nums.length;
+
+        int i = 0;
+        while (i + 1 < n) {
+            int start = i;
+            while (i + 1 < n && (nums[i + 1] == nums[i] + 1 || nums[i + 1] == nums[i])) {
+                i++;
+            }
+
+            if (i == start || nums[i] == nums[start]) {
                 sb.append(nums[i]).append(", ");
             } else {
                 sb.append(nums[start] + "->" + nums[i] + ", ");
