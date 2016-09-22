@@ -49,7 +49,7 @@ public class CollectMaxCoins {
                     A[i][j] = Math.max(nums[i] + left, nums[j] + right);
                 }
             }
-//            printArray(A);
+            printArray(A);
         }
         return A[0][n - 1];
     }
