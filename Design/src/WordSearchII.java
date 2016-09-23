@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -43,9 +42,7 @@ public class WordSearchII {
         }
         int m = board.length, n = board[0].length;
         boolean visit[][] = new boolean[m][n];
-        for (boolean[] a : visit) {
-            Arrays.fill(a, false);
-        }
+
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 helper(board, i, j, res, root, "", visit);
