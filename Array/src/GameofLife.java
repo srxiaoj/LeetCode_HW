@@ -77,6 +77,11 @@ public class GameofLife {
 
 
     // Infinite board follow up
+
+    /**
+     * Use a set to store the coordinate of all current live cells
+     * use a count map to store the number of live cells surrounded
+     */
     private static Set<Coord> updateBoardStatus(Set<Coord> live) {
         Map<Coord, Integer> countMap = new HashMap<>();
         for (Coord cell : live) {
