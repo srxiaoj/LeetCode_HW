@@ -1,10 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * @Author Haorui Wu
- * @date 09/23/2016
- */
 public class QuoraOntology {
     class TrieNode {
         private int count;
@@ -105,7 +101,7 @@ public class QuoraOntology {
                 if (!stack.isEmpty()) {
                     t.treeMap.get(stack.peek()).children.add(lists[i]);
                 }
-                t.addNode(lists[i], new ArrayList<>());
+                t.addNode(lists[i], new ArrayList<String>());
                 prev = lists[i];
             }
         }
@@ -115,7 +111,7 @@ public class QuoraOntology {
         String s = new String(flatTree);
         Deque<String> words = new LinkedList<>(Arrays.asList(s.split(" ")));
         String root = words.pollFirst();
-        t.addNode(root, new ArrayList<>());
+        t.addNode(root, new ArrayList<String>());
         if (!words.isEmpty() && words.pollFirst().equals("(")) {
             parseFlatTreeHelper(root, words);
         }
@@ -135,7 +131,7 @@ public class QuoraOntology {
                 break;
             } else {
                 children.add(currentWord);
-                t.addNode(currentWord, new ArrayList<>());
+                t.addNode(currentWord, new ArrayList<String>());
                 previousWord = currentWord;
             }
         }
@@ -164,10 +160,10 @@ public class QuoraOntology {
 
     public static void main(String[] args) throws Exception {
         QuoraOntology o = new QuoraOntology();
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedReader reader = new BufferedReader(new InputStreamReader(
-                new FileInputStream("/home/thanksgiving/leetCodeWorkSpace/OtherCompany/Quora/src/input52.txt")));
-        BufferedWriter bw = new BufferedWriter(new FileWriter("/home/thanksgiving/leetCodeWorkSpace/OtherCompany/Quora/src/test52.txt"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(
+//                new FileInputStream("/home/thanksgiving/leetCodeWorkSpace/OtherCompany/Quora/src/input56.txt")));
+//        BufferedWriter bw = new BufferedWriter(new FileWriter("/home/thanksgiving/leetCodeWorkSpace/OtherCompany/Quora/src/test56.txt"));
         // line 1			int N
         int N = Integer.parseInt(reader.readLine());
         // line 2			flat tree of N topics
@@ -187,11 +183,11 @@ public class QuoraOntology {
         // line M+5..M+K+4	topic name (space) query text
         while (K > 0) {
             String query = reader.readLine();
-            if ((temp - K) % 1000 == 0)
-                System.out.println("read query " + (temp - K));
-            bw.write(String.valueOf(o.findQueryCount(query)));
-            bw.newLine();
-//            System.out.println(o.findQueryCount(query));
+//            if ((temp - K) % 1000 == 0)
+//                System.out.println("read query " + (temp - K));
+//            bw.write(String.valueOf(o.findQueryCount(query)));
+//            bw.newLine();
+            System.out.println(o.findQueryCount(query));
             K--;
         }
 //        bw.close();
