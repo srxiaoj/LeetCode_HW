@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Test {
     // instance variable
@@ -43,15 +40,36 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        int a = 1;
-        int b = a++;
-        int c = ++b;
+        // test of set contains array (equals)
+        int[] arrayA = new int[] {1, 2};
+        int[] arrayB = new int[] {1, 2};
+        System.out.println(arrayA.equals(arrayB));
+        System.out.println(arrayA == arrayB);
+        System.out.println(Arrays.equals(arrayA, arrayB));
+        Set<int[]> set = new HashSet<>();
+        set.add(arrayA);
+        set.add(arrayB);
+        System.out.println(set.size());
+        // arraylist (equals)
+        List<Integer> listA = new ArrayList<>(Arrays.asList(1, 2));
+        List<Integer> listB = new ArrayList<>(Arrays.asList(2, 1));
+        System.out.println(listA.equals(listB));
+        Set<List<Integer>> set2 = new HashSet<>();
+        set2.add(listA);
+        set2.add(listB);
+        System.out.println(set2.size());
+
+
+
+//        int a = 1;
+//        int b = a++;
+//        int c = ++b;
 //        System.out.println(a);
 //        System.out.println(b);
 //        System.out.println(c);
 
-        a = 1 << 2;
-        System.out.println(a);
+//        a = 1 << 2;
+//        System.out.println(a);
 
         List<String> list = new ArrayList<>(Arrays.asList("good", "bad", "bad", "bad", "yes"));
         /*for (int i = 0; i < list.size(); i++) {
@@ -75,7 +93,7 @@ public class Test {
         for (Iterator itr = list.iterator(); itr.hasNext();) {
             if ("bad".equals(itr.next())) itr.remove();
         }
-        System.out.println(list);
+//        System.out.println(list);
 
        /* int[] num = {1, 2, 3, 4};
         int[] copy = Arrays.copyOfRange(num, 0, 6);

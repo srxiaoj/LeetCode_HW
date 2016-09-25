@@ -4,7 +4,7 @@ import java.util.Comparator;
 /**
  * Created by thanksgiving on 9/21/16.
  */
-public class ClosestPointsInAllPoints {
+public class ShortestDistanceToAllPoints {
     public static void main(String[] args) {
         int[][] points = {{-10, 2}, {-8, -4}, {-6, 7}, {-5, 3}, {-4, -1}, {5, 1}, {15, 9}};
         System.out.println(shortDist(points));
