@@ -5,6 +5,9 @@ public class MaximumSubarray {
         int[] b = {-1, -2, 3, 4, -5, 6};
         System.out.println(obj.maxSubArray(a));
         System.out.println(obj.maxSubArray(b));
+
+        printArray(kadane(a));
+        printArray(kadane(b));
     }
 
     /**
@@ -33,6 +36,31 @@ public class MaximumSubarray {
         return max;
     }
 
+    /**
+     * 求sub array 最大sum
+     * 并且输出start, end - > [max, start, end]
+     */
+    public static int[] kadane(int[] a) {
+        int[] result = new int[]{a[0], 0, 0};
+        int localMax = a[0], globalMax = a[0];
+        int start = 0;
+        for (int i = 1; i < a.length; i++) {
+            if (localMax < 0) {
+                localMax = a[i];
+                start = i;
+            } else {
+                localMax += a[i];
+            }
+            if (globalMax < localMax) {
+                globalMax = localMax;
+                result[0] = localMax;
+                result[1] = start;
+                result[2] = i;
+            }
+        }
+        return result;
+    }
+
 
     /**
      * 解法2
@@ -53,5 +81,17 @@ public class MaximumSubarray {
             maxPre = max;
         }
         return globalMax;
+    }
+
+    //print array
+    public static void printArray(int[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }

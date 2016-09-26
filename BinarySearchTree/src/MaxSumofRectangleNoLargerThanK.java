@@ -38,7 +38,7 @@ public class MaxSumofRectangleNoLargerThanK {
 
         int res = Integer.MIN_VALUE;
         for (int i = 0; i < m; i++) {
-            int[] array = new int[n];
+            int[] colSum = new int[n];
             // sum from row j to row i
             for (int j = i; j >= 0; j--) {
                 int sum = 0;
@@ -46,8 +46,8 @@ public class MaxSumofRectangleNoLargerThanK {
                 set.add(0);
                 //traverse every column/row and sum up
                 for (int k = 0; k < n; k++) {
-                    array[k] = array[k] + (colIsBig ? matrix[j][k] : matrix[k][j]);
-                    sum = sum + array[k];
+                    colSum[k] = colSum[k] + (colIsBig ? matrix[j][k] : matrix[k][j]);
+                    sum = sum + colSum[k];
                     //use  TreeMap to binary search previous sum to get possible result
                     // 找 >= sum-target的最小的数, 那么val - subres就是最接近target的数
                     Integer leastLargerNum = set.ceiling(sum - target);
@@ -55,8 +55,8 @@ public class MaxSumofRectangleNoLargerThanK {
                         res = Math.max(res, sum - leastLargerNum);
                     }
                     System.out.print("set: " + set + " ");
-                    System.out.print(",array:  ");
-                    printArray(array);
+                    System.out.print(",colSum:  ");
+                    printArray(colSum);
                     set.add(sum);
                     System.out.println("i: " + i + " " + ", sum: " + sum + ", sum-target: " + (sum - target) + ", leastLargerNum: " + leastLargerNum + ", max: " + res);
                 }
