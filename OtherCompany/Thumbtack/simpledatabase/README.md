@@ -111,7 +111,7 @@ The vast majority of transactions will only update a small number of variables. 
 
 
 Implementation:
-A user writes a command to be executed in the database. An IReader interface is used to offer support for various inputs,
+B user writes a command to be executed in the database. An IReader interface is used to offer support for various inputs,
 so a StdInReader was implemented that get the command the user wrote. The user input is considered to be a rawCommand that will need to
 be parsed later on.
 
@@ -129,7 +129,7 @@ Complexity:
 I wanted to achieve **O(1)** runtime for GET, SET, UNSET, and NUMEQUALTO, so I chose to keep my data in Maps. NUMEQUALTO uses it's own map
 (inverted index), that is actualized at every SET, UNSET.
 
-A **transaction** contains a Map of key-value, a Map of value-ValueCount and a list of deletedItems that marks the keys deleted in the transaction
+B **transaction** contains a Map of key-value, a Map of value-ValueCount and a list of deletedItems that marks the keys deleted in the transaction
 (used when the transaction is committed). Each transaction will keep only the keys and the valueCounts that were modified inside it with set, unset.
 
 **Nested transactions** are implemented by maintaining a list of transactions. For example if we are in a nested transaction and we need to search for a key that is in a parent transaction, we will iterate

@@ -5,40 +5,53 @@ import java.util.List;
 public class NQueensHW {
     public static void main(String[] args) {
         NQueensHW obj = new NQueensHW();
-        List<List<String>> res = obj.solveNQueens(5);
+        List<List<String>> res = obj.solveNQueens(8);
         System.out.println(res);
+        System.out.println(res.size());
     }
 
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> res = new ArrayList<>();
-        char[][] board = new char[n][n];
+        char[][] part = new char[n][n];
         for (int i = 0; i < n; i++) {
-            Arrays.fill(board[i], '.');
+            Arrays.fill(part[i], '.');
         }
-        for (int i = 0; i < n; i++) {
-            board[i][0] = 'Q';
-            solve(res, board, 1, n);
-            for (char[] sub : board) {
-                Arrays.fill(sub, '.');
-            }
-        }
+//        solve(res, part, 0, n);
+        helper(res, part, 0, n);
         return res;
     }
 
-    private boolean solve(List<List<String>> res, char[][] board, int n, int num) {
-        if (n == num) {
-            res.add(toList(board));
-            return true;
+    /**
+     * 返回true 或者 void 方法效果一样
+     */
+    private void helper(List<List<String>> res, char[][] part, int pos, int n) {
+        if (pos == n) {
+            res.add(toList(part));
+            return;
         }
 
-        for (int i = 0; i < num; i++) {
-            if (isSafe(board, i, n, num)) {
-                board[i][n] = 'Q';
-                if (solve(res, board, n + 1, num)) {
-                    board[i][n] = '.';
+        for (int i = 0; i < n; i++) {
+            if (isSafe(part, i, pos, n)) {
+                part[i][pos] = 'Q';
+                helper(res, part, pos + 1, n);
+                part[i][pos] = '.';
+            }
+        }
+    }
+
+    private boolean solve(List<List<String>> res, char[][] part, int pos, int n) {
+        if (n == pos) {
+            res.add(toList(part));
+            return true;
+        }
+        for (int i = 0; i < n; i++) {
+            if (isSafe(part, i, pos, n)) {
+                part[i][pos] = 'Q';
+                if (solve(res, part, pos + 1, n)) {
+                    part[i][pos] = '.';
                     continue;
                 } else {
-                    board[i][n] = '.';
+                    part[i][pos] = '.';
                 }
             }
         }
