@@ -35,6 +35,7 @@ public class MonkeyJump {
                 }
                 dp[i] = (count == D) ? -1 : Math.max(temp, A[i]);
             }
+            printArray(dp);
         }
         int res = Integer.MAX_VALUE;
         int count = 0;
