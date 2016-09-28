@@ -16,7 +16,7 @@ public class Combination {
         printArray(A);
     }
 
-public List<List<Integer>> combine2(int n, int k) {
+    public List<List<Integer>> combine2(int n, int k) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> part = new ArrayList<>();
         helper(res, part, n, k, 1);
@@ -29,7 +29,7 @@ public List<List<Integer>> combine2(int n, int k) {
             return;
         }
 
-        for (int i = start; i <=n; i++) {
+        for (int i = start; i <= n; i++) {
             List<Integer> newPart = new ArrayList<>(part);
             newPart.add(i);
             helper(res, newPart, n, k, i + 1);
@@ -42,6 +42,7 @@ public List<List<Integer>> combine2(int n, int k) {
      * add 1st level: [1, 2, 3, 4]
      * add 2nd level: [[1,2],[1,3],[2,3],[1,4],[2,4],[3,4]
      * add 3rd level: [[1,2,3],[1,2,4],[1,3,4],[2,3,4]
+     *
      * @param n
      * @param k
      * @return

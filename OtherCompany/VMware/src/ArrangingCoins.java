@@ -3,6 +3,7 @@
  */
 public class ArrangingCoins {
     public static void main(String[] args) {
+        ArrangingCoins obj = new ArrangingCoins();
 
     }
 

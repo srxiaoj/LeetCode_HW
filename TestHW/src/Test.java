@@ -40,8 +40,13 @@ public class Test {
     }
 
     public static void main(String[] args) {
+        //
+        System.out.println((int) Math.log10(4101));
+
+
+
         // test of set contains array (equals)
-        int[] arrayA = new int[] {1, 2};
+       /* int[] arrayA = new int[] {1, 2};
         int[] arrayB = new int[] {1, 2};
         System.out.println(arrayA.equals(arrayB));
         System.out.println(arrayA == arrayB);
@@ -57,7 +62,7 @@ public class Test {
         Set<List<Integer>> set2 = new HashSet<>();
         set2.add(listA);
         set2.add(listB);
-        System.out.println(set2.size());
+        System.out.println(set2.size());*/
 
 
 

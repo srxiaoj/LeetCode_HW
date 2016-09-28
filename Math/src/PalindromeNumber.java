@@ -12,12 +12,7 @@ public class PalindromeNumber {
 
     public static boolean isPalindrome(int x) {
         if (x < 0) return false;
-        long digit = 1;
-        while (x >= digit) {
-            digit *= 10;
-        }
-        digit /= 10;
-        int r = 1, l = (int) digit;
+        int r = 1, l = (int) Math.pow(10, (int) Math.log10(x));
         while (r <= l) {
             if ((x / l) % 10 != (x / r) % 10) {
                 return false;
@@ -26,18 +21,5 @@ public class PalindromeNumber {
             l /= 10;
         }
         return true;
-        /*int bits = (int) Math.log10((double) x); //the length of x
-        int n = (int) Math.pow(10, (double) bits);
-        System.out.println("n " + n);
-
-        int l = n, r = 1;
-        while (l >= r) {
-            if ((x / l) % 10 != (x / r) % 10) {
-                return false;
-            }
-            l /= 10;
-            r *= 10;
-        }
-        return true;*/
     }
 }
