@@ -9,9 +9,9 @@ public class RegularExpressionMatching {
 //        System.out.println(isMatchDp("aa", "a*"));
 //        System.out.println(isMatchDp("aa", ".*"));
 //        System.out.println(isMatchDp("ab", ".*"));
-//        System.out.println(isMatchDp("aab", "c*a*b"));
+        System.out.println(isMatchDp("aab", "c*a*b"));
 //        System.out.println(isMatchDp("aaa", "ab*ac*a"));
-        System.out.println(isMatchDp("a", "ab*ac*"));
+//        System.out.println(isMatchDp("a", "ab*ac*"));
     }
 
     public static boolean isMatchDp(String s, String p) {
@@ -37,7 +37,7 @@ public class RegularExpressionMatching {
                     // dp[i][j-2] cannot take s[i] to match p[j-1],p[j]
                 }
             }
-            printArray(dp);
+//            printArray(dp);
         }
         return dp[m][n];
     }
