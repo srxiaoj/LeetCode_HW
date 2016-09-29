@@ -28,17 +28,17 @@ public class MergekSortedLists {
         });
 
         ListNode dummy = new ListNode(0);
-        ListNode tail = dummy;
+        ListNode cur = dummy;
         for (ListNode node : lists)
             if (node != null)
                 queue.add(node);
 
         while (!queue.isEmpty()) {
-            tail.next = queue.poll();
-            tail = tail.next;
+            cur.next = queue.poll();
+            cur = cur.next;
 
-            if (tail.next != null)
-                queue.add(tail.next);
+            if (cur.next != null)
+                queue.add(cur.next);
         }
         return dummy.next;
 
