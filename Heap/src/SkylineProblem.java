@@ -32,7 +32,8 @@ public class SkylineProblem {
         });
         System.out.println("height: ");
         printArray(height);
-        Queue<Integer> pq = new PriorityQueue<>((a, b) -> (b - a));
+//        Queue<Integer> pq = new PriorityQueue<>((a, b) -> (b - a));
+        Queue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
         pq.offer(0);
         int prev = 0;
         for (int[] h : height) {
