@@ -94,7 +94,7 @@ public class NumberofIslands {
     }
 
     private void dfs(char[][] grid, boolean[][] isVisited, int i, int j) {
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || isVisited[i][j] == true || grid[i][j] == '0')
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || isVisited[i][j] || grid[i][j] == '0')
             return;
         isVisited[i][j] = true;
         dfs(grid, isVisited, i + 1, j);
