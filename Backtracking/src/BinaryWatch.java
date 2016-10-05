@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -11,47 +10,36 @@ public class BinaryWatch {
     }
 
     public static List<String> readBinaryWatch(int num) {
-        int[] hour = new int[]{1, 2, 4, 8};
-        int[] min = new int[]{1, 2, 4, 8, 16, 32};
         List<String> res = new ArrayList<>();
-
-        for (int i = 0; i <= num; i++) {
-            List<String> hourRes = new ArrayList<>();
-            List<String> minRes = new ArrayList<>();
-            helper(hour, hourRes, 0, new ArrayList<>(), i, false);
-            helper(min, minRes, 0, new ArrayList<>(), num - i, true);
-//            System.out.println(hourRes);
-//            System.out.println(minRes);
-            for (int k = 0; k < hourRes.size(); k++) {
-                for (int j = 0; j < minRes.size(); j++) {
-                    res.add(hourRes.get(k) + ":" + minRes.get(j));
+        int[] nums1 = new int[]{8, 4, 2, 1}, nums2 = new int[]{32, 16, 8, 4, 2, 1};
+        for(int i = 0; i <= num; i++) {
+            List<Integer> list1 = generateDigit(nums1, i);
+            List<Integer> list2 = generateDigit(nums2, num - i);
+            for(int num1: list1) {
+                if(num1 >= 12) continue;
+                for(int num2: list2) {
+                    if(num2 >= 60) continue;
+                    res.add(num1 + ":" + (num2 < 10 ? "0" + num2 : num2));
                 }
             }
         }
-        Collections.sort(res);
         return res;
     }
 
-    private static void helper(int[] times, List<String> res, int pos, List<Integer> part, int n, boolean isMin) {
-        if (part.size() == n) {
-            int time = 0;
-            for (int i : part) {
-                time += i;
-            }
-            if ((time < 12 && !isMin) || isMin) {
-                if (time < 10 && isMin) {
-                    res.add("0" + time);
-                } else {
-                    res.add("" + time);
-                }
-            }
+    private static List<Integer> generateDigit(int[] nums, int count) {
+        List<Integer> res = new ArrayList<>();
+        generateDigitHelper(nums, count, 0, 0, res);
+        return res;
+    }
+
+    private static void generateDigitHelper(int[] nums, int count, int pos, int sum, List<Integer> res) {
+        if(count == 0) {
+            res.add(sum);
             return;
         }
 
-        for (int i = pos; i < times.length; i++) {
-            List<Integer> newPart = new ArrayList<>(part);
-            newPart.add(times[i]);
-            helper(times, res, i + 1, newPart, n, isMin);
+        for(int i = pos; i < nums.length; i++) {
+            generateDigitHelper(nums, count - 1, i + 1, sum + nums[i], res);
         }
     }
 }
