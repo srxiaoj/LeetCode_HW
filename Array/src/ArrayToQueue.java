@@ -10,8 +10,8 @@ public class ArrayToQueue {
         queue.offer(4);
         queue.offer(5);
         System.out.println(queue.poll());
-        queue.offer(6);
         System.out.println(queue.poll());
+        queue.offer(6);
         System.out.println(queue.poll());
         System.out.println(queue.poll());
 
@@ -45,6 +45,8 @@ public class ArrayToQueue {
             int n = num.length;
             int temp = num[head];
             head = (head + 1) % n;
+            size = (tail + n - head) % n;
+            if (size == 0) size = n;
             return temp;
         }
     }

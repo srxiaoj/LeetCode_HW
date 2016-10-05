@@ -6,12 +6,14 @@ public class RegularExpressionMatching {
 //        System.out.println(isMatchDp("aa", "a"));
 //        System.out.println(isMatchDp("aa", "aaa"));
 //        System.out.println(isMatchDp("aa", "aa"));
-//        System.out.println(isMatchDp("aa", "a*"));
 //        System.out.println(isMatchDp("aa", ".*"));
 //        System.out.println(isMatchDp("ab", ".*"));
-        System.out.println(isMatchDp("aab", "c*a*b"));
+//        System.out.println(isMatchDp("aab", "cba*aab"));
 //        System.out.println(isMatchDp("aaa", "ab*ac*a"));
 //        System.out.println(isMatchDp("a", "ab*ac*"));
+//        System.out.println(isMatchDp("aab", "c*a*b"));
+//        System.out.println(isMatchDp("aa", "a*"));
+//        System.out.println(isMatchDp("a", "ac*"));
     }
 
     public static boolean isMatchDp(String s, String p) {
@@ -24,17 +26,15 @@ public class RegularExpressionMatching {
         // iteration
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
-                dp[i][j] = false;
                 if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.') {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else if (p.charAt(j - 1) == '*') {
+                    // dp[i - 1][j]  is for "aa" match "a*", means * match for one more character, a[i][j - 1] is for "a" match "ac*", means c* match nothing
                     if (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.')
                         dp[i][j] = dp[i - 1][j] || dp[i][j - 2];
-                        // dp[i-1][j] do take s[i] to match p[j-1],p[j]
-                        // dp[i][j-2] don't take s[i] to match p[j-1],p[j]
-                    else
+                    else {
                         dp[i][j] = dp[i][j - 2];
-                    // dp[i][j-2] cannot take s[i] to match p[j-1],p[j]
+                    }
                 }
             }
 //            printArray(dp);
