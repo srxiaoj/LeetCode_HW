@@ -20,9 +20,6 @@ public class ShortestDistancefromAllBuildings {
         int[][] count = new int[m][n];
         int[][] total = new int[m][n];
         boolean[][] visit = new boolean[m][n];
-        for (boolean[] sub : visit) {
-            Arrays.fill(sub, false);
-        }
 
         boolean[][] canTravel = new boolean[m][n];
         for (boolean[] sub : canTravel) {
