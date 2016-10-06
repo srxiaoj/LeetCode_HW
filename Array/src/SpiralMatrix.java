@@ -15,7 +15,7 @@ public class SpiralMatrix {
         System.out.println(obj.spiralOrder(matrix));
 
         int[][] m = {{1}};
-        System.out.println(obj.spiralOrder(m));
+//        System.out.println(obj.spiralOrder(m));
     }
 
     public List<Character> spiralOrder(char[][] matrix) {
@@ -56,7 +56,7 @@ public class SpiralMatrix {
         return res;
     }
 
-    public List<Integer> spiralOrder(int[][] matrix) {
+   /* public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> res = new ArrayList<>();
         if (matrix == null || matrix.length == 0) return res;
         int rowS = 0, rowE = matrix.length - 1;
@@ -84,5 +84,5 @@ public class SpiralMatrix {
             colS++;
         }
         return res;
-    }
+    }*/
 }
