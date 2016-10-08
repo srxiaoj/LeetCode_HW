@@ -24,7 +24,31 @@ public class InsertInterval {
     }
 
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-        Deque<Interval> queue = new LinkedList<>();
+        int start = newInterval.start, end = newInterval.end;
+        boolean inserted = false;
+        List<Interval> res = new ArrayList<Interval>();
+
+        for (Interval cur : intervals) {
+            if (cur.end < start || inserted) {
+                res.add(cur);
+            } else if (cur.start > end) {
+                res.add(new Interval(start, end));
+                res.add(cur);
+                inserted = true;
+            } else {
+                if (cur.start < start)
+                    start = cur.start;
+                if (cur.end > end)
+                    end = cur.end;
+            }
+        }
+        if (!inserted)
+            res.add(new Interval(start, end));
+        return res;
+
+
+
+      /*  Deque<Interval> queue = new LinkedList<>();
         List<Interval> res = new ArrayList<>();
         if (newInterval == null) return intervals;
         for (int i = 0; i < intervals.size(); i++) {
@@ -79,7 +103,7 @@ public class InsertInterval {
         for (Interval l : stack) {
             res.add(l);
         }
-        return res;
+        return res;*/
     }
 
     private static class Interval {
