@@ -24,26 +24,26 @@ public class InsertInterval {
     }
 
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-        int start = newInterval.start, end = newInterval.end;
+        int l = newInterval.start, r = newInterval.end;
         boolean inserted = false;
         List<Interval> res = new ArrayList<Interval>();
 
         for (Interval cur : intervals) {
-            if (cur.end < start || inserted) {
+            if (cur.end < l || inserted) {
                 res.add(cur);
-            } else if (cur.start > end) {
-                res.add(new Interval(start, end));
+            } else if (cur.start > r) {
+                res.add(new Interval(l, r));
                 res.add(cur);
                 inserted = true;
             } else {
-                if (cur.start < start)
-                    start = cur.start;
-                if (cur.end > end)
-                    end = cur.end;
+                if (cur.start < l)
+                    l = cur.start;
+                if (cur.end > r)
+                    r = cur.end;
             }
         }
         if (!inserted)
-            res.add(new Interval(start, end));
+            res.add(new Interval(l, r));
         return res;
 
 
@@ -63,32 +63,32 @@ public class InsertInterval {
         while (!queue.isEmpty()) {
             prev = queue.pollFirst();
             // prev 在 newInterval 左边
-            if (prev.end < newInterval.start) {
+            if (prev.r < newInterval.l) {
                 stack.add(prev);
 
                 // prev 在 newInterval 右边
-            } else if (prev.start > newInterval.end) {
+            } else if (prev.l > newInterval.r) {
                 stack.add(newInterval);
                 stack.add(prev);
                 break;
 
                 // prev 包含了 newInterval
-            } else if (prev.end >= newInterval.end && prev.start <= newInterval.start) {
+            } else if (prev.r >= newInterval.r && prev.l <= newInterval.l) {
                 stack.add(prev);
                 break;
 
                 // prev 与 newInterval 交叉
-            } else if (prev.end >= newInterval.end && prev.start > newInterval.start) {
-                newInterval = new Interval(newInterval.start, prev.end);
+            } else if (prev.r >= newInterval.r && prev.l > newInterval.l) {
+                newInterval = new Interval(newInterval.l, prev.r);
 
                 // newInterval 包含了 prev
-            } else if (prev.end <= newInterval.end && prev.start >= newInterval.start) {
+            } else if (prev.r <= newInterval.r && prev.l >= newInterval.l) {
                 // do nothing
 
                 // newInterval 与 prev 交叉
-                // prev.end <= newInterval.end && prev.start < newInterval.start
+                // prev.r <= newInterval.r && prev.l < newInterval.l
             } else {
-                newInterval = new Interval(prev.start, newInterval.end);
+                newInterval = new Interval(prev.l, newInterval.r);
             }
 
             if (queue.isEmpty()) {
