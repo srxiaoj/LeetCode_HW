@@ -12,19 +12,21 @@ public class RoundRobinScheduling {
         int n = arrtime.length;
         Queue<process> queue = new LinkedList<process>();
         int curTime = 0, waitTime = 0;
-        int index = 0;
-        while (!queue.isEmpty() || index < n) {
+        int i = 0;
+        while (!queue.isEmpty() || i < n) {
             if (!queue.isEmpty()) {
-                process cur = queue.poll();
-                waitTime += curTime - cur.arrTime;
-                curTime += Math.min(cur.exeTime, q);
-                for (; index < n && arrtime[index] <= curTime; index++)
-                    queue.offer(new process(arrtime[index], exetime[index]));
-                if (cur.exeTime > q)
-                    queue.offer(new process(curTime, cur.exeTime - q));
+                process node = queue.poll();
+                waitTime += curTime - node.arrTime;
+                curTime += Math.min(node.exeTime, q);
+                while (i < n && arrtime[i] <= curTime) {
+                    queue.offer(new process(arrtime[i], exetime[i]));
+                    i++;
+                }
+                if (node.exeTime > q)
+                    queue.offer(new process(curTime, node.exeTime - q));
             } else {
-                queue.offer(new process(arrtime[index], exetime[index]));
-                curTime = arrtime[index++];
+                queue.offer(new process(arrtime[i], exetime[i]));
+                curTime = arrtime[i++];
             }
         }
         return (float) waitTime / n;

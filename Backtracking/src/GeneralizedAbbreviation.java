@@ -6,8 +6,9 @@ import java.util.List;
  */
 public class GeneralizedAbbreviation {
     public static void main(String[] args) {
-//        System.out.println(generateAbbreviationsBit("word"));
-        System.out.println(generateAbbreviationsBit("dictionary"));
+//        System.out.println(generateAbbreviationsBit("apple"));
+        System.out.println(generateAbbreviationsBit("word"));
+//        System.out.println(generateAbbreviationsBit("dictionary"));
     }
 
     /**
@@ -36,14 +37,38 @@ public class GeneralizedAbbreviation {
         return res;
     }
 
+    /**
+     * 方法2：bit
+     */
     public static List<String> generateAbbreviationsBit(String word) {
         List<String> res = new ArrayList<>();
+        int n = word.length();
+        for (int mask = 0; mask < (1 << n); mask++) {
+            int count = 0;
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i <= n; i++) {
+                if (((1 << i) & mask) > 0) {
+                    count++;
+                } else {
+                    if (count != 0) {
+                        sb.append(count);
+                        count = 0;
+                    }
+                    if (i < n) sb.append(word.charAt(i));
+                }
+            }
+            res.add(sb.toString());
+        }
+        return res;
+
+
+       /* List<String> res = new ArrayList<>();
         if (word == null || word.length() == 0) return res;
         int n = word.length();
         for (int i = 0; i < (1 << n); i++) {
             res.add(binaryToWord(word, i));
         }
-        return res;
+        return res;*/
     }
 
     private static String binaryToWord(String word, int num) {
