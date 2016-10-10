@@ -47,7 +47,7 @@ public class GeneralizedAbbreviation {
             int count = 0;
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i <= n; i++) {
-                if (((1 << i) & mask) > 0) {
+                if (((1 << i) & mask) != 0) {
                     count++;
                 } else {
                     if (count != 0) {
@@ -60,33 +60,5 @@ public class GeneralizedAbbreviation {
             res.add(sb.toString());
         }
         return res;
-
-
-       /* List<String> res = new ArrayList<>();
-        if (word == null || word.length() == 0) return res;
-        int n = word.length();
-        for (int i = 0; i < (1 << n); i++) {
-            res.add(binaryToWord(word, i));
-        }
-        return res;*/
-    }
-
-    private static String binaryToWord(String word, int num) {
-        StringBuilder sb = new StringBuilder();
-        int i = word.length() - 1;
-        while (i >= 0) {
-            if (((num >> i) & 1) == 1) {
-                int count = 0;
-                while (((num >> i) & 1) == 1) {
-                    i--;
-                    count++;
-                }
-                sb.append(count);
-            } else {
-                sb.append(word.charAt(word.length() - 1 - i));
-                i--;
-            }
-        }
-        return sb.toString();
     }
 }
