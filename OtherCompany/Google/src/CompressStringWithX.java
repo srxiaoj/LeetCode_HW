@@ -7,6 +7,7 @@ public class CompressStringWithX {
 //        System.out.println(encode("aaaabbbccggggg"));
 //        System.out.println(encode("aaaabbbccxxxx"));
         System.out.println(encode("333"));
+        System.out.println(encode("33x"));
         System.out.println(encode("3x3"));
         System.out.println(encode("3xx"));
         System.out.println(encode("xxx"));
@@ -17,6 +18,7 @@ public class CompressStringWithX {
 
         System.out.println("----DECODE----");
         System.out.println(decode(encode("333")));
+        System.out.println(decode(encode("33x")));
         System.out.println(decode(encode("3x3")));
         System.out.println(decode(encode("3xx")));
         System.out.println(decode(encode("xxx")));
