@@ -5,12 +5,14 @@ import java.util.Stack;
 public class BinaryTreeInorderTraversal {
 
     public static void main(String[] args) {
-        TreeNode root = TreeNode.deserializeLevelorder("15,8,20,5,null,17,null,null,null,16,null");
+        TreeNode root = TreeNode.deserializeLevelorder("8, 5, 20, 1, 7, 15, null, null, null, 6, null");
         TreeNode.printNode(root);
-//        System.out.println(inorderTraversalIterate(root));
+        System.out.println(inorderTraversalIterate(root));
     }
+
     /**
      * Iterative.
+     *
      * @param root
      * @return
      */
@@ -26,7 +28,7 @@ public class BinaryTreeInorderTraversal {
                 stack.add(curNode.left); // add left value, so the final element in this stack would be the left most element
                 // since the curNode.left has been stored to stack, this has to set to null
                 // otherwise will create infinite loop
-                curNode.left = null; 
+                curNode.left = null;
             } else {
                 list.add(curNode.val);
                 stack.pop();
@@ -37,8 +39,10 @@ public class BinaryTreeInorderTraversal {
         }
         return list;
     }
+
     /**
      * recursive.
+     *
      * @param root
      * @return list of in order elements
      */
@@ -47,6 +51,7 @@ public class BinaryTreeInorderTraversal {
         inorderTraversalHelper(root, list);
         return list;
     }
+
     private static void inorderTraversalHelper(TreeNode root, List<Integer> list) {
         if (root != null) {
             inorderTraversalHelper(root.left, list);
@@ -54,8 +59,10 @@ public class BinaryTreeInorderTraversal {
             inorderTraversalHelper(root.right, list);
         }
     }
+
     /**
      * recursive, no return.
+     *
      * @param root
      */
     public static void inOrderRecursive(TreeNode root) {

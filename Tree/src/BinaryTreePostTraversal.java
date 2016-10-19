@@ -5,7 +5,7 @@ import java.util.Stack;
 public class BinaryTreePostTraversal {
 
     public static void main(String[] args) {
-        TreeNode root = TreeNode.deserializeLevelorder("15,8,20,5,null,17,null,null,null,16,null");
+        TreeNode root = TreeNode.deserializeLevelorder("8, 5, 20, 1, 7, 15, null, null, null, 6, null");
         TreeNode.printNode(root);
         System.out.println("");
 //        System.out.println(postorderTraversal(root));

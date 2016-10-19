@@ -1,5 +1,4 @@
 3. Longest Substring Without Repeating Characters
-5. Longest Palindromic Substring
 6. Zigzag conversion
 12. Integer to Roman
 16. 3Sum Closest
@@ -10,7 +9,6 @@
 *82. Remove Duplicates from Sorted List II
 85. Maximal Rectangle
 87. Scramble String
-88. Merge Sorted Array
 89. Gray Code
 91. Decode Ways
 *92. Reverse Linked List II
@@ -75,6 +73,7 @@
 402. Remove K Digits
 406. Queue Reconstruction by Height
 411. Minimum Unique Word Abbreviation
+416. Partition Equal Subset Sum
 
 HeapSort
 MinimumStepToPalindrome
