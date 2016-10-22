@@ -6,6 +6,7 @@ import java.util.Stack;
 public class totalPathLengthSum {
     public static void main(String[] args) {
         System.out.println(totalPath("dir1\n dir2\n  img1.jpeg\n  dir3\n   img2.gif\ndir4"));
+        System.out.println(totalPath("dir1\n dir2\n  img1.jpeg\n  img2.jpeg\n  dir3\n   img2.gif\ndir4"));
     }
 
     public static int totalPath(String S) {
@@ -29,10 +30,10 @@ public class totalPathLengthSum {
                     stack.push(filePath);
                     len += filePath.length() + 1;
                     total += len;
-                   /* for (String ss : stack) {
+                    for (String ss : stack) {
                         System.out.print("\\" + ss);
                     }
-                    System.out.println();*/
+                    System.out.println();
 
                 } else {
                     len += filePath.length() + 1;
