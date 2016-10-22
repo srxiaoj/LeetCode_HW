@@ -11,33 +11,77 @@ public class LongestAbsoluteFilePath {
         System.out.println(lengthLongestPath("dir\n    file.txt"));
     }
 
-    public static int lengthLongestPath(String input) {
-        Stack<String> stack = new Stack<>();
 
+
+    public static int lengthLongestPath(String input) {
+        if (input == null || input.length() == 0) return 0;
+
+        Stack<int[]> stack = new Stack<int[]>();
+        int tabCount = 0, max = 0;
+        boolean foundFile = false, expectingFirstLetter = true;
+
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (c == '\t') {
+                tabCount++;
+            } else if (c == '\n') {
+                // if last parsed section was a file, time to compute max length
+                if (foundFile) {
+                    max = Math.max(max, stack.peek()[0]);
+                    foundFile = false;
+                }
+                tabCount = 0;
+                expectingFirstLetter = true;
+            } else {
+                if (expectingFirstLetter) {
+                    // adjusting length count based on the new tab count
+                    while (!stack.isEmpty() && tabCount <= stack.peek()[1]) {
+                        stack.pop();
+                    }
+
+                    expectingFirstLetter = false;
+                    stack.push(new int[]{stack.isEmpty() ? 0 : stack.peek()[0] + 1, tabCount}); // added 1 to consider '/'
+                }
+
+                if (c == '.') {
+                    foundFile = true;
+                }
+
+                stack.peek()[0]++;
+            }
+        }
+
+        // handels use case when there is no \n or input ends at a file
+        if (!expectingFirstLetter && foundFile) {
+            max = Math.max(max, stack.peek()[0]);
+        }
+
+        return max;
+    }
+
+  /*  public static int lengthLongestPath(String input) {
+        // check for boundary cases
         if (input.length() == 0) return 0;
         int n = input.length();
+        Stack<String> stack = new Stack<>();
 
-        int i = 0;
-        int max = 0;
-
-        int level = 0;
+        int i = 0, max = 0, level = 0;
         while (i < n) {
             int next = input.indexOf('\n', i);
-            // contain a file or no more \n
+            // if there is no more \n or there is a file exsit
             if (next == -1 || input.substring(i, next).contains(".")) {
-                int temp = i;
-                while (temp < n && (input.charAt(temp) != '\n' && input.charAt(temp) != '\t')) {
-                    temp++;
+                int j = i;
+                while (j < n && (input.charAt(j) != '\n' && input.charAt(j) != '\t')) {
+                    j++;
                 }
-                // file must has extension
-                if (input.substring(i, temp).contains(".")) {
-                    stack.add(input.substring(i, temp).replaceAll("\t", ""));
-                    //                System.out.println(input.substring(i, temp));
-                    String file = getWord(stack);
-                    System.out.println(file);
-                    max = Math.max(file.length(), max);
+
+                if (input.substring(i, j).contains(".")) {
+                    stack.add(input.substring(i, j).replaceAll("\t", ""));
+                    String filePath = getAbsolutePath(stack);
+                    System.out.println(filePath);
+                    max = Math.max(filePath.length(), max);
                 }
-                i = temp;
+                i = j;
             } else {
                 String filePath = input.substring(i, next);
                 while (stack.size() > level) {
@@ -46,7 +90,7 @@ public class LongestAbsoluteFilePath {
                 stack.add(filePath);
 
                 level = 0;
-                while (next + 1 < n && input.substring(next + 1, next + 2).equals("\t")) {
+                while (next + 1 < n && input.charAt(next + 1) == '\t') {
                     next++;
                     level++;
                 }
@@ -56,12 +100,12 @@ public class LongestAbsoluteFilePath {
         return max;
     }
 
-    private static String getWord(Stack<String> stack) {
+    private static String getAbsolutePath(Stack<String> stack) {
         StringBuilder sb = new StringBuilder();
         for (String s : stack) {
             sb.append(s).append("/");
         }
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
-    }
+    }*/
 }
