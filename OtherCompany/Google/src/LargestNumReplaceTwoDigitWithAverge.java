@@ -3,10 +3,15 @@
  */
 public class LargestNumReplaceTwoDigitWithAverge {
     public static void main(String[] args) {
-        System.out.println(solution(12345));
-        System.out.println(solution(345));
-        System.out.println(solution(54321));
-        System.out.println(solution(321));
+//        System.out.println(solution(12345)); // 2345
+//        System.out.println(solution(345));   // 45
+        System.out.println(solution(54321)); // 5432
+//        System.out.println(solution(321));   // 32
+//        System.out.println(solution(623315));// 63315
+//        System.out.println(solution(1000000000));// 100000000
+//        System.out.println(solution(10));// 1
+//        System.out.println(solution(111234));// 11234
+//        System.out.println(solution(4343434));
     }
 
     public static int solution(int X) {
@@ -26,6 +31,7 @@ public class LargestNumReplaceTwoDigitWithAverge {
                 res[j] = num[j + 1];
                 j++;
             }
+            printArray(res);
             max = Math.max(max, getNum(res));
             for (j = 0; j <= i; j++) {
                 res[j] = num[j];
@@ -41,5 +47,17 @@ public class LargestNumReplaceTwoDigitWithAverge {
             sum = sum * 10 + num[i];
         }
         return sum;
+    }
+
+    //print array
+    public static void printArray(int[] A) {
+        System.out.print("[");
+        for (int i = 0; i < A.length; i++) {
+            if (i != A.length - 1)
+                System.out.print(A[i] + ", ");
+            else
+                System.out.print(A[i]);
+        }
+        System.out.println("]");
     }
 }
