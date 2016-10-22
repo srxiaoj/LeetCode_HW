@@ -1,14 +1,17 @@
 public class IntToBit {
     public static void main(String[] args) {
         for (int i = 0; i <= 6; i++) {
-            System.out.println(i + " " + intToBit(i));
+//            System.out.println(i + " " + intToBit(i));
         }
-        System.out.println("-2                             :" + intToBit(-2));
-        System.out.println("-2 - (-2147483648) = 2147483646: " + intToBit(-2 - (-2147483648)));
-        System.out.println("-1                             :" + intToBit(-1));
-        System.out.println("-1 - (-2147483648) = 2147483647: " + intToBit(-1 - (-2147483648)));
-        System.out.println(intToBit(Integer.MIN_VALUE));
-        System.out.println(intToBit(Integer.MAX_VALUE));
+//        System.out.println("-2                             :" + intToBit(-2));
+//        System.out.println("-2 - (-2147483648) = 2147483646: " + intToBit(-2 - (-2147483648)));
+//        System.out.println("-1                             :" + intToBit(-1));
+//        System.out.println("-1 - (-2147483648) = 2147483647: " + intToBit(-1 - (-2147483648)));
+//        System.out.println(intToBit(Integer.MIN_VALUE));
+//        System.out.println(intToBit(Integer.MAX_VALUE));
+
+        System.out.println(intToBit(128));
+        System.out.println(intToBit(145));
     }
 
     /**
