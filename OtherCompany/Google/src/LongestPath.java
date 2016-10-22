@@ -5,11 +5,21 @@ import java.util.Stack;
  */
 public class LongestPath {
     public static void main(String[] args) {
-//        System.out.println(longestPath("dir\n  file.txt"));
+        System.out.println(longestPath("dir\n file.jpeg"));
         System.out.println(longestPath("dir1\n dir2\n  img1.jpeg\n  dir3\n   img2.gif\ndir4"));
+        System.out.println(longestPath("dir\n ddir\n  a.txt\n  b.jpeg\n  c.gif\n ddir2\n dddir\n ddddir\n  aaa.exe"));
     }
 
+    /**
+     * The idea is to use a stack to maintain the structure of directories,
+     * and find out the file with extension that follows this structure.
+     * Depending the number of space before a path name, determine whether this
+     * directory is on the same level or a sub directory of previous directory.
+     * @param S
+     * @return
+     */
     public static int longestPath(String S) {
+        // check for boundary cases
         if (S == null || S.length() == 0) return 0;
         String[] path = S.split("\n");
 
