@@ -29,6 +29,8 @@ public class AlienDictionary {
             while (j < Math.min(a.length(), b.length()) && a.charAt(j) == b.charAt(j)) {
                 j++;
             }
+            if (a.length() > b.length() && j == b.length()) return "";
+            if (j == Math.min(a.length(), b.length())) continue;
             if (j == Math.min(a.length(), b.length())) continue;
             g.addEdge(a.charAt(j) - 'a', b.charAt(j) - 'a');
             set.remove(a.charAt(j));
