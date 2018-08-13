@@ -16,8 +16,7 @@ public class MergekSortedLists {
         // ListNode.printListNode(methond1Res);
 
         // 方法2
-        List<ListNode> arrayList = new ArrayList<>(Arrays.asList(lists));
-        // ListNode method2Res = obj.mergeKLists(arrayList);
+        // ListNode method2Res = obj.mergeKLists(lists);
         // ListNode.printListNode(method2Res);
 
         // 方法3
@@ -96,22 +95,6 @@ public class MergekSortedLists {
         }
         return dummy.next;
     }
-
-    /**
-     * ListNode *mergeKLists(vector<ListNode *> &lists) {
-     *         if(lists.empty()) return NULL;
-     *         int end = lists.size()-1;
-     *         while(end>0) {
-     *             int begin = 0;
-     *             while(begin<end) {
-     *                 lists[begin] = merge2Lists(lists[begin], lists[end]);
-     *                 begin++;
-     *                 end--;
-     *             }
-     *         }
-     *         return lists[0];
-     *     }
-     */
 
     //  方法3 类似merge sort，每次将所有的list两两之间合并，直到所有list合并成一个。如果用迭代而非递归，则空间复杂度为O(1)。时间复杂度：
     // 2n * k/2 + 4n * k/4 + ... + (2^x)n * k/(2^x) = nk * x
