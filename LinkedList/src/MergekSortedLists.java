@@ -12,8 +12,13 @@ public class MergekSortedLists {
         lists[1] = l2;
         lists[2] = l3;
         lists[3] = l4;
-        ListNode res = obj.mergeKLists(lists);
-        ListNode.printListNode(res);
+        ListNode methond1Res = obj.mergeKLists(lists);
+        ListNode.printListNode(methond1Res);
+
+        // 方法2
+        List<ListNode> arrayList = new ArrayList<>(Arrays.asList(lists));
+        ListNode method2Res = obj.mergeKLists(arrayList);
+        ListNode.printListNode(method2Res);
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
