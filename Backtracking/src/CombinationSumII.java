@@ -31,13 +31,13 @@ public class CombinationSumII {
             return;
         }
         for (int i = index; i < candidates.length; i++) {
-            // 如果上一个重复数字已经被遍历了说明, visit[i - 1]已经为false了，此时则不再遍历这个重复的数字
-            if (i > 0 && candidates[i - 1] == candidates[i] && !visit[i - 1]) continue;
-            visit[i] = true;
+            // 如果上一个重复数字已经被遍历了说明, visit[i - 1]已经为true了，此时则不再遍历这个重复的数字
+            if (i > 0 && candidates[i - 1] == candidates[i] && visit[i - 1]) continue;
+            visit[i] = false;
             List<Integer> newPart = new ArrayList<>(part);
             newPart.add(candidates[i]);
             helper(res, newPart, i + 1, candidates, target - candidates[i], visit);
-            visit[i] = false;
+            visit[i] = true;
         }
     }
 
