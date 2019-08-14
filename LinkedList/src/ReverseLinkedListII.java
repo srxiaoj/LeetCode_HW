@@ -3,7 +3,7 @@ public class ReverseLinkedListII {
 
     public static void main(String[] args) {
         ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
-        ListNode.printListNode(reverseBetween(head, 1, 2));
+        ListNode.printListNode(reverseBetween(head, 2, 4));
     }
 
     public static ListNode reverseBetween(ListNode head, int m, int n) {
@@ -22,10 +22,12 @@ public class ReverseLinkedListII {
         // dummy-> 1 -> 2 -> 3 -> 4 -> 5
 
         for (int i = 0; i < n - m; i++) {
+            ListNode.printListNode(dummy.next);
             cur.next = nxt.next;
             nxt.next = pre.next;
             pre.next = nxt;
             nxt = cur.next;
+            ListNode.printListNode(dummy.next);
         }
 
         // first reversing : dummy->1 - 3 - 2 - 4 - 5; pre = 1, cur = 2, nxt = 4
