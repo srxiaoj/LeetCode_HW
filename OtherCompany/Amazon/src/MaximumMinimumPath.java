@@ -27,18 +27,18 @@ public class MaximumMinimumPath {
             dp[i][0] = Math.min(dp[i - 1][0], matrix[i][0]);
         }
 
-        printArray(dp);
+        Utils.printArray(dp);
         for (int i = 1; i < n; i++) {
             dp[0][i] = Math.min(dp[0][i - 1], matrix[0][i]);
         }
-        printArray(dp);
+        Utils.printArray(dp);
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
                 // 每次选点的时候,因为路径只可能是从上或者从左, 所以选其中较大的, 再去合当前值比较.即可
                 dp[i][j] = Math.min(Math.max(dp[i - 1][j], dp[i][j - 1]), matrix[i][j]);
             }
         }
-        printArray(dp);
+        Utils.printArray(dp);
         return dp[m - 1][n - 1];
     }
 
@@ -66,24 +66,5 @@ public class MaximumMinimumPath {
 
         dfs(mat, i + 1, j, minSofar);
         dfs(mat, i, j + 1, minSofar);
-    }
-
-
-    /**
-     * print 2D array.
-     */
-    public static void printArray(int[][] A) {
-        for (int i = 0; i < A.length; i++) {
-            System.out.print("[");
-            for (int j = 0; j < A[i].length; j++) {
-                if (j != A[i].length - 1) {
-                    System.out.print(A[i][j] + ", ");
-                } else
-                    System.out.print(A[i][j]);
-
-            }
-            System.out.println("]");
-        }
-        System.out.println("");
     }
 }

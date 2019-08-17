@@ -29,10 +29,10 @@ public class GameofLife {
         blinker[2][2] = 1;
         blinker[2][3] = 1;
 
-        printArray(beehive);
+        Utils.printArray(beehive);
         System.out.println("Start game of life");
         gameOfLife(beehive);
-        printArray(beehive);
+        Utils.printArray(beehive);
 
     }
 
@@ -145,23 +145,6 @@ public class GameofLife {
             hashCode = 31 * hashCode + j;
             return hashCode;
         }
-    }
-
-
-    /**
-     * print 2D array.
-     */
-    public static void printArray(int[][] A) {
-        for (int i = 0; i < A.length; i++) {
-            for (int j = 0; j < A[i].length; j++) {
-                if (j != A[i].length - 1)
-                    System.out.print(A[i][j] + ", ");
-                else
-                    System.out.print(A[i][j]);
-            }
-            System.out.println("");
-        }
-        System.out.println("");
     }
 
     /**

@@ -7,7 +7,7 @@ public class MergeIntervalsInArray {
 
   public static void main(String[] args) {
     int[][] intervals = new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-    print2dArray(merge(intervals));
+    Utils.print2dArray(merge(intervals));
   }
 
   public static int[][] merge(int[][] intervals) {
@@ -38,20 +38,5 @@ public class MergeIntervalsInArray {
     public int compare(int[] a, int[] b) {
       return a[0] - b[0];
     }
-  }
-
-  private static void print2dArray(int[][] A) {
-    for (int i = 0; i < A.length; i++) {
-      for (int j = 0; j < A[i].length; j++) {
-        if (j != A[i].length - 1) {
-          System.out.print(A[i][j] + ", ");
-        } else {
-          System.out.print(A[i][j]);
-        }
-
-      }
-      System.out.println("");
-    }
-    System.out.println("");
   }
 }

@@ -5,7 +5,7 @@ import java.util.Arrays;
  */
 public class FourInteger {
     public static void main(String[] args) {
-        printArray(largest(3, 5, 1, 2));
+        Utils.printArray(largest(3, 5, 1, 2));
     }
 
     public static int[] largest(int A, int B, int C, int D) {
@@ -21,17 +21,5 @@ public class FourInteger {
         nums[i] ^= nums[j];
         nums[j] ^= nums[i];
         nums[i] ^= nums[j];
-    }
-
-    //print array
-    public static void printArray(int[] A) {
-        System.out.print("[");
-        for (int i = 0; i < A.length; i++) {
-            if (i != A.length - 1)
-                System.out.print(A[i] + ", ");
-            else
-                System.out.print(A[i]);
-        }
-        System.out.println("]");
     }
 }

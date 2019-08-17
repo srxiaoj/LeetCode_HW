@@ -5,15 +5,15 @@ import java.util.*;
  */
 public class FrogJump {
     public static void main(String[] args) {
-        System.out.println(canCross(new int[]{0, 1, 3, 5, 6, 8, 12, 17}));
-        System.out.println(canCross(new int[]{0, 1, 2, 3, 4, 8, 9, 11}));
+        // System.out.println(canCross(new int[]{0, 1, 3, 5, 6, 8, 12, 17}));
+        // System.out.println(canCross(new int[]{0, 1, 2, 3, 4, 8, 9, 11}));
     }
 
 
     /**
      * O(n^2)
      */
-    public static boolean canCross(int[] stones) {
+    /*public static boolean canCross(int[] stones) {
         if (stones == null || stones.length == 0) return false;
         if (stones.length < 2) return true;
         if (stones[1] != 1) return false;
@@ -36,5 +36,5 @@ public class FrogJump {
             }
         }
         return false;
-    }
+    }*/
 }

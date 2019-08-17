@@ -7,7 +7,7 @@ import java.util.LinkedList;
 public class SlidingWindowMinimum {
     public static void main(String[] args) {
         int[] a = {4, 2, 12, 11, -5};
-        printArray(minSlidingWindow(a, 2));
+        Utils.printArray(minSlidingWindow(a, 2));
     }
 
     public static int[] minSlidingWindow(int[] nums, int k) {
@@ -32,17 +32,5 @@ public class SlidingWindowMinimum {
             System.out.println(deque);
         }
         return res;
-    }
-
-    //print array
-    public static void printArray(int[] A) {
-        System.out.print("[");
-        for (int i = 0; i < A.length; i++) {
-            if (i != A.length - 1)
-                System.out.print(A[i] + ", ");
-            else
-                System.out.print(A[i]);
-        }
-        System.out.println("]");
     }
 }

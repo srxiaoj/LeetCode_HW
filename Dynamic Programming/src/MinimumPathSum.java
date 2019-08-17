@@ -51,31 +51,4 @@ public class MinimumPathSum {
     }
     return dp[m - 1][n - 1];
   }
-
-  public static void printArray(int[] A) {
-    System.out.print("[");
-    for (int i = 0; i < A.length; i++) {
-      if (i != A.length - 1) {
-        System.out.print(A[i] + ", ");
-      } else {
-        System.out.print(A[i]);
-      }
-    }
-    System.out.println("]");
-  }
-
-  private static void print2dArray(int[][] A) {
-    for (int i = 0; i < A.length; i++) {
-      for (int j = 0; j < A[i].length; j++) {
-        if (j != A[i].length - 1) {
-          System.out.print(A[i][j] + ", ");
-        } else {
-          System.out.print(A[i][j]);
-        }
-
-      }
-      System.out.println("");
-    }
-    System.out.println("");
-  }
 }

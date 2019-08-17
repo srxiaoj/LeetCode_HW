@@ -19,8 +19,8 @@ public class BestTimetoBuyandSellStockIII {
       return quickSolve(prices);
     }
 
-    int[] sell = new int[k + 1];
-    int[] buy = new int[k + 1];
+    Integer[] sell = new Integer[k + 1];
+    Integer[] buy = new Integer[k + 1];
 
     for (int i = 0; i < k + 1; i++) {
       sell[i] = 0;
@@ -35,6 +35,11 @@ public class BestTimetoBuyandSellStockIII {
         // 计算buy[j]与sell[j]的顺序没有先后
         buy[j] = Math.max(buy[j], sell[j - 1] - prices[i]);
         sell[j] = Math.max(sell[j], prices[i] + buy[j]);
+
+        new Utils<Integer>();
+        System.out.printf("i = %s, j = %s\n", i, j);
+        Utils.printArray(buy);
+        Utils.printArray(sell);
       }
     }
     return sell[k];
