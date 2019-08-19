@@ -16,28 +16,40 @@ public class WordBreakII {
 //                "aaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", set2));
   }
 
-  static HashMap<String, LinkedList<String>> map = new HashMap<String, LinkedList<String>>();
 
   public static List<String> wordBreak(String s, Set<String> wordDict) {
+    Map<String, List<String>> map = new HashMap<>();
+    return helper(s, new HashSet<>(wordDict), map);
+  }
+
+  private static List<String> helper(String s, Set<String> wordDict,
+      Map<String, List<String>> map) {
     if (map.containsKey(s)) {
       return map.get(s);
     }
 
-    LinkedList<String> res = new LinkedList<String>();
-    if (s.length() == 0) {
+    List<String> res = new ArrayList<>();
+    if (s.isEmpty()) {
       res.add("");
       return res;
     }
+
     for (String word : wordDict) {
       if (s.startsWith(word)) {
-        List<String> sublist = wordBreak(s.substring(word.length()), wordDict);
+        int len = word.length();
+        List<String> sublist = helper(s.substring(len), wordDict, map);
         for (String sub : sublist) {
-          res.add(word + (sub.isEmpty() ? "" : " ") + sub);
+          if (sub.isEmpty()) {
+            res.add(word);
+          } else {
+            res.add(word + " " + sub);
+          }
         }
       }
     }
     map.put(s, res);
     return res;
+
   }
 
   /**
