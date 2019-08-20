@@ -9,7 +9,7 @@ public class ListNode {
             return;
         }
         StringBuilder sb = new StringBuilder();
-        System.out.println("print the linked list");
+        // System.out.println("print the linked list");
         while (head != null) {
             sb.append(head.val).append("->");
             head = head.next;
