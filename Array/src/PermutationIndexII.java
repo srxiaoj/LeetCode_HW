@@ -29,7 +29,7 @@ public class PermutationIndexII {
      */
     public static long permutationIndexII2(int[] A) {
         long index = 0, fact = 1, dup = 1;
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> map = new java.util.HashMap<>();
         for (int i = A.length-1; i >= 0; i--) {
             if (!map.containsKey(A[i])) map.put(A[i], 1);
             else {
@@ -62,7 +62,7 @@ public class PermutationIndexII {
             fac[i] = fac[i - 1] * i;
         }
 
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new java.util.HashMap<>();
         for (int a : A) {
             if (!map.containsKey(a)) {
                 map.put(a, 1);

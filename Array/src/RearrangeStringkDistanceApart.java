@@ -62,7 +62,7 @@ public class RearrangeStringkDistanceApart {
 
     public static String rearrange(String s, int d) {
         if (d == 0) return s;
-        Map<Character, Integer> charMap = new HashMap<>();
+        Map<Character, Integer> charMap = new java.util.HashMap<>();
         for (char c : s.toCharArray()) {
             if (!charMap.containsKey(c)) {
                 charMap.put(c, 1);
