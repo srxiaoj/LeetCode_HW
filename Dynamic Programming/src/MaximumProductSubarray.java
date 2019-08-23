@@ -7,14 +7,14 @@ public class MaximumProductSubarray {
 //        int[] test2 = {3, -1, 4};
 //        System.out.println(maxProduct(test2));
 
-        int[] test3 = {2, -5, -2, -4, 3};
+        int[] test3 = {2, 3, -2, 4};
         System.out.println(maxProduct(test3));
 
-        int[] test4 = {6, 1, -2, 0, 2, -3, -1, 2, 3};
-        System.out.println(maxProduct(test4));
-
-        int[] test5 = {-3, -1, 0, 1, 2};
-        System.out.println(maxProduct(test5));
+        // int[] test4 = {6, 1, -2, 0, 2, -3, -1, 2, 3};
+        // System.out.println(maxProduct(test4));
+        //
+        // int[] test5 = {-3, -1, 0, 1, 2};
+        // System.out.println(maxProduct(test5));
     }
 
     /**
@@ -36,9 +36,12 @@ public class MaximumProductSubarray {
             //use previous max and previous min to get new max
             max = Math.max(Math.max(maxPre * nums[i], minPre * nums[i]), nums[i]);
             min = Math.min(Math.min(maxPre * nums[i], minPre * nums[i]), nums[i]);
+
             globalMax = Math.max(max, globalMax);
             maxPre = max; // store the previous max value
             minPre = min; // store the previous min value
+            System.out.println(maxPre);
+            System.out.println(minPre);
         }
         return globalMax;
     }
