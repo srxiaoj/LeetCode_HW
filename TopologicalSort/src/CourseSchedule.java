@@ -92,6 +92,7 @@ public class CourseSchedule {
       visit[last] = true;
       List<Integer> nextList = adj[last];
       for (int next : nextList) {
+        // 0->1, 1->0, 又重新指回last，从而进入死循环
         if (visit[next] && !alreadyFinished[next]) {
           return false;
         }
