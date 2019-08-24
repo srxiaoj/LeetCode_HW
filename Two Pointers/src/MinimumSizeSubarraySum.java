@@ -14,24 +14,23 @@ public class MinimumSizeSubarraySum {
      */
     public int minSubArrayLen(int s, int[] nums) {
         if (nums == null || nums.length == 0) return 0;
-        int l = 0, r = 1;
-        int sum = nums[0];
-        int min = Integer.MAX_VALUE;
-        while (l < r && r <= nums.length) {
-            if (sum >= s) {
-                while (l < r && sum - nums[l] >= s) {
-                    sum -= nums[l];
-                    l++;
-                }
-                min = Math.min(min, r - l);
+        int n = nums.length;
+        int sum = 0;
+        int start = 0;
+        int res = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            sum += nums[i];
+            int j = start;
+            while (j <= i && sum >= s) {
+                res = Math.min(res, i - j + 1);
+                sum -= nums[j];
+                j++;
+                start = j;
             }
-            if (r == nums.length) break;
-            sum += nums[r];
-            r++;
         }
-        if (min == Integer.MAX_VALUE) {
+        if (res == Integer.MAX_VALUE) {
             return 0;
         }
-        return min;
+        return res;
     }
 }
