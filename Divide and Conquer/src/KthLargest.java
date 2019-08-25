@@ -17,10 +17,9 @@ public class KthLargest {
     public static int findKthLargest(int[] nums, int k) {
 
         //method 1, heap sort
-        heapSort(nums);
-        return nums[nums.length - k];
+        // heapSort(nums);
+        // return nums[nums.length - k];
 
-        /*
         //method 2, partial quicksort, O(nlogk)
         int l = 0, r = nums.length-1;
         while (true) {
@@ -29,7 +28,6 @@ public class KthLargest {
             if (p > k - 1) r = p - 1;
             else l = p + 1;
         }
-        */
     }
 
     private static void heapSort(int[] nums) {
