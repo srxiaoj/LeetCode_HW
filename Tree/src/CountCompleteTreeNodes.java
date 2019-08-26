@@ -8,7 +8,7 @@ public class CountCompleteTreeNodes {
          *          /  \     /   \
          *         0    4    7     9
          *        / \  / \  / \   / \
-         *       22 6 2  3  1  5  
+         *       22 6 2  3  1
          */
         TreeNode root = TreeNode.deserializeLevelorder("6,2,8,0,4,7,9,22,6,2,3,1,null");
 //        TreeNode root = TreeNode.deserializeLevelorder("6,2,8,0,4,7,9");
@@ -29,6 +29,7 @@ public class CountCompleteTreeNodes {
         int i = 2;
         System.out.println(h);
         while (root != null && i <= h) {
+            System.out.println("root is " + root.val);
             if (getHeight(root.left) == getHeight(root.right)) {
                 root = root.right;
 //                n += Math.pow(2, h - i);
