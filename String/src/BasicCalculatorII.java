@@ -12,8 +12,8 @@ public class BasicCalculatorII {
 
 
     public static int calculate(String s) {
+        if (s == null || s.length() == 0) return 0;
         int len = s.length();
-        if (s == null || len == 0) return 0;
         Stack<Integer> stack = new Stack<Integer>();
         int num = 0;
         char sign = '+';
