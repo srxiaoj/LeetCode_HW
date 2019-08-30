@@ -3,7 +3,7 @@ public class ProductofArrayExceptSelf {
 
     public static void main(String[] args) {
         int[] test = {1, 2, 3, 4};
-        printArray(productExceptSelf(test));
+        Utils.printArray(productExceptSelf(test));
     }
 
     public static int[] productExceptSelf(int[] nums) {
@@ -49,16 +49,5 @@ public class ProductofArrayExceptSelf {
         }
         return back;
 
-    }
-
-    //print array
-    public static void printArray(int[] A) {
-        for (int i = 0; i < A.length; i++) {
-            if (i != A.length - 1)
-                System.out.print(A[i] + ", ");
-            else
-                System.out.print(A[i]);
-        }
-        System.out.println("");
     }
 }
