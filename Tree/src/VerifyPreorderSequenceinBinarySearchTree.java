@@ -5,7 +5,7 @@ public class VerifyPreorderSequenceinBinarySearchTree {
     public static void main(String[] args) {
         TreeNode root = TreeNode.deserializeLevelorder("15,8,20,5,null,17,null,null,null,16,null");
 
-//        System.out.println(verifyPreorder(new int[]{15, 8, 9, 5, 20, 17, 16}));
+       // System.out.println(verifyPreorder(new int[]{15, 8, 9, 5, 20, 17, 16}));
         System.out.println(verifyPreorder(new int[]{8, 5, 1, 7, 6, 20, 15}));
     }
 
@@ -20,6 +20,8 @@ public class VerifyPreorderSequenceinBinarySearchTree {
                 min = stack.pop();
             }
             stack.push(p);
+            // System.out.println(stack);
+            // System.out.println("min = " + min);
         }
         return true;
     }
