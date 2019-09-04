@@ -1,9 +1,10 @@
 import java.util.Arrays;
 public class HIndex {
     public static void main(String[] args) {
-        System.out.println("The h index is: " + hIndex2(new int[]{3, 0, 6, 1, 5}));
-        System.out.println("The h index is: " + hIndex2(new int[]{1, 1}));
-        System.out.println("The h index is: " + hIndex2(new int[]{0, 0, 0}));
+        System.out.println("The h index is: " + hIndex3(new int[]{3, 0, 6, 1, 5}));
+        System.out.println("The h index is: " + hIndex3(new int[]{1, 1}));
+        System.out.println("The h index is: " + hIndex3(new int[]{0, 0, 0}));
+        System.out.println("The h index is: " + hIndex3(new int[]{11, 15}));
     }
 
     /**
@@ -32,9 +33,29 @@ public class HIndex {
         }
     }
 
-    public static int hIndex2(int[] citations) {
+    /**
+     * 标准解法，先排序
+     *
+     * citations[i] >= n - i 代表有 h 个高于或等于 h 的值, citations[i - 1] <= n - i 代表剩下的n - h个小于等于h的值
+     * 注意corner case, i == 0 时, 如果citations[0] >= n， 则说明所有值都大值n
+     */
+    public static int hIndex3(int[] citations) {
+        if (citations == null || citations.length == 0) return 0;
+        int n = citations.length;
+        Arrays.sort(citations);
+
+        for (int i = n - 1; i > 0; i--) {
+            if (citations[i] >= n - i && citations[i - 1] <= n - i) {
+                return n - i;
+            }
+        }
+        if (citations[0] >= n) return n;
+        return 0;
+    }
+
+   /* public static int hIndex2(int[] citations) {
         // method 1: 排序再数大于citation[i]的个数
-        /*Arrays.sort(citations);
+        *//*Arrays.sort(citations);
         int n = citations.length;
         int max = 0;
         for (int i = 0; i < n; i++) {
@@ -43,13 +64,13 @@ public class HIndex {
                 max = Math.max(k, max);
             }
         }
-        return max;*/
+        return max;*//*
 
-        /**
+        *//**
          * method2: Basically we iterate the array for two rounds.
          * In first round we count how many citation in each bucket and
          * in the second round we traverse back to find the maximum h.
-         */
+         *//*
         int n = citations.length;
         int[] count = new int[n + 1];
 
@@ -67,13 +88,5 @@ public class HIndex {
             }
         }
         return 0;
-    }
-
-    //print array
-    public static void printArray(int[] A) {
-        for (int i = 0; i < A.length; i++) {
-            System.out.print(A[i] + " ");
-        }
-        System.out.println(" ");
-    }
+    }*/
 }
