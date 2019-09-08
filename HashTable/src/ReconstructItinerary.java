@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.HashMap;
 
 /**
  * 推荐方法4
