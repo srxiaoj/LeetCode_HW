@@ -55,6 +55,19 @@ public class SortColors {
         return l;
     }
 
+    private int sortTwoColors2(int[] nums, int val, int m, int n) {
+        int l = m, r = n;
+        while (l <= r) {
+            if (nums[l] == val) {
+                l++;
+            } else {
+                swap(nums, l, r);
+                r--;
+            }
+        }
+        return l;
+    }
+
     public void swap(int[] nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
