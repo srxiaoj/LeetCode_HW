@@ -10,29 +10,31 @@ public class HeapSort {
         N = num.length - 1;
 
         // 将heap初始化为所有的parent都比children节点的值要大
-        initHeapify(num);
+        buildHeap(num);
         // 每次heapfy都将第一个数（当前的最大数）与最后一个位置交换，并且不断减小最后一个位置
         // 从而得到升序排序
         for (int i = N; i > 0; i--) {
             swap(num, 0, i);
             N = N - 1;
-            reHeapify(num, 0);
+            heapify(num, 0);
         }
     }
 
     /**
      * 将heap初始化为所有的parent都比children节点的值要大
      */
-    public static void initHeapify(int[] num) {
+    public static void buildHeap(int[] num) {
         for (int i = N / 2; i >= 0; i--) {
-            reHeapify(num, i);
+            heapify(num, i);
         }
+        System.out.println("Elements after buildHeap ");
+        Utils.printArray(num);
     }
 
     /**
-     * 从底至上，如果左右节点的值有比parent值大的，那么就swap，并且重新reHeapify那个max节点
+     * 从底至上，如果左右节点的值有比parent值大的，那么就swap，并且重新heapify那个max节点
      */
-    public static void reHeapify(int[] num, int i) {
+    public static void heapify(int[] num, int i) {
         int left = 2 * i;
         int right = 2 * i + 1;
         int max = i;
@@ -43,7 +45,7 @@ public class HeapSort {
 
         if (max != i) {
             swap(num, i, max);
-            reHeapify(num, max);
+            heapify(num, max);
         }
     }
 
@@ -59,8 +61,6 @@ public class HeapSort {
         /* Call method sort */
         sort(arr);
         System.out.println("Elements after sorting ");
-        for (int i = 0; i < arr.length; i++)
-            System.out.print(arr[i] + " ");
-        System.out.println();
+        Utils.printArray(arr);
     }
 }
