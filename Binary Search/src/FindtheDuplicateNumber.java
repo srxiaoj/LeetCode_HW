@@ -21,7 +21,7 @@ public class FindtheDuplicateNumber {
                     count++;
                 }
             }
-            System.out.println("l " + l + ", r " + r + ", count " + count);
+            System.out.println("l " + l + ", r " + r + ", count " + count + ", mid " + mid);
             if (count <= mid) {
                 l = mid + 1;
                 count = 0;

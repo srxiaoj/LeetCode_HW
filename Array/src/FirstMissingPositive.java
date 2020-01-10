@@ -5,10 +5,10 @@ public class FirstMissingPositive {
     public static void main(String[] args) {
         FirstMissingPositive obj = new FirstMissingPositive();
 //        System.out.println(obj.firstMissingPositive(new int[]{1, 2, 3, 4, 4, 9}));
-        System.out.println(obj.firstMissingPositive(new int[]{1, 2, 0}));
+//         System.out.println(obj.firstMissingPositive(new int[]{1, 2, 0}));
         System.out.println(obj.firstMissingPositive(new int[]{3, 4, -1, 1}));
-        System.out.println(obj.firstMissingPositive(new int[]{1}));
-        System.out.println(obj.firstMissingPositive(new int[]{0}));
+        // System.out.println(obj.firstMissingPositive(new int[]{1}));
+        // System.out.println(obj.firstMissingPositive(new int[]{0}));
     }
 
     /**
@@ -18,8 +18,12 @@ public class FirstMissingPositive {
         if (nums == null || nums.length == 0) return 1;
         int n = nums.length;
         for (int i = 0; i < n; i++) {
+            System.out.println("i = " + i);
+            printArray(nums);
             while (nums[i] > 0 && nums[i] <= nums.length && nums[i] != i + 1 && nums[nums[i] - 1] != nums[i]) {
                 swap(nums, i, nums[i] - 1);
+                System.out.print("in while loop");
+                printArray(nums);
             }
         }
 
