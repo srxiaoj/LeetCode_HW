@@ -10,42 +10,42 @@ public class MinimumWindowSubstring {
 //        System.out.println(obj.minWindow("ab", "b"));
     }
 
-    int initTargetHash(int[] map, String Target) {
-        int num = 0;
-        for (char c : Target.toCharArray()) {
-            num++;
-            map[c]++;
-        }
-        return num;
-    }
-
     public String minWindow(String s, String t) {
+        int sourceNum = 0, targetNum = t.length();
+        int i = 0, j = 0;
+        int[] map = hash(t);
         int min = Integer.MAX_VALUE;
         String minStr = "";
 
-        int[] map = new int[256];
-
-        int targetnum = initTargetHash(map, t);
-        int sourcenum = 0;
-        int i = 0, j = 0;
         while (j < s.length()) {
-            if (map[s.charAt(j)] > 0)
-                sourcenum++;
-
+            if (map[s.charAt(j)] > 0) {
+                sourceNum++;
+            }
             map[s.charAt(j)]--;
-            while (sourcenum >= targetnum) {
+
+            while (sourceNum >= targetNum) {
                 if (min > j - i + 1) {
-                    min = Math.min(min, j - i + 1);
+                    min = j - i + 1;
                     minStr = s.substring(i, j + 1);
                 }
+
                 map[s.charAt(i)]++;
-                if (map[s.charAt(i)] > 0)
-                    sourcenum--;
+                if (map[s.charAt(i)] > 0) {
+                    sourceNum--;
+                }
                 i++;
             }
             j++;
         }
         return minStr;
+    }
+
+    private int[] hash(String t) {
+        int[] map = new int[256];
+        for (char c : t.toCharArray()) {
+            map[c]++;
+        }
+        return map;
     }
 
 
