@@ -1,11 +1,38 @@
+import java.util.PriorityQueue;
+
 public class MedianOfArray {
 
   public static void main(String[] args) {
     int[] nums = new int[]{5, 8, 3, 1, 6};
-    System.out.println(getMedian(nums));
+    System.out.println(getMedian2(nums));
 
     int[] nums2 = new int[]{13, 5, 8, 10};
-    System.out.println(getMedian(nums2));
+    System.out.println(getMedian2(nums2));
+  }
+
+  // 方法二，保持一个(l + r ) / 2 + 1 size的最小堆，然后不断更新这个最小堆的值
+  private static int getMedian2(int[] nums) {
+    int l = 0, r = nums.length;
+    int size = (l + r) / 2 + 1;
+    PriorityQueue<Integer> pq = new PriorityQueue<>(size);
+
+    for (int i = 0; i < size; i++) {
+      pq.offer(nums[i]);
+    }
+    System.out.println(pq);
+
+    for (int i = size; i < r; i++) {
+      if (pq.peek() < nums[i]) {
+        pq.poll();
+        pq.offer(nums[i]);
+      }
+    }
+    System.out.println(pq);
+    if (r % 2 == 0) {
+      return (pq.poll() + pq.poll()) / 2;
+    } else {
+      return pq.poll();
+    }
   }
 
   // 方法一: partition
