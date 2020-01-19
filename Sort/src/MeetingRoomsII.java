@@ -76,6 +76,7 @@ public class MeetingRoomsII {
             return 0;
         }
         Arrays.sort(intervals, new IntervalComparator());
+        Utils.printArray(intervals);
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         int numRooms = 1;
         pq.offer(intervals[0].end);

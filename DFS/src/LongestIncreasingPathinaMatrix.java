@@ -21,27 +21,27 @@ public class LongestIncreasingPathinaMatrix {
         int m  = matrix.length;
         if (m == 0) return 0;
         int n = matrix[0].length;
-        int[] array = new int[1];
+        int[] max = new int[1];
         int[][] len = new int[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                dfs(matrix, i, j, Integer.MIN_VALUE, 0, array, len);
+                dfs(matrix, i, j, Integer.MIN_VALUE, 0, max, len);
             }
         }
-        return array[0];
+        return max[0];
     }
 
-    private void dfs(int[][] matrix, int i, int j, int lastValue, int res, int[] array, int[][] len) {
+    private void dfs(int[][] matrix, int i, int j, int lastValue, int level, int[] max, int[][] len) {
         if (i < 0 || i >= matrix.length || j < 0 || j >= matrix[0].length || matrix[i][j] <= lastValue) return;
-        res++;
-        // 利用这个条件无意义dfs
-        if (res > len[i][j]) {
-            len[i][j] = res;
-            array[0] = Math.max(array[0], res);
-            dfs(matrix, i + 1, j, matrix[i][j], res, array, len);
-            dfs(matrix, i - 1, j, matrix[i][j], res, array, len);
-            dfs(matrix, i, j + 1, matrix[i][j], res, array, len);
-            dfs(matrix, i, j - 1, matrix[i][j], res, array, len);
+        level++;
+        // 利用这个条件筛去无意义dfs
+        if (level > len[i][j]) {
+            len[i][j] = level;
+            max[0] = Math.max(max[0], level);
+            dfs(matrix, i + 1, j, matrix[i][j], level, max, len);
+            dfs(matrix, i - 1, j, matrix[i][j], level, max, len);
+            dfs(matrix, i, j + 1, matrix[i][j], level, max, len);
+            dfs(matrix, i, j - 1, matrix[i][j], level, max, len);
         }
     }
 }

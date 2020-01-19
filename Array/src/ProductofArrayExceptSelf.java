@@ -42,6 +42,7 @@ public class ProductofArrayExceptSelf {
         for (int i = n - 2; i >= 0; i--) {
             back[i] = back[i + 1] * nums[i + 1];
         }
+        Utils.printArray(back);
 
         for (int i = 0; i < n; i++) {
             back[i] = back[i] * forward;

@@ -88,8 +88,8 @@ public class EditDistance {
 
         System.out.println(editDistDP(str1, str2, str1.length(), str2.length()));*/
 
-        String s1 = "sunday";
-        String s2 = "saturday";
+        String s1 = "abc";
+        String s2 = "ade";
         System.out.println(editDistDP(s1, s2, s1.length(), s2.length()));
     }
 }
