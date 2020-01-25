@@ -46,6 +46,7 @@ class MyStack {
    * Removes the element on top of the stack and returns that element.
    */
   public int pop() {
+    if (empty()) return 0;
     int tmp = q1.remove();
     if (!q1.isEmpty()) {
       top = q1.peek();
