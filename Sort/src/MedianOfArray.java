@@ -67,7 +67,7 @@ public class MedianOfArray {
   private static int partition(int[] nums, int start, int end) {
     int p = start;
     int pVal = nums[start];
-    int l = start, r = end;
+    int l = start;
 
     for (int i = start + 1; i <= end; i++) {
       if (nums[i] > pVal) {
