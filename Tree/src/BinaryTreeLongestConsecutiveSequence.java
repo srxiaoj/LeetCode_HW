@@ -25,32 +25,6 @@ public class BinaryTreeLongestConsecutiveSequence {
      * @param root
      * @return
      */
-    public int longestConsecutive2(TreeNode root) {
-        if (root == null) return 0;
-        int[] max = new int[1];
-        max[0] = 1;
-        helper(root, root.left, max, 1);
-        helper(root, root.right, max, 1);
-        return max[0];
-    }
-
-    public void helper(TreeNode parent, TreeNode node, int[] max, int localMax) {
-        if (node == null) return;
-        if (parent.val == node.val - 1) {
-            localMax++;
-        } else {
-            localMax = 1;
-        }
-        if (max[0] < localMax) {
-            max[0] = localMax;
-        }
-        helper(node, node.left, max, localMax);
-        helper(node, node.right, max, localMax);
-    }
-
-
-    private int max = 0;
-    private TreeNode rt = null;
     public int longestConsecutive(TreeNode root) {
         /*
         //method 1
@@ -81,18 +55,23 @@ public class BinaryTreeLongestConsecutiveSequence {
         */
         
         //method 2
-        if(root == null) return 0;
-        helper(root, 0, root.val);
-        return max;
+        int[] max = new int[]{1};
+        helper(root, root.left, max, 1);
+        helper(root, root.right, max, 1);
+        return max[0];
     }
 
-    public void helper(TreeNode root, int count, int target){
-        if(root == null) return;
-        if(root.val == target) count++;
-        else count = 1;
-        max = Math.max(count, max);
-        helper(root.left, count, root.val + 1);
-        helper(root.right, count, root.val + 1);
+    private void helper(TreeNode parent, TreeNode child, int[] max, int level) {
+        if (parent == null || child == null) return;
+        if (parent.val == child.val - 1) {
+            level++;
+            max[0] = Math.max(max[0], level);
+
+        } else {
+            level = 1;
+        }
+        helper(child, child.left, max, level);
+        helper(child, child.right, max, level);
     }
 
 
