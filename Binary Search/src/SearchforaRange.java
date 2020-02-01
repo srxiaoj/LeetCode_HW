@@ -15,46 +15,42 @@ public class SearchforaRange {
    * 右boundary用start = mid
    */
   public int[] searchRange(int[] nums, int target) {
-    int[] res = new int[2];
-    int start = 0;
-    int end = nums.length - 1;
-    // left bound
-    while (start + 1 < end) {
-      int mid = start + (end - start) / 2;
-      if (nums[mid] > target) {
-        end = mid;
-      } else if (nums[mid] < target) {
-        start = mid;
+    int[] res = new int[]{-1, -1};
+    if (nums == null || nums.length == 0) return res;
+    int l = 0, r = nums.length - 1;
+    while (l + 1 < r) {
+      int mid = (l + r) / 2;
+      // nums[mid] < target, 则边界一定在mid右边
+      if (nums[mid] < target) {
+        l = mid;
       } else {
-        end = mid;
-      }
-    }
-    if (nums[start] == target) {
-      res[0] = start;
-    } else if (nums[end] == target) {
-      res[0] = end;
-    } else {
-      return new int[]{-1, -1};
-    }
-
-    //right bound
-    start = 0;
-    end = nums.length - 1;
-    while (start + 1 < end) {
-      int mid = start + (end - start) / 2;
-      if (nums[mid] > target) {
-        end = mid;
-      } else if (nums[mid] < target) {
-        start = mid;
-      } else {
-        start = mid;
+        r = mid;
       }
     }
 
-    if (nums[end] == target) {
-      res[1] = end;
+    if (nums[l] == target) {
+      res[0] = l;
+    } else if (nums[r] == target) {
+      res[0] = r;
     } else {
-      res[1] = start;
+      return res;
+    }
+
+    l = res[0];
+    r = nums.length - 1;
+    while (l + 1 < r) {
+      int mid = (l + r) / 2;
+      if (nums[mid] > target) {
+        r = mid;
+      } else {
+        l = mid;
+      }
+    }
+
+    if (nums[r] == target) {
+      res[1] = r;
+    } else if (nums[l] == target) {
+      res[1] = l;
     }
     return res;
   }
