@@ -16,7 +16,7 @@ public class PowOfX {
   }
 
   /**
-   * n 为负数时候用temp * temp / x， 用myPow(x, -n)会IntegerOverFlow
+   * n 为负数时候用half * half / x， 用myPow(x, -n)会IntegerOverFlow
    */
   public static double myPow(double x, int n) {
     if (n == 0) {
