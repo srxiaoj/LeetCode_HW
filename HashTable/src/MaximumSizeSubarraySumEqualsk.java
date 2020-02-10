@@ -23,6 +23,7 @@ public class MaximumSizeSubarraySumEqualsk {
             } else if (sumLengthMap.containsKey(sum - k)) { // sum is already larger than k
                 max = Math.max(max, i - sumLengthMap.get(sum - k));
             }
+            // 只保存出现这个sum的最小的subarray
             if (!sumLengthMap.containsKey(sum)) {
                 sumLengthMap.put(sum, i);
             }
