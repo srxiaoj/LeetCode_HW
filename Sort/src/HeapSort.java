@@ -2,21 +2,18 @@
  * Created by thanksgiving on 6/4/16.
  */
 public class HeapSort {
-    /* Class HeapSort */
-    private static int N;
-
     /* Sort Function */
     public static void sort(int[] num) {
-        N = num.length - 1;
+        int sortToIndex = num.length - 1;
 
         // 将heap初始化为所有的parent都比children节点的值要大
         buildHeap(num);
         // 每次heapfy都将第一个数（当前的最大数）与最后一个位置交换，并且不断减小最后一个位置
         // 从而得到升序排序
-        for (int i = N; i > 0; i--) {
+        for (int i = num.length - 1; i > 0; i--) {
             swap(num, 0, i);
-            N = N - 1;
-            heapify(num, 0);
+            sortToIndex--;
+            heapify(num, 0, sortToIndex);
             System.out.println(String.format("i = %s", i));
             Utils.printArray(num);
         }
@@ -26,8 +23,9 @@ public class HeapSort {
      * 将heap初始化为所有的parent都比children节点的值要大
      */
     public static void buildHeap(int[] num) {
-        for (int i = N / 2; i >= 0; i--) {
-            heapify(num, i);
+        int n = num.length - 1;
+        for (int i = n / 2; i >= 0; i--) {
+            heapify(num, i, n);
             System.out.println(String.format("i = %s", i));
             Utils.printArray(num);
         }
@@ -37,19 +35,20 @@ public class HeapSort {
 
     /**
      * 从底至上，如果左右节点的值有比parent值大的，那么就swap，并且重新heapify那个max节点
+     * @param sortToIndex sortToIndex，在第二步heapify中，这个位置之后的元素都将是已经升序排好了的
      */
-    public static void heapify(int[] num, int i) {
+    public static void heapify(int[] num, int i, int sortToIndex) {
         int left = 2 * i;
         int right = 2 * i + 1;
         int max = i;
-        if (left <= N && num[left] > num[i])
+        if (left <= sortToIndex && num[left] > num[i])
             max = left;
-        if (right <= N && num[right] > num[max])
+        if (right <= sortToIndex && num[right] > num[max])
             max = right;
 
         if (max != i) {
             swap(num, i, max);
-            heapify(num, max);
+            heapify(num, max, sortToIndex);
         }
     }
 
