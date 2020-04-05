@@ -17,6 +17,8 @@ public class HeapSort {
             swap(num, 0, i);
             N = N - 1;
             heapify(num, 0);
+            System.out.println(String.format("i = %s", i));
+            Utils.printArray(num);
         }
     }
 
@@ -26,6 +28,8 @@ public class HeapSort {
     public static void buildHeap(int[] num) {
         for (int i = N / 2; i >= 0; i--) {
             heapify(num, i);
+            System.out.println(String.format("i = %s", i));
+            Utils.printArray(num);
         }
         System.out.println("Elements after buildHeap ");
         Utils.printArray(num);
