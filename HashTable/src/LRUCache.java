@@ -49,7 +49,7 @@ public class LRUCache {
     public void set(int key, int value) {
         if (cache.containsKey(key)) {
             cache.put(key, value);
-            // new Integer(key) is nessary
+            // new Integer(key) is necessary
             list.remove(new Integer(key));
             list.add(key);
         } else {
