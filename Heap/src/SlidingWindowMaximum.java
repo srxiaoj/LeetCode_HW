@@ -13,7 +13,7 @@ public class SlidingWindowMaximum {
 //        int[] a = {1, 3, -1, -3, 5, 3, 6, 7};
         int[] a = {-7, -8, 7, 5, 7, 1, 6, 0};
         System.out.println(obj.maxSlidingWindow(a, 3));
-        printArray(obj.maxSlidingWindow2(a, 4));
+        // printArray(obj.maxSlidingWindow2(a, 4));
     }
 
     public ArrayList<Integer> maxSlidingWindow(int[] nums, int k) {
@@ -26,7 +26,7 @@ public class SlidingWindowMaximum {
             while ((!deque.isEmpty() && cur > deque.getLast())) {
                 deque.pollLast();
             }
-            deque.offer(cur);
+            deque.addLast(cur);
             // 如果被移除window的那个数是当前最大数，那么deque.pollFirst()
             if (i > k && deque.getFirst() == nums[i - k - 1])
                 deque.pollFirst();
